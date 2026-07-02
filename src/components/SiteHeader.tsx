@@ -55,10 +55,10 @@ export function SiteHeader() {
         </button>
       </div>
 
-      {/* Mobile drawer */}
+      {/* Mobile / tablet drawer */}
       <div
         className={cn(
-          "md:hidden overflow-hidden border-t border-hairline bg-background transition-[max-height,opacity] duration-300 ease-out",
+          "lg:hidden overflow-hidden border-t border-hairline bg-background transition-[max-height,opacity] duration-300 ease-out",
           open ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0",
         )}
       >
