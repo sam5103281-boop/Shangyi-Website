@@ -9,38 +9,350 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ChannelsRouteImport } from './routes/channels'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProductsIndexRouteImport } from './routes/products.index'
+import { Route as EducationIndexRouteImport } from './routes/education.index'
+import { Route as CareIndexRouteImport } from './routes/care.index'
+import { Route as ProductsSupplementsRouteImport } from './routes/products.supplements'
+import { Route as ProductsCategoryRouteImport } from './routes/products.$category'
+import { Route as CareReferralRouteImport } from './routes/care.referral'
+import { Route as CareProfessionalRouteImport } from './routes/care.professional'
+import { Route as CareFaqRouteImport } from './routes/care.faq'
+import { Route as ProductsSupplementsIndexRouteImport } from './routes/products.supplements.index'
+import { Route as ProductsCategoryIndexRouteImport } from './routes/products.$category.index'
+import { Route as ProductsSupplementsSlugRouteImport } from './routes/products.supplements.$slug'
+import { Route as ProductsCategorySlugRouteImport } from './routes/products.$category.$slug'
+import { Route as EducationPostpartumPePreventionRouteImport } from './routes/education.postpartum.pe-prevention'
+import { Route as EducationDiabetesEyeComplicationsRouteImport } from './routes/education.diabetes.eye-complications'
+import { Route as EducationDiabetesComplicationRisksRouteImport } from './routes/education.diabetes.complication-risks'
+import { Route as EducationDeviceCompressionSockFaqRouteImport } from './routes/education.device.compression-sock-faq'
+import { Route as EducationCirculationLegVeinCareRouteImport } from './routes/education.circulation.leg-vein-care'
+import { Route as EducationCirculationDvtPeSymptomsRouteImport } from './routes/education.circulation.dvt-pe-symptoms'
 
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChannelsRoute = ChannelsRouteImport.update({
+  id: '/channels',
+  path: '/channels',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductsIndexRoute = ProductsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProductsRoute,
+} as any)
+const EducationIndexRoute = EducationIndexRouteImport.update({
+  id: '/education/',
+  path: '/education/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareIndexRoute = CareIndexRouteImport.update({
+  id: '/care/',
+  path: '/care/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsSupplementsRoute = ProductsSupplementsRouteImport.update({
+  id: '/supplements',
+  path: '/supplements',
+  getParentRoute: () => ProductsRoute,
+} as any)
+const ProductsCategoryRoute = ProductsCategoryRouteImport.update({
+  id: '/$category',
+  path: '/$category',
+  getParentRoute: () => ProductsRoute,
+} as any)
+const CareReferralRoute = CareReferralRouteImport.update({
+  id: '/care/referral',
+  path: '/care/referral',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareProfessionalRoute = CareProfessionalRouteImport.update({
+  id: '/care/professional',
+  path: '/care/professional',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareFaqRoute = CareFaqRouteImport.update({
+  id: '/care/faq',
+  path: '/care/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsSupplementsIndexRoute =
+  ProductsSupplementsIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProductsSupplementsRoute,
+  } as any)
+const ProductsCategoryIndexRoute = ProductsCategoryIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProductsCategoryRoute,
+} as any)
+const ProductsSupplementsSlugRoute = ProductsSupplementsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProductsSupplementsRoute,
+} as any)
+const ProductsCategorySlugRoute = ProductsCategorySlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProductsCategoryRoute,
+} as any)
+const EducationPostpartumPePreventionRoute =
+  EducationPostpartumPePreventionRouteImport.update({
+    id: '/education/postpartum/pe-prevention',
+    path: '/education/postpartum/pe-prevention',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EducationDiabetesEyeComplicationsRoute =
+  EducationDiabetesEyeComplicationsRouteImport.update({
+    id: '/education/diabetes/eye-complications',
+    path: '/education/diabetes/eye-complications',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EducationDiabetesComplicationRisksRoute =
+  EducationDiabetesComplicationRisksRouteImport.update({
+    id: '/education/diabetes/complication-risks',
+    path: '/education/diabetes/complication-risks',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EducationDeviceCompressionSockFaqRoute =
+  EducationDeviceCompressionSockFaqRouteImport.update({
+    id: '/education/device/compression-sock-faq',
+    path: '/education/device/compression-sock-faq',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EducationCirculationLegVeinCareRoute =
+  EducationCirculationLegVeinCareRouteImport.update({
+    id: '/education/circulation/leg-vein-care',
+    path: '/education/circulation/leg-vein-care',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EducationCirculationDvtPeSymptomsRoute =
+  EducationCirculationDvtPeSymptomsRouteImport.update({
+    id: '/education/circulation/dvt-pe-symptoms',
+    path: '/education/circulation/dvt-pe-symptoms',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/channels': typeof ChannelsRoute
+  '/contact': typeof ContactRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/care/faq': typeof CareFaqRoute
+  '/care/professional': typeof CareProfessionalRoute
+  '/care/referral': typeof CareReferralRoute
+  '/products/$category': typeof ProductsCategoryRouteWithChildren
+  '/products/supplements': typeof ProductsSupplementsRouteWithChildren
+  '/care/': typeof CareIndexRoute
+  '/education/': typeof EducationIndexRoute
+  '/products/': typeof ProductsIndexRoute
+  '/education/circulation/dvt-pe-symptoms': typeof EducationCirculationDvtPeSymptomsRoute
+  '/education/circulation/leg-vein-care': typeof EducationCirculationLegVeinCareRoute
+  '/education/device/compression-sock-faq': typeof EducationDeviceCompressionSockFaqRoute
+  '/education/diabetes/complication-risks': typeof EducationDiabetesComplicationRisksRoute
+  '/education/diabetes/eye-complications': typeof EducationDiabetesEyeComplicationsRoute
+  '/education/postpartum/pe-prevention': typeof EducationPostpartumPePreventionRoute
+  '/products/$category/$slug': typeof ProductsCategorySlugRoute
+  '/products/supplements/$slug': typeof ProductsSupplementsSlugRoute
+  '/products/$category/': typeof ProductsCategoryIndexRoute
+  '/products/supplements/': typeof ProductsSupplementsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/channels': typeof ChannelsRoute
+  '/contact': typeof ContactRoute
+  '/care/faq': typeof CareFaqRoute
+  '/care/professional': typeof CareProfessionalRoute
+  '/care/referral': typeof CareReferralRoute
+  '/care': typeof CareIndexRoute
+  '/education': typeof EducationIndexRoute
+  '/products': typeof ProductsIndexRoute
+  '/education/circulation/dvt-pe-symptoms': typeof EducationCirculationDvtPeSymptomsRoute
+  '/education/circulation/leg-vein-care': typeof EducationCirculationLegVeinCareRoute
+  '/education/device/compression-sock-faq': typeof EducationDeviceCompressionSockFaqRoute
+  '/education/diabetes/complication-risks': typeof EducationDiabetesComplicationRisksRoute
+  '/education/diabetes/eye-complications': typeof EducationDiabetesEyeComplicationsRoute
+  '/education/postpartum/pe-prevention': typeof EducationPostpartumPePreventionRoute
+  '/products/$category/$slug': typeof ProductsCategorySlugRoute
+  '/products/supplements/$slug': typeof ProductsSupplementsSlugRoute
+  '/products/$category': typeof ProductsCategoryIndexRoute
+  '/products/supplements': typeof ProductsSupplementsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/channels': typeof ChannelsRoute
+  '/contact': typeof ContactRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/care/faq': typeof CareFaqRoute
+  '/care/professional': typeof CareProfessionalRoute
+  '/care/referral': typeof CareReferralRoute
+  '/products/$category': typeof ProductsCategoryRouteWithChildren
+  '/products/supplements': typeof ProductsSupplementsRouteWithChildren
+  '/care/': typeof CareIndexRoute
+  '/education/': typeof EducationIndexRoute
+  '/products/': typeof ProductsIndexRoute
+  '/education/circulation/dvt-pe-symptoms': typeof EducationCirculationDvtPeSymptomsRoute
+  '/education/circulation/leg-vein-care': typeof EducationCirculationLegVeinCareRoute
+  '/education/device/compression-sock-faq': typeof EducationDeviceCompressionSockFaqRoute
+  '/education/diabetes/complication-risks': typeof EducationDiabetesComplicationRisksRoute
+  '/education/diabetes/eye-complications': typeof EducationDiabetesEyeComplicationsRoute
+  '/education/postpartum/pe-prevention': typeof EducationPostpartumPePreventionRoute
+  '/products/$category/$slug': typeof ProductsCategorySlugRoute
+  '/products/supplements/$slug': typeof ProductsSupplementsSlugRoute
+  '/products/$category/': typeof ProductsCategoryIndexRoute
+  '/products/supplements/': typeof ProductsSupplementsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/channels'
+    | '/contact'
+    | '/products'
+    | '/care/faq'
+    | '/care/professional'
+    | '/care/referral'
+    | '/products/$category'
+    | '/products/supplements'
+    | '/care/'
+    | '/education/'
+    | '/products/'
+    | '/education/circulation/dvt-pe-symptoms'
+    | '/education/circulation/leg-vein-care'
+    | '/education/device/compression-sock-faq'
+    | '/education/diabetes/complication-risks'
+    | '/education/diabetes/eye-complications'
+    | '/education/postpartum/pe-prevention'
+    | '/products/$category/$slug'
+    | '/products/supplements/$slug'
+    | '/products/$category/'
+    | '/products/supplements/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/channels'
+    | '/contact'
+    | '/care/faq'
+    | '/care/professional'
+    | '/care/referral'
+    | '/care'
+    | '/education'
+    | '/products'
+    | '/education/circulation/dvt-pe-symptoms'
+    | '/education/circulation/leg-vein-care'
+    | '/education/device/compression-sock-faq'
+    | '/education/diabetes/complication-risks'
+    | '/education/diabetes/eye-complications'
+    | '/education/postpartum/pe-prevention'
+    | '/products/$category/$slug'
+    | '/products/supplements/$slug'
+    | '/products/$category'
+    | '/products/supplements'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/channels'
+    | '/contact'
+    | '/products'
+    | '/care/faq'
+    | '/care/professional'
+    | '/care/referral'
+    | '/products/$category'
+    | '/products/supplements'
+    | '/care/'
+    | '/education/'
+    | '/products/'
+    | '/education/circulation/dvt-pe-symptoms'
+    | '/education/circulation/leg-vein-care'
+    | '/education/device/compression-sock-faq'
+    | '/education/diabetes/complication-risks'
+    | '/education/diabetes/eye-complications'
+    | '/education/postpartum/pe-prevention'
+    | '/products/$category/$slug'
+    | '/products/supplements/$slug'
+    | '/products/$category/'
+    | '/products/supplements/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ChannelsRoute: typeof ChannelsRoute
+  ContactRoute: typeof ContactRoute
+  ProductsRoute: typeof ProductsRouteWithChildren
+  CareFaqRoute: typeof CareFaqRoute
+  CareProfessionalRoute: typeof CareProfessionalRoute
+  CareReferralRoute: typeof CareReferralRoute
+  CareIndexRoute: typeof CareIndexRoute
+  EducationIndexRoute: typeof EducationIndexRoute
+  EducationCirculationDvtPeSymptomsRoute: typeof EducationCirculationDvtPeSymptomsRoute
+  EducationCirculationLegVeinCareRoute: typeof EducationCirculationLegVeinCareRoute
+  EducationDeviceCompressionSockFaqRoute: typeof EducationDeviceCompressionSockFaqRoute
+  EducationDiabetesComplicationRisksRoute: typeof EducationDiabetesComplicationRisksRoute
+  EducationDiabetesEyeComplicationsRoute: typeof EducationDiabetesEyeComplicationsRoute
+  EducationPostpartumPePreventionRoute: typeof EducationPostpartumPePreventionRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/channels': {
+      id: '/channels'
+      path: '/channels'
+      fullPath: '/channels'
+      preLoaderRoute: typeof ChannelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +360,198 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/products/': {
+      id: '/products/'
+      path: '/'
+      fullPath: '/products/'
+      preLoaderRoute: typeof ProductsIndexRouteImport
+      parentRoute: typeof ProductsRoute
+    }
+    '/education/': {
+      id: '/education/'
+      path: '/education'
+      fullPath: '/education/'
+      preLoaderRoute: typeof EducationIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/care/': {
+      id: '/care/'
+      path: '/care'
+      fullPath: '/care/'
+      preLoaderRoute: typeof CareIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/supplements': {
+      id: '/products/supplements'
+      path: '/supplements'
+      fullPath: '/products/supplements'
+      preLoaderRoute: typeof ProductsSupplementsRouteImport
+      parentRoute: typeof ProductsRoute
+    }
+    '/products/$category': {
+      id: '/products/$category'
+      path: '/$category'
+      fullPath: '/products/$category'
+      preLoaderRoute: typeof ProductsCategoryRouteImport
+      parentRoute: typeof ProductsRoute
+    }
+    '/care/referral': {
+      id: '/care/referral'
+      path: '/care/referral'
+      fullPath: '/care/referral'
+      preLoaderRoute: typeof CareReferralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/care/professional': {
+      id: '/care/professional'
+      path: '/care/professional'
+      fullPath: '/care/professional'
+      preLoaderRoute: typeof CareProfessionalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/care/faq': {
+      id: '/care/faq'
+      path: '/care/faq'
+      fullPath: '/care/faq'
+      preLoaderRoute: typeof CareFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/supplements/': {
+      id: '/products/supplements/'
+      path: '/'
+      fullPath: '/products/supplements/'
+      preLoaderRoute: typeof ProductsSupplementsIndexRouteImport
+      parentRoute: typeof ProductsSupplementsRoute
+    }
+    '/products/$category/': {
+      id: '/products/$category/'
+      path: '/'
+      fullPath: '/products/$category/'
+      preLoaderRoute: typeof ProductsCategoryIndexRouteImport
+      parentRoute: typeof ProductsCategoryRoute
+    }
+    '/products/supplements/$slug': {
+      id: '/products/supplements/$slug'
+      path: '/$slug'
+      fullPath: '/products/supplements/$slug'
+      preLoaderRoute: typeof ProductsSupplementsSlugRouteImport
+      parentRoute: typeof ProductsSupplementsRoute
+    }
+    '/products/$category/$slug': {
+      id: '/products/$category/$slug'
+      path: '/$slug'
+      fullPath: '/products/$category/$slug'
+      preLoaderRoute: typeof ProductsCategorySlugRouteImport
+      parentRoute: typeof ProductsCategoryRoute
+    }
+    '/education/postpartum/pe-prevention': {
+      id: '/education/postpartum/pe-prevention'
+      path: '/education/postpartum/pe-prevention'
+      fullPath: '/education/postpartum/pe-prevention'
+      preLoaderRoute: typeof EducationPostpartumPePreventionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/education/diabetes/eye-complications': {
+      id: '/education/diabetes/eye-complications'
+      path: '/education/diabetes/eye-complications'
+      fullPath: '/education/diabetes/eye-complications'
+      preLoaderRoute: typeof EducationDiabetesEyeComplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/education/diabetes/complication-risks': {
+      id: '/education/diabetes/complication-risks'
+      path: '/education/diabetes/complication-risks'
+      fullPath: '/education/diabetes/complication-risks'
+      preLoaderRoute: typeof EducationDiabetesComplicationRisksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/education/device/compression-sock-faq': {
+      id: '/education/device/compression-sock-faq'
+      path: '/education/device/compression-sock-faq'
+      fullPath: '/education/device/compression-sock-faq'
+      preLoaderRoute: typeof EducationDeviceCompressionSockFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/education/circulation/leg-vein-care': {
+      id: '/education/circulation/leg-vein-care'
+      path: '/education/circulation/leg-vein-care'
+      fullPath: '/education/circulation/leg-vein-care'
+      preLoaderRoute: typeof EducationCirculationLegVeinCareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/education/circulation/dvt-pe-symptoms': {
+      id: '/education/circulation/dvt-pe-symptoms'
+      path: '/education/circulation/dvt-pe-symptoms'
+      fullPath: '/education/circulation/dvt-pe-symptoms'
+      preLoaderRoute: typeof EducationCirculationDvtPeSymptomsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface ProductsCategoryRouteChildren {
+  ProductsCategorySlugRoute: typeof ProductsCategorySlugRoute
+  ProductsCategoryIndexRoute: typeof ProductsCategoryIndexRoute
+}
+
+const ProductsCategoryRouteChildren: ProductsCategoryRouteChildren = {
+  ProductsCategorySlugRoute: ProductsCategorySlugRoute,
+  ProductsCategoryIndexRoute: ProductsCategoryIndexRoute,
+}
+
+const ProductsCategoryRouteWithChildren =
+  ProductsCategoryRoute._addFileChildren(ProductsCategoryRouteChildren)
+
+interface ProductsSupplementsRouteChildren {
+  ProductsSupplementsSlugRoute: typeof ProductsSupplementsSlugRoute
+  ProductsSupplementsIndexRoute: typeof ProductsSupplementsIndexRoute
+}
+
+const ProductsSupplementsRouteChildren: ProductsSupplementsRouteChildren = {
+  ProductsSupplementsSlugRoute: ProductsSupplementsSlugRoute,
+  ProductsSupplementsIndexRoute: ProductsSupplementsIndexRoute,
+}
+
+const ProductsSupplementsRouteWithChildren =
+  ProductsSupplementsRoute._addFileChildren(ProductsSupplementsRouteChildren)
+
+interface ProductsRouteChildren {
+  ProductsCategoryRoute: typeof ProductsCategoryRouteWithChildren
+  ProductsSupplementsRoute: typeof ProductsSupplementsRouteWithChildren
+  ProductsIndexRoute: typeof ProductsIndexRoute
+}
+
+const ProductsRouteChildren: ProductsRouteChildren = {
+  ProductsCategoryRoute: ProductsCategoryRouteWithChildren,
+  ProductsSupplementsRoute: ProductsSupplementsRouteWithChildren,
+  ProductsIndexRoute: ProductsIndexRoute,
+}
+
+const ProductsRouteWithChildren = ProductsRoute._addFileChildren(
+  ProductsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ChannelsRoute: ChannelsRoute,
+  ContactRoute: ContactRoute,
+  ProductsRoute: ProductsRouteWithChildren,
+  CareFaqRoute: CareFaqRoute,
+  CareProfessionalRoute: CareProfessionalRoute,
+  CareReferralRoute: CareReferralRoute,
+  CareIndexRoute: CareIndexRoute,
+  EducationIndexRoute: EducationIndexRoute,
+  EducationCirculationDvtPeSymptomsRoute:
+    EducationCirculationDvtPeSymptomsRoute,
+  EducationCirculationLegVeinCareRoute: EducationCirculationLegVeinCareRoute,
+  EducationDeviceCompressionSockFaqRoute:
+    EducationDeviceCompressionSockFaqRoute,
+  EducationDiabetesComplicationRisksRoute:
+    EducationDiabetesComplicationRisksRoute,
+  EducationDiabetesEyeComplicationsRoute:
+    EducationDiabetesEyeComplicationsRoute,
+  EducationPostpartumPePreventionRoute: EducationPostpartumPePreventionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

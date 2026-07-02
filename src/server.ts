@@ -7,6 +7,18 @@ type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
 };
 
+const R2_ASSET_BASE_URL = "https://pub-91066afc3bf34ac3bf044deb264ab5a8.r2.dev";
+const LOVABLE_ASSET_PREFIX = "/__l5e/assets-v1/";
+
+function redirectLovableAssetToR2(request: Request): Response | undefined {
+  const url = new URL(request.url);
+  if (!url.pathname.startsWith(LOVABLE_ASSET_PREFIX)) return undefined;
+
+  const assetPath = url.pathname.replace("/__l5e/", "");
+  const target = `${R2_ASSET_BASE_URL}/${assetPath}${url.search}`;
+  return Response.redirect(target, 302);
+}
+
 let serverEntryPromise: Promise<ServerEntry> | undefined;
 
 async function getServerEntry(): Promise<ServerEntry> {
@@ -26,7 +38,9 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   if (!contentType.includes("application/json")) return response;
 
   const body = await response.clone().text();
-  if (!isH3SwallowedErrorBody(body)) return response;
+  if (!body.includes('"unhandled":true') || !body.includes('"message":"HTTPError"')) {
+    return response;
+  }
 
   console.error(consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`));
   return new Response(renderErrorPage(), {
@@ -35,18 +49,12 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   });
 }
 
-function isH3SwallowedErrorBody(body: string): boolean {
-  try {
-    const payload = JSON.parse(body) as { unhandled?: unknown; message?: unknown };
-    return payload.unhandled === true && payload.message === "HTTPError";
-  } catch {
-    return false;
-  }
-}
-
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const assetRedirect = redirectLovableAssetToR2(request);
+      if (assetRedirect) return assetRedirect;
+
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);
