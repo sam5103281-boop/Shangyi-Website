@@ -1,0 +1,201 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { useState, type FormEvent } from "react";
+import { ArrowUpRight, Building2, FileText, Heart } from "lucide-react";
+
+type ContactTopic = "b2b" | "spec" | "comwell";
+
+export const Route = createFileRoute("/contact")({
+  validateSearch: (search: Record<string, unknown>): { topic?: ContactTopic } => {
+    const t = search.topic;
+    return t === "b2b" || t === "spec" || t === "comwell" ? { topic: t } : {};
+  },
+  head: () => ({
+    meta: [
+      { title: "聯絡我們｜上怡生技" },
+      {
+        name: "description",
+        content:
+          "醫療機構合作、產品規格索取、康威爾 Comwell 居家照護諮詢；請依需求選擇對應的服務類別。",
+      },
+      { property: "og:title", content: "聯絡我們｜上怡生技" },
+      { property: "og:description", content: "B2B / B2C 精準分流的專業諮詢窗口。" },
+    ],
+  }),
+  component: ContactPage,
+});
+
+const topics = [
+  { v: "b2b", label: "醫療機構與通路合作洽談", icon: Building2, route: "B2B 合作團隊" },
+  { v: "spec", label: "產品規格與專業資料索取", icon: FileText, route: "業務 / 客服窗口" },
+  { v: "comwell", label: "康威爾 Comwell 居家照護諮詢與評估", icon: Heart, route: "居家照護專員" },
+];
+
+function ContactPage() {
+  const { topic: initialTopic } = Route.useSearch();
+  const [topic, setTopic] = useState<string>(initialTopic ?? "b2b");
+  const [sent, setSent] = useState(false);
+
+
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSent(true);
+  }
+
+  return (
+    <>
+      <section className="border-b border-hairline bg-surface-muted">
+        <div className="container-page py-20 md:py-24">
+          <span className="eyebrow">
+            <span className="inline-block h-px w-6 bg-accent" />
+            Contact
+          </span>
+          <h1 className="mt-5 max-w-3xl font-display text-4xl leading-tight text-foreground md:text-5xl">
+            精準分流的專業諮詢窗口
+          </h1>
+          <p className="mt-5 max-w-4xl text-base leading-relaxed text-muted-foreground lg:whitespace-nowrap">
+            為讓您的需求能由最適合的團隊回覆，請於下方選擇對應的諮詢類別，我們將於 1 – 2 個工作日內回覆。
+          </p>
+        </div>
+      </section>
+
+      <section className="section-pad">
+        <div className="container-page grid gap-16 lg:grid-cols-12">
+          {/* Form */}
+          <div className="lg:col-span-7">
+            <div className="grid gap-px bg-hairline md:grid-cols-3">
+              {topics.map((t) => {
+                const Icon = t.icon;
+                const active = topic === t.v;
+                return (
+                  <button
+                    key={t.v}
+                    type="button"
+                    onClick={() => setTopic(t.v)}
+                    className={`flex flex-col items-start gap-3 p-5 text-left transition-colors ${
+                      active
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-surface text-foreground hover:bg-surface-muted"
+                    }`}
+                  >
+                    <Icon className="h-5 w-5" />
+                    <span className="text-sm font-medium leading-snug">{t.label}</span>
+                    <span
+                      className={`text-[11px] tracking-wider ${
+                        active ? "text-primary-foreground/70" : "text-muted-foreground"
+                      }`}
+                    >
+                      轉介至：{t.route}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <form onSubmit={onSubmit} className="mt-10 grid gap-6">
+              <div className="grid gap-6 md:grid-cols-2">
+                <Field label="姓名" name="name" required />
+                <Field label="單位 / 機構" name="org" />
+                <Field label="職稱" name="title" />
+                <Field label="聯絡電話" name="phone" required />
+                <div className="md:col-span-2">
+                  <Field label="電子郵件" name="email" type="email" required />
+                </div>
+              </div>
+
+              <label className="grid gap-2">
+                <span className="text-xs font-medium tracking-wider text-foreground">
+                  諮詢內容 <span className="text-destructive">*</span>
+                </span>
+                <textarea
+                  name="message"
+                  required
+                  rows={6}
+                  placeholder="請簡述您的需求，例如：產品規格、適應症、合作模式或評估時間。"
+                  className="border border-input bg-surface px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-accent"
+                />
+              </label>
+
+              <label className="flex items-start gap-3 text-xs text-muted-foreground">
+                <input type="checkbox" required className="mt-0.5 accent-[var(--color-accent)]" />
+                我已了解所提供之個人資料將僅用於本次諮詢回覆，並同意上怡生技之隱私權保護政策。
+              </label>
+
+              <button
+                type="submit"
+                disabled={sent}
+                className="group inline-flex items-center justify-center gap-2 self-start bg-primary px-6 py-3 text-sm font-medium tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-60"
+              >
+                {sent ? "已送出，感謝您的聯繫" : "送出諮詢"}
+                {!sent && (
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                )}
+              </button>
+            </form>
+          </div>
+
+          {/* Info */}
+          <aside className="lg:col-span-5">
+            <div className="border border-hairline bg-surface-muted p-8">
+              <h3 className="font-display text-xl text-foreground">公司聯絡資訊</h3>
+              <p className="mt-2 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+                SHANG YI BIOPHARMA
+              </p>
+              <dl className="mt-6 space-y-5 text-sm">
+                <Row k="公司名稱" v="上怡生技醫藥有限公司" />
+                <Row k="公司地址" v="臺南市南區新昌里國華街一段 98 號" />
+                <Row k="電話" v="06-222-0070" />
+                <Row k="傳真" v="06-222-0050" />
+                <Row k="免付費" v="0800-222-215" />
+                <Row k="Email" v="shangyi@shangyi-care.com" />
+                <Row k="服務時間" v="週一至週五 09:00 – 18:00" />
+              </dl>
+
+              <div className="hairline-divider my-8" />
+
+              <p className="text-xs leading-relaxed text-muted-foreground">
+                ※ 本表單僅作為上怡生技之合作、產品與居家照護諮詢用途。
+                所有醫療器材使用前，請先洽詢專業醫療人員之建議。
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Field({
+  label,
+  name,
+  type = "text",
+  required,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+}) {
+  return (
+    <label className="grid gap-2">
+      <span className="text-xs font-medium tracking-wider text-foreground">
+        {label}
+        {required && <span className="text-destructive"> *</span>}
+      </span>
+      <input
+        type={type}
+        name={name}
+        required={required}
+        className="border border-input bg-surface px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-accent"
+      />
+    </label>
+  );
+}
+
+function Row({ k, v }: { k: string; v: string }) {
+  return (
+    <div className="grid grid-cols-3 gap-3">
+      <dt className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{k}</dt>
+      <dd className="col-span-2 text-foreground">{v}</dd>
+    </div>
+  );
+}
