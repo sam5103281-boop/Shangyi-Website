@@ -19,17 +19,17 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-hairline bg-background/90 backdrop-blur-md">
-      <div className="container-page flex h-20 items-center justify-between gap-8 py-3 md:h-24 lg:h-28">
+      <div className="container-page flex h-20 items-center justify-between gap-8 py-3 lg:h-28">
         <Link to="/" className="flex items-center shrink-0" onClick={() => setOpen(false)}>
           <img
             src={logoAsset.url}
             alt="上怡生技 ShangYi Biotech"
-            className="h-12 w-auto md:h-14 lg:h-[72px]"
+            className="h-12 w-auto lg:h-[72px]"
           />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex flex-1 items-center justify-end gap-x-6 whitespace-nowrap lg:gap-x-12">
+        <nav className="hidden lg:flex flex-1 items-center justify-end gap-x-6 whitespace-nowrap lg:gap-x-12">
           {nav.map((item) => (
             <Link
               key={item.to}
@@ -43,13 +43,13 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        {/* Mobile toggle */}
+        {/* Mobile / tablet toggle */}
         <button
           type="button"
           aria-label={open ? "關閉選單" : "開啟選單"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground hover:bg-surface-muted"
+          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground hover:bg-surface-muted"
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
