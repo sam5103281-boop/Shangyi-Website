@@ -195,12 +195,11 @@ function FaqPage() {
                 <span className="text-[11px] tracking-[0.28em] text-accent">
                   MEDICAL RED FLAGS
                 </span>
-                <h3 className="mt-3 font-display text-2xl leading-snug text-foreground md:text-3xl">
+                <h3 className="mt-3 font-display text-3xl leading-snug text-foreground">
                   腿腫 ≠ 小事？
                   <br />
                   <span className="text-accent">四大醫療警訊</span>
                 </h3>
-                <div className="mt-5 h-px w-10 bg-accent/60" />
                 <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
                   雖然多數浮腫源於生理性疲勞，但若伴隨以下狀況，
                   請以溫柔且謹慎的心情尋求專業協助。
@@ -208,7 +207,6 @@ function FaqPage() {
                 <p className="mt-6 text-xs leading-relaxed text-muted-foreground/80">
                   ※ 若符合上述情況，建議諮詢家庭醫師或心臟血管科。
                 </p>
-
               </div>
             </div>
             <ol className="col-span-12 md:col-span-8">
