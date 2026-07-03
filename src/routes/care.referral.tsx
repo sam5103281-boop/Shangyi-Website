@@ -202,9 +202,9 @@ function ReferralPage() {
                 {/* phone card */}
                 <a
                   href="tel:0800222215"
-                  className="group relative flex items-center gap-5 border border-hairline bg-background p-6 transition-all hover:border-accent/40 hover:shadow-soft"
+                  className="group relative flex min-w-0 items-center gap-5 border border-hairline bg-background p-6 transition-all hover:border-accent/40 hover:shadow-soft"
                 >
-                  <span className="grid h-14 w-14 shrink-0 place-items-center border border-hairline bg-surface text-accent transition-colors group-hover:border-accent/30 group-hover:bg-accent/5">
+                  <span className="grid h-14 w-14 shrink-0 place-items-center bg-surface text-accent transition-colors group-hover:bg-accent/5">
                     <Phone className="h-6 w-6" />
                   </span>
                   <div className="min-w-0">
@@ -225,9 +225,9 @@ function ReferralPage() {
                 <Link
                   to="/contact"
                   search={{ topic: "comwell" }}
-                  className="group relative flex items-center gap-5 border border-accent/30 bg-gradient-to-br from-accent/10 to-accent/5 p-6 transition-all hover:border-accent/60 hover:shadow-soft"
+                  className="group relative flex min-w-0 items-center gap-5 border border-accent/30 bg-gradient-to-br from-accent/10 to-accent/5 p-6 transition-all hover:border-accent/60 hover:shadow-soft"
                 >
-                  <span className="grid h-14 w-14 shrink-0 place-items-center border border-accent/30 bg-surface text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
+                  <span className="grid h-14 w-14 shrink-0 place-items-center bg-surface text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
                     <Mail className="h-6 w-6" />
                   </span>
                   <div className="min-w-0">
