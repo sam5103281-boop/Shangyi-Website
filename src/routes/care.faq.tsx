@@ -115,22 +115,30 @@ function FaqPage() {
                 <h3 className="mt-3 font-display text-3xl leading-snug text-foreground">
                   什麼是「血栓」？
                 </h3>
-                <figure className="mt-8 flex items-start gap-5 border-y border-hairline py-6">
+                <figure className="relative mt-8 overflow-hidden rounded-sm bg-gradient-to-br from-accent/12 via-accent/6 to-transparent">
                   <span
                     aria-hidden
-                    className="mt-1 font-display text-3xl leading-none text-accent/70"
-                  >
-                    “
-                  </span>
-                  <blockquote className="flex-1">
-                    <p className="font-display text-xl leading-snug text-foreground md:text-2xl">
-                      血液回流不順，就像停滯的水流。
-                    </p>
-                    <figcaption className="mt-3 text-[11px] tracking-[0.28em] text-muted-foreground">
-                      CORE INSIGHT · 循環的本質
-                    </figcaption>
-                  </blockquote>
+                    className="absolute left-0 top-0 h-full w-1 bg-accent"
+                  />
+                  <div className="flex items-start gap-5 px-7 py-8 md:px-9 md:py-10">
+                    <span
+                      aria-hidden
+                      className="font-display text-5xl leading-none text-accent/60"
+                    >
+                      “
+                    </span>
+                    <blockquote className="flex-1">
+                      <p className="font-display text-2xl leading-snug text-foreground md:text-[26px]">
+                        血液回流不順，就像停滯的水流。
+                      </p>
+                      <figcaption className="mt-4 flex items-center gap-3 text-[11px] tracking-[0.28em] text-accent">
+                        <span className="h-px w-6 bg-accent" />
+                        CORE INSIGHT · 循環的本質
+                      </figcaption>
+                    </blockquote>
+                  </div>
                 </figure>
+
                 <div className="mt-6 space-y-4 text-base leading-loose text-muted-foreground">
                   <p>
                     血栓就是血管內異常凝結的血塊。當活動量不足時，血流速度變慢，
@@ -242,46 +250,100 @@ function FaqPage() {
               </span>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+            <div className="grid gap-6 md:grid-cols-3 md:gap-6">
               {[
                 {
                   k: "METHOD 01",
                   t: "活動與姿勢調整",
                   d: "最基礎且有效。透過定時抬腿、腳踝運動協助肌肉幫浦運作，從源頭促進血液回流。",
+                  tone: "light",
                 },
                 {
                   k: "METHOD 02",
                   t: "彈性壓力輔具",
                   d: "如醫療級彈性襪，利用漸進式壓力支撐靜脈，減少血液淤積並減緩組織液滲出。",
+                  tone: "tint",
                 },
                 {
                   k: "METHOD 03",
                   t: "間歇性氣壓循環 (IPC)",
                   d: "模擬肌肉收縮的物理效果。透過規律的充氣與放氣，為下肢提供動態循環，是臨床上預防血栓的常用輔助方案。",
+                  tone: "dark",
                 },
-              ].map((m) => (
-                <article
-                  key={m.k}
-                  className="group relative flex h-full flex-col border-t-[3px] border-foreground bg-surface pt-7 transition-colors duration-300 hover:border-accent focus-within:border-accent"
-                >
-                  <div className="flex flex-1 flex-col px-6 pb-7 md:px-7">
-                    <span className="text-[11px] tracking-[0.28em] text-accent">
-                      {m.k}
-                    </span>
-                    <h4 className="mt-3 font-display text-xl leading-snug text-foreground">
-                      {m.t}
-                    </h4>
-                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                      {m.d}
-                    </p>
-                  </div>
-                  <div
-                    aria-hidden
-                    className="h-1.5 w-full bg-accent/25 transition-colors duration-300 group-hover:bg-accent"
-                  />
-                </article>
-              ))}
+              ].map((m, i) => {
+                const isDark = m.tone === "dark";
+                const isTint = m.tone === "tint";
+                return (
+                  <article
+                    key={m.k}
+                    className={
+                      "group relative flex h-full flex-col overflow-hidden rounded-sm transition-transform duration-300 hover:-translate-y-1 " +
+                      (isDark
+                        ? "bg-primary text-primary-foreground shadow-elevated"
+                        : isTint
+                          ? "bg-accent/8 border border-accent/20"
+                          : "bg-surface border border-hairline")
+                    }
+                  >
+                    <div
+                      aria-hidden
+                      className={
+                        "flex items-center justify-between px-6 pt-5 pb-4 md:px-7 " +
+                        (isDark ? "border-b border-primary-foreground/15" : "border-b border-hairline")
+                      }
+                    >
+                      <span
+                        className={
+                          "text-[11px] tracking-[0.28em] " +
+                          (isDark ? "text-accent" : "text-accent")
+                        }
+                      >
+                        {m.k}
+                      </span>
+                      <span
+                        className={
+                          "font-display text-2xl leading-none " +
+                          (isDark ? "text-primary-foreground/40" : "text-hairline")
+                        }
+                        style={{ fontFeatureSettings: '"tnum"' }}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <div className="flex flex-1 flex-col px-6 pb-8 pt-6 md:px-7">
+                      <h4
+                        className={
+                          "font-display text-xl leading-snug " +
+                          (isDark ? "text-primary-foreground" : "text-foreground")
+                        }
+                      >
+                        {m.t}
+                      </h4>
+                      <p
+                        className={
+                          "mt-4 text-sm leading-relaxed " +
+                          (isDark ? "text-primary-foreground/75" : "text-muted-foreground")
+                        }
+                      >
+                        {m.d}
+                      </p>
+                    </div>
+                    <div
+                      aria-hidden
+                      className={
+                        "h-1.5 w-full transition-colors duration-300 " +
+                        (isDark
+                          ? "bg-accent"
+                          : isTint
+                            ? "bg-accent/70 group-hover:bg-accent"
+                            : "bg-foreground/80 group-hover:bg-accent")
+                      }
+                    />
+                  </article>
+                );
+              })}
             </div>
+
           </div>
         </div>
       </section>
@@ -295,20 +357,41 @@ function FaqPage() {
             description="醫師何時會建議使用 IPC？醫療人員又會評估哪些重點？"
           />
 
-          <div className="mt-12 border border-hairline bg-surface">
-            <div className="grid gap-y-8 md:grid-cols-[minmax(0,300px)_1fr] md:gap-x-10">
-              <div className="border-b border-hairline p-7 md:border-b-0 md:border-r md:p-9">
-                <span className="text-[11px] tracking-[0.28em] text-accent">
+          <div
+            className="mt-12 overflow-hidden rounded-sm border border-[color-mix(in_oklab,var(--vision-line-green)_35%,transparent)] bg-surface shadow-soft"
+          >
+
+            <div className="grid gap-y-0 md:grid-cols-[minmax(0,320px)_1fr]">
+              <div
+                className="relative border-b border-[color-mix(in_oklab,var(--vision-line-green)_25%,transparent)] p-7 md:border-b-0 md:border-r md:p-9"
+                style={{
+                  background:
+                    "linear-gradient(155deg, color-mix(in oklab, var(--vision-line-green) 22%, transparent) 0%, color-mix(in oklab, var(--vision-line-green) 8%, transparent) 60%, transparent 100%)",
+                }}
+              >
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-0 h-full w-1"
+                  style={{ background: "var(--vision-line-green)" }}
+                />
+                <span
+                  className="text-[11px] tracking-[0.28em]"
+                  style={{ color: "color-mix(in oklab, var(--vision-line-green) 80%, var(--foreground))" }}
+                >
                   CLINICAL INDICATIONS
                 </span>
                 <h3 className="mt-4 font-display text-2xl leading-snug text-foreground md:text-[26px]">
                   醫師在什麼情況下<br className="hidden md:block" />會建議使用 IPC？
                 </h3>
-                <div className="mt-5 h-px w-10 bg-accent" />
+                <div
+                  className="mt-5 h-px w-10"
+                  style={{ background: "var(--vision-line-green)" }}
+                />
                 <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
                   以下為臨床常見的建議情境，實際適用仍需依醫師專業評估。
                 </p>
               </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2">
                 {[
                   {
@@ -334,13 +417,19 @@ function FaqPage() {
                 ].map((c) => (
                   <div
                     key={c.t}
-                    className="flex gap-5 border-t border-hairline p-6 sm:[&:nth-child(-n+2)]:border-t-0 sm:[&:nth-child(odd)]:border-r sm:border-hairline md:p-7"
+                    className="flex gap-5 border-t border-[color-mix(in_oklab,var(--vision-line-green)_20%,transparent)] p-6 sm:[&:nth-child(-n+2)]:border-t-0 sm:[&:nth-child(odd)]:border-r md:p-7"
                   >
                     <div className="flex-shrink-0">
-                      <span className="font-display text-2xl leading-none text-accent">
+                      <span
+                        className="font-display text-2xl leading-none"
+                        style={{ color: "color-mix(in oklab, var(--vision-line-green) 85%, var(--foreground))" }}
+                      >
                         {c.n}
                       </span>
-                      <div className="mt-2 h-px w-6 bg-accent/60" />
+                      <div
+                        className="mt-2 h-px w-6"
+                        style={{ background: "color-mix(in oklab, var(--vision-line-green) 60%, transparent)" }}
+                      />
                     </div>
                     <div className="min-w-0">
                       <h4 className="font-display text-base leading-snug text-foreground">
@@ -352,17 +441,28 @@ function FaqPage() {
                     </div>
                   </div>
                 ))}
+
               </div>
             </div>
-            <div className="flex flex-col gap-2 border-t border-hairline bg-accent/5 px-7 py-5 sm:flex-row sm:items-start sm:gap-4 md:px-9">
-              <span className="mt-0.5 text-xs font-semibold tracking-[0.25em] text-accent">
+            <div
+              className="flex flex-col gap-2 border-t border-[color-mix(in_oklab,var(--vision-line-green)_25%,transparent)] px-7 py-5 sm:flex-row sm:items-start sm:gap-4 md:px-9"
+              style={{
+                background:
+                  "linear-gradient(90deg, color-mix(in oklab, var(--vision-line-green) 14%, transparent) 0%, color-mix(in oklab, var(--vision-line-green) 6%, transparent) 100%)",
+              }}
+            >
+              <span
+                className="mt-0.5 text-xs font-semibold tracking-[0.25em]"
+                style={{ color: "color-mix(in oklab, var(--vision-line-green) 80%, var(--foreground))" }}
+              >
                 重要提醒
               </span>
               <p className="text-sm leading-relaxed text-foreground">
                 是否適合使用 IPC，仍需依個人健康狀況而定。重點在於
-                <strong className="text-accent">「什麼時候用、怎麼用、用得是否安全」</strong>。
+                <strong style={{ color: "color-mix(in oklab, var(--vision-line-green) 75%, var(--foreground))" }}>「什麼時候用、怎麼用、用得是否安全」</strong>。
               </p>
             </div>
+
           </div>
 
           <div className="mt-20">
@@ -379,7 +479,7 @@ function FaqPage() {
                 Four clinical checkpoints
               </span>
             </div>
-            <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+            <ol className="grid gap-8 sm:grid-cols-2 sm:gap-10 xl:grid-cols-4 xl:gap-8">
               {[
                 {
                   n: "01",
@@ -404,12 +504,17 @@ function FaqPage() {
               ].map((e) => (
                 <li
                   key={e.n}
-                  className="group relative flex h-full flex-col border-t-2 border-foreground bg-surface pt-6 transition-colors duration-300 hover:border-accent"
+                  className="group relative flex h-full flex-col rounded-sm border border-hairline bg-surface px-7 pt-8 pb-9 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-elevated md:px-8 md:pt-10 md:pb-10"
                 >
-                  <div className="flex items-baseline gap-3">
+                  <span
+                    aria-hidden
+                    className="absolute left-0 top-0 h-[3px] w-12 bg-accent"
+                  />
+
+                  <div className="flex items-baseline justify-between gap-4">
                     <span
                       aria-hidden
-                      className="font-display text-3xl leading-none text-accent"
+                      className="font-display text-5xl leading-none text-accent md:text-[56px]"
                       style={{ fontFeatureSettings: '"tnum"' }}
                     >
                       {e.n}
@@ -418,12 +523,14 @@ function FaqPage() {
                       CHECKPOINT
                     </span>
                   </div>
-                  <h4 className="mt-5 font-display text-lg leading-snug text-foreground">
+                  <div className="mt-6 h-px w-10 bg-accent/40 transition-all duration-300 group-hover:w-16 group-hover:bg-accent" />
+                  <h4 className="mt-6 font-display text-lg leading-snug text-foreground md:text-xl">
                     {e.t}
                   </h4>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                     {e.d}
                   </p>
+
                 </li>
               ))}
             </ol>
