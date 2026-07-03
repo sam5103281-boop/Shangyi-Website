@@ -397,7 +397,7 @@ function FaqPage() {
                     className="flex gap-5 border-t border-[#28bfb0]/15 p-6 sm:[&:nth-child(-n+2)]:border-t-0 sm:[&:nth-child(odd)]:border-r md:p-7"
                   >
                     <div className="flex-shrink-0">
-                      <span className="font-display text-2xl leading-none text-[#28bfb0]">
+                      <span className="font-display text-2xl leading-none text-[#0e6b61]">
                         {c.n}
                       </span>
                       <div className="mt-2 h-px w-6 bg-[#28bfb0]/60" />
