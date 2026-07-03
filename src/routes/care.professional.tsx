@@ -113,7 +113,7 @@ function ProfessionalCarePage() {
             {features.map((f) => (
               <div
                 key={f.title}
-                className="relative flex flex-col gap-3 overflow-hidden border border-hairline bg-surface p-8"
+                className="relative flex flex-col gap-3 overflow-hidden rounded-[0.5pt] border border-hairline bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
               >
                 <h3 className="font-display text-xl text-foreground">{f.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
