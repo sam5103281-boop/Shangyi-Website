@@ -421,7 +421,7 @@ function FaqPage() {
               </span>
               <p className="text-sm leading-relaxed text-foreground">
                 是否適合使用 IPC，仍需依個人健康狀況而定。重點在於
-                <strong className="text-[#28bfb0]">「什麼時候用、怎麼用、用得是否安全」</strong>。
+                <strong className="text-[#0e6b61]">「什麼時候用、怎麼用、用得是否安全」</strong>。
               </p>
             </div>
 
