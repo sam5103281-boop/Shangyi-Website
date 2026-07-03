@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import logoAsset from "@/assets/shangyi-logo.png.asset.json";
+import { SiteSearch } from "@/components/SiteSearch";
 import { cn } from "@/lib/utils";
 
 const nav = [
