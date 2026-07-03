@@ -95,98 +95,166 @@ function FaqPage() {
             description="從血液循環的基本原理，理解下肢腫脹的成因與何時應該就醫。"
           />
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-2">
-            <article className="border border-hairline bg-surface p-8">
-              <h3 className="font-display text-2xl text-foreground">什麼是「血栓」？</h3>
-              <p className="mt-2 text-sm tracking-wider text-accent">
-                血液回流不順，就像停滯的水流。
-              </p>
-              <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted-foreground">
-                <p>
-                  血栓就是血管內異常凝結的血塊。當活動量不足時，血流速度變慢，
-                  就像河流淤積沉澱物，容易形成血塊堵塞血管。
+          {/* Core Concept · asymmetric editorial */}
+          <div className="mt-16 grid grid-cols-12 gap-x-8 gap-y-12">
+            <article className="col-span-12 md:col-span-7">
+              <div className="border-t border-hairline pt-8">
+                <span className="text-[11px] tracking-[0.28em] text-accent">DEFINITION · 01</span>
+                <h3 className="mt-3 font-display text-3xl leading-snug text-foreground">
+                  什麼是「血栓」？
+                </h3>
+                <p className="mt-4 font-display text-lg italic text-accent">
+                  血液回流不順，就像停滯的水流。
                 </p>
-                <p>
-                  如果血栓脫落並隨著血液流動，可能會堵塞肺部或心臟等重要部位。
-                  因此，<strong className="text-foreground">「讓血液保持流動」</strong>
-                  是預防血栓最核心的照護重點。
-                </p>
+                <div className="mt-6 space-y-4 text-base leading-loose text-muted-foreground">
+                  <p>
+                    血栓就是血管內異常凝結的血塊。當活動量不足時，血流速度變慢，
+                    就像河流淤積沉澱物，容易形成血塊堵塞血管。
+                  </p>
+                  <p>
+                    如果血栓脫落並隨著血液流動，可能會堵塞肺部或心臟等重要部位。因此，
+                    <strong className="border-b border-accent/50 pb-0.5 font-medium text-foreground">
+                      「讓血液保持流動」
+                    </strong>
+                    是預防血栓最核心的照護重點。
+                  </p>
+                </div>
               </div>
             </article>
 
-            <article className="border border-hairline bg-surface p-8">
-              <h3 className="font-display text-2xl text-foreground">
-                為什麼下肢容易腫脹？
-              </h3>
-              <p className="mt-2 text-sm tracking-wider text-accent">
-                雙腳回流心臟，必須對抗強大的地心引力。
-              </p>
-              <dl className="mt-5 space-y-5 text-sm leading-relaxed">
-                <div>
-                  <dt className="font-display text-base text-foreground">小腿肌肉幫浦</dt>
-                  <dd className="mt-1 text-muted-foreground">
-                    被稱為「第二個心臟」，透過收縮擠壓靜脈血液向上回流。
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-display text-base text-foreground">靜脈瓣膜導流</dt>
-                  <dd className="mt-1 text-muted-foreground">
-                    像單向閥門防止血液倒流。當這兩個機制減弱，血液就會淤積在下肢。
-                  </dd>
-                </div>
-              </dl>
+            <article className="col-span-12 md:col-span-4 md:col-start-9 md:mt-16">
+              <div className="relative border-t border-hairline pt-8">
+                <span className="absolute -top-2.5 right-0 bg-background px-2 text-[10px] tracking-[0.28em] text-accent">
+                  MECHANISM · 02
+                </span>
+                <h3 className="font-display text-2xl leading-snug text-foreground">
+                  為什麼下肢容易腫脹？
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  雙腳回流心臟，必須對抗強大的地心引力。
+                </p>
+                <dl className="mt-8 space-y-6">
+                  <div className="border-l border-accent/40 pl-4">
+                    <dt className="font-display text-base text-foreground">
+                      小腿肌肉幫浦
+                    </dt>
+                    <dd className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                      被稱為「第二個心臟」，透過收縮擠壓靜脈血液向上回流。
+                    </dd>
+                  </div>
+                  <div className="border-l border-accent/40 pl-4">
+                    <dt className="font-display text-base text-foreground">
+                      靜脈瓣膜導流
+                    </dt>
+                    <dd className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                      像單向閥門防止血液倒流。當這兩個機制減弱，血液就會淤積在下肢。
+                    </dd>
+                  </div>
+                </dl>
+              </div>
             </article>
           </div>
 
-          <div className="mt-8 border border-hairline bg-surface p-8">
-            <h3 className="font-display text-2xl text-foreground">
-              腿腫 ≠ 小事？四大醫療警訊
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              雖然多數浮腫源於生理性疲勞，但若伴隨以下狀況，請以溫柔且謹慎的心情尋求專業協助：
-            </p>
-            <div className="mt-6 grid gap-px bg-hairline sm:grid-cols-2 lg:grid-cols-4">
+          {/* Warning Signs · editorial numbered list */}
+          <div className="mt-24 grid grid-cols-12 gap-x-8 gap-y-10 border-y border-hairline py-16">
+            <div className="col-span-12 md:col-span-4">
+              <div className="md:sticky md:top-24">
+                <span className="text-[11px] tracking-[0.28em] text-accent">
+                  MEDICAL RED FLAGS
+                </span>
+                <h3 className="mt-3 font-display text-3xl leading-snug text-foreground">
+                  腿腫 ≠ 小事？
+                  <br />
+                  <span className="text-accent">四大醫療警訊</span>
+                </h3>
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                  雖然多數浮腫源於生理性疲勞，但若伴隨以下狀況，
+                  請以溫柔且謹慎的心情尋求專業協助。
+                </p>
+                <p className="mt-6 text-xs leading-relaxed text-muted-foreground/80">
+                  ※ 若符合上述情況，建議諮詢家庭醫師或心臟血管科。
+                </p>
+              </div>
+            </div>
+            <ol className="col-span-12 md:col-span-8">
               {[
-                { title: "腫脹持續不退", desc: "休息後仍無明顯改善" },
-                { title: "單側明顯腫脹", desc: "左右腿粗細明顯不對稱" },
-                { title: "合併疼痛與發熱", desc: "皮膚發紅、緊繃或發燙" },
-                { title: "活動減少後加重", desc: "長期臥床或久坐後惡化" },
-              ].map((w) => (
-                <div key={w.title} className="flex flex-col gap-2 bg-surface p-6">
-                  <h4 className="font-display text-base text-foreground">{w.title}</h4>
-                  <p className="text-xs leading-relaxed text-muted-foreground">{w.desc}</p>
-                </div>
+                { title: "腫脹持續不退", desc: "休息後仍無明顯改善，睡眠一夜後仍舊沉重。" },
+                { title: "單側明顯腫脹", desc: "左右腿粗細明顯不對稱，觸感差異可辨。" },
+                { title: "合併疼痛與發熱", desc: "皮膚發紅、緊繃或發燙，出現局部發炎徵兆。" },
+                { title: "活動減少後加重", desc: "長期臥床或久坐後惡化，起身時感到麻脹。" },
+              ].map((w, i) => (
+                <li
+                  key={w.title}
+                  className="group flex gap-8 border-b border-hairline py-7 first:pt-0 last:border-b-0"
+                >
+                  <span className="font-display text-4xl leading-none text-hairline transition-colors duration-500 group-hover:text-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="flex-1">
+                    <h4 className="font-display text-xl text-foreground">{w.title}</h4>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {w.desc}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          {/* Methods · layered cards */}
+          <div className="mt-20">
+            <div className="mb-10 flex items-end justify-between gap-6 border-b border-hairline pb-4">
+              <div>
+                <span className="text-[11px] tracking-[0.28em] text-accent">
+                  CARE METHODS
+                </span>
+                <h3 className="mt-2 font-display text-2xl text-foreground">
+                  三種循環照護途徑
+                </h3>
+              </div>
+              <span className="hidden text-xs tracking-[0.25em] text-muted-foreground md:inline">
+                From daily habit to clinical support
+              </span>
+            </div>
+
+            <div className="grid gap-10 md:grid-cols-3">
+              {[
+                {
+                  k: "METHOD 01",
+                  t: "活動與姿勢調整",
+                  d: "最基礎且有效。透過定時抬腿、腳踝運動協助肌肉幫浦運作，從源頭促進血液回流。",
+                },
+                {
+                  k: "METHOD 02",
+                  t: "彈性壓力輔具",
+                  d: "如醫療級彈性襪，利用漸進式壓力支撐靜脈，減少血液淤積並減緩組織液滲出。",
+                },
+                {
+                  k: "METHOD 03",
+                  t: "間歇性氣壓循環 (IPC)",
+                  d: "模擬肌肉收縮的物理效果。透過規律的充氣與放氣，為下肢提供動態循環，是臨床上預防血栓的常用輔助方案。",
+                },
+              ].map((m, i) => (
+                <article
+                  key={m.k}
+                  className={`group relative ${i === 1 ? "md:-mt-6" : ""}`}
+                >
+                  <div className="absolute inset-0 translate-x-2 translate-y-2 border border-hairline transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1" />
+                  <div className="relative flex h-full flex-col border border-hairline bg-surface p-8">
+                    <span className="text-[11px] tracking-[0.28em] text-accent">
+                      {m.k}
+                    </span>
+                    <h4 className="mt-4 font-display text-xl leading-snug text-foreground">
+                      {m.t}
+                    </h4>
+                    <div className="mt-4 h-px w-8 bg-accent/60" />
+                    <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                      {m.d}
+                    </p>
+                  </div>
+                </article>
               ))}
             </div>
-            <p className="mt-6 text-xs text-muted-foreground">
-              ※ 若符合上述情況，建議諮詢家庭醫師或心臟血管科。
-            </p>
-          </div>
-
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                k: "METHOD 01",
-                t: "活動與姿勢調整",
-                d: "最基礎且有效。透過定時抬腿、腳踝運動協助肌肉幫浦運作，從源頭促進血液回流。",
-              },
-              {
-                k: "METHOD 02",
-                t: "彈性壓力輔具",
-                d: "如醫療級彈性襪，利用漸進式壓力支撐靜脈，減少血液淤積並減緩組織液滲出。",
-              },
-              {
-                k: "METHOD 03",
-                t: "間歇性氣壓循環 (IPC)",
-                d: "模擬肌肉收縮的物理效果。透過規律的充氣與放氣，為下肢提供動態循環，是臨床上預防血栓的常用輔助方案。",
-              },
-            ].map((m) => (
-              <div key={m.k} className="border border-hairline bg-surface p-7">
-                <span className="text-[11px] tracking-[0.25em] text-accent">{m.k}</span>
-                <h4 className="mt-3 font-display text-lg text-foreground">{m.t}</h4>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{m.d}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
