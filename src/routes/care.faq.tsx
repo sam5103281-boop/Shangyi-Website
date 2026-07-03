@@ -397,7 +397,7 @@ function FaqPage() {
                     className="flex gap-5 border-t border-[#28bfb0]/15 p-6 sm:[&:nth-child(-n+2)]:border-t-0 sm:[&:nth-child(odd)]:border-r md:p-7"
                   >
                     <div className="flex-shrink-0">
-                      <span className="font-display text-2xl leading-none text-[#0e6b61]">
+                      <span className="font-display text-2xl leading-none text-accent">
                         {c.n}
                       </span>
                       <div className="mt-2 h-px w-6 bg-[#28bfb0]/60" />
@@ -416,12 +416,12 @@ function FaqPage() {
               </div>
             </div>
             <div className="flex flex-col gap-2 border-t border-[#28bfb0]/20 bg-gradient-to-r from-[#28bfb0]/15 to-[#28bfb0]/5 px-7 py-5 sm:flex-row sm:items-start sm:gap-4 md:px-9">
-              <span className="mt-0.5 text-xs font-semibold tracking-[0.25em] text-[#0e6b61]">
+              <span className="mt-0.5 text-xs font-semibold tracking-[0.25em] text-accent">
                 重要提醒
               </span>
               <p className="text-sm leading-relaxed text-foreground">
                 是否適合使用 IPC，仍需依個人健康狀況而定。重點在於
-                <strong className="text-[#0e6b61]">「什麼時候用、怎麼用、用得是否安全」</strong>。
+                <strong className="text-accent">「什麼時候用、怎麼用、用得是否安全」</strong>。
               </p>
             </div>
 
