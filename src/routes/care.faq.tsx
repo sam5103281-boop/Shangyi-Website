@@ -378,7 +378,7 @@ function FaqPage() {
                 className="border border-hairline bg-surface p-7 md:p-9 overflow-hidden"
               >
                 <AccordionTrigger className="py-0 font-display text-lg leading-snug text-foreground md:text-xl hover:no-underline [&>svg]:text-accent">
-                  <span className="flex flex-1 items-center text-left pr-4">
+                  <span className="flex-1 pr-4 text-left">
                     <span className="mr-3 text-accent">Q.</span>
                     {qa.q}
                   </span>
