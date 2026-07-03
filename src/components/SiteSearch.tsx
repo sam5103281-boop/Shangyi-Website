@@ -97,8 +97,13 @@ export function SiteSearch({
         setOpen((v) => !v);
       }
     };
+    const onOpen = () => setOpen(true);
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    window.addEventListener("site-search:open", onOpen);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("site-search:open", onOpen);
+    };
   }, []);
 
   const groups = useMemo(() => {
