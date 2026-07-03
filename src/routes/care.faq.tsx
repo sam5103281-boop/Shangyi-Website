@@ -115,22 +115,30 @@ function FaqPage() {
                 <h3 className="mt-3 font-display text-3xl leading-snug text-foreground">
                   什麼是「血栓」？
                 </h3>
-                <figure className="mt-8 flex items-start gap-5 border-y border-hairline py-6">
+                <figure className="relative mt-8 overflow-hidden rounded-sm bg-gradient-to-br from-accent/12 via-accent/6 to-transparent">
                   <span
                     aria-hidden
-                    className="mt-1 font-display text-3xl leading-none text-accent/70"
-                  >
-                    “
-                  </span>
-                  <blockquote className="flex-1">
-                    <p className="font-display text-xl leading-snug text-foreground md:text-2xl">
-                      血液回流不順，就像停滯的水流。
-                    </p>
-                    <figcaption className="mt-3 text-[11px] tracking-[0.28em] text-muted-foreground">
-                      CORE INSIGHT · 循環的本質
-                    </figcaption>
-                  </blockquote>
+                    className="absolute left-0 top-0 h-full w-1 bg-accent"
+                  />
+                  <div className="flex items-start gap-5 px-7 py-8 md:px-9 md:py-10">
+                    <span
+                      aria-hidden
+                      className="font-display text-5xl leading-none text-accent/60"
+                    >
+                      “
+                    </span>
+                    <blockquote className="flex-1">
+                      <p className="font-display text-2xl leading-snug text-foreground md:text-[26px]">
+                        血液回流不順，就像停滯的水流。
+                      </p>
+                      <figcaption className="mt-4 flex items-center gap-3 text-[11px] tracking-[0.28em] text-accent">
+                        <span className="h-px w-6 bg-accent" />
+                        CORE INSIGHT · 循環的本質
+                      </figcaption>
+                    </blockquote>
+                  </div>
                 </figure>
+
                 <div className="mt-6 space-y-4 text-base leading-loose text-muted-foreground">
                   <p>
                     血栓就是血管內異常凝結的血塊。當活動量不足時，血流速度變慢，
