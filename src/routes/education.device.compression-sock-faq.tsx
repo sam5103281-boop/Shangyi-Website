@@ -122,7 +122,7 @@ function ArticlePage() {
               <Reveal key={f.title} direction="up" className="border border-hairline bg-background p-8 md:p-10 transition-shadow duration-500 hover:shadow-lg">
                 <p className="text-xs tracking-[0.22em]" style={{ color: ACCENT }}>{f.eyebrow}</p>
                 <h2 className="mt-3 font-display text-2xl text-[#1f2c3a] md:text-[28px]">{f.title}</h2>
-                <div className={`mt-6 gap-8 ${f.images.length > 1 ? "grid grid-cols-1" : "grid items-center md:grid-cols-[1.1fr_1fr]"} ${f.images.length > 1 ? "" : reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
+                <div className={`mt-6 gap-8 ${f.images.length > 1 ? "grid items-center md:grid-cols-[1fr_1.5fr]" : "grid items-center md:grid-cols-[1.1fr_1fr]"} ${f.images.length > 1 ? "" : reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
                   <div>
                     <div className="space-y-4 text-[15.5px] leading-relaxed text-[#475569]">
                       {f.paragraphs.map((p, i) => (
@@ -148,7 +148,7 @@ function ArticlePage() {
                           src={img.src}
                           alt={img.alt}
                           loading="lazy"
-                          className={`block h-auto w-full object-contain ${f.images.length > 1 ? "max-h-[450px]" : ""}`}
+                          className={`block h-auto w-full object-contain ${f.images.length > 1 ? "max-h-[250px]" : ""}`}
                         />
                       </div>
                     ))}
