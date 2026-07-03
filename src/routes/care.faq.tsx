@@ -89,23 +89,13 @@ function FaqPage() {
       {/* 照護觀念 */}
       <section id="concept" className="section-pad scroll-mt-24">
         <div className="container-page">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-4">
-              <span className="h-px w-12 bg-accent" />
-              <span className="text-sm font-medium tracking-[0.3em] text-accent">照護觀念</span>
-            </div>
-            <h2 className="mt-6 font-display text-4xl leading-[1.15] text-foreground md:text-5xl">
-              理解循環，<br className="hidden md:block" />
-              才能守護每一步的
-              <span className="relative ml-2 inline-block text-accent">
-                行動力
-                <span className="absolute -bottom-1 left-0 h-[3px] w-full bg-accent/30" />
-              </span>
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
-              從血液循環的基本原理，理解下肢腫脹的成因與何時應該就醫。建立正確認知，是照護行動的第一步。
-            </p>
-          </div>
+          <SectionHeading
+            eyebrow="01 · Care Concept"
+            title="照護觀念"
+            description="從血液循環的基本原理，理解下肢腫脹的成因與何時應該就醫。建立正確認知，是照護行動的第一步。"
+          />
+
+
 
           {/* Core Concept · asymmetric editorial */}
           <div className="mt-16 grid grid-cols-12 gap-x-8 gap-y-12">
