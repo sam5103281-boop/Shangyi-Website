@@ -150,7 +150,7 @@ function ProfessionalCarePage() {
             ))}
           </ol>
 
-          <div className="mt-16 border border-accent/40 bg-accent/5 p-8 md:p-10">
+          <div className="mt-16 rounded-[0.5pt] border border-accent/40 bg-accent/5 p-8 md:p-10">
             <p className="text-xs tracking-[0.25em] text-accent">
               重要提醒｜適用性說明
             </p>
