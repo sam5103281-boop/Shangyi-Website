@@ -7,7 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import careFaq from "@/assets/care-faq.jpg";
+import careFaq from "@/assets/care-faq-hero.png.asset.json";
 
 export const Route = createFileRoute("/care/faq")({
   head: () => ({
