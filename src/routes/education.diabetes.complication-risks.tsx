@@ -125,34 +125,39 @@ function ArticlePage() {
       </section>
 
       {/* Complications grid */}
-      <section className="section-pad bg-[#fafafa]">
-
+      <section className="section-pad bg-[#e6f1f1]">
         <div className="container-page">
           <Reveal direction="up" className="mx-auto max-w-2xl text-center">
-            <p className="text-xs tracking-[0.25em]" style={{ color: ACCENT }}>COMPLICATIONS</p>
-            <h2 className="mt-3 font-display text-2xl text-[#1f2c3a] md:text-3xl">
-              糖尿病血糖若長期控制不良<br className="md:hidden" />將引發下列病變
+            <p className="text-xs font-semibold tracking-[0.3em] uppercase" style={{ color: ACCENT }}>Complications</p>
+            <h2 className="mt-4 font-display text-2xl leading-tight text-[#1f2c3a] md:text-[34px]">
+              糖尿病血糖若長期控制不良將引發下列病變
             </h2>
+            <div className="mx-auto mt-5 h-1 w-20 rounded-full" style={{ background: ACCENT }} />
           </Reveal>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {lesions.map((l, i) => (
               <Reveal
                 key={l.zh}
                 direction="up"
                 delay={i * 50}
-                className="border border-hairline bg-background p-7 transition-shadow duration-500 hover:shadow-lg"
-                style={{ boxShadow: `10px 10px 0px ${ACCENT_SOFT}` }}
+                className="group relative overflow-hidden rounded-2xl border border-[#2b8a8a]/15 bg-white p-8 shadow-[0_10px_40px_-15px_rgba(43,138,138,0.12)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(43,138,138,0.22)]"
               >
-                <p className="text-[11px] tracking-[0.25em] text-muted-foreground">{`0${i + 1}`} · {l.en.toUpperCase()}</p>
-                <h3 className="mt-2 font-display text-xl text-[#1f2c3a]">{l.zh}</h3>
-                <div className="mt-4 h-px w-10" style={{ background: ACCENT }} />
-                <ul className="mt-4 flex flex-wrap gap-2">
+                <span
+                  className="absolute left-0 top-0 h-0 w-[3px] rounded-tl-2xl rounded-bl-2xl transition-all duration-500 group-hover:h-full"
+                  style={{ background: ACCENT }}
+                />
+                <p className="text-[11px] font-semibold tracking-[0.25em] text-slate-400">
+                  {`0${i + 1}`} · {l.en.toUpperCase()}
+                </p>
+                <h3 className="mt-4 font-display text-[22px] text-[#1f2c3a] md:text-2xl">{l.zh}</h3>
+                <div className="mt-5 h-px w-10 transition-all duration-500 group-hover:w-20" style={{ background: ACCENT }} />
+                <ul className="mt-5 flex flex-wrap gap-2">
                   {l.items.map((item) => (
                     <li
                       key={item}
-                      className="inline-flex items-center border px-3 py-1 text-[13px] text-[#1f2c3a]"
-                      style={{ borderColor: ACCENT, background: ACCENT_SOFT }}
+                      className="inline-flex items-center rounded-md border border-[#2b8a8a]/15 px-3 py-1 text-[13px] font-medium"
+                      style={{ color: ACCENT, background: ACCENT_SOFT }}
                     >
                       {item}
                     </li>
@@ -162,12 +167,19 @@ function ArticlePage() {
             ))}
           </div>
 
-          <Reveal direction="up" className="mt-10 border-l-[3px] pl-5 text-sm leading-relaxed text-[#475569]" style={{ borderColor: ACCENT }}>
-            如有相關症狀，請儘速尋求專科醫師協助。<br />
-            <span className="text-muted-foreground">參考來源：台中榮民總醫院</span>
+          <Reveal
+            direction="up"
+            className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-[#2b8a8a]/20 pt-8 text-sm text-[#475569] md:flex-row md:items-center"
+          >
+            <div className="flex items-center gap-3">
+              <span className="inline-block h-4 w-[3px]" style={{ background: ACCENT }} />
+              <span>如有相關症狀，請儘速尋求專科醫師協助。</span>
+            </div>
+            <span className="text-xs font-medium tracking-wide text-muted-foreground">參考來源：台中榮民總醫院</span>
           </Reveal>
         </div>
       </section>
+
     </article>
   );
 }
