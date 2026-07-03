@@ -458,15 +458,16 @@ function FaqPage() {
           </div>
 
           <div className="mt-20">
-            <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="mb-10 flex flex-col gap-4 border-b border-hairline pb-5 md:flex-row md:items-end md:justify-between">
               <div>
                 <span className="text-[11px] tracking-[0.28em] text-accent">
                   PRE-USE ASSESSMENT
                 </span>
-                <h3 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+                <h3 className="mt-3 font-display text-2xl leading-snug text-foreground md:text-[26px]">
                   使用 IPC 前，醫療人員會評估哪些重點？
                 </h3>
               </div>
+
               <span className="hidden text-xs tracking-[0.25em] text-muted-foreground md:inline">
                 Four clinical checkpoints
               </span>
