@@ -131,24 +131,60 @@ function ProfessionalCarePage() {
             title="ComWell 如何陪您開始？"
             description="四個安心關卡，確保居家照護安全無虞。"
           />
-          <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((s, index) => (
-              <li
-                key={s.step}
-                className="group relative flex flex-col gap-3 overflow-hidden rounded-[0.5pt] border border-hairline bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
-              >
-                <span className="text-[11px] font-medium tracking-[0.25em] text-accent">
-                  {s.step}
-                </span>
-                <h4 className="font-display text-lg text-foreground">{s.title}</h4>
-                <p className="text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
-                <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-accent/80 via-[#28bfb0] to-[#2dd4bf]" />
-                <span className="absolute right-3 top-3 font-display text-2xl font-medium text-foreground/[0.04]">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-              </li>
-            ))}
-          </ol>
+          <div className="mt-12">
+            {/* Desktop / tablet horizontal flow */}
+            <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] md:items-stretch md:gap-4">
+              {steps.map((s, index) => (
+                <>
+                  <li
+                    key={s.step}
+                    className="group relative flex flex-col justify-center gap-3 overflow-hidden rounded-[0.5pt] border border-hairline bg-surface p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
+                  >
+                    <span className="text-[11px] font-medium tracking-[0.25em] text-accent">
+                      {s.step}
+                    </span>
+                    <h4 className="font-display text-lg text-foreground">{s.title}</h4>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-accent/80 via-[#28bfb0] to-[#2dd4bf]" />
+                    <span className="absolute right-3 top-3 font-display text-2xl font-medium text-foreground/[0.04]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </li>
+                  {index < steps.length - 1 && (
+                    <div className="flex items-center justify-center">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-surface text-accent shadow-sm">
+                        <ArrowRight className="h-4 w-4" />
+                      </div>
+                    </div>
+                  )}
+                </>
+              ))}
+            </div>
+
+            {/* Mobile vertical flow */}
+            <ol className="grid gap-4 md:hidden">
+              {steps.map((s, index) => (
+                <li key={s.step} className="flex flex-col items-center gap-4">
+                  <div className="group relative flex w-full flex-col gap-3 overflow-hidden rounded-[0.5pt] border border-hairline bg-surface p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated">
+                    <span className="text-[11px] font-medium tracking-[0.25em] text-accent">
+                      {s.step}
+                    </span>
+                    <h4 className="font-display text-lg text-foreground">{s.title}</h4>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-accent/80 via-[#28bfb0] to-[#2dd4bf]" />
+                    <span className="absolute right-3 top-3 font-display text-2xl font-medium text-foreground/[0.04]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  {index < steps.length - 1 && (
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-surface text-accent shadow-sm">
+                      <ArrowDown className="h-4 w-4" />
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
 
           <div className="mt-16 rounded-[0.5pt] border border-accent/40 bg-accent/5 p-8 md:p-10">
             <p className="text-xs tracking-[0.25em] text-accent">
