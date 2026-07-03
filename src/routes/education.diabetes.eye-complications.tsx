@@ -5,8 +5,8 @@ import cover from "@/assets/elderly-eye-closeup.jpg.asset.json";
 import normalRetina from "@/assets/normal-retina-anatomy.jpg.asset.json";
 import diabeticRetina from "@/assets/diabetic-retina-diagram-v2.jpg.asset.json";
 
-const ACCENT = "#2b8a8a";
-const ACCENT_SOFT = "#e6f1f1";
+const ACCENT = "#eb572a";
+const ACCENT_SOFT = "#fef2ed";
 
 export const Route = createFileRoute("/education/diabetes/eye-complications")({
   head: () => ({
@@ -74,7 +74,7 @@ function ArticlePage() {
             <Reveal direction="up" className="min-w-0">
               <span
                 className="inline-block border px-4 py-1 text-sm font-medium"
-                style={{ color: "#d98a2b", borderColor: "#d98a2b" }}
+                style={{ color: "#eb572a", borderColor: "#eb572a" }}
               >
                 糖尿病併發症
               </span>
@@ -84,7 +84,7 @@ function ArticlePage() {
               </h1>
               <p
                 className="mt-7 border-l-[3px] pl-5 text-base leading-relaxed text-[#475569] md:text-lg"
-                style={{ borderColor: "#d98a2b" }}
+                style={{ borderColor: "#eb572a" }}
               >
                 糖尿病是一種「血管病變」，使人體無法保存血液中重要成分的糖尿病症狀，
                 如水分、血分及蛋白質、脂肪等，在微小血管方面尤其嚴重。
@@ -95,7 +95,7 @@ function ArticlePage() {
               direction="left"
               delay={60}
               className="overflow-hidden rounded-tl-[4px] rounded-tr-[60px] rounded-bl-[60px] rounded-br-[4px] transition-transform duration-700 ease-out hover:-translate-y-1"
-              style={{ boxShadow: `15px 15px 0px #fde3c2` }}
+              style={{ boxShadow: `15px 15px 0px #fef2ed` }}
             >
               <img src={cover.url} alt="糖尿病眼睛病變" className="block h-auto w-full transition-transform duration-[1200ms] ease-out hover:scale-[1.03]" />
             </Reveal>
@@ -138,7 +138,7 @@ function ArticlePage() {
             <Reveal
               direction="up"
               className="overflow-hidden border border-hairline bg-background"
-              style={{ boxShadow: `12px 12px 0px #fde3c2` }}
+              style={{ boxShadow: `12px 12px 0px #fef2ed` }}
             >
               <div className="relative flex h-[500px] items-center justify-center bg-white px-8 pb-8 pt-16 md:px-10 md:pb-10 md:pt-16">
                 <div
@@ -182,13 +182,13 @@ function ArticlePage() {
               direction="up"
               delay={80}
               className="overflow-hidden border border-hairline bg-background"
-              style={{ boxShadow: `12px 12px 0px #fde3c2` }}
+              style={{ boxShadow: `12px 12px 0px #fef2ed` }}
             >
               <div className="relative flex h-[500px] items-center justify-center bg-white px-8 pb-8 pt-16 md:px-10 md:pb-10 md:pt-16">
 
                 <div
                   className="absolute left-4 top-4 z-10 inline-block px-3 py-1 text-[15px] font-medium text-white"
-                  style={{ background: "#d98a2b" }}
+                  style={{ background: "#eb572a" }}
                 >
                   糖尿病性視網膜病變
                 </div>
@@ -202,7 +202,7 @@ function ArticlePage() {
               <div className="p-6 md:p-8">
                 <ul className="space-y-4 text-[15px] leading-relaxed text-[#1f2c3a]">
                   {lesions.map((l) => (
-                    <li key={l.zh} className="border-l-[3px] pl-4" style={{ borderColor: "#d98a2b" }}>
+                    <li key={l.zh} className="border-l-[3px] pl-4" style={{ borderColor: "#eb572a" }}>
                       <p className="font-semibold text-[#1f2c3a]">
                         {l.zh}
                         <span className="ml-2 text-xs font-normal text-muted-foreground">{l.en}</span>
