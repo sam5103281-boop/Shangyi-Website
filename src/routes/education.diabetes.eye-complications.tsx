@@ -189,7 +189,7 @@ function ArticlePage() {
 
                 <div
                   className="absolute left-4 top-4 z-10 inline-block px-3 py-1 text-[15px] font-medium text-white"
-                  style={{ background: RETINA_ACCENT }}
+                  style={{ background: "#eb572a" }}
                 >
                   糖尿病性視網膜病變
                 </div>
@@ -203,7 +203,7 @@ function ArticlePage() {
               <div className="p-6 md:p-8">
                 <ul className="space-y-4 text-[15px] leading-relaxed text-[#1f2c3a]">
                   {lesions.map((l) => (
-                    <li key={l.zh} className="border-l-[3px] pl-4" style={{ borderColor: RETINA_ACCENT }}>
+                    <li key={l.zh} className="border-l-[3px] pl-4" style={{ borderColor: "#eb572a" }}>
                       <p className="font-semibold text-[#1f2c3a]">
                         {l.zh}
                         <span className="ml-2 text-xs font-normal text-muted-foreground">{l.en}</span>
