@@ -416,7 +416,7 @@ function FaqPage() {
               </div>
             </div>
             <div className="flex flex-col gap-2 border-t border-[#28bfb0]/20 bg-gradient-to-r from-[#28bfb0]/15 to-[#28bfb0]/5 px-7 py-5 sm:flex-row sm:items-start sm:gap-4 md:px-9">
-              <span className="mt-0.5 text-xs font-semibold tracking-[0.25em] text-[#28bfb0]">
+              <span className="mt-0.5 text-xs font-semibold tracking-[0.25em] text-[#0e6b61]">
                 重要提醒
               </span>
               <p className="text-sm leading-relaxed text-foreground">
