@@ -115,9 +115,22 @@ function FaqPage() {
                 <h3 className="mt-3 font-display text-3xl leading-snug text-foreground">
                   什麼是「血栓」？
                 </h3>
-                <p className="mt-6 inline-block border-l-[3px] border-accent bg-accent/8 px-5 py-3 font-display text-lg text-foreground">
-                  血液回流不順，就像停滯的水流。
-                </p>
+                <figure className="mt-8 flex items-start gap-5 border-y border-hairline py-6">
+                  <span
+                    aria-hidden
+                    className="mt-1 font-display text-3xl leading-none text-accent/70"
+                  >
+                    “
+                  </span>
+                  <blockquote className="flex-1">
+                    <p className="font-display text-xl leading-snug text-foreground md:text-2xl">
+                      血液回流不順，就像停滯的水流。
+                    </p>
+                    <figcaption className="mt-3 text-[11px] tracking-[0.28em] text-muted-foreground">
+                      CORE INSIGHT · 循環的本質
+                    </figcaption>
+                  </blockquote>
+                </figure>
                 <div className="mt-6 space-y-4 text-base leading-loose text-muted-foreground">
                   <p>
                     血栓就是血管內異常凝結的血塊。當活動量不足時，血流速度變慢，
