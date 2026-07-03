@@ -179,47 +179,80 @@ function ReferralPage() {
         </div>
       </section>
 
-      <section className="border-t border-hairline">
-        <div className="container-page section-pad">
-          <div className="border border-hairline bg-surface p-8 md:p-10">
-            <p className="text-xs tracking-[0.25em] text-accent">
-              聯繫窗口資訊｜Referral Contact
-            </p>
-            <h2 className="mt-3 font-display text-3xl text-foreground md:text-4xl">
-              轉介窗口．ComWell 護理團隊
-            </h2>
-            <div className="mt-8 grid gap-px bg-hairline md:grid-cols-1">
-              <a
-                href="tel:0800222215"
-                className="group flex items-center gap-5 bg-surface p-6 transition-colors hover:bg-surface-muted"
-              >
-                <span className="grid h-12 w-12 shrink-0 place-items-center border border-hairline bg-background text-accent">
-                  <Phone className="h-5 w-5" />
-                </span>
-                <div className="min-w-0">
-                  <p className="text-[11px] tracking-[0.22em] text-muted-foreground">
-                    免付費服務專線
-                  </p>
-                  <p className="mt-1 font-display text-xl text-foreground group-hover:text-accent">
-                    0800-222-215
-                  </p>
-                </div>
-              </a>
+      <section className="border-t border-hairline bg-surface-muted section-pad">
+        <div className="container-page">
+          <div className="relative overflow-hidden border border-hairline bg-surface">
+            {/* top accent stripe */}
+            <div className="h-1.5 w-full bg-gradient-to-r from-accent via-[#28bfb0] to-[#2dd4bf]" />
+
+            <div className="p-8 md:p-10 lg:p-12">
+              <div className="max-w-3xl">
+                <p className="text-xs font-medium tracking-[0.25em] text-accent">
+                  聯繫窗口資訊｜Referral Contact
+                </p>
+                <h2 className="mt-3 font-display text-3xl leading-tight text-foreground md:text-4xl">
+                  轉介窗口．ComWell 護理團隊
+                </h2>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  如有轉介需求或想了解服務內容，請直接致電或填寫線上表單，護理團隊將於工作日盡快回覆。
+                </p>
+              </div>
+
+              <div className="mt-10 grid gap-4 md:grid-cols-2">
+                {/* phone card */}
+                <a
+                  href="tel:0800222215"
+                  className="group relative flex items-center gap-5 border border-hairline bg-background p-6 transition-all hover:border-accent/40 hover:shadow-soft"
+                >
+                  <span className="grid h-14 w-14 shrink-0 place-items-center border border-hairline bg-surface text-accent transition-colors group-hover:border-accent/30 group-hover:bg-accent/5">
+                    <Phone className="h-6 w-6" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[11px] font-semibold tracking-[0.18em] text-muted-foreground">
+                      免付費服務專線
+                    </p>
+                    <p className="mt-1 font-display text-2xl text-foreground transition-colors group-hover:text-accent">
+                      0800-222-215
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      週一至週五 09:00–18:00
+                    </p>
+                  </div>
+                  <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-muted-foreground opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
+                </a>
+
+                {/* form card */}
+                <Link
+                  to="/contact"
+                  search={{ topic: "comwell" }}
+                  className="group relative flex items-center gap-5 border border-accent/30 bg-gradient-to-br from-accent/10 to-accent/5 p-6 transition-all hover:border-accent/60 hover:shadow-soft"
+                >
+                  <span className="grid h-14 w-14 shrink-0 place-items-center border border-accent/30 bg-surface text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
+                    <Mail className="h-6 w-6" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[11px] font-semibold tracking-[0.18em] text-accent">
+                      填寫線上聯絡表單
+                    </p>
+                    <p className="mt-1 font-display text-2xl text-foreground">
+                      留下轉介資料
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      專人將於 1 個工作日內與您聯繫
+                    </p>
+                  </div>
+                  <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-accent transition-all group-hover:translate-x-0.5 group-hover:translate-y-[-0.5]" />
+                </Link>
+              </div>
+
+              <div className="mt-8 flex items-start gap-3 border-t border-hairline pt-6">
+                <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                <p className="text-xs leading-relaxed text-muted-foreground">
+                  本流程為臨床照護之延伸執行支援機制，不取代醫師之診斷、治療或臨床決策。
+                  是否適用，仍以醫師臨床判斷與護理師到府評估結果為準。
+                </p>
+              </div>
             </div>
-
-            <Link
-              to="/contact"
-              search={{ topic: "comwell" }}
-              className="mt-8 inline-flex items-center gap-2 bg-primary px-5 py-3 text-sm font-medium tracking-wider text-primary-foreground hover:bg-primary/90"
-            >
-              填寫線上聯絡表單
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-
-            <p className="mt-8 text-xs leading-relaxed text-muted-foreground">
-              ※ 本流程為臨床照護之延伸執行支援機制，不取代醫師之診斷、治療或臨床決策。
-              是否適用，仍以醫師臨床判斷與護理師到府評估結果為準。
-            </p>
           </div>
         </div>
       </section>
