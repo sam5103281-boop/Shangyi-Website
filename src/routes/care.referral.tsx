@@ -2,6 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Phone } from "lucide-react";
 import { CareSubNav } from "@/components/CareSubNav";
 import { SectionHeading } from "@/components/SectionHeading";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import careReferral from "@/assets/care-referral.jpg";
 
 export const Route = createFileRoute("/care/referral")({
@@ -151,17 +157,25 @@ function ReferralPage() {
         <div className="container-page">
           <SectionHeading eyebrow="FAQ" title="常見問答" />
 
-          <div className="mt-12 grid gap-px bg-hairline md:grid-cols-2">
-            {faqs.map((f) => (
-              <article key={f.q} className="flex flex-col gap-3 bg-surface p-7">
-                <h3 className="font-display text-base leading-snug text-foreground">
-                  <span className="mr-2 text-accent">Q.</span>
-                  {f.q}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{f.a}</p>
-              </article>
+          <Accordion type="single" collapsible className="mt-12 border-t border-hairline">
+            {faqs.map((f, i) => (
+              <AccordionItem
+                key={f.q}
+                value={`faq-${i}`}
+                className="border-b border-hairline"
+              >
+                <AccordionTrigger className="py-5 text-left font-display text-base leading-snug text-foreground hover:no-underline">
+                  <span className="flex items-start gap-3">
+                    <span className="mt-0.5 text-accent">Q.</span>
+                    <span>{f.q}</span>
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="pb-6 pl-8 pr-4 text-sm leading-relaxed text-muted-foreground">
+                  {f.a}
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
         </div>
       </section>
 
