@@ -357,20 +357,40 @@ function FaqPage() {
             description="醫師何時會建議使用 IPC？醫療人員又會評估哪些重點？"
           />
 
-          <div className="mt-12 border border-hairline bg-surface">
-            <div className="grid gap-y-8 md:grid-cols-[minmax(0,300px)_1fr] md:gap-x-10">
-              <div className="border-b border-hairline p-7 md:border-b-0 md:border-r md:p-9">
-                <span className="text-[11px] tracking-[0.28em] text-accent">
+          <div
+            className="overflow-hidden rounded-sm border border-[color-mix(in_oklab,var(--vision-line-green)_35%,transparent)] bg-surface shadow-soft"
+          >
+            <div className="grid gap-y-0 md:grid-cols-[minmax(0,320px)_1fr]">
+              <div
+                className="relative border-b border-[color-mix(in_oklab,var(--vision-line-green)_25%,transparent)] p-7 md:border-b-0 md:border-r md:p-9"
+                style={{
+                  background:
+                    "linear-gradient(155deg, color-mix(in oklab, var(--vision-line-green) 22%, transparent) 0%, color-mix(in oklab, var(--vision-line-green) 8%, transparent) 60%, transparent 100%)",
+                }}
+              >
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-0 h-full w-1"
+                  style={{ background: "var(--vision-line-green)" }}
+                />
+                <span
+                  className="text-[11px] tracking-[0.28em]"
+                  style={{ color: "color-mix(in oklab, var(--vision-line-green) 80%, var(--foreground))" }}
+                >
                   CLINICAL INDICATIONS
                 </span>
                 <h3 className="mt-4 font-display text-2xl leading-snug text-foreground md:text-[26px]">
                   醫師在什麼情況下<br className="hidden md:block" />會建議使用 IPC？
                 </h3>
-                <div className="mt-5 h-px w-10 bg-accent" />
+                <div
+                  className="mt-5 h-px w-10"
+                  style={{ background: "var(--vision-line-green)" }}
+                />
                 <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
                   以下為臨床常見的建議情境，實際適用仍需依醫師專業評估。
                 </p>
               </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2">
                 {[
                   {
