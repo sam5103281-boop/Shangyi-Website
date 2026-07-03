@@ -180,7 +180,7 @@ function FaqPage() {
           </div>
 
           {/* Warning Signs · editorial numbered list */}
-          <div className="mt-24 grid grid-cols-12 gap-x-8 gap-y-10 border-y border-hairline py-16">
+          <div className="mt-20 grid grid-cols-12 gap-x-8 gap-y-10 border-y border-hairline py-16">
             <div className="col-span-12 md:col-span-4">
               <div className="md:sticky md:top-24">
                 <span className="text-[11px] tracking-[0.28em] text-accent">
@@ -227,15 +227,16 @@ function FaqPage() {
 
           {/* Methods · layered cards */}
           <div className="mt-20">
-            <div className="mb-10 flex items-end justify-between gap-6 border-b border-hairline pb-4">
+            <div className="mb-10 flex items-end justify-between gap-6 border-b border-hairline pb-5">
               <div>
                 <span className="text-[11px] tracking-[0.28em] text-accent">
                   CARE METHODS
                 </span>
-                <h3 className="mt-2 font-display text-2xl text-foreground">
+                <h3 className="mt-3 font-display text-2xl leading-snug text-foreground md:text-[26px]">
                   三種循環照護途徑
                 </h3>
               </div>
+
               <span className="hidden text-xs tracking-[0.25em] text-muted-foreground md:inline">
                 From daily habit to clinical support
               </span>
