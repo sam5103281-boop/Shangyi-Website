@@ -107,7 +107,7 @@ function ReferralPage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden border border-hairline bg-surface">
             <img
-              src={careReferral}
+              src={careReferral.url}
               alt="醫療專業轉介"
               width={1600}
               height={900}
