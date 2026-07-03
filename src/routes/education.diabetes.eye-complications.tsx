@@ -5,8 +5,8 @@ import cover from "@/assets/elderly-eye-closeup.jpg.asset.json";
 import normalRetina from "@/assets/normal-retina-anatomy.jpg.asset.json";
 import diabeticRetina from "@/assets/diabetic-retina-diagram-v2.jpg.asset.json";
 
-const ACCENT = "#2b8a8a";
-const ACCENT_SOFT = "#e6f1f1";
+const ACCENT = "#eb572a";
+const ACCENT_SOFT = "#fef2ed";
 
 export const Route = createFileRoute("/education/diabetes/eye-complications")({
   head: () => ({

@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import cover from "@/assets/diabetic-glucose-check.jpg.asset.json";
 
-const ACCENT = "#2b8a8a";
-const ACCENT_SOFT = "#e6f1f1";
+const ACCENT = "#eb572a";
+const ACCENT_SOFT = "#fef2ed";
 
 export const Route = createFileRoute("/education/diabetes/complication-risks")({
   head: () => ({
