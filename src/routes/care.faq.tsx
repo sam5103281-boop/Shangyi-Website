@@ -250,46 +250,100 @@ function FaqPage() {
               </span>
             </div>
 
-            <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+            <div className="grid gap-6 md:grid-cols-3 md:gap-6">
               {[
                 {
                   k: "METHOD 01",
                   t: "活動與姿勢調整",
                   d: "最基礎且有效。透過定時抬腿、腳踝運動協助肌肉幫浦運作，從源頭促進血液回流。",
+                  tone: "light",
                 },
                 {
                   k: "METHOD 02",
                   t: "彈性壓力輔具",
                   d: "如醫療級彈性襪，利用漸進式壓力支撐靜脈，減少血液淤積並減緩組織液滲出。",
+                  tone: "tint",
                 },
                 {
                   k: "METHOD 03",
                   t: "間歇性氣壓循環 (IPC)",
                   d: "模擬肌肉收縮的物理效果。透過規律的充氣與放氣，為下肢提供動態循環，是臨床上預防血栓的常用輔助方案。",
+                  tone: "dark",
                 },
-              ].map((m) => (
-                <article
-                  key={m.k}
-                  className="group relative flex h-full flex-col border-t-[3px] border-foreground bg-surface pt-7 transition-colors duration-300 hover:border-accent focus-within:border-accent"
-                >
-                  <div className="flex flex-1 flex-col px-6 pb-7 md:px-7">
-                    <span className="text-[11px] tracking-[0.28em] text-accent">
-                      {m.k}
-                    </span>
-                    <h4 className="mt-3 font-display text-xl leading-snug text-foreground">
-                      {m.t}
-                    </h4>
-                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                      {m.d}
-                    </p>
-                  </div>
-                  <div
-                    aria-hidden
-                    className="h-1.5 w-full bg-accent/25 transition-colors duration-300 group-hover:bg-accent"
-                  />
-                </article>
-              ))}
+              ].map((m, i) => {
+                const isDark = m.tone === "dark";
+                const isTint = m.tone === "tint";
+                return (
+                  <article
+                    key={m.k}
+                    className={
+                      "group relative flex h-full flex-col overflow-hidden rounded-sm transition-transform duration-300 hover:-translate-y-1 " +
+                      (isDark
+                        ? "bg-primary text-primary-foreground shadow-elevated"
+                        : isTint
+                          ? "bg-accent/8 border border-accent/20"
+                          : "bg-surface border border-hairline")
+                    }
+                  >
+                    <div
+                      aria-hidden
+                      className={
+                        "flex items-center justify-between px-6 pt-5 pb-4 md:px-7 " +
+                        (isDark ? "border-b border-primary-foreground/15" : "border-b border-hairline")
+                      }
+                    >
+                      <span
+                        className={
+                          "text-[11px] tracking-[0.28em] " +
+                          (isDark ? "text-accent" : "text-accent")
+                        }
+                      >
+                        {m.k}
+                      </span>
+                      <span
+                        className={
+                          "font-display text-2xl leading-none " +
+                          (isDark ? "text-primary-foreground/40" : "text-hairline")
+                        }
+                        style={{ fontFeatureSettings: '"tnum"' }}
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <div className="flex flex-1 flex-col px-6 pb-8 pt-6 md:px-7">
+                      <h4
+                        className={
+                          "font-display text-xl leading-snug " +
+                          (isDark ? "text-primary-foreground" : "text-foreground")
+                        }
+                      >
+                        {m.t}
+                      </h4>
+                      <p
+                        className={
+                          "mt-4 text-sm leading-relaxed " +
+                          (isDark ? "text-primary-foreground/75" : "text-muted-foreground")
+                        }
+                      >
+                        {m.d}
+                      </p>
+                    </div>
+                    <div
+                      aria-hidden
+                      className={
+                        "h-1.5 w-full transition-colors duration-300 " +
+                        (isDark
+                          ? "bg-accent"
+                          : isTint
+                            ? "bg-accent/70 group-hover:bg-accent"
+                            : "bg-foreground/80 group-hover:bg-accent")
+                      }
+                    />
+                  </article>
+                );
+              })}
             </div>
+
           </div>
         </div>
       </section>
