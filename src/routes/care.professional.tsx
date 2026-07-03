@@ -89,14 +89,13 @@ function ProfessionalCarePage() {
             </p>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden border border-hairline bg-surface">
-            <img
-              src={careProfessional}
-              alt="ComWell 居家循環照護設備"
-              width={1600}
-              height={900}
+            <video
+              src={professionalVideo.url}
+              autoPlay
+              loop
+              muted
+              playsInline
               className="absolute inset-0 h-full w-full object-cover"
-            fetchPriority="high"
-              decoding="async"
             />
           </div>
         </div>
