@@ -479,7 +479,7 @@ function FaqPage() {
                 Four clinical checkpoints
               </span>
             </div>
-            <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+            <ol className="grid gap-8 sm:grid-cols-2 sm:gap-10 xl:grid-cols-4 xl:gap-8">
               {[
                 {
                   n: "01",
@@ -504,8 +504,13 @@ function FaqPage() {
               ].map((e) => (
                 <li
                   key={e.n}
-                  className="group relative flex h-full flex-col border-t-2 border-foreground bg-surface pt-6 transition-colors duration-300 hover:border-accent"
+                  className="group relative flex h-full flex-col rounded-sm border border-hairline bg-surface px-7 pt-8 pb-9 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-elevated md:px-8 md:pt-10 md:pb-10"
                 >
+                  <span
+                    aria-hidden
+                    className="absolute left-0 top-0 h-[3px] w-12 bg-accent"
+                  />
+
                   <div className="flex items-baseline gap-3">
                     <span
                       aria-hidden
