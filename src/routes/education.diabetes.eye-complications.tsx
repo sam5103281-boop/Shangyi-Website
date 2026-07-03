@@ -223,7 +223,7 @@ function ArticlePage() {
       <section className="section-pad bg-[#fafafa]">
         <div className="container-page">
           <Reveal direction="up" className="mx-auto max-w-2xl text-center">
-            <p className="text-xs tracking-[0.25em]" style={{ color: ACCENT }}>EYE CARE</p>
+            <p className="text-xs tracking-[0.25em]" style={{ color: RETINA_ACCENT }}>EYE CARE</p>
             <h2 className="mt-3 font-display text-2xl text-[#1f2c3a] md:text-3xl">糖尿病患者應如何照護眼睛？</h2>
           </Reveal>
 
