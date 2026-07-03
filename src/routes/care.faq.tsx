@@ -115,7 +115,7 @@ function FaqPage() {
                 <h3 className="mt-3 font-display text-3xl leading-snug text-foreground">
                   什麼是「血栓」？
                 </h3>
-                <p className="mt-4 font-display text-lg italic text-accent">
+                <p className="mt-6 inline-block border-l-[3px] border-accent bg-accent/8 px-5 py-3 font-display text-lg text-foreground">
                   血液回流不順，就像停滯的水流。
                 </p>
                 <div className="mt-6 space-y-4 text-base leading-loose text-muted-foreground">
@@ -125,8 +125,8 @@ function FaqPage() {
                   </p>
                   <p>
                     如果血栓脫落並隨著血液流動，可能會堵塞肺部或心臟等重要部位。因此，
-                    <strong className="border-b border-accent/50 pb-0.5 font-medium text-foreground">
-                      「讓血液保持流動」
+                    <strong className="border-b-2 border-accent pb-0.5 font-medium text-foreground">
+                      讓血液保持流動
                     </strong>
                     是預防血栓最核心的照護重點。
                   </p>
