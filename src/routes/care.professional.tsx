@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { CareSubNav } from "@/components/CareSubNav";
 import { SectionHeading } from "@/components/SectionHeading";
-import careProfessional from "@/assets/care-professional.jpg";
+import professionalVideo from "@/assets/professional-assessment.mp4.asset.json";
 
 export const Route = createFileRoute("/care/professional")({
   head: () => ({
