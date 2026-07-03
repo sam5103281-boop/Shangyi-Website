@@ -349,21 +349,21 @@ function FaqPage() {
             description="醫師何時會建議使用 IPC？醫療人員又會評估哪些重點？"
           />
 
-          <div className="mt-12 overflow-hidden rounded-sm border border-[#55d9cc]/25 bg-gradient-to-br from-[#55d9cc]/10 via-surface to-[#55d9cc]/5 shadow-soft">
+          <div className="mt-12 overflow-hidden rounded-sm border border-[#28bfb0]/25 bg-gradient-to-br from-[#28bfb0]/10 via-surface to-[#28bfb0]/5 shadow-soft">
 
             <div className="grid gap-y-0 md:grid-cols-[minmax(0,320px)_1fr]">
-              <div className="relative border-b border-[#55d9cc]/20 bg-gradient-to-br from-[#55d9cc]/25 via-[#55d9cc]/10 to-transparent p-7 md:border-b-0 md:border-r md:p-9">
+              <div className="relative border-b border-[#28bfb0]/20 bg-gradient-to-br from-[#28bfb0]/25 via-[#28bfb0]/10 to-transparent p-7 md:border-b-0 md:border-r md:p-9">
                 <span
                   aria-hidden
-                  className="absolute left-0 top-0 h-full w-1 bg-[#55d9cc]"
+                  className="absolute left-0 top-0 h-full w-1 bg-[#28bfb0]"
                 />
-                <span className="text-[11px] tracking-[0.28em] text-[#55d9cc]">
+                <span className="text-[11px] tracking-[0.28em] text-[#0e6b61]">
                   CLINICAL INDICATIONS
                 </span>
                 <h3 className="mt-4 font-display text-2xl leading-snug text-foreground md:text-[26px]">
                   醫師在什麼情況下<br className="hidden md:block" />會建議使用 IPC？
                 </h3>
-                <div className="mt-5 h-px w-10 bg-[#55d9cc]" />
+                <div className="mt-5 h-px w-10 bg-[#28bfb0]" />
                 <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
                   以下為臨床常見的建議情境，實際適用仍需依醫師專業評估。
                 </p>
@@ -394,13 +394,13 @@ function FaqPage() {
                 ].map((c) => (
                   <div
                     key={c.t}
-                    className="flex gap-5 border-t border-[#55d9cc]/15 p-6 sm:[&:nth-child(-n+2)]:border-t-0 sm:[&:nth-child(odd)]:border-r md:p-7"
+                    className="flex gap-5 border-t border-[#28bfb0]/15 p-6 sm:[&:nth-child(-n+2)]:border-t-0 sm:[&:nth-child(odd)]:border-r md:p-7"
                   >
                     <div className="flex-shrink-0">
-                      <span className="font-display text-2xl leading-none text-[#55d9cc]">
+                      <span className="font-display text-2xl leading-none text-[#0e6b61]">
                         {c.n}
                       </span>
-                      <div className="mt-2 h-px w-6 bg-[#55d9cc]/60" />
+                      <div className="mt-2 h-px w-6 bg-[#28bfb0]/60" />
                     </div>
                     <div className="min-w-0">
                       <h4 className="font-display text-base leading-snug text-foreground">
@@ -415,13 +415,13 @@ function FaqPage() {
 
               </div>
             </div>
-            <div className="flex flex-col gap-2 border-t border-[#55d9cc]/20 bg-gradient-to-r from-[#55d9cc]/15 to-[#55d9cc]/5 px-7 py-5 sm:flex-row sm:items-start sm:gap-4 md:px-9">
-              <span className="mt-0.5 text-xs font-semibold tracking-[0.25em] text-[#55d9cc]">
+            <div className="flex flex-col gap-2 border-t border-[#28bfb0]/20 bg-gradient-to-r from-[#28bfb0]/15 to-[#28bfb0]/5 px-7 py-5 sm:flex-row sm:items-start sm:gap-4 md:px-9">
+              <span className="mt-0.5 text-xs font-semibold tracking-[0.25em] text-[#0e6b61]">
                 重要提醒
               </span>
               <p className="text-sm leading-relaxed text-foreground">
                 是否適合使用 IPC，仍需依個人健康狀況而定。重點在於
-                <strong className="text-[#55d9cc]">「什麼時候用、怎麼用、用得是否安全」</strong>。
+                <strong className="text-[#0e6b61]">「什麼時候用、怎麼用、用得是否安全」</strong>。
               </p>
             </div>
 
