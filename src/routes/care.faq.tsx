@@ -115,9 +115,22 @@ function FaqPage() {
                 <h3 className="mt-3 font-display text-3xl leading-snug text-foreground">
                   什麼是「血栓」？
                 </h3>
-                <p className="mt-6 inline-block border-l-[3px] border-accent bg-accent/8 px-5 py-3 font-display text-lg text-foreground">
-                  血液回流不順，就像停滯的水流。
-                </p>
+                <figure className="mt-8 flex items-start gap-5 border-y border-hairline py-6">
+                  <span
+                    aria-hidden
+                    className="mt-1 font-display text-3xl leading-none text-accent/70"
+                  >
+                    “
+                  </span>
+                  <blockquote className="flex-1">
+                    <p className="font-display text-xl leading-snug text-foreground md:text-2xl">
+                      血液回流不順，就像停滯的水流。
+                    </p>
+                    <figcaption className="mt-3 text-[11px] tracking-[0.28em] text-muted-foreground">
+                      CORE INSIGHT · 循環的本質
+                    </figcaption>
+                  </blockquote>
+                </figure>
                 <div className="mt-6 space-y-4 text-base leading-loose text-muted-foreground">
                   <p>
                     血栓就是血管內異常凝結的血塊。當活動量不足時，血流速度變慢，
@@ -229,50 +242,43 @@ function FaqPage() {
               </span>
             </div>
 
-            <div className="grid gap-10 md:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-3 md:gap-8">
               {[
                 {
                   k: "METHOD 01",
                   t: "活動與姿勢調整",
                   d: "最基礎且有效。透過定時抬腿、腳踝運動協助肌肉幫浦運作，從源頭促進血液回流。",
-                  tag: "日常自我照護",
                 },
                 {
                   k: "METHOD 02",
                   t: "彈性壓力輔具",
                   d: "如醫療級彈性襪，利用漸進式壓力支撐靜脈，減少血液淤積並減緩組織液滲出。",
-                  tag: "輔具支持",
                 },
                 {
                   k: "METHOD 03",
                   t: "間歇性氣壓循環 (IPC)",
                   d: "模擬肌肉收縮的物理效果。透過規律的充氣與放氣，為下肢提供動態循環，是臨床上預防血栓的常用輔助方案。",
-                  tag: "臨床輔助",
                 },
-              ].map((m, i) => (
+              ].map((m) => (
                 <article
                   key={m.k}
-                  className={`group relative ${i === 1 ? "md:-mt-6" : ""}`}
+                  className="group relative flex h-full flex-col border-t-[3px] border-foreground bg-surface pt-7 transition-colors duration-300 hover:border-accent focus-within:border-accent"
                 >
-                  <div className="absolute inset-0 translate-x-2 translate-y-2 border border-hairline transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1" />
-                  <div className="relative flex h-full flex-col border border-hairline bg-surface">
-                    <div className="flex flex-1 flex-col p-8">
-                      <span className="text-[11px] tracking-[0.28em] text-accent">
-                        {m.k}
-                      </span>
-                      <h4 className="mt-4 font-display text-xl leading-snug text-foreground">
-                        {m.t}
-                      </h4>
-                      <div className="mt-4 h-px w-8 bg-accent/60" />
-                      <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                        {m.d}
-                      </p>
-                    </div>
-                    <div className="flex items-center justify-between gap-3 bg-primary px-8 py-4 text-primary-foreground">
-                      <span className="text-sm font-medium tracking-wide">{m.tag}</span>
-                      <span className="text-lg leading-none">→</span>
-                    </div>
+                  <div className="flex flex-1 flex-col px-6 pb-7 md:px-7">
+                    <span className="text-[11px] tracking-[0.28em] text-accent">
+                      {m.k}
+                    </span>
+                    <h4 className="mt-3 font-display text-xl leading-snug text-foreground">
+                      {m.t}
+                    </h4>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                      {m.d}
+                    </p>
                   </div>
+                  <div
+                    aria-hidden
+                    className="h-1.5 w-full bg-accent/25 transition-colors duration-300 group-hover:bg-accent"
+                  />
                 </article>
               ))}
             </div>
@@ -289,20 +295,21 @@ function FaqPage() {
             description="醫師何時會建議使用 IPC？醫療人員又會評估哪些重點？"
           />
 
-          <div className="mt-12 overflow-hidden border border-hairline bg-surface">
-            <div className="grid md:grid-cols-[280px_1fr]">
-              <div className="bg-primary p-8 text-primary-foreground md:p-10">
-                <span className="text-[11px] tracking-[0.28em] text-primary-foreground/70">
+          <div className="mt-12 border border-hairline bg-surface">
+            <div className="grid gap-y-8 md:grid-cols-[minmax(0,300px)_1fr] md:gap-x-10">
+              <div className="border-b border-hairline p-7 md:border-b-0 md:border-r md:p-9">
+                <span className="text-[11px] tracking-[0.28em] text-accent">
                   CLINICAL INDICATIONS
                 </span>
-                <h3 className="mt-4 font-display text-2xl leading-snug">
-                  醫師在什麼情況下<br />會建議使用 IPC？
+                <h3 className="mt-4 font-display text-2xl leading-snug text-foreground md:text-[26px]">
+                  醫師在什麼情況下<br className="hidden md:block" />會建議使用 IPC？
                 </h3>
-                <p className="mt-5 text-sm leading-relaxed text-primary-foreground/75">
+                <div className="mt-5 h-px w-10 bg-accent" />
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
                   以下為臨床常見的建議情境，實際適用仍需依醫師專業評估。
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2">
                 {[
                   {
                     n: "I",
@@ -327,7 +334,7 @@ function FaqPage() {
                 ].map((c) => (
                   <div
                     key={c.t}
-                    className="group relative flex gap-5 border-b border-r border-hairline p-7 last:border-b-0 md:[&:nth-child(2n)]:border-r-0 md:[&:nth-last-child(-n+2)]:border-b-0"
+                    className="flex gap-5 border-t border-hairline p-6 sm:[&:nth-child(-n+2)]:border-t-0 sm:[&:nth-child(odd)]:border-r sm:border-hairline md:p-7"
                   >
                     <div className="flex-shrink-0">
                       <span className="font-display text-2xl leading-none text-accent">
@@ -335,7 +342,7 @@ function FaqPage() {
                       </span>
                       <div className="mt-2 h-px w-6 bg-accent/60" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="font-display text-base leading-snug text-foreground">
                         {c.t}
                       </h4>
@@ -347,7 +354,7 @@ function FaqPage() {
                 ))}
               </div>
             </div>
-            <div className="flex items-start gap-4 border-t border-hairline bg-accent/5 px-8 py-5 md:px-10">
+            <div className="flex flex-col gap-2 border-t border-hairline bg-accent/5 px-7 py-5 sm:flex-row sm:items-start sm:gap-4 md:px-9">
               <span className="mt-0.5 text-xs font-semibold tracking-[0.25em] text-accent">
                 重要提醒
               </span>
@@ -372,7 +379,7 @@ function FaqPage() {
                 Four clinical checkpoints
               </span>
             </div>
-            <ol className="grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
+            <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
               {[
                 {
                   n: "01",
@@ -395,22 +402,28 @@ function FaqPage() {
                   d: "確認使用者能正確操作，並備有順暢的追蹤與諮詢管道。",
                 },
               ].map((e) => (
-                <li key={e.n} className="group relative pt-10">
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute -top-4 -left-2 z-0 font-display text-[6rem] leading-[0.8] text-accent/15 transition-all duration-500 group-hover:-top-6 group-hover:text-accent/30"
-                    style={{ fontFeatureSettings: '"tnum"' }}
-                  >
-                    {e.n}
-                  </span>
-                  <div className="relative z-10 border-t-2 border-foreground bg-surface pt-6 pl-1">
-                    <h4 className="font-display text-lg leading-snug text-foreground">
-                      {e.t}
-                    </h4>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {e.d}
-                    </p>
+                <li
+                  key={e.n}
+                  className="group relative flex h-full flex-col border-t-2 border-foreground bg-surface pt-6 transition-colors duration-300 hover:border-accent"
+                >
+                  <div className="flex items-baseline gap-3">
+                    <span
+                      aria-hidden
+                      className="font-display text-3xl leading-none text-accent"
+                      style={{ fontFeatureSettings: '"tnum"' }}
+                    >
+                      {e.n}
+                    </span>
+                    <span className="text-[10px] tracking-[0.28em] text-muted-foreground">
+                      CHECKPOINT
+                    </span>
                   </div>
+                  <h4 className="mt-5 font-display text-lg leading-snug text-foreground">
+                    {e.t}
+                  </h4>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {e.d}
+                  </p>
                 </li>
               ))}
             </ol>
