@@ -73,51 +73,6 @@ const faqs: Array<{
   },
 ];
 
-function ScaledImagePair({ images }: { images: FaqImage[] }) {
-  const [scales, setScales] = useState<number[]>([1, 1]);
-
-  return (
-    <div className="grid gap-6 md:grid-cols-2">
-      {images.map((img, idx) => (
-        <div
-          key={img.src}
-          className="flex flex-col gap-4 rounded-xl border border-hairline bg-white p-4"
-        >
-          <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden">
-            <img
-              src={img.src}
-              alt={img.alt}
-              loading="lazy"
-              className="block max-h-full max-w-full object-contain transition-transform duration-300 ease-out will-change-transform"
-              style={{ transform: `scale(${scales[idx]})` }}
-            />
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs text-muted-foreground">
-              <span>{img.alt}</span>
-              <span className="font-medium tabular-nums" style={{ color: ACCENT }}>
-                {Math.round(scales[idx] * 100)}%
-              </span>
-            </div>
-            <Slider
-              value={[scales[idx]]}
-              min={0.5}
-              max={2}
-              step={0.05}
-              onValueChange={(value) => {
-                const next = [...scales];
-                next[idx] = value[0];
-                setScales(next);
-              }}
-              aria-label={`調整 ${img.alt} 大小`}
-            />
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function ArticlePage() {
   return (
     <article>
