@@ -417,13 +417,19 @@ function FaqPage() {
                 ].map((c) => (
                   <div
                     key={c.t}
-                    className="flex gap-5 border-t border-hairline p-6 sm:[&:nth-child(-n+2)]:border-t-0 sm:[&:nth-child(odd)]:border-r sm:border-hairline md:p-7"
+                    className="flex gap-5 border-t border-[color-mix(in_oklab,var(--vision-line-green)_20%,transparent)] p-6 sm:[&:nth-child(-n+2)]:border-t-0 sm:[&:nth-child(odd)]:border-r md:p-7"
                   >
                     <div className="flex-shrink-0">
-                      <span className="font-display text-2xl leading-none text-accent">
+                      <span
+                        className="font-display text-2xl leading-none"
+                        style={{ color: "color-mix(in oklab, var(--vision-line-green) 85%, var(--foreground))" }}
+                      >
                         {c.n}
                       </span>
-                      <div className="mt-2 h-px w-6 bg-accent/60" />
+                      <div
+                        className="mt-2 h-px w-6"
+                        style={{ background: "color-mix(in oklab, var(--vision-line-green) 60%, transparent)" }}
+                      />
                     </div>
                     <div className="min-w-0">
                       <h4 className="font-display text-base leading-snug text-foreground">
@@ -435,6 +441,7 @@ function FaqPage() {
                     </div>
                   </div>
                 ))}
+
               </div>
             </div>
             <div className="flex flex-col gap-2 border-t border-hairline bg-accent/5 px-7 py-5 sm:flex-row sm:items-start sm:gap-4 md:px-9">
