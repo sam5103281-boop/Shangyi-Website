@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import logoAsset from "@/assets/shangyi-logo.png.asset.json";
+import { SiteSearch } from "@/components/SiteSearch";
 import { cn } from "@/lib/utils";
 
 const nav = [
@@ -43,16 +44,35 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        {/* Mobile / tablet toggle */}
-        <button
-          type="button"
-          aria-label={open ? "關閉選單" : "開啟選單"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground hover:bg-surface-muted"
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        {/* Desktop search */}
+        <div className="hidden lg:block">
+          <SiteSearch />
+        </div>
+
+        {/* Mobile / tablet actions */}
+        <div className="flex items-center gap-1 lg:hidden">
+          <button
+            type="button"
+            aria-label="開啟搜尋"
+            onClick={() => {
+              setOpen(false);
+              // Delegate to SiteSearch via custom event
+              window.dispatchEvent(new CustomEvent("site-search:open"));
+            }}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground hover:bg-surface-muted"
+          >
+            <Search className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            aria-label={open ? "關閉選單" : "開啟選單"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-foreground hover:bg-surface-muted"
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile / tablet drawer */}
