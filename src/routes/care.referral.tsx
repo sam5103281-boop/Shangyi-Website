@@ -198,20 +198,20 @@ function ReferralPage() {
                 </p>
               </div>
 
-              <div className="mt-10 grid gap-4 md:grid-cols-2">
+              <div className="mt-10 grid gap-4 lg:grid-cols-2">
                 {/* phone card */}
                 <a
                   href="tel:0800222215"
-                  className="group relative flex items-center gap-5 border border-hairline bg-background p-6 transition-all hover:border-accent/40 hover:shadow-soft"
+                  className="group relative flex min-w-0 flex-col items-center gap-5 border border-hairline bg-background p-6 text-center transition-all hover:border-accent/40 hover:shadow-soft sm:flex-row sm:items-center sm:text-left"
                 >
-                  <span className="grid h-14 w-14 shrink-0 place-items-center border border-hairline bg-surface text-accent transition-colors group-hover:border-accent/30 group-hover:bg-accent/5">
+                  <span className="mb-4 grid h-14 w-14 shrink-0 place-items-center bg-surface text-accent transition-colors group-hover:bg-accent/5 sm:mb-0">
                     <Phone className="h-6 w-6" />
                   </span>
                   <div className="min-w-0">
                     <p className="text-[11px] font-semibold tracking-[0.18em] text-muted-foreground">
                       免付費服務專線
                     </p>
-                    <p className="mt-1 font-display text-2xl text-foreground transition-colors group-hover:text-accent">
+                    <p className="mt-1 font-display text-xl text-foreground transition-colors group-hover:text-accent sm:text-2xl">
                       0800-222-215
                     </p>
                     <p className="mt-1 text-xs text-muted-foreground">
@@ -225,16 +225,16 @@ function ReferralPage() {
                 <Link
                   to="/contact"
                   search={{ topic: "comwell" }}
-                  className="group relative flex items-center gap-5 border border-accent/30 bg-gradient-to-br from-accent/10 to-accent/5 p-6 transition-all hover:border-accent/60 hover:shadow-soft"
+                  className="group relative flex min-w-0 flex-col items-center gap-5 border border-accent/30 bg-gradient-to-br from-accent/10 to-accent/5 p-6 text-center transition-all hover:border-accent/60 hover:shadow-soft sm:flex-row sm:items-center sm:text-left"
                 >
-                  <span className="grid h-14 w-14 shrink-0 place-items-center border border-accent/30 bg-surface text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
+                  <span className="mb-4 grid h-14 w-14 shrink-0 place-items-center bg-surface text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground sm:mb-0">
                     <Mail className="h-6 w-6" />
                   </span>
                   <div className="min-w-0">
                     <p className="text-[11px] font-semibold tracking-[0.18em] text-accent">
                       填寫線上聯絡表單
                     </p>
-                    <p className="mt-1 font-display text-2xl text-foreground">
+                    <p className="mt-1 font-display text-xl text-foreground sm:text-2xl">
                       留下轉介資料
                     </p>
                     <p className="mt-1 text-xs text-muted-foreground">
