@@ -7,6 +7,7 @@ import diabeticRetina from "@/assets/diabetic-retina-diagram-v2.jpg.asset.json";
 
 const ACCENT = "#eb572a";
 const ACCENT_SOFT = "#fef2ed";
+const RETINA_ACCENT = "#55d99f";
 
 export const Route = createFileRoute("/education/diabetes/eye-complications")({
   head: () => ({
@@ -130,7 +131,7 @@ function ArticlePage() {
 
         <div className="container-page">
           <Reveal direction="up" className="mx-auto max-w-2xl text-center">
-            <p className="text-xs tracking-[0.25em]" style={{ color: ACCENT }}>RETINAL COMPARISON</p>
+            <p className="text-xs tracking-[0.25em]" style={{ color: RETINA_ACCENT }}>RETINAL COMPARISON</p>
             <h2 className="mt-3 font-display text-2xl text-[#1f2c3a] md:text-3xl">正常視網膜 vs. 糖尿病性視網膜病變</h2>
           </Reveal>
 
@@ -143,7 +144,7 @@ function ArticlePage() {
               <div className="relative flex h-[500px] items-center justify-center bg-white px-8 pb-8 pt-16 md:px-10 md:pb-10 md:pt-16">
                 <div
                   className="absolute left-4 top-4 z-10 inline-block px-3 py-1 text-[15px] font-medium text-white"
-                  style={{ background: ACCENT }}
+                  style={{ background: RETINA_ACCENT }}
                 >
                   正常視網膜
                 </div>
@@ -155,21 +156,21 @@ function ArticlePage() {
               </div>
               <div className="p-6 md:p-8">
                 <ul className="space-y-4 text-[15px] leading-relaxed text-[#1f2c3a]">
-                  <li className="border-l-[3px] pl-4" style={{ borderColor: ACCENT }}>
+                  <li className="border-l-[3px] pl-4" style={{ borderColor: RETINA_ACCENT }}>
                     <p className="font-semibold text-[#1f2c3a]">
                       視神經
                       <span className="ml-2 text-xs font-normal text-muted-foreground">Optic nerve</span>
                     </p>
                     <p className="mt-1 text-sm text-[#475569]">負責將視網膜訊號傳送至大腦。</p>
                   </li>
-                  <li className="border-l-[3px] pl-4" style={{ borderColor: ACCENT }}>
+                  <li className="border-l-[3px] pl-4" style={{ borderColor: RETINA_ACCENT }}>
                     <p className="font-semibold text-[#1f2c3a]">
                       玻璃體腔
                       <span className="ml-2 text-xs font-normal text-muted-foreground">Vitreous cavity</span>
                     </p>
                     <p className="mt-1 text-sm text-[#475569]">填充於眼球內的透明膠狀組織，維持眼球結構。</p>
                   </li>
-                  <li className="border-l-[3px] pl-4" style={{ borderColor: ACCENT }}>
+                  <li className="border-l-[3px] pl-4" style={{ borderColor: RETINA_ACCENT }}>
                     <p className="font-semibold text-[#1f2c3a]">健康視網膜特徵</p>
                     <p className="mt-1 text-sm text-[#475569]">血管排列規則、無滲漏、視網膜組織完整。</p>
                   </li>
@@ -188,7 +189,7 @@ function ArticlePage() {
 
                 <div
                   className="absolute left-4 top-4 z-10 inline-block px-3 py-1 text-[15px] font-medium text-white"
-                  style={{ background: "#eb572a" }}
+                  style={{ background: RETINA_ACCENT }}
                 >
                   糖尿病性視網膜病變
                 </div>
@@ -202,7 +203,7 @@ function ArticlePage() {
               <div className="p-6 md:p-8">
                 <ul className="space-y-4 text-[15px] leading-relaxed text-[#1f2c3a]">
                   {lesions.map((l) => (
-                    <li key={l.zh} className="border-l-[3px] pl-4" style={{ borderColor: "#eb572a" }}>
+                    <li key={l.zh} className="border-l-[3px] pl-4" style={{ borderColor: RETINA_ACCENT }}>
                       <p className="font-semibold text-[#1f2c3a]">
                         {l.zh}
                         <span className="ml-2 text-xs font-normal text-muted-foreground">{l.en}</span>
