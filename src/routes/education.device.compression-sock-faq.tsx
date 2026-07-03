@@ -185,17 +185,21 @@ function ArticlePage() {
                       </div>
                     )}
                   </div>
-                  <div className={`grid gap-6 ${f.images.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}>
-                    {f.images.map((img) => (
-                      <img
-                        key={img.src}
-                        src={img.src}
-                        alt={img.alt}
-                        loading="lazy"
-                        className={`block w-full ${f.images.length > 1 ? "aspect-[4/3] object-contain" : "h-auto object-contain"}`}
-                      />
-                    ))}
-                  </div>
+                  {f.images.length > 1 ? (
+                    <ScaledImagePair images={f.images} />
+                  ) : (
+                    <div className="grid gap-6 grid-cols-1">
+                      {f.images.map((img) => (
+                        <img
+                          key={img.src}
+                          src={img.src}
+                          alt={img.alt}
+                          loading="lazy"
+                          className="block w-full h-auto object-contain"
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </Reveal>
             );
