@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import cover from "@/assets/compression-socks.png.asset.json";
 import pressureImg from "@/assets/sock-pressure-gradient.png.asset.json";
-import circulationImg from "@/assets/sock-circulation.png.asset.json";
+import circulationImg from "@/assets/human-circulation-system.png.asset.json";
 import sockBlack from "@/assets/sock-black.png.asset.json";
 import sockWhite from "@/assets/sock-white.png.asset.json";
 
