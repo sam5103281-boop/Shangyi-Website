@@ -444,15 +444,25 @@ function FaqPage() {
 
               </div>
             </div>
-            <div className="flex flex-col gap-2 border-t border-hairline bg-accent/5 px-7 py-5 sm:flex-row sm:items-start sm:gap-4 md:px-9">
-              <span className="mt-0.5 text-xs font-semibold tracking-[0.25em] text-accent">
+            <div
+              className="flex flex-col gap-2 border-t border-[color-mix(in_oklab,var(--vision-line-green)_25%,transparent)] px-7 py-5 sm:flex-row sm:items-start sm:gap-4 md:px-9"
+              style={{
+                background:
+                  "linear-gradient(90deg, color-mix(in oklab, var(--vision-line-green) 14%, transparent) 0%, color-mix(in oklab, var(--vision-line-green) 6%, transparent) 100%)",
+              }}
+            >
+              <span
+                className="mt-0.5 text-xs font-semibold tracking-[0.25em]"
+                style={{ color: "color-mix(in oklab, var(--vision-line-green) 80%, var(--foreground))" }}
+              >
                 重要提醒
               </span>
               <p className="text-sm leading-relaxed text-foreground">
                 是否適合使用 IPC，仍需依個人健康狀況而定。重點在於
-                <strong className="text-accent">「什麼時候用、怎麼用、用得是否安全」</strong>。
+                <strong style={{ color: "color-mix(in oklab, var(--vision-line-green) 75%, var(--foreground))" }}>「什麼時候用、怎麼用、用得是否安全」</strong>。
               </p>
             </div>
+
           </div>
 
           <div className="mt-20">
