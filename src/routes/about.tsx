@@ -157,7 +157,7 @@ function AboutPage() {
   return (
     <>
       <section className="border-b border-hairline">
-        <div className="container-page grid items-center gap-12 py-20 md:py-24 lg:grid-cols-12">
+        <div className="container-page grid items-center gap-12 py-10 md:py-14 lg:py-16 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <span className="eyebrow">
               <span className="inline-block h-px w-6 bg-accent" />
@@ -177,10 +177,10 @@ function AboutPage() {
               src={heroCare.url}
               alt="上怡生技｜專業照護與居家溫度"
               width={1248}
-              height={1248}
+              height={936}
               loading="lazy"
               decoding="async"
-              className="aspect-[4/5] w-full rounded-sm object-cover object-[70%_center]"
+              className="aspect-[4/3] w-full rounded-sm object-cover object-[70%_bottom]"
             />
           </div>
         </div>
