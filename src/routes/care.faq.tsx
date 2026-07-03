@@ -89,11 +89,23 @@ function FaqPage() {
       {/* 照護觀念 */}
       <section id="concept" className="section-pad scroll-mt-24">
         <div className="container-page">
-          <SectionHeading
-            eyebrow="01 · Care Concept"
-            title="照護觀念"
-            description="從血液循環的基本原理，理解下肢腫脹的成因與何時應該就醫。"
-          />
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-4">
+              <span className="h-px w-12 bg-accent" />
+              <span className="text-sm font-medium tracking-[0.3em] text-accent">照護觀念</span>
+            </div>
+            <h2 className="mt-6 font-display text-4xl leading-[1.15] text-foreground md:text-5xl">
+              理解循環，<br className="hidden md:block" />
+              才能守護每一步的
+              <span className="relative ml-2 inline-block text-accent">
+                行動力
+                <span className="absolute -bottom-1 left-0 h-[3px] w-full bg-accent/30" />
+              </span>
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              從血液循環的基本原理，理解下肢腫脹的成因與何時應該就醫。建立正確認知，是照護行動的第一步。
+            </p>
+          </div>
 
           {/* Core Concept · asymmetric editorial */}
           <div className="mt-16 grid grid-cols-12 gap-x-8 gap-y-12">
@@ -103,7 +115,7 @@ function FaqPage() {
                 <h3 className="mt-3 font-display text-3xl leading-snug text-foreground">
                   什麼是「血栓」？
                 </h3>
-                <p className="mt-4 font-display text-lg italic text-accent">
+                <p className="mt-6 inline-block border-l-[3px] border-accent bg-accent/8 px-5 py-3 font-display text-lg text-foreground">
                   血液回流不順，就像停滯的水流。
                 </p>
                 <div className="mt-6 space-y-4 text-base leading-loose text-muted-foreground">
@@ -113,8 +125,8 @@ function FaqPage() {
                   </p>
                   <p>
                     如果血栓脫落並隨著血液流動，可能會堵塞肺部或心臟等重要部位。因此，
-                    <strong className="border-b border-accent/50 pb-0.5 font-medium text-foreground">
-                      「讓血液保持流動」
+                    <strong className="border-b-2 border-accent pb-0.5 font-medium text-foreground">
+                      讓血液保持流動
                     </strong>
                     是預防血栓最核心的照護重點。
                   </p>
@@ -223,16 +235,19 @@ function FaqPage() {
                   k: "METHOD 01",
                   t: "活動與姿勢調整",
                   d: "最基礎且有效。透過定時抬腿、腳踝運動協助肌肉幫浦運作，從源頭促進血液回流。",
+                  tag: "日常自我照護",
                 },
                 {
                   k: "METHOD 02",
                   t: "彈性壓力輔具",
                   d: "如醫療級彈性襪，利用漸進式壓力支撐靜脈，減少血液淤積並減緩組織液滲出。",
+                  tag: "輔具支持",
                 },
                 {
                   k: "METHOD 03",
                   t: "間歇性氣壓循環 (IPC)",
                   d: "模擬肌肉收縮的物理效果。透過規律的充氣與放氣，為下肢提供動態循環，是臨床上預防血栓的常用輔助方案。",
+                  tag: "臨床輔助",
                 },
               ].map((m, i) => (
                 <article
@@ -240,17 +255,23 @@ function FaqPage() {
                   className={`group relative ${i === 1 ? "md:-mt-6" : ""}`}
                 >
                   <div className="absolute inset-0 translate-x-2 translate-y-2 border border-hairline transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1" />
-                  <div className="relative flex h-full flex-col border border-hairline bg-surface p-8">
-                    <span className="text-[11px] tracking-[0.28em] text-accent">
-                      {m.k}
-                    </span>
-                    <h4 className="mt-4 font-display text-xl leading-snug text-foreground">
-                      {m.t}
-                    </h4>
-                    <div className="mt-4 h-px w-8 bg-accent/60" />
-                    <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                      {m.d}
-                    </p>
+                  <div className="relative flex h-full flex-col border border-hairline bg-surface">
+                    <div className="flex flex-1 flex-col p-8">
+                      <span className="text-[11px] tracking-[0.28em] text-accent">
+                        {m.k}
+                      </span>
+                      <h4 className="mt-4 font-display text-xl leading-snug text-foreground">
+                        {m.t}
+                      </h4>
+                      <div className="mt-4 h-px w-8 bg-accent/60" />
+                      <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                        {m.d}
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between gap-3 bg-primary px-8 py-4 text-primary-foreground">
+                      <span className="text-sm font-medium tracking-wide">{m.tag}</span>
+                      <span className="text-lg leading-none">→</span>
+                    </div>
                   </div>
                 </article>
               ))}
@@ -268,49 +289,90 @@ function FaqPage() {
             description="醫師何時會建議使用 IPC？醫療人員又會評估哪些重點？"
           />
 
-          <div className="mt-12 border border-hairline bg-surface p-8 md:p-10">
-            <h3 className="font-display text-2xl text-foreground">
-              醫師在什麼情況下會建議使用 IPC？
-            </h3>
-            <div className="mt-8 grid gap-px bg-hairline md:grid-cols-2">
-              {[
-                {
-                  t: "活動量明顯下降或長時間不動",
-                  d: "例如手術後、臥床休養或行動受限期間，下肢肌肉收縮減少導致回流效率降低。",
-                },
-                {
-                  t: "下肢循環不佳、反覆腫脹沉重",
-                  d: "腿部長期感到緊繃、沉重，經醫師評估與循環功能相關時，協助血液回流。",
-                },
-                {
-                  t: "有血栓風險，需要加強預防",
-                  d: "對於高風險族群，在無法單靠日常活動改善循環時，作為預防性循環輔助的一環。",
-                },
-                {
-                  t: "需要銜接居家循環照護時",
-                  d: "在醫師與護理專業指導下，將臨床照護延伸至居家的輔助選項。",
-                },
-              ].map((c) => (
-                <div key={c.t} className="flex flex-col gap-2 bg-surface p-6">
-                  <h4 className="font-display text-base text-foreground">{c.t}</h4>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{c.d}</p>
-                </div>
-              ))}
+          <div className="mt-12 overflow-hidden border border-hairline bg-surface">
+            <div className="grid md:grid-cols-[280px_1fr]">
+              <div className="bg-primary p-8 text-primary-foreground md:p-10">
+                <span className="text-[11px] tracking-[0.28em] text-primary-foreground/70">
+                  CLINICAL INDICATIONS
+                </span>
+                <h3 className="mt-4 font-display text-2xl leading-snug">
+                  醫師在什麼情況下<br />會建議使用 IPC？
+                </h3>
+                <p className="mt-5 text-sm leading-relaxed text-primary-foreground/75">
+                  以下為臨床常見的建議情境，實際適用仍需依醫師專業評估。
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                {[
+                  {
+                    n: "I",
+                    t: "活動量明顯下降或長時間不動",
+                    d: "例如手術後、臥床休養或行動受限期間，下肢肌肉收縮減少導致回流效率降低。",
+                  },
+                  {
+                    n: "II",
+                    t: "下肢循環不佳、反覆腫脹沉重",
+                    d: "腿部長期感到緊繃、沉重，經醫師評估與循環功能相關時，協助血液回流。",
+                  },
+                  {
+                    n: "III",
+                    t: "有血栓風險，需要加強預防",
+                    d: "對於高風險族群，在無法單靠日常活動改善循環時，作為預防性循環輔助的一環。",
+                  },
+                  {
+                    n: "IV",
+                    t: "需要銜接居家循環照護時",
+                    d: "在醫師與護理專業指導下，將臨床照護延伸至居家的輔助選項。",
+                  },
+                ].map((c) => (
+                  <div
+                    key={c.t}
+                    className="group relative flex gap-5 border-b border-r border-hairline p-7 last:border-b-0 md:[&:nth-child(2n)]:border-r-0 md:[&:nth-last-child(-n+2)]:border-b-0"
+                  >
+                    <div className="flex-shrink-0">
+                      <span className="font-display text-2xl leading-none text-accent">
+                        {c.n}
+                      </span>
+                      <div className="mt-2 h-px w-6 bg-accent/60" />
+                    </div>
+                    <div>
+                      <h4 className="font-display text-base leading-snug text-foreground">
+                        {c.t}
+                      </h4>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        {c.d}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="mt-6 border-l-2 border-accent bg-accent/5 p-5">
-              <p className="text-xs tracking-[0.25em] text-accent">重要提醒</p>
-              <p className="mt-2 text-sm leading-relaxed text-foreground">
+            <div className="flex items-start gap-4 border-t border-hairline bg-accent/5 px-8 py-5 md:px-10">
+              <span className="mt-0.5 text-xs font-semibold tracking-[0.25em] text-accent">
+                重要提醒
+              </span>
+              <p className="text-sm leading-relaxed text-foreground">
                 是否適合使用 IPC，仍需依個人健康狀況而定。重點在於
-                <strong>「什麼時候用、怎麼用、用得是否安全」</strong>。
+                <strong className="text-accent">「什麼時候用、怎麼用、用得是否安全」</strong>。
               </p>
             </div>
           </div>
 
-          <div className="mt-8">
-            <h3 className="font-display text-2xl text-foreground">
-              使用 IPC 前，醫療人員會評估哪些重點？
-            </h3>
-            <ol className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-20">
+            <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+              <div>
+                <span className="text-[11px] tracking-[0.28em] text-accent">
+                  PRE-USE ASSESSMENT
+                </span>
+                <h3 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+                  使用 IPC 前，醫療人員會評估哪些重點？
+                </h3>
+              </div>
+              <span className="hidden text-xs tracking-[0.25em] text-muted-foreground md:inline">
+                Four clinical checkpoints
+              </span>
+            </div>
+            <ol className="grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 {
                   n: "01",
@@ -333,13 +395,22 @@ function FaqPage() {
                   d: "確認使用者能正確操作，並備有順暢的追蹤與諮詢管道。",
                 },
               ].map((e) => (
-                <li
-                  key={e.n}
-                  className="flex flex-col gap-3 border border-hairline bg-surface p-7"
-                >
-                  <span className="font-display text-3xl text-accent">{e.n}</span>
-                  <h4 className="font-display text-base text-foreground">{e.t}</h4>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{e.d}</p>
+                <li key={e.n} className="group relative pt-10">
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute -top-4 -left-2 z-0 font-display text-[6rem] leading-[0.8] text-accent/15 transition-all duration-500 group-hover:-top-6 group-hover:text-accent/30"
+                    style={{ fontFeatureSettings: '"tnum"' }}
+                  >
+                    {e.n}
+                  </span>
+                  <div className="relative z-10 border-t-2 border-foreground bg-surface pt-6 pl-1">
+                    <h4 className="font-display text-lg leading-snug text-foreground">
+                      {e.t}
+                    </h4>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {e.d}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ol>
