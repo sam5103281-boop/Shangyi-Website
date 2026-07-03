@@ -125,7 +125,7 @@ function ArticlePage() {
       </section>
 
       {/* Complications grid */}
-      <section className="section-pad bg-[#e6f1f1]">
+      <section className="section-pad bg-[#fef2ed]">
         <div className="container-page">
           <Reveal direction="up" className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-semibold tracking-[0.3em] uppercase" style={{ color: ACCENT }}>Complications</p>
@@ -141,7 +141,7 @@ function ArticlePage() {
                 key={l.zh}
                 direction="up"
                 delay={i * 50}
-                className="group relative overflow-hidden rounded-2xl border border-[#2b8a8a]/15 bg-white p-8 shadow-[0_10px_40px_-15px_rgba(43,138,138,0.12)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(43,138,138,0.22)]"
+                className="group relative overflow-hidden rounded-2xl border border-[#eb572a]/15 bg-white p-8 shadow-[0_10px_40px_-15px_rgba(235,87,42,0.12)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_rgba(235,87,42,0.22)]"
               >
                 <span
                   className="absolute left-0 top-0 h-0 w-[3px] rounded-tl-2xl rounded-bl-2xl transition-all duration-500 group-hover:h-full"
@@ -156,7 +156,7 @@ function ArticlePage() {
                   {l.items.map((item) => (
                     <li
                       key={item}
-                      className="inline-flex items-center rounded-md border border-[#2b8a8a]/15 px-3 py-1 text-[13px] font-medium"
+                      className="inline-flex items-center rounded-md border border-[#eb572a]/15 px-3 py-1 text-[13px] font-medium"
                       style={{ color: ACCENT, background: ACCENT_SOFT }}
                     >
                       {item}
@@ -169,7 +169,7 @@ function ArticlePage() {
 
           <Reveal
             direction="up"
-            className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-[#2b8a8a]/20 pt-8 text-sm text-[#475569] md:flex-row md:items-center"
+            className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-[#eb572a]/20 pt-8 text-sm text-[#475569] md:flex-row md:items-center"
           >
             <div className="flex items-center gap-3">
               <span className="inline-block h-4 w-[3px]" style={{ background: ACCENT }} />
