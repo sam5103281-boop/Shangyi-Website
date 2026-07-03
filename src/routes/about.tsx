@@ -5,7 +5,7 @@ import { AssuranceTimeline } from "@/components/AssuranceTimeline";
 import { MilestonesGrid } from "@/components/MilestonesGrid";
 import { VisionCard } from "@/components/VisionCard";
 
-import heroLab from "@/assets/hero-lab.jpg";
+import heroCare from "@/assets/about-hero-care.png.asset.json";
 import qualityHero from "@/assets/quality-assurance-lab.png.asset.json";
 import intertekImg from "@/assets/certs/intertek-v2.jpg.asset.json";
 import sgsImg from "@/assets/certs/sgs-fresenius.jpg.asset.json";
@@ -174,13 +174,13 @@ function AboutPage() {
           </div>
           <div className="lg:col-span-6">
             <img
-              src={heroLab}
-              alt="上怡生技品質管理"
-              width={1536}
-              height={1024}
+              src={heroCare.url}
+              alt="上怡生技｜專業照護與居家溫度"
+              width={1248}
+              height={1248}
               loading="lazy"
               decoding="async"
-              className="aspect-[4/3] w-full object-cover"
+              className="aspect-[4/5] w-full rounded-sm object-cover object-[70%_center]"
             />
           </div>
         </div>
