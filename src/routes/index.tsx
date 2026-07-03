@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, ShieldCheck, FlaskConical, Stethoscope, Eye } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import heroVideo from "@/assets/professional-assessment.mp4.asset.json";
+import heroLab from "@/assets/hero-lab.jpg";
 import comwellHome from "@/assets/comwell-home-leg-v3.jpg.asset.json";
 import productsFlatlay from "@/assets/products-flatlay.jpg";
 import catSupplements from "@/assets/categories/cat-supplements-v2.jpg.asset.json";
@@ -135,15 +135,13 @@ function HomePage() {
 
           <Reveal as="div" direction="left" delay={120} className="relative lg:col-span-6">
             <div className="relative aspect-[4/5] overflow-hidden bg-surface-muted">
-              <video
-                src={heroVideo.url}
-                autoPlay
-                loop
-                muted
-                playsInline
+              <img
+                src={heroLab}
+                alt="上怡生技 ── 國際合規的生醫品質實驗環境"
+                width={1536}
+                height={1920}
                 className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
               />
-
             </div>
             <div className="absolute -bottom-px left-0 right-0 hidden border border-hairline bg-background/90 px-6 py-4 backdrop-blur md:block md:left-auto md:right-6 md:bottom-6 md:w-72">
               <p className="text-[11px] uppercase tracking-[0.22em] text-accent">Quality First</p>
