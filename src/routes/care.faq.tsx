@@ -1,6 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CareSubNav } from "@/components/CareSubNav";
 import { SectionHeading } from "@/components/SectionHeading";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import careFaq from "@/assets/care-faq.jpg";
 
 export const Route = createFileRoute("/care/faq")({
@@ -282,7 +288,7 @@ function FaqPage() {
             description="關於 IPC 醫療級循環治療最常被詢問的疑問。"
           />
 
-          <div className="mt-12 space-y-6">
+          <Accordion type="single" collapsible defaultValue="0" className="mt-12 space-y-6">
             {[
               {
                 q: "醫師常提到的 IPC 是什麼？跟按摩一樣嗎？",
@@ -366,107 +372,112 @@ function FaqPage() {
                 },
               },
             ].map((qa, i) => (
-              <article
+              <AccordionItem
                 key={i}
-                className="border border-hairline bg-surface p-7 md:p-9"
+                value={String(i)}
+                className="border border-hairline bg-surface p-7 md:p-9 overflow-hidden"
               >
-                <h3 className="font-display text-lg leading-snug text-foreground md:text-xl">
-                  <span className="mr-3 text-accent">Q.</span>
-                  {qa.q}
-                </h3>
-                <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted-foreground">
-                  {qa.a.map((p, j) => (
-                    <p key={j}>{p}</p>
-                  ))}
-                </div>
+                <AccordionTrigger className="py-0 font-display text-lg leading-snug text-foreground md:text-xl hover:no-underline [&>svg]:text-accent">
+                  <span className="flex-1 pr-4 text-left">
+                    <span className="mr-3 text-accent">Q.</span>
+                    {qa.q}
+                  </span>
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  <div className="mt-5 space-y-4 text-sm leading-relaxed">
+                    {qa.a.map((p, j) => (
+                      <p key={j}>{p}</p>
+                    ))}
+                  </div>
 
-                {qa.table && (
-                  <div className="mt-6 overflow-x-auto">
-                    <table className="w-full border border-hairline text-sm">
-                      <thead className="bg-surface-muted">
-                        <tr>
-                          {qa.table.head.map((h) => (
-                            <th
-                              key={h}
-                              className="border-b border-hairline px-4 py-3 text-left text-xs tracking-wider text-foreground"
-                            >
-                              {h}
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {qa.table.rows.map((row, ri) => (
-                          <tr key={ri} className="border-t border-hairline">
-                            {row.map((cell, ci) => (
-                              <td
-                                key={ci}
-                                className={`px-4 py-3 ${
-                                  ci === 0
-                                    ? "font-medium text-foreground"
-                                    : "text-muted-foreground"
-                                }`}
+                  {qa.table && (
+                    <div className="mt-6 overflow-x-auto">
+                      <table className="w-full border border-hairline text-sm">
+                        <thead className="bg-surface-muted">
+                          <tr>
+                            {qa.table.head.map((h) => (
+                              <th
+                                key={h}
+                                className="border-b border-hairline px-4 py-3 text-left text-xs tracking-wider text-foreground"
                               >
-                                {cell}
-                              </td>
+                                {h}
+                              </th>
                             ))}
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
-
-                {qa.lists && (
-                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                    {qa.lists.map((l) => (
-                      <div
-                        key={l.h}
-                        className="border-l-2 border-accent bg-surface-muted p-4"
-                      >
-                        <h4 className="font-display text-base text-foreground">{l.h}</h4>
-                        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
-                          {l.items.map((it) => (
-                            <li key={it}>{it}</li>
+                        </thead>
+                        <tbody>
+                          {qa.table.rows.map((row, ri) => (
+                            <tr key={ri} className="border-t border-hairline">
+                              {row.map((cell, ci) => (
+                                <td
+                                  key={ci}
+                                  className={`px-4 py-3 ${
+                                    ci === 0
+                                      ? "font-medium text-foreground"
+                                      : "text-muted-foreground"
+                                  }`}
+                                >
+                                  {cell}
+                                </td>
+                              ))}
+                            </tr>
                           ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
 
-                {qa.steps && (
-                  <ol className="mt-6 grid gap-3 sm:grid-cols-3">
-                    {qa.steps.map(([h, d], si) => (
-                      <li
-                        key={h}
-                        className="border border-hairline bg-surface-muted p-4"
-                      >
-                        <span className="text-[10px] tracking-[0.25em] text-accent">
-                          {String(si + 1).padStart(2, "0")}
-                        </span>
-                        <p className="mt-2 font-display text-base text-foreground">{h}</p>
-                        <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                          {d}
-                        </p>
-                      </li>
-                    ))}
-                  </ol>
-                )}
+                  {qa.lists && (
+                    <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                      {qa.lists.map((l) => (
+                        <div
+                          key={l.h}
+                          className="border-l-2 border-accent bg-surface-muted p-4"
+                        >
+                          <h4 className="font-display text-base text-foreground">{l.h}</h4>
+                          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                            {l.items.map((it) => (
+                              <li key={it}>{it}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
-                {qa.note && (
-                  <div className="mt-6 border border-accent/40 bg-accent/5 p-5">
-                    <p className="text-[11px] tracking-[0.25em] text-accent">
-                      {qa.note.label}
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-foreground">
-                      {qa.note.text}
-                    </p>
-                  </div>
-                )}
-              </article>
+                  {qa.steps && (
+                    <ol className="mt-6 grid gap-3 sm:grid-cols-3">
+                      {qa.steps.map(([h, d], si) => (
+                        <li
+                          key={h}
+                          className="border border-hairline bg-surface-muted p-4"
+                        >
+                          <span className="text-[10px] tracking-[0.25em] text-accent">
+                            {String(si + 1).padStart(2, "0")}
+                          </span>
+                          <p className="mt-2 font-display text-base text-foreground">{h}</p>
+                          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                            {d}
+                          </p>
+                        </li>
+                      ))}
+                    </ol>
+                  )}
+
+                  {qa.note && (
+                    <div className="mt-6 border border-accent/40 bg-accent/5 p-5">
+                      <p className="text-[11px] tracking-[0.25em] text-accent">
+                        {qa.note.label}
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-foreground">
+                        {qa.note.text}
+                      </p>
+                    </div>
+                  )}
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
 
           <p className="mt-12 text-xs leading-relaxed text-muted-foreground">
             ※ 本頁內容為衛教資訊，不取代醫師之診斷、治療或臨床決策。是否適用，仍以醫師臨床判斷與護理師到府評估結果為準。
