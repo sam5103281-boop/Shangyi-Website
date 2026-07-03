@@ -148,7 +148,7 @@ function ArticlePage() {
                           src={img.src}
                           alt={img.alt}
                           loading="lazy"
-                          className={`block h-auto w-full object-contain ${f.images.length > 1 ? "max-h-[400px]" : ""}`}
+                          className={`block h-auto w-full object-contain ${f.images.length > 1 ? "max-h-[400px]" : "max-h-[520px] mx-auto md:max-w-[420px]"}`}
                         />
                       </div>
                     ))}
