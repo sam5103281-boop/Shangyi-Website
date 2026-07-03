@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { CareSubNav } from "@/components/CareSubNav";
 import { SectionHeading } from "@/components/SectionHeading";
-import careHero from "@/assets/care-hero.jpg";
 import careProfessional from "@/assets/care-professional.jpg";
 
 export const Route = createFileRoute("/care/")({
@@ -87,30 +86,19 @@ function CareHubPage() {
   return (
     <>
       <section className="border-b border-hairline bg-surface-muted">
-        <div className="container-page grid gap-10 py-20 md:grid-cols-[1.1fr_1fr] md:items-center md:py-24">
-          <div>
+        <div className="container-page py-20 md:py-24">
+          <div className="max-w-3xl">
             <span className="eyebrow">
               <span className="inline-block h-px w-6 bg-accent" />
               ComWell Home Circulation Care
             </span>
-            <h1 className="mt-5 max-w-3xl font-display text-4xl leading-tight text-foreground md:text-5xl">
+            <h1 className="mt-5 font-display text-4xl leading-tight text-foreground md:text-5xl">
               下肢循環照護
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
               安全，永遠比方便更重要。設備只是工具，真正讓人安心的，是專業是否到位。
               ComWell 透過標準化流程與在地支援，建立讓醫師放心轉介、讓病人安心使用的居家照護模式。
             </p>
-          </div>
-          <div className="relative aspect-[4/3] overflow-hidden border border-hairline bg-surface">
-            <img
-              src={careHero}
-              alt="護理師居家照護下肢循環"
-              width={1600}
-              height={900}
-              className="absolute inset-0 h-full w-full object-cover"
-            fetchPriority="high"
-              decoding="async"
-            />
           </div>
         </div>
       </section>
