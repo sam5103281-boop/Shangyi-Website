@@ -89,26 +89,17 @@ function FaqPage() {
       {/* 照護觀念 */}
       <section id="concept" className="section-pad scroll-mt-24">
         <div className="container-page">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-4">
-              <span className="h-px w-12 bg-accent" />
-              <span className="text-sm font-medium tracking-[0.3em] text-accent">照護觀念</span>
-            </div>
-            <h2 className="mt-6 font-display text-4xl leading-[1.15] text-foreground md:text-5xl">
-              理解循環，<br className="hidden md:block" />
-              才能守護每一步的
-              <span className="relative ml-2 inline-block text-accent">
-                行動力
-                <span className="absolute -bottom-1 left-0 h-[3px] w-full bg-accent/30" />
-              </span>
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
-              從血液循環的基本原理，理解下肢腫脹的成因與何時應該就醫。建立正確認知，是照護行動的第一步。
-            </p>
-          </div>
+          <SectionHeading
+            eyebrow="01 · Care Concept"
+            title="照護觀念"
+            description="從血液循環的基本原理，理解下肢腫脹的成因與何時應該就醫。建立正確認知，是照護行動的第一步。"
+          />
+
+
 
           {/* Core Concept · asymmetric editorial */}
-          <div className="mt-16 grid grid-cols-12 gap-x-8 gap-y-12">
+          <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-12">
+
             <article className="col-span-12 md:col-span-7">
               <div className="border-t border-hairline pt-8">
                 <span className="text-[11px] tracking-[0.28em] text-accent">DEFINITION · 01</span>
@@ -189,7 +180,7 @@ function FaqPage() {
           </div>
 
           {/* Warning Signs · editorial numbered list */}
-          <div className="mt-24 grid grid-cols-12 gap-x-8 gap-y-10 border-y border-hairline py-16">
+          <div className="mt-20 grid grid-cols-12 gap-x-8 gap-y-10 border-y border-hairline py-16">
             <div className="col-span-12 md:col-span-4">
               <div className="md:sticky md:top-24">
                 <span className="text-[11px] tracking-[0.28em] text-accent">
@@ -236,15 +227,16 @@ function FaqPage() {
 
           {/* Methods · layered cards */}
           <div className="mt-20">
-            <div className="mb-10 flex items-end justify-between gap-6 border-b border-hairline pb-4">
+            <div className="mb-10 flex items-end justify-between gap-6 border-b border-hairline pb-5">
               <div>
                 <span className="text-[11px] tracking-[0.28em] text-accent">
                   CARE METHODS
                 </span>
-                <h3 className="mt-2 font-display text-2xl text-foreground">
+                <h3 className="mt-3 font-display text-2xl leading-snug text-foreground md:text-[26px]">
                   三種循環照護途徑
                 </h3>
               </div>
+
               <span className="hidden text-xs tracking-[0.25em] text-muted-foreground md:inline">
                 From daily habit to clinical support
               </span>
@@ -466,15 +458,16 @@ function FaqPage() {
           </div>
 
           <div className="mt-20">
-            <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="mb-10 flex flex-col gap-4 border-b border-hairline pb-5 md:flex-row md:items-end md:justify-between">
               <div>
                 <span className="text-[11px] tracking-[0.28em] text-accent">
                   PRE-USE ASSESSMENT
                 </span>
-                <h3 className="mt-3 font-display text-2xl text-foreground md:text-3xl">
+                <h3 className="mt-3 font-display text-2xl leading-snug text-foreground md:text-[26px]">
                   使用 IPC 前，醫療人員會評估哪些重點？
                 </h3>
               </div>
+
               <span className="hidden text-xs tracking-[0.25em] text-muted-foreground md:inline">
                 Four clinical checkpoints
               </span>
