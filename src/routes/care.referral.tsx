@@ -241,7 +241,7 @@ function ReferralPage() {
                       專人將於 1 個工作日內與您聯繫
                     </p>
                   </div>
-                  <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-accent transition-all group-hover:translate-x-0.5 group-hover:translate-y-[-0.5]" />
+                  <ArrowUpRight className="absolute right-5 top-5 h-4 w-4 text-accent transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </div>
 
