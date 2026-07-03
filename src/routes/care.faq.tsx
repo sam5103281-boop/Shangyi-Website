@@ -72,7 +72,7 @@ function FaqPage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden border border-hairline bg-surface">
             <img
-              src={careFaq}
+              src={careFaq.url}
               alt="下肢循環衛教"
               width={1600}
               height={900}
