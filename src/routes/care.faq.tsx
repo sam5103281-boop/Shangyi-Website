@@ -295,20 +295,21 @@ function FaqPage() {
             description="醫師何時會建議使用 IPC？醫療人員又會評估哪些重點？"
           />
 
-          <div className="mt-12 overflow-hidden border border-hairline bg-surface">
-            <div className="grid md:grid-cols-[280px_1fr]">
-              <div className="bg-primary p-8 text-primary-foreground md:p-10">
-                <span className="text-[11px] tracking-[0.28em] text-primary-foreground/70">
+          <div className="mt-12 border border-hairline bg-surface">
+            <div className="grid gap-y-8 md:grid-cols-[minmax(0,300px)_1fr] md:gap-x-10">
+              <div className="border-b border-hairline p-7 md:border-b-0 md:border-r md:p-9">
+                <span className="text-[11px] tracking-[0.28em] text-accent">
                   CLINICAL INDICATIONS
                 </span>
-                <h3 className="mt-4 font-display text-2xl leading-snug">
-                  醫師在什麼情況下<br />會建議使用 IPC？
+                <h3 className="mt-4 font-display text-2xl leading-snug text-foreground md:text-[26px]">
+                  醫師在什麼情況下<br className="hidden md:block" />會建議使用 IPC？
                 </h3>
-                <p className="mt-5 text-sm leading-relaxed text-primary-foreground/75">
+                <div className="mt-5 h-px w-10 bg-accent" />
+                <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
                   以下為臨床常見的建議情境，實際適用仍需依醫師專業評估。
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2">
                 {[
                   {
                     n: "I",
@@ -333,7 +334,7 @@ function FaqPage() {
                 ].map((c) => (
                   <div
                     key={c.t}
-                    className="group relative flex gap-5 border-b border-r border-hairline p-7 last:border-b-0 md:[&:nth-child(2n)]:border-r-0 md:[&:nth-last-child(-n+2)]:border-b-0"
+                    className="flex gap-5 border-t border-hairline p-6 sm:[&:nth-child(-n+2)]:border-t-0 sm:[&:nth-child(odd)]:border-r sm:border-hairline md:p-7"
                   >
                     <div className="flex-shrink-0">
                       <span className="font-display text-2xl leading-none text-accent">
@@ -341,7 +342,7 @@ function FaqPage() {
                       </span>
                       <div className="mt-2 h-px w-6 bg-accent/60" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h4 className="font-display text-base leading-snug text-foreground">
                         {c.t}
                       </h4>
@@ -353,7 +354,7 @@ function FaqPage() {
                 ))}
               </div>
             </div>
-            <div className="flex items-start gap-4 border-t border-hairline bg-accent/5 px-8 py-5 md:px-10">
+            <div className="flex flex-col gap-2 border-t border-hairline bg-accent/5 px-7 py-5 sm:flex-row sm:items-start sm:gap-4 md:px-9">
               <span className="mt-0.5 text-xs font-semibold tracking-[0.25em] text-accent">
                 重要提醒
               </span>
