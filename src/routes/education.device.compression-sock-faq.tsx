@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
-import { Slider } from "@/components/ui/slider";
 import cover from "@/assets/compression-socks.png.asset.json";
 import pressureImg from "@/assets/sock-pressure-gradient.png.asset.json";
 import circulationImg from "@/assets/sock-circulation.png.asset.json";
