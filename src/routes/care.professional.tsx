@@ -113,7 +113,7 @@ function ProfessionalCarePage() {
             {features.map((f) => (
               <div
                 key={f.title}
-                className="relative flex flex-col gap-3 overflow-hidden border border-hairline bg-surface p-8"
+                className="relative flex flex-col gap-3 overflow-hidden rounded-[0.5pt] border border-hairline bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
               >
                 <h3 className="font-display text-xl text-foreground">{f.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
@@ -132,19 +132,25 @@ function ProfessionalCarePage() {
             description="四個安心關卡，確保居家照護安全無虞。"
           />
           <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((s) => (
+            {steps.map((s, index) => (
               <li
                 key={s.step}
-                className="flex flex-col gap-3 border border-hairline bg-surface p-8"
+                className="group relative flex flex-col gap-3 overflow-hidden rounded-[0.5pt] border border-hairline bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
               >
-                <span className="text-[11px] tracking-[0.25em] text-accent">{s.step}</span>
+                <span className="text-[11px] font-medium tracking-[0.25em] text-accent">
+                  {s.step}
+                </span>
                 <h4 className="font-display text-lg text-foreground">{s.title}</h4>
                 <p className="text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-accent/80 via-[#28bfb0] to-[#2dd4bf]" />
+                <span className="absolute right-3 top-3 font-display text-2xl font-medium text-foreground/[0.04]">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
               </li>
             ))}
           </ol>
 
-          <div className="mt-16 border border-accent/40 bg-accent/5 p-8 md:p-10">
+          <div className="mt-16 rounded-[0.5pt] border border-accent/40 bg-accent/5 p-8 md:p-10">
             <p className="text-xs tracking-[0.25em] text-accent">
               重要提醒｜適用性說明
             </p>
