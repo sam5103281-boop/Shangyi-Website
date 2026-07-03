@@ -511,10 +511,10 @@ function FaqPage() {
                     className="absolute left-0 top-0 h-[3px] w-12 bg-accent"
                   />
 
-                  <div className="flex items-baseline gap-3">
+                  <div className="flex items-baseline justify-between gap-4">
                     <span
                       aria-hidden
-                      className="font-display text-3xl leading-none text-accent"
+                      className="font-display text-5xl leading-none text-accent md:text-[56px]"
                       style={{ fontFeatureSettings: '"tnum"' }}
                     >
                       {e.n}
@@ -523,12 +523,14 @@ function FaqPage() {
                       CHECKPOINT
                     </span>
                   </div>
-                  <h4 className="mt-5 font-display text-lg leading-snug text-foreground">
+                  <div className="mt-6 h-px w-10 bg-accent/40 transition-all duration-300 group-hover:w-16 group-hover:bg-accent" />
+                  <h4 className="mt-6 font-display text-lg leading-snug text-foreground md:text-xl">
                     {e.t}
                   </h4>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                     {e.d}
                   </p>
+
                 </li>
               ))}
             </ol>
