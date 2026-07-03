@@ -113,10 +113,11 @@ function ProfessionalCarePage() {
             {features.map((f) => (
               <div
                 key={f.title}
-                className="flex flex-col gap-3 border border-hairline bg-surface p-8"
+                className="relative flex flex-col gap-3 overflow-hidden border border-hairline bg-surface p-8"
               >
                 <h3 className="font-display text-xl text-foreground">{f.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
+                <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-accent/80 via-[#28bfb0] to-[#2dd4bf]" />
               </div>
             ))}
           </div>
