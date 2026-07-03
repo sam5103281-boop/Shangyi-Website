@@ -242,50 +242,43 @@ function FaqPage() {
               </span>
             </div>
 
-            <div className="grid gap-10 md:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-3 md:gap-8">
               {[
                 {
                   k: "METHOD 01",
                   t: "活動與姿勢調整",
                   d: "最基礎且有效。透過定時抬腿、腳踝運動協助肌肉幫浦運作，從源頭促進血液回流。",
-                  tag: "日常自我照護",
                 },
                 {
                   k: "METHOD 02",
                   t: "彈性壓力輔具",
                   d: "如醫療級彈性襪，利用漸進式壓力支撐靜脈，減少血液淤積並減緩組織液滲出。",
-                  tag: "輔具支持",
                 },
                 {
                   k: "METHOD 03",
                   t: "間歇性氣壓循環 (IPC)",
                   d: "模擬肌肉收縮的物理效果。透過規律的充氣與放氣，為下肢提供動態循環，是臨床上預防血栓的常用輔助方案。",
-                  tag: "臨床輔助",
                 },
-              ].map((m, i) => (
+              ].map((m) => (
                 <article
                   key={m.k}
-                  className={`group relative ${i === 1 ? "md:-mt-6" : ""}`}
+                  className="group relative flex h-full flex-col border-t-[3px] border-foreground bg-surface pt-7 transition-colors duration-300 hover:border-accent focus-within:border-accent"
                 >
-                  <div className="absolute inset-0 translate-x-2 translate-y-2 border border-hairline transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1" />
-                  <div className="relative flex h-full flex-col border border-hairline bg-surface">
-                    <div className="flex flex-1 flex-col p-8">
-                      <span className="text-[11px] tracking-[0.28em] text-accent">
-                        {m.k}
-                      </span>
-                      <h4 className="mt-4 font-display text-xl leading-snug text-foreground">
-                        {m.t}
-                      </h4>
-                      <div className="mt-4 h-px w-8 bg-accent/60" />
-                      <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-                        {m.d}
-                      </p>
-                    </div>
-                    <div className="flex items-center justify-between gap-3 bg-primary px-8 py-4 text-primary-foreground">
-                      <span className="text-sm font-medium tracking-wide">{m.tag}</span>
-                      <span className="text-lg leading-none">→</span>
-                    </div>
+                  <div className="flex flex-1 flex-col px-6 pb-7 md:px-7">
+                    <span className="text-[11px] tracking-[0.28em] text-accent">
+                      {m.k}
+                    </span>
+                    <h4 className="mt-3 font-display text-xl leading-snug text-foreground">
+                      {m.t}
+                    </h4>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                      {m.d}
+                    </p>
                   </div>
+                  <div
+                    aria-hidden
+                    className="h-1.5 w-full bg-accent/25 transition-colors duration-300 group-hover:bg-accent"
+                  />
                 </article>
               ))}
             </div>
