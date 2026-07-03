@@ -136,9 +136,8 @@ function ProfessionalCarePage() {
             {/* Desktop / tablet horizontal flow */}
             <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] md:items-stretch md:gap-4">
               {steps.map((s, index) => (
-                <>
+                <Fragment key={s.step}>
                   <li
-                    key={s.step}
                     className="group relative flex flex-col justify-center gap-3 overflow-hidden rounded-[0.5pt] border border-hairline bg-surface p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
                   >
                     <span className="text-[11px] font-medium tracking-[0.25em] text-accent">
@@ -158,7 +157,7 @@ function ProfessionalCarePage() {
                       </div>
                     </div>
                   )}
-                </>
+                </Fragment>
               ))}
             </div>
 
