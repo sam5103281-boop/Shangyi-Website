@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
-import { Slider } from "@/components/ui/slider";
 import cover from "@/assets/compression-socks.png.asset.json";
 import pressureImg from "@/assets/sock-pressure-gradient.png.asset.json";
 import circulationImg from "@/assets/sock-circulation.png.asset.json";
@@ -75,51 +73,6 @@ const faqs: Array<{
   },
 ];
 
-function ScaledImagePair({ images }: { images: FaqImage[] }) {
-  const [scales, setScales] = useState<number[]>([1, 1]);
-
-  return (
-    <div className="grid gap-6 md:grid-cols-2">
-      {images.map((img, idx) => (
-        <div
-          key={img.src}
-          className="flex flex-col gap-4 rounded-xl border border-hairline bg-white p-4"
-        >
-          <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden">
-            <img
-              src={img.src}
-              alt={img.alt}
-              loading="lazy"
-              className="block max-h-full max-w-full object-contain transition-transform duration-300 ease-out will-change-transform"
-              style={{ transform: `scale(${scales[idx]})` }}
-            />
-          </div>
-          <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs text-muted-foreground">
-              <span>{img.alt}</span>
-              <span className="font-medium tabular-nums" style={{ color: ACCENT }}>
-                {Math.round(scales[idx] * 100)}%
-              </span>
-            </div>
-            <Slider
-              value={[scales[idx]]}
-              min={0.5}
-              max={2}
-              step={0.05}
-              onValueChange={(value) => {
-                const next = [...scales];
-                next[idx] = value[0];
-                setScales(next);
-              }}
-              aria-label={`調整 ${img.alt} 大小`}
-            />
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function ArticlePage() {
   return (
     <article>
@@ -169,7 +122,7 @@ function ArticlePage() {
               <Reveal key={f.title} direction="up" className="border border-hairline bg-background p-8 md:p-10 transition-shadow duration-500 hover:shadow-lg">
                 <p className="text-xs tracking-[0.22em]" style={{ color: ACCENT }}>{f.eyebrow}</p>
                 <h2 className="mt-3 font-display text-2xl text-[#1f2c3a] md:text-[28px]">{f.title}</h2>
-                <div className={`mt-6 grid items-center gap-8 md:grid-cols-[1.1fr_1fr] ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
+                <div className={`mt-6 grid items-center gap-8 ${f.images.length > 1 ? "md:grid-cols-[1fr_1.4fr]" : "md:grid-cols-[1.1fr_1fr]"} ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
                   <div>
                     <div className="space-y-4 text-[15.5px] leading-relaxed text-[#475569]">
                       {f.paragraphs.map((p, i) => (
@@ -185,21 +138,22 @@ function ArticlePage() {
                       </div>
                     )}
                   </div>
-                  {f.images.length > 1 ? (
-                    <ScaledImagePair images={f.images} />
-                  ) : (
-                    <div className="grid gap-6 grid-cols-1">
-                      {f.images.map((img) => (
+                  <div className={`grid gap-6 ${f.images.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}>
+                    {f.images.map((img) => (
+                      <div
+                        key={img.src}
+                        className="flex items-center justify-center overflow-hidden rounded-xl border border-hairline bg-white p-3"
+                      >
                         <img
-                          key={img.src}
                           src={img.src}
                           alt={img.alt}
                           loading="lazy"
-                          className="block w-full h-auto object-contain"
+                          className="block h-auto w-full object-contain transition-transform duration-300 ease-out"
+                          style={{ transform: "scale(1.2)" }}
                         />
-                      ))}
-                    </div>
-                  )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </Reveal>
             );
