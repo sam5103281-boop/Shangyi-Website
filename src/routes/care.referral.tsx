@@ -8,7 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import careReferral from "@/assets/care-referral.jpg";
+import careReferral from "@/assets/care-referral-consult.png.asset.json";
 
 export const Route = createFileRoute("/care/referral")({
   head: () => ({
