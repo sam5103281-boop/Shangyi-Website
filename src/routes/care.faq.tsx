@@ -357,7 +357,7 @@ function FaqPage() {
                   aria-hidden
                   className="absolute left-0 top-0 h-full w-1 bg-[#28bfb0]"
                 />
-                <span className="text-[11px] tracking-[0.28em] text-[#28bfb0]">
+                <span className="text-[11px] tracking-[0.28em] text-[#0e6b61]">
                   CLINICAL INDICATIONS
                 </span>
                 <h3 className="mt-4 font-display text-2xl leading-snug text-foreground md:text-[26px]">
