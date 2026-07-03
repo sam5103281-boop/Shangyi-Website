@@ -379,7 +379,7 @@ function FaqPage() {
                 Four clinical checkpoints
               </span>
             </div>
-            <ol className="grid gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-4">
+            <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
               {[
                 {
                   n: "01",
@@ -402,22 +402,28 @@ function FaqPage() {
                   d: "確認使用者能正確操作，並備有順暢的追蹤與諮詢管道。",
                 },
               ].map((e) => (
-                <li key={e.n} className="group relative pt-10">
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute -top-4 -left-2 z-0 font-display text-[6rem] leading-[0.8] text-accent/15 transition-all duration-500 group-hover:-top-6 group-hover:text-accent/30"
-                    style={{ fontFeatureSettings: '"tnum"' }}
-                  >
-                    {e.n}
-                  </span>
-                  <div className="relative z-10 border-t-2 border-foreground bg-surface pt-6 pl-1">
-                    <h4 className="font-display text-lg leading-snug text-foreground">
-                      {e.t}
-                    </h4>
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                      {e.d}
-                    </p>
+                <li
+                  key={e.n}
+                  className="group relative flex h-full flex-col border-t-2 border-foreground bg-surface pt-6 transition-colors duration-300 hover:border-accent"
+                >
+                  <div className="flex items-baseline gap-3">
+                    <span
+                      aria-hidden
+                      className="font-display text-3xl leading-none text-accent"
+                      style={{ fontFeatureSettings: '"tnum"' }}
+                    >
+                      {e.n}
+                    </span>
+                    <span className="text-[10px] tracking-[0.28em] text-muted-foreground">
+                      CHECKPOINT
+                    </span>
                   </div>
+                  <h4 className="mt-5 font-display text-lg leading-snug text-foreground">
+                    {e.t}
+                  </h4>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    {e.d}
+                  </p>
                 </li>
               ))}
             </ol>
