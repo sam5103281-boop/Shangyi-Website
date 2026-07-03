@@ -80,13 +80,7 @@ const entries: Entry[] = [
   },
 ];
 
-export function SiteSearch({
-  className,
-  label = "搜尋",
-}: {
-  className?: string;
-  label?: string;
-}) {
+export function SiteSearch({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -135,15 +129,11 @@ export function SiteSearch({
         aria-label="開啟搜尋"
         onClick={() => setOpen(true)}
         className={cn(
-          "inline-flex items-center gap-2 rounded-md border border-hairline bg-background px-3 py-2 text-sm text-muted-foreground transition-colors hover:border-accent hover:text-foreground",
+          "inline-flex items-center justify-center rounded-md p-2 text-muted-foreground transition-colors hover:bg-surface-muted hover:text-foreground",
           className,
         )}
       >
-        <Search className="h-4 w-4" />
-        <span>{label}</span>
-        <kbd className="ml-2 hidden rounded border border-hairline bg-surface-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground lg:inline">
-          ⌘K
-        </kbd>
+        <Search className="h-5 w-5" />
       </button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
