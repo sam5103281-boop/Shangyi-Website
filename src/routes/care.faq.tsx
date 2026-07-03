@@ -358,8 +358,9 @@ function FaqPage() {
           />
 
           <div
-            className="overflow-hidden rounded-sm border border-[color-mix(in_oklab,var(--vision-line-green)_35%,transparent)] bg-surface shadow-soft"
+            className="mt-12 overflow-hidden rounded-sm border border-[color-mix(in_oklab,var(--vision-line-green)_35%,transparent)] bg-surface shadow-soft"
           >
+
             <div className="grid gap-y-0 md:grid-cols-[minmax(0,320px)_1fr]">
               <div
                 className="relative border-b border-[color-mix(in_oklab,var(--vision-line-green)_25%,transparent)] p-7 md:border-b-0 md:border-r md:p-9"
