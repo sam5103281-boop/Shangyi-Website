@@ -89,7 +89,7 @@ export const medicalCategories: MedicalCategory[] = [
           "用途：能精準以支撐組織保護傷口，方便診間與居家使用。",
         ],
         usage: [
-          { icon: "hand", text: "撕下外層：撕下外層透明塑膠膜。", image: patchStep1.url },
+          { icon: "hand", text: "撕下外層：撕下外層透明塑膠膜。", image: patchStep1 },
           { icon: "package", text: "浸水濕潤：將貼片浸入水中至完全濕潤。" },
           { icon: "sparkles", text: "置於位置：將貼片置於欲支撐組織之位置，並輕輕按壓以確保黏合皮膚。" },
           { icon: "eye", text: "維持完整：慢慢撕下離型紙以保持貼片完整附著。" },
@@ -129,7 +129,7 @@ export const medicalCategories: MedicalCategory[] = [
           "用途：能精準以支撐組織保護傷口，提供穩固的結構支撐。",
         ],
         usage: [
-          { icon: "hand", text: "撕下外層：撕下外層透明塑膠膜。", image: patchStep1.url },
+          { icon: "hand", text: "撕下外層：撕下外層透明塑膠膜。", image: patchStep1 },
           { icon: "package", text: "浸水濕潤：將貼片浸入水中至完全濕潤。" },
           { icon: "sparkles", text: "置於位置：將貼片置於欲支撐組織之位置，並輕輕按壓以確保黏合皮膚。" },
           { icon: "eye", text: "維持完整：慢慢撕下離型紙以保持貼片完整附著。" },
@@ -169,7 +169,7 @@ export const medicalCategories: MedicalCategory[] = [
           "用途：以支撐組織保護傷口，優雅守護您每一天的自在步伐。",
         ],
         usage: [
-          { icon: "hand", text: "撕下外層：撕下外層透明塑膠膜。", image: patchStep1.url },
+          { icon: "hand", text: "撕下外層：撕下外層透明塑膠膜。", image: patchStep1 },
           { icon: "package", text: "浸水濕潤：將貼片浸入水中至完全濕潤。" },
           { icon: "sparkles", text: "置於位置：將貼片置於欲支撐組織之位置，並輕輕按壓以確保黏合皮膚。" },
           { icon: "eye", text: "維持完整：慢慢撕下離型紙以保持貼片完整附著。" },
@@ -209,7 +209,7 @@ export const medicalCategories: MedicalCategory[] = [
           "用途：能精準以支撐組織保護傷口，提供溫柔且穩固的局部防護。",
         ],
         usage: [
-          { icon: "hand", text: "撕下外層：撕下外層透明塑膠膜。", image: patchStep1.url },
+          { icon: "hand", text: "撕下外層：撕下外層透明塑膠膜。", image: patchStep1 },
           { icon: "package", text: "浸水濕潤：將貼片浸入水中至完全濕潤。" },
           { icon: "sparkles", text: "置於位置：將貼片置於欲支撐組織之位置，並輕輕按壓以確保黏合皮膚。" },
           { icon: "eye", text: "維持完整：慢慢撕下離型紙以保持貼片完整附著。" },
