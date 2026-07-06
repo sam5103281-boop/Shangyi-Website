@@ -49,7 +49,7 @@ export function MilestonesGrid({ items }: { items: Item[] }) {
         aria-hidden="true"
         viewBox="0 0 1000 220"
         preserveAspectRatio="none"
-        className="pointer-events-none absolute inset-x-0 -top-6 hidden h-[260px] w-full md:block"
+        className="pointer-events-none absolute inset-x-0 -top-6 hidden h-[260px] w-full lg:block"
       >
         <defs>
           <linearGradient id="ms-curve" x1="0" y1="0" x2="1" y2="0">
@@ -92,12 +92,12 @@ export function MilestonesGrid({ items }: { items: Item[] }) {
         />
       </svg>
 
-      {/* Mobile: flowing vertical timeline */}
-      <ol className="relative md:hidden">
+      {/* Mobile & Tablet: flowing vertical timeline */}
+      <ol className="relative mx-auto max-w-2xl lg:hidden">
         {/* vertical growing path */}
         <span
           aria-hidden
-          className="absolute left-4 top-2 w-[2px] rounded-full bg-gradient-to-b from-accent/20 via-accent/60 to-accent origin-top"
+          className="absolute left-4 top-2 w-[2px] rounded-full bg-gradient-to-b from-accent/20 via-accent/60 to-accent origin-top sm:left-5 md:left-6"
           style={{
             bottom: 8,
             transform: drawn ? "scaleY(1)" : "scaleY(0)",
@@ -108,11 +108,11 @@ export function MilestonesGrid({ items }: { items: Item[] }) {
           const shown = idx <= active;
           const isLast = idx === items.length - 1;
           return (
-            <li key={m.y} className="relative pb-10 pl-12 last:pb-0">
+            <li key={m.y} className="relative pb-10 pl-12 last:pb-0 sm:pb-12 sm:pl-14 md:pb-14 md:pl-16">
               {/* node dot */}
               <span
                 aria-hidden
-                className={`absolute left-[9px] top-1.5 h-3.5 w-3.5 rounded-full ring-4 ring-accent/10 transition-all duration-500 ${
+                className={`absolute left-[9px] top-1.5 h-3.5 w-3.5 rounded-full ring-4 ring-accent/10 transition-all duration-500 sm:left-[13px] sm:h-4 sm:w-4 md:left-[17px] md:h-[18px] md:w-[18px] ${
                   isLast
                     ? "bg-accent animate-pulse"
                     : "border-2 border-accent bg-surface"
@@ -123,7 +123,7 @@ export function MilestonesGrid({ items }: { items: Item[] }) {
                 }}
               />
               <div
-                className={isLast ? "rounded-xl border border-accent/20 bg-surface p-4 shadow-sm shadow-accent/10" : ""}
+                className={isLast ? "rounded-xl border border-accent/20 bg-surface p-4 shadow-sm shadow-accent/10 sm:p-5 md:p-6" : ""}
                 style={{
                   opacity: shown ? 1 : 0,
                   transform: shown ? "translateY(0)" : "translateY(16px)",
@@ -132,7 +132,7 @@ export function MilestonesGrid({ items }: { items: Item[] }) {
                 }}
               >
                 <span
-                  className="block font-display text-xs font-bold uppercase tracking-widest text-accent"
+                  className="block font-display text-xs font-bold uppercase tracking-widest text-accent sm:text-sm md:text-base"
                   style={{
                     opacity: idx <= yearShown ? 1 : 0,
                     transform:
@@ -142,10 +142,10 @@ export function MilestonesGrid({ items }: { items: Item[] }) {
                 >
                   {m.y}
                 </span>
-                <span className="mt-1 block font-display text-base font-bold text-foreground">
+                <span className="mt-1 block font-display text-base font-bold text-foreground sm:mt-1.5 sm:text-lg md:mt-2 md:text-xl">
                   {m.h}
                 </span>
-                <span className="mt-2 block text-sm leading-relaxed text-muted-foreground">
+                <span className="mt-2 block text-sm leading-relaxed text-muted-foreground sm:mt-2.5 sm:text-[15px] md:mt-3 md:text-base">
                   {m.t}
                 </span>
               </div>
@@ -155,7 +155,7 @@ export function MilestonesGrid({ items }: { items: Item[] }) {
       </ol>
 
       {/* Desktop: original 5-column grid */}
-      <ol className="relative hidden gap-px bg-hairline md:grid md:grid-cols-5">
+      <ol className="relative hidden gap-px bg-hairline lg:grid lg:grid-cols-5">
         {items.map((m, idx) => {
           const shown = idx <= active;
           return (
