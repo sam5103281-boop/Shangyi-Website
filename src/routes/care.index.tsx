@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { CareSubNav } from "@/components/CareSubNav";
 import { SectionHeading } from "@/components/SectionHeading";
-import careProfessional from "@/assets/care-professional.jpg";
+import careProfessional from "@/assets/comwell-home-scene.jpg.asset.json";
 
 export const Route = createFileRoute("/care/")({
   head: () => ({
@@ -130,7 +130,7 @@ function CareHubPage() {
         <div className="container-page section-pad">
           <div className="relative aspect-[21/9] overflow-hidden border border-hairline bg-surface">
             <img
-              src={careProfessional}
+              src={careProfessional.url}
               alt="ComWell 居家循環照護設備"
               width={1600}
               height={685}
