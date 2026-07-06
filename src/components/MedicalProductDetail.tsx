@@ -158,7 +158,7 @@ export function MedicalProductDetail({ category, product }: Props) {
                           {step.image ? (
                             <span
                               aria-hidden
-                              className="block h-10 w-10 bg-current"
+                              className="block h-12 w-12 bg-current"
                               style={{
                                 WebkitMaskImage: `url(${step.image})`,
                                 maskImage: `url(${step.image})`,
@@ -171,7 +171,7 @@ export function MedicalProductDetail({ category, product }: Props) {
                               }}
                             />
                           ) : (
-                            <Icon className="h-10 w-10" />
+                            <Icon className="h-11 w-11" />
                           )}
                         </div>
                         <div className="flex-1">
