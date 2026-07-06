@@ -8,6 +8,7 @@ import indVenousStasis from "@/assets/indications/venous-stasis.png";
 import indLegUlcer from "@/assets/indications/leg-ulcer.png";
 import indCvi from "@/assets/indications/cvi.png";
 import indEdema from "@/assets/indications/edema.png";
+import patchStep1 from "@/assets/usage/patch-step-1.svg.asset.json";
 
 export type MedicalSpec = {
   size?: string;
