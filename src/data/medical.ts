@@ -93,9 +93,9 @@ export const medicalCategories: MedicalCategory[] = [
         ],
         usage: [
           { icon: "hand", text: "撕下外層：撕下外層透明塑膠膜。", image: patchStep1 },
-          { icon: "package", text: "浸水濕潤：將貼片浸入水中至完全濕潤。" },
-          { icon: "sparkles", text: "置於位置：將貼片置於欲支撐組織之位置，並輕輕按壓以確保黏合皮膚。" },
-          { icon: "eye", text: "維持完整：慢慢撕下離型紙以保持貼片完整附著。" },
+          { icon: "package", text: "浸水濕潤：將貼片浸入水中至完全濕潤。", image: patchStep2 },
+          { icon: "sparkles", text: "置於位置：將貼片置於欲支撐組織之位置，並輕輕按壓以確保黏合皮膚。", image: patchStep3 },
+          { icon: "eye", text: "維持完整：慢慢撕下離型紙以保持貼片完整附著。", image: patchStep4 },
         ],
         spec: {
           size: "6 入／盒",
@@ -133,9 +133,9 @@ export const medicalCategories: MedicalCategory[] = [
         ],
         usage: [
           { icon: "hand", text: "撕下外層：撕下外層透明塑膠膜。", image: patchStep1 },
-          { icon: "package", text: "浸水濕潤：將貼片浸入水中至完全濕潤。" },
-          { icon: "sparkles", text: "置於位置：將貼片置於欲支撐組織之位置，並輕輕按壓以確保黏合皮膚。" },
-          { icon: "eye", text: "維持完整：慢慢撕下離型紙以保持貼片完整附著。" },
+          { icon: "package", text: "浸水濕潤：將貼片浸入水中至完全濕潤。", image: patchStep2 },
+          { icon: "sparkles", text: "置於位置：將貼片置於欲支撐組織之位置，並輕輕按壓以確保黏合皮膚。", image: patchStep3 },
+          { icon: "eye", text: "維持完整：慢慢撕下離型紙以保持貼片完整附著。", image: patchStep4 },
         ],
         spec: {
           size: "6 入／盒",
@@ -173,9 +173,9 @@ export const medicalCategories: MedicalCategory[] = [
         ],
         usage: [
           { icon: "hand", text: "撕下外層：撕下外層透明塑膠膜。", image: patchStep1 },
-          { icon: "package", text: "浸水濕潤：將貼片浸入水中至完全濕潤。" },
-          { icon: "sparkles", text: "置於位置：將貼片置於欲支撐組織之位置，並輕輕按壓以確保黏合皮膚。" },
-          { icon: "eye", text: "維持完整：慢慢撕下離型紙以保持貼片完整附著。" },
+          { icon: "package", text: "浸水濕潤：將貼片浸入水中至完全濕潤。", image: patchStep2 },
+          { icon: "sparkles", text: "置於位置：將貼片置於欲支撐組織之位置，並輕輕按壓以確保黏合皮膚。", image: patchStep3 },
+          { icon: "eye", text: "維持完整：慢慢撕下離型紙以保持貼片完整附著。", image: patchStep4 },
         ],
         spec: {
           size: "6 入／盒",
@@ -213,9 +213,9 @@ export const medicalCategories: MedicalCategory[] = [
         ],
         usage: [
           { icon: "hand", text: "撕下外層：撕下外層透明塑膠膜。", image: patchStep1 },
-          { icon: "package", text: "浸水濕潤：將貼片浸入水中至完全濕潤。" },
-          { icon: "sparkles", text: "置於位置：將貼片置於欲支撐組織之位置，並輕輕按壓以確保黏合皮膚。" },
-          { icon: "eye", text: "維持完整：慢慢撕下離型紙以保持貼片完整附著。" },
+          { icon: "package", text: "浸水濕潤：將貼片浸入水中至完全濕潤。", image: patchStep2 },
+          { icon: "sparkles", text: "置於位置：將貼片置於欲支撐組織之位置，並輕輕按壓以確保黏合皮膚。", image: patchStep3 },
+          { icon: "eye", text: "維持完整：慢慢撕下離型紙以保持貼片完整附著。", image: patchStep4 },
         ],
         spec: {
           size: "6 入／盒",
