@@ -90,7 +90,7 @@ function ProfessionalCarePage() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden border border-hairline bg-surface">
             <img
-              src={careProfessional}
+              src={careProfessional.url}
               alt="ComWell 居家循環照護設備"
               width={1600}
               height={900}
