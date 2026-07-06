@@ -315,8 +315,8 @@ export const medicalCategories: MedicalCategory[] = [
         name: "「康威爾」攜帶式間歇充氣加壓系統",
         en: "\"ComWell\" Portable Intermittent Pneumatic Compression System",
         tagline: "【台灣製造】．IPC 間歇充氣加壓系統。",
-        imageUrl: "/__l5e/assets-v1/ced2a1ca-d1db-4c16-8f9a-f51b84ac02aa/comwell-hero.webp",
-        imageSrcSet: "/__l5e/assets-v1/ced2a1ca-d1db-4c16-8f9a-f51b84ac02aa/comwell-hero.webp 1200w",
+        imageUrl: "/__l5e/assets-v1/bde11b60-2c11-4949-a0ba-a7a2e054aac9/comwell-official.jpg",
+        imageSrcSet: "/__l5e/assets-v1/bde11b60-2c11-4949-a0ba-a7a2e054aac9/comwell-official.jpg 1200w",
         imageFit: "contain",
         featureIcons: [
           { src: "/__l5e/assets-v1/87f215e4-3e09-4a3f-a60d-f9226365a9de/comwell-icon-refill.png", title: "智能回填量測", en: "Smart Refill Sensing" },
