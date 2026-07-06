@@ -92,7 +92,70 @@ export function MilestonesGrid({ items }: { items: Item[] }) {
         />
       </svg>
 
-      <ol className="relative grid gap-px bg-hairline md:grid-cols-5">
+      {/* Mobile: flowing vertical timeline */}
+      <ol className="relative md:hidden">
+        {/* vertical growing path */}
+        <span
+          aria-hidden
+          className="absolute left-4 top-2 w-[2px] rounded-full bg-gradient-to-b from-accent/20 via-accent/60 to-accent origin-top"
+          style={{
+            bottom: 8,
+            transform: drawn ? "scaleY(1)" : "scaleY(0)",
+            transition: "transform 2000ms cubic-bezier(0.65, 0, 0.35, 1)",
+          }}
+        />
+        {items.map((m, idx) => {
+          const shown = idx <= active;
+          const isLast = idx === items.length - 1;
+          return (
+            <li key={m.y} className="relative pb-10 pl-12 last:pb-0">
+              {/* node dot */}
+              <span
+                aria-hidden
+                className={`absolute left-[9px] top-1.5 h-3.5 w-3.5 rounded-full ring-4 ring-accent/10 transition-all duration-500 ${
+                  isLast
+                    ? "bg-accent animate-pulse"
+                    : "border-2 border-accent bg-surface"
+                }`}
+                style={{
+                  opacity: idx <= yearShown ? 1 : 0,
+                  transform: idx <= yearShown ? "scale(1)" : "scale(0.4)",
+                }}
+              />
+              <div
+                className={isLast ? "rounded-xl border border-accent/20 bg-surface p-4 shadow-sm shadow-accent/10" : ""}
+                style={{
+                  opacity: shown ? 1 : 0,
+                  transform: shown ? "translateY(0)" : "translateY(16px)",
+                  transition:
+                    "opacity 700ms cubic-bezier(0.22,1,0.36,1), transform 700ms cubic-bezier(0.22,1,0.36,1)",
+                }}
+              >
+                <span
+                  className="block font-display text-xs font-bold uppercase tracking-widest text-accent"
+                  style={{
+                    opacity: idx <= yearShown ? 1 : 0,
+                    transform:
+                      idx <= yearShown ? "translateY(0)" : "translateY(8px)",
+                    transition: "all 600ms cubic-bezier(0.22,1,0.36,1)",
+                  }}
+                >
+                  {m.y}
+                </span>
+                <span className="mt-1 block font-display text-base font-bold text-foreground">
+                  {m.h}
+                </span>
+                <span className="mt-2 block text-sm leading-relaxed text-muted-foreground">
+                  {m.t}
+                </span>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+
+      {/* Desktop: original 5-column grid */}
+      <ol className="relative hidden gap-px bg-hairline md:grid md:grid-cols-5">
         {items.map((m, idx) => {
           const shown = idx <= active;
           return (
@@ -109,7 +172,6 @@ export function MilestonesGrid({ items }: { items: Item[] }) {
                 transitionDuration: "900ms",
               }}
             >
-              {/* accent top line that grows in */}
               <span
                 aria-hidden
                 className="absolute left-0 top-0 h-[2px] bg-accent transition-all duration-700 ease-out"
@@ -160,6 +222,7 @@ export function MilestonesGrid({ items }: { items: Item[] }) {
           );
         })}
       </ol>
+
     </div>
   );
 }
