@@ -378,6 +378,10 @@ export const medicalCategories: MedicalCategory[] = [
           "請諮詢專業醫護人員後選擇合適尺寸與款式。",
           "請依使用說明正確穿著，並注意皮膚狀況。",
         ],
+        tutorials: [
+          { id: "_Tvz8HyNh60", title: "短襪穿著教學" },
+          { id: "P9IosJk41ow", title: "長襪穿著教學" },
+        ],
         channels: ["醫院／診所"],
       },
       {
