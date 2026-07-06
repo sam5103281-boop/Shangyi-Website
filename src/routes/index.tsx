@@ -227,7 +227,7 @@ function HomePage() {
                 params={cat.params as never}
                 className="group flex bg-surface transition-all duration-300"
               >
-                <div className="aspect-[3/4] w-1/3 shrink-0 overflow-hidden bg-surface-muted">
+                <div className="aspect-[3/4] w-[45%] shrink-0 overflow-hidden bg-surface-muted md:w-1/3">
                   <img
                     src={cat.image}
                     alt={cat.title}
@@ -241,7 +241,7 @@ function HomePage() {
                     style={{ objectPosition: (cat as { imagePosition?: string }).imagePosition ?? "center" }}
                   />
                 </div>
-                <div className="flex w-2/3 flex-col justify-between border-y border-r border-hairline p-8">
+                <div className="flex w-[55%] flex-col justify-between border-y border-r border-hairline p-8 md:w-2/3">
                   <div>
                     <div className="mb-6 flex items-center gap-3">
                       <span className="text-[10px] font-bold tracking-[0.2em] text-accent">{cat.n}</span>
