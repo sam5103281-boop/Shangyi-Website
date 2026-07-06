@@ -66,6 +66,7 @@ const categories = [
     desc: "100%精製水，無添加配方，提供日常與術前術後眼睛周圍護理之安全選項。",
     icon: Eye,
     image: catEye.url,
+    imagePosition: "30% center",
     to: "/products/$category/$slug" as const,
     params: { category: "eye-pads", slug: "visiony" },
   },
