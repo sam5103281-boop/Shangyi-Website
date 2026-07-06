@@ -230,6 +230,31 @@ export function MedicalProductDetail({ category, product }: Props) {
               </div>
             )}
 
+            {product.tutorials && product.tutorials.length > 0 && (
+              <div className="mt-10">
+                <p className="text-xs tracking-[0.22em] text-accent">使用教學</p>
+                <div className="mt-4 grid gap-6 sm:grid-cols-2">
+                  {product.tutorials.map((v) => (
+                    <div key={v.id}>
+                      <div className="relative aspect-video w-full overflow-hidden border border-hairline bg-black">
+                        <iframe
+                          src={`https://www.youtube.com/embed/${v.id}`}
+                          title={v.title}
+                          loading="lazy"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="absolute inset-0 h-full w-full"
+                        />
+                      </div>
+                      <p className="mt-2 text-xs tracking-wide text-muted-foreground">
+                        {v.title}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {product.faq && product.faq.length > 0 && (
               <div className="mt-10">
                 <p className="text-xs tracking-[0.22em] text-accent">產品常見問題 Q&amp;A</p>
