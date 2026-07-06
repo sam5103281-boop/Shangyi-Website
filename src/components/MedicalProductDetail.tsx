@@ -154,8 +154,12 @@ export function MedicalProductDetail({ category, product }: Props) {
                     const Icon = usageIconMap[step.icon];
                     return (
                       <li key={i} className="flex gap-4 bg-surface p-5">
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-accent/30 bg-accent/5 text-accent">
-                          <Icon className="h-5 w-5" />
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-accent/30 bg-accent/5 text-accent overflow-hidden">
+                          {step.image ? (
+                            <img src={step.image} alt="" loading="lazy" decoding="async" className="h-full w-full object-contain" />
+                          ) : (
+                            <Icon className="h-5 w-5" />
+                          )}
                         </div>
                         <div className="flex-1">
                           <p className="text-[11px] tracking-[0.28em] text-accent">
