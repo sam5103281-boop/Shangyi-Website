@@ -45,6 +45,7 @@ const categories = [
     desc: "成分透明、第三方檢驗，針對臨床營養補充需求設計。",
     icon: FlaskConical,
     image: catSupplements.url,
+    imagePosition: "30% center",
     to: "/products/supplements" as const,
     params: undefined,
   },
