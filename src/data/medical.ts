@@ -9,6 +9,9 @@ import indLegUlcer from "@/assets/indications/leg-ulcer.png";
 import indCvi from "@/assets/indications/cvi.png";
 import indEdema from "@/assets/indications/edema.png";
 const patchStep1 = "/patch-step-1-fit.svg";
+const patchStep2 = "/patch-step-2.svg";
+const patchStep3 = "/patch-step-3.svg";
+const patchStep4 = "/patch-step-4.svg";
 
 export type MedicalSpec = {
   size?: string;
