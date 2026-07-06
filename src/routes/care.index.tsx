@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { CareSubNav } from "@/components/CareSubNav";
 import { SectionHeading } from "@/components/SectionHeading";
-import careProfessional from "@/assets/care-professional.jpg";
+import careProfessional from "@/assets/comwell-home-scene.jpg.asset.json";
 
 export const Route = createFileRoute("/care/")({
   head: () => ({
