@@ -158,7 +158,7 @@ export function MedicalProductDetail({ category, product }: Props) {
                           {step.image ? (
                             <span
                               aria-hidden
-                              className="block h-full w-full bg-current"
+                              className="block h-full w-full scale-[1.15] bg-current"
                               style={{
                                 WebkitMaskImage: `url(${step.image})`,
                                 maskImage: `url(${step.image})`,
