@@ -171,7 +171,7 @@ export function MedicalProductDetail({ category, product }: Props) {
                               }}
                             />
                           ) : (
-                            <Icon className="h-12 w-12 scale-[1.2]" />
+                            <Icon className="h-12 w-12 scale-[1.02]" />
                           )}
                         </div>
                         <div className="flex-1">
