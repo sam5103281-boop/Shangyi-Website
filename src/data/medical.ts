@@ -264,10 +264,10 @@ export const medicalCategories: MedicalCategory[] = [
           "全方位多功能護理：適用於嬰幼兒眼周、口唇清潔，哺乳媽咪授乳前後護理，以及生理期與日常擦拭之貼心首選。",
         ],
         usage: [
-          { icon: "hand", text: "使用前請先洗手，取出單包清淨棉後，沿著虛線處撕開，開封後請盡速用完。" },
-          { icon: "package", text: "每包含 2 枚折疊的清淨棉，內含充足的精製水以保持濕潤，必要時可稍微擠乾後再使用。" },
-          { icon: "sparkles", text: "用清淨棉擦拭分泌物或清潔用，請勿來回擦拭或重複使用，用後應立即丟棄。" },
-          { icon: "eye", text: "點眼藥水時，可把清淨棉放在下眼皮處輕輕往下拉，點完後可用清淨棉輕拭溢出的眼藥水。" },
+          { icon: "hand", image: "/__l5e/assets-v1/492102b0-1404-4f5c-894d-e7a5f8f188b3/visiony-step-1-wash.png", text: "使用前請先洗手，取出單包清淨棉後，沿著虛線處撕開，開封後請盡速用完。" },
+          { icon: "package", image: "/__l5e/assets-v1/28117c1d-adbf-48a2-8023-a90d131e39ba/visiony-step-2-open.png", text: "每包含 2 枚折疊的清淨棉，內含充足的精製水以保持濕潤，必要時可稍微擠乾後再使用。" },
+          { icon: "sparkles", image: "/__l5e/assets-v1/12795842-d541-4a0d-813f-09e31268fed5/visiony-step-3-wipe.png", text: "用清淨棉擦拭分泌物或清潔用，請勿來回擦拭或重複使用，用後應立即丟棄。" },
+          { icon: "eye", image: "/__l5e/assets-v1/08babd31-9208-4b48-8547-87bd511cbefa/visiony-step-4-drops.png", text: "點眼藥水時，可把清淨棉放在下眼皮處輕輕往下拉，點完後可用清淨棉輕拭溢出的眼藥水。" },
         ],
         spec: {
           size: "2 枚 × 40 包／盒，單片約 7.5 × 7.5 cm",
