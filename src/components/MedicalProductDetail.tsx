@@ -154,9 +154,22 @@ export function MedicalProductDetail({ category, product }: Props) {
                     const Icon = usageIconMap[step.icon];
                     return (
                       <li key={i} className="flex gap-4 bg-surface p-5">
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-accent/30 bg-accent/5 text-accent overflow-hidden">
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-accent/30 bg-accent/5 text-accent">
                           {step.image ? (
-                            <img src={step.image} alt="" loading="lazy" decoding="async" className="h-full w-full object-contain" />
+                            <span
+                              aria-hidden
+                              className="block h-6 w-6 bg-current"
+                              style={{
+                                WebkitMaskImage: `url(${step.image})`,
+                                maskImage: `url(${step.image})`,
+                                WebkitMaskRepeat: "no-repeat",
+                                maskRepeat: "no-repeat",
+                                WebkitMaskPosition: "center",
+                                maskPosition: "center",
+                                WebkitMaskSize: "contain",
+                                maskSize: "contain",
+                              }}
+                            />
                           ) : (
                             <Icon className="h-5 w-5" />
                           )}
