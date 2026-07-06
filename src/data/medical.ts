@@ -45,6 +45,7 @@ export type MedicalProduct = {
   channels?: string[];
   faq?: FaqItem[];
   videos?: { id: string; title?: string }[];
+  tutorials?: { id: string; title: string }[];
   featureIcons?: { src: string; title: string; en: string }[];
 };
 
