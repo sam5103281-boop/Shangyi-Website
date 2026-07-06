@@ -88,13 +88,13 @@ function ProfessionalCarePage() {
               我們透過標準化流程與在地支援，建立一套讓醫師放心轉介、讓病人安心使用的模式。
             </p>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden border border-hairline bg-surface">
+          <div className="relative flex items-center justify-center overflow-hidden border border-hairline bg-surface p-6">
             <img
               src={careProfessional.url}
               alt="ComWell 居家循環照護設備"
               width={1600}
               height={900}
-              className="absolute inset-0 h-full w-full object-cover"
+              className="h-auto max-h-[420px] w-auto max-w-full object-contain"
               fetchPriority="high"
               decoding="async"
             />
