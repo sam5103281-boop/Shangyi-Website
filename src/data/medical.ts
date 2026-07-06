@@ -18,7 +18,7 @@ export type MedicalSpec = {
   deviceClass?: string;
 };
 
-export type UsageStep = { icon: "hand" | "package" | "sparkles" | "eye"; text: string };
+export type UsageStep = { icon: "hand" | "package" | "sparkles" | "eye"; text: string; image?: string };
 export type FaqItem = { q: string; a: string };
 
 export type UseItem = { text: string; icon?: string };
