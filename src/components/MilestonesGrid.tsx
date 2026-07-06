@@ -49,7 +49,7 @@ export function MilestonesGrid({ items }: { items: Item[] }) {
         aria-hidden="true"
         viewBox="0 0 1000 220"
         preserveAspectRatio="none"
-        className="pointer-events-none absolute inset-x-0 -top-6 hidden h-[260px] w-full md:block"
+        className="pointer-events-none absolute inset-x-0 -top-6 hidden h-[260px] w-full lg:block"
       >
         <defs>
           <linearGradient id="ms-curve" x1="0" y1="0" x2="1" y2="0">
