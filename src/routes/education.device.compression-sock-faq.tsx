@@ -142,7 +142,7 @@ function ArticlePage() {
                     {f.images.map((img) => (
                       <div
                         key={img.src}
-                        className={`flex items-center justify-center ${f.images.length > 1 ? "mx-auto aspect-[3/2] w-full max-w-xl" : ""}`}
+                        className={`flex items-center justify-center ${f.images.length > 1 ? "mx-auto aspect-[16/10] w-full max-w-lg" : ""}`}
                       >
                         <img
                           src={img.src}
