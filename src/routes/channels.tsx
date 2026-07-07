@@ -112,34 +112,58 @@ function ChannelsPage() {
       </section>
 
       {/* Important Warning */}
-      <section className="section-pad bg-surface-muted">
-        <div className="container-page">
-          <div className="relative overflow-hidden border-l-4 border-accent bg-primary p-8 shadow-elevated md:p-12">
-            <div className="absolute right-0 top-0 h-32 w-32 translate-x-8 translate-y-[-50%] rounded-full bg-accent/10 blur-3xl" />
-            <div className="relative flex items-start gap-5 md:gap-6">
-              <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-accent/15">
-                <AlertTriangle className="h-7 w-7 text-accent" />
+      <section className="section-pad relative overflow-hidden bg-surface-muted">
+        {/* Background watermark: warning as atmosphere */}
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden">
+          <AlertTriangle
+            className="h-[28rem] w-[28rem] translate-x-1/4 translate-y-1/4 text-primary/[0.035] md:h-[40rem] md:w-[40rem] lg:h-[52rem] lg:w-[52rem]"
+            strokeWidth={0.5}
+            aria-hidden="true"
+          />
+        </div>
+
+        <div className="container-page relative">
+          <div className="relative max-w-5xl">
+            {/* Vertical accent spine */}
+            <div className="absolute left-0 top-2 h-full w-px bg-gradient-to-b from-accent via-accent/40 to-transparent" />
+
+            <div className="pl-8 md:pl-12">
+              {/* Header */}
+              <span className="eyebrow">
+                <span className="inline-block h-px w-6 bg-accent" />
+                Important Notice
+              </span>
+              <h2 className="mt-5 font-display text-3xl leading-tight text-foreground md:text-4xl">
+                重要警示<span className="text-accent"> · </span>請務必留意
+              </h2>
+
+              {/* Body split into two columns for editorial density */}
+              <div className="mt-8 grid gap-6 md:grid-cols-2 md:gap-10">
+                <p className="text-base leading-relaxed text-muted-foreground">
+                  本公司之保健品與貼片類產品，完全不在任何網路平台銷售，
+                  亦未授權任何網站、電商平台、社群頁面或個人帳號進行販售、代購、展示、報價或產品資訊說明。
+                </p>
+                <p className="text-base leading-relaxed text-muted-foreground">
+                  目前網路上偶有以本公司產品名義進行販售之情形，其中不乏仿冒、來源不明或刻意誤導之不實銷售資訊，
+                  此類行為與本公司無任何關聯。
+                </p>
               </div>
-              <div className="flex-1 space-y-5">
-                <h2 className="font-display text-2xl leading-tight text-primary-foreground md:text-3xl">
-                  重要警示．請務必留意
-                </h2>
-                <div className="space-y-4 text-sm leading-relaxed text-primary-foreground/85 md:text-base">
-                  <p>
-                    本公司之保健品與貼片類產品，完全不在任何網路平台銷售，
-                    亦未授權任何網站、電商平台、社群頁面或個人帳號進行販售、代購、展示、報價或產品資訊說明。
-                  </p>
-                  <p className="text-primary-foreground/70">
-                    目前網路上偶有以本公司產品名義進行販售之情形，其中不乏仿冒、來源不明或刻意誤導之不實銷售資訊，
-                    此類行為與本公司無任何關聯。
-                  </p>
-                </div>
-                <div className="rounded-lg border border-accent/30 bg-accent/10 p-4 md:p-5">
-                  <p className="text-sm leading-relaxed text-primary-foreground md:text-base">
-                    <span className="font-semibold text-accent">請特別留意：</span>
-                    透過網路平台購買之產品，可能存在來源不明、保存條件不符、內容物不一致或使用風險，
-                    恐嚴重影響您的使用安全與消費者權益。為保障您的健康與消費權益，請勿於網路上購買或詢價。
-                  </p>
+
+              {/* Highlighted callout card */}
+              <div className="mt-10 border-l-2 border-accent bg-surface p-6 shadow-soft md:mt-12 md:p-8 lg:p-10">
+                <div className="flex items-start gap-4 md:gap-5">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent/10 md:h-12 md:w-12">
+                    <AlertTriangle className="h-5 w-5 text-accent md:h-6 md:w-6" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-wider text-accent md:text-base">
+                      請特別留意
+                    </p>
+                    <p className="mt-2 text-base leading-relaxed text-foreground md:text-lg">
+                      透過網路平台購買之產品，可能存在來源不明、保存條件不符、內容物不一致或使用風險，
+                      恐嚴重影響您的使用安全與消費者權益。為保障您的健康與消費權益，請勿於網路上購買或詢價。
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
