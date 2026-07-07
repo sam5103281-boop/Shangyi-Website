@@ -98,7 +98,7 @@ function FaqPage() {
 
 
           {/* Core Concept · asymmetric editorial */}
-          <div className="mt-12 grid grid-cols-12 gap-x-8 gap-y-12">
+          <div className="mt-12 grid grid-cols-1 gap-y-12 md:grid-cols-12 md:gap-x-8">
 
             <article className="col-span-12 md:col-span-7">
               <div className="border-t border-hairline pt-8">
