@@ -64,7 +64,7 @@ function ChannelsPage() {
             <span className="inline-block h-px w-6 bg-accent" />
             Authorized Channels
           </span>
-          <h1 className="mt-5 max-w-5xl font-display text-4xl leading-tight text-foreground md:text-5xl whitespace-nowrap">
+          <h1 className="mt-5 max-w-5xl font-display text-3xl leading-tight text-foreground sm:text-4xl md:text-5xl">
             合作通路　僅於指定醫療相關通路供應
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
