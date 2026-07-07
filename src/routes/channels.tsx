@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionHeading } from "@/components/SectionHeading";
-import { AlertTriangle, CheckCircle2, ShieldCheck, Stethoscope } from "lucide-react";
+import { AlertTriangle, CheckCircle2, ShieldCheck } from "lucide-react";
+import qualityLab from "@/assets/quality-assurance-lab.png.asset.json";
 
 export const Route = createFileRoute("/channels")({
   head: () => ({
@@ -149,42 +150,89 @@ function ChannelsPage() {
       {/* Medical Device Distribution */}
       <section className="section-pad bg-surface-muted">
         <div className="container-page">
-          <SectionHeading
-            eyebrow="Medical Device Distribution & Use Notice"
-            title="醫療設備通路與使用聲明"
-            description="本公司所提供之醫療設備屬專業醫用器材，導入、操作、使用與後續管理皆須依循相關醫療器材法規及臨床安全指引，由具備專業資格之醫療人員進行評估與指導。"
-          />
-
-          <div className="mt-10 grid gap-px bg-hairline md:grid-cols-2">
-            <div className="flex flex-col gap-4 bg-surface p-8">
-              <Stethoscope className="h-6 w-6 text-accent" />
-              <p className="font-display text-lg text-foreground">
-                授權合作通路
-              </p>
-              <ul className="space-y-2 text-sm leading-relaxed text-muted-foreground">
-                <li>
-                  <span className="font-medium text-foreground">醫療院所：</span>
-                  包含大型醫院、專科診所等合法醫療機構。
-                </li>
-                <li>
-                  <span className="font-medium text-foreground">專業評估與導入：</span>
-                  設備須經醫師或合格醫療人員進行適用性評估，並由專業人員完成設備設定、操作說明與使用衛教。
-                </li>
-              </ul>
+          <div className="overflow-hidden rounded-3xl border border-hairline bg-surface shadow-elevated lg:flex">
+            {/* Image side */}
+            <div className="relative lg:w-1/2 min-h-[380px] lg:min-h-[600px]">
+              <img
+                src={qualityLab.url}
+                alt="醫療設備品質管理與專業檢驗"
+                width={1200}
+                height={800}
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent" />
+              <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12">
+                <span className="eyebrow mb-4 text-primary-foreground">
+                  <span className="inline-block h-px w-8 bg-accent" />
+                  Medical Device Distribution
+                </span>
+                <h2 className="font-display text-3xl font-bold leading-tight text-primary-foreground md:text-4xl">
+                  醫療設備通路
+                  <br />
+                  與使用聲明
+                </h2>
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-primary-foreground/80 md:text-base">
+                  本公司所提供之醫療設備屬專業醫用器材，導入、操作、使用與後續管理皆須依循相關醫療器材法規及臨床安全指引。
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col gap-4 bg-surface p-8">
-              <AlertTriangle className="h-6 w-6 text-accent" />
-              <p className="font-display text-lg text-foreground">
-                通路與販售限制
-              </p>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                基於醫療安全與專業管理原則，本公司醫療設備未開放於一般零售通路陳列或販售，
-                亦未授權於任何網路平台進行販售、展示、報價或交易行為。
-              </p>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                凡經由非本公司授權通路取得之醫療設備，可能因來源、保存或運輸條件，以及專業評估與操作指導資訊不足，
-                影響使用安全與相關權益。本公司將不提供相關維修與後續技術支援服務。
-              </p>
+
+            {/* Content side */}
+            <div className="flex flex-col justify-center p-8 md:p-12 lg:w-1/2">
+              <div className="mb-10 md:mb-12">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-accent/30 text-[10px] font-bold text-accent">
+                    01
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-foreground md:text-2xl">
+                    授權合作通路
+                  </h3>
+                </div>
+                <div className="mt-5 space-y-4 pl-12">
+                  <div className="border-l-2 border-accent/20 pl-4">
+                    <p className="text-sm font-medium text-foreground md:text-base">
+                      醫療院所
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                      包含大型醫院、專科診所等合法醫療機構。
+                    </p>
+                  </div>
+                  <div className="border-l-2 border-accent/20 pl-4">
+                    <p className="text-sm font-medium text-foreground md:text-base">
+                      專業評估與導入
+                    </p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                      設備須經醫師或合格醫療人員進行適用性評估，並由專業人員完成設備設定、操作說明與使用衛教。
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex items-center gap-4">
+                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-destructive/30 text-[10px] font-bold text-destructive">
+                    02
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-foreground md:text-2xl">
+                    通路與販售限制
+                  </h3>
+                </div>
+                <div className="mt-5 space-y-4 pl-12">
+                  <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+                    基於醫療安全與專業管理原則，本公司醫療設備未開放於一般零售通路陳列或販售，
+                    亦未授權於任何網路平台進行販售、展示、報價或交易行為。
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+                    凡經由非本公司授權通路取得之醫療設備，可能因來源、保存或運輸條件，以及專業評估與操作指導資訊不足，
+                    影響使用安全與相關權益。
+                    <span className="font-medium text-destructive">
+                      本公司將不提供相關維修與後續技術支援服務。
+                    </span>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
