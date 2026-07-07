@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionHeading } from "@/components/SectionHeading";
 import { AlertTriangle, CheckCircle2, ShieldCheck, Stethoscope } from "lucide-react";
-import qualityLab from "@/assets/quality-assurance-lab.png.asset.json";
+import qualityLab from "@/assets/medical-handshake.png.asset.json";
 
 export const Route = createFileRoute("/channels")({
   head: () => ({
