@@ -36,11 +36,37 @@ function ContactPage() {
   const { topic: initialTopic } = Route.useSearch();
   const [topic, setTopic] = useState<string>(initialTopic ?? "b2b");
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const sendContact = useServerFn(submitContactForm);
 
-
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
+    setError(null);
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      await sendContact({
+        data: {
+          topic: topic as ContactTopic,
+          name: String(formData.get("name") ?? ""),
+          org: String(formData.get("org") ?? ""),
+          title: String(formData.get("title") ?? ""),
+          phone: String(formData.get("phone") ?? ""),
+          email: String(formData.get("email") ?? ""),
+          message: String(formData.get("message") ?? ""),
+        },
+      });
+      setSent(true);
+      form.reset();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "提交失敗，請稍後再試");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
