@@ -148,13 +148,19 @@ function ContactPage() {
                 我已了解所提供之個人資料將僅用於本次諮詢回覆，並同意上怡生技之隱私權保護政策。
               </label>
 
+              {error && (
+                <p className="text-sm text-destructive" role="alert">
+                  {error}
+                </p>
+              )}
+
               <button
                 type="submit"
-                disabled={sent}
+                disabled={sent || isSubmitting}
                 className="group inline-flex items-center justify-center gap-2 self-start bg-primary px-6 py-3 text-sm font-medium tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-60"
               >
-                {sent ? "已送出，感謝您的聯繫" : "送出諮詢"}
-                {!sent && (
+                {sent ? "已送出，感謝您的聯繫" : isSubmitting ? "送出中..." : "送出諮詢"}
+                {!sent && !isSubmitting && (
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 )}
               </button>
