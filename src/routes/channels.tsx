@@ -183,14 +183,14 @@ function ChannelsPage() {
             <div className="flex flex-col justify-center p-8 md:p-12 lg:w-1/2">
               <div className="mb-10 md:mb-12">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-accent/30 text-[10px] font-bold text-accent">
-                    01
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
+                    <Stethoscope className="h-5 w-5" />
                   </div>
                   <h3 className="font-display text-xl font-bold text-foreground md:text-2xl">
                     授權合作通路
                   </h3>
                 </div>
-                <div className="mt-5 space-y-4 pl-12">
+                <div className="mt-5 space-y-4">
                   <div className="border-l-2 border-accent/20 pl-4">
                     <p className="text-sm font-medium text-foreground md:text-base">
                       醫療院所
@@ -212,14 +212,14 @@ function ChannelsPage() {
 
               <div>
                 <div className="flex items-center gap-4">
-                  <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-destructive/30 text-[10px] font-bold text-destructive">
-                    02
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-destructive/10 text-destructive">
+                    <AlertTriangle className="h-5 w-5" />
                   </div>
                   <h3 className="font-display text-xl font-bold text-foreground md:text-2xl">
                     通路與販售限制
                   </h3>
                 </div>
-                <div className="mt-5 space-y-4 pl-12">
+                <div className="mt-5 space-y-4">
                   <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
                     基於醫療安全與專業管理原則，本公司醫療設備未開放於一般零售通路陳列或販售，
                     亦未授權於任何網路平台進行販售、展示、報價或交易行為。
