@@ -142,13 +142,13 @@ function ArticlePage() {
                     {f.images.map((img) => (
                       <div
                         key={img.src}
-                        className="flex items-center justify-center"
+                        className={`flex items-center justify-center ${f.images.length > 1 ? "mx-auto aspect-[3/2] w-full max-w-xl" : ""}`}
                       >
                         <img
                           src={img.src}
                           alt={img.alt}
                           loading="lazy"
-                          className={`block h-auto w-full object-contain ${f.images.length > 1 ? "max-h-[400px]" : "max-h-[520px] mx-auto md:max-w-[420px]"}`}
+                          className={`block object-contain ${f.images.length > 1 ? "h-full w-full" : "mx-auto h-auto w-full max-h-[520px] md:max-w-[420px]"}`}
                         />
                       </div>
                     ))}
