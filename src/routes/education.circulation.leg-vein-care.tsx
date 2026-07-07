@@ -427,7 +427,7 @@ function ArticlePage() {
 
                       <span
                         aria-hidden
-                        className="absolute left-0 top-0 h-full w-[2px] origin-top scale-y-0 transition-transform duration-500 group-hover:scale-y-100"
+                        className="absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
                         style={{ background: ALERT_INK }}
                       />
                     </Reveal>
