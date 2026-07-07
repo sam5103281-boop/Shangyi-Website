@@ -184,7 +184,7 @@ function HomePage() {
                     delay={i * 80}
                     direction="right"
 
-                    className="group relative flex flex-col border-l border-hairline pl-5 transition-colors hover:border-accent"
+                    className="group relative flex flex-col border-l-2 border-accent/70 pl-5 transition-colors hover:border-accent"
                   >
                     <span className="text-[10px] tracking-[0.28em] text-muted-foreground">
                       {String(i + 1).padStart(2, "0")} · CERT
