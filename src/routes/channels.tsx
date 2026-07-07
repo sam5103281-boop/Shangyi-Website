@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionHeading } from "@/components/SectionHeading";
-import { AlertTriangle, CheckCircle2, ShieldCheck, Stethoscope } from "lucide-react";
+import { AlertTriangle, CheckCircle2, Hospital, ShieldCheck } from "lucide-react";
 import qualityLab from "@/assets/medical-handshake.png.asset.json";
 
 export const Route = createFileRoute("/channels")({
@@ -184,7 +184,7 @@ function ChannelsPage() {
               <div className="mb-10 md:mb-12">
                 <div className="flex items-center gap-4">
                   <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
-                    <Stethoscope className="h-5 w-5" />
+                    <Hospital className="h-5 w-5" />
                   </div>
                   <h3 className="font-display text-xl font-bold text-foreground md:text-2xl">
                     授權合作通路
