@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Building2, FileText, Heart } from "lucide-react";
+import { submitContactForm } from "@/lib/contact.functions";
 
 type ContactTopic = "b2b" | "spec" | "comwell";
 
@@ -34,11 +36,37 @@ function ContactPage() {
   const { topic: initialTopic } = Route.useSearch();
   const [topic, setTopic] = useState<string>(initialTopic ?? "b2b");
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const sendContact = useServerFn(submitContactForm);
 
-
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
+    setError(null);
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      await sendContact({
+        data: {
+          topic: topic as ContactTopic,
+          name: String(formData.get("name") ?? ""),
+          org: String(formData.get("org") ?? ""),
+          title: String(formData.get("title") ?? ""),
+          phone: String(formData.get("phone") ?? ""),
+          email: String(formData.get("email") ?? ""),
+          message: String(formData.get("message") ?? ""),
+        },
+      });
+      setSent(true);
+      form.reset();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "提交失敗，請稍後再試");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -120,13 +148,19 @@ function ContactPage() {
                 我已了解所提供之個人資料將僅用於本次諮詢回覆，並同意上怡生技之隱私權保護政策。
               </label>
 
+              {error && (
+                <p className="text-sm text-destructive" role="alert">
+                  {error}
+                </p>
+              )}
+
               <button
                 type="submit"
-                disabled={sent}
+                disabled={sent || isSubmitting}
                 className="group inline-flex items-center justify-center gap-2 self-start bg-primary px-6 py-3 text-sm font-medium tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-60"
               >
-                {sent ? "已送出，感謝您的聯繫" : "送出諮詢"}
-                {!sent && (
+                {sent ? "已送出，感謝您的聯繫" : isSubmitting ? "送出中..." : "送出諮詢"}
+                {!sent && !isSubmitting && (
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 )}
               </button>
