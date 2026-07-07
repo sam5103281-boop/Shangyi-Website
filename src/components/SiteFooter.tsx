@@ -78,11 +78,48 @@ export function SiteFooter() {
 
         <div className="hairline-divider mt-14" />
 
-        <div className="mt-6 flex flex-col items-start justify-between gap-3 text-xs text-muted-foreground md:flex-row md:items-center">
-          <p>© {new Date().getFullYear()} 上怡生技醫藥有限公司 SHANG YI BIOPHARMA　保留所有權利</p>
-          <p className="tracking-wider">
-            醫療器材販賣業許可執照
-          </p>
+        <div className="mt-6 flex flex-col justify-between gap-4 text-xs text-muted-foreground md:flex-row md:items-center">
+          <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-6">
+            <p>© {new Date().getFullYear()} 上怡生技醫藥有限公司 SHANG YI BIOPHARMA　保留所有權利</p>
+            <p className="tracking-wider">
+              醫療器材販賣業許可執照
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://line.me/ti/p/@shangyi"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LINE"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-hairline bg-surface text-muted-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.03 2 10.82c0 2.58 1.21 4.93 3.17 6.63l.01 2.57c0 .31.37.49.62.29l2.34-1.95c.97.26 1.99.41 3.05.41 5.52 0 10-4.03 10-8.82S17.52 2 12 2zm4.94 8.34h-1.22c-.17 0-.31.14-.31.31v3.1c0 .17.14.31.31.31h1.22c.17 0 .31-.14.31-.31v-3.1a.31.31 0 0 0-.31-.31zM8.34 9.65h1.22c.17 0 .31.14.31.31v1.35h1.44V9.96c0-.17.14-.31.31-.31h1.22c.17 0 .31.14.31.31v3.1c0 .17-.14.31-.31.31h-1.22a.31.31 0 0 1-.31-.31v-1.35H9.88v1.35c0 .17-.14.31-.31.31H8.34a.31.31 0 0 1-.31-.31v-3.1c0-.17.14-.31.31-.31zm7.78 0h1.22c.17 0 .31.14.31.31v3.1c0 .17-.14.31-.31.31h-1.22a.31.31 0 0 1-.31-.31v-3.1c0-.17.14-.31.31-.31z" />
+              </svg>
+            </a>
+            <a
+              href="https://www.facebook.com/shangyi"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-hairline bg-surface text-muted-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+            <a
+              href="https://www.youtube.com/@shangyi"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-hairline bg-surface text-muted-foreground transition-colors hover:border-accent hover:text-accent"
+            >
+              <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
