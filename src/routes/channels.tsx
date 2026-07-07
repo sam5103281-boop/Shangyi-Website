@@ -64,7 +64,7 @@ function ChannelsPage() {
             <span className="inline-block h-px w-6 bg-accent" />
             Authorized Channels
           </span>
-          <h1 className="mt-5 max-w-5xl font-display text-4xl leading-tight text-foreground md:text-5xl whitespace-nowrap">
+          <h1 className="mt-5 max-w-5xl font-display text-3xl leading-tight text-foreground sm:text-4xl md:text-5xl">
             合作通路　僅於指定醫療相關通路供應
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
@@ -116,7 +116,7 @@ function ChannelsPage() {
         {/* Background watermark: warning as atmosphere */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden">
           <AlertTriangle
-            className="h-[28rem] w-[28rem] translate-x-1/4 translate-y-1/4 text-primary/[0.035] md:h-[40rem] md:w-[40rem] lg:h-[52rem] lg:w-[52rem]"
+            className="hidden h-[28rem] w-[28rem] translate-x-1/4 translate-y-1/4 text-primary/[0.035] md:block md:h-[40rem] md:w-[40rem] lg:h-[52rem] lg:w-[52rem]"
             strokeWidth={0.5}
             aria-hidden="true"
           />
