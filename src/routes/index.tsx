@@ -222,50 +222,57 @@ function HomePage() {
 
 
           <div className="mt-14 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
-            {categories.map((cat) => (
-              <Link
+            {categories.map((cat, i) => (
+              <Reveal
                 key={cat.n}
-                to={cat.to}
-                params={cat.params as never}
-                className="group flex bg-surface transition-all duration-300"
+                as="div"
+                direction="up"
+                delay={i * 100}
+                distance={16}
               >
-                <div className="aspect-[3/4] w-[45%] shrink-0 overflow-hidden bg-surface-muted md:w-1/3">
-                  <img
-                    src={cat.image}
-                    alt={cat.title}
-                    width={640}
-                    height={832}
-                    loading="lazy"
-                    decoding="async"
-                    className={`h-full w-full transition-transform duration-700 group-hover:scale-105 ${
-                      (cat as { imageFit?: string }).imageFit === "contain" ? "object-contain" : "object-cover"
-                    }`}
-                    style={{ objectPosition: (cat as { imagePosition?: string }).imagePosition ?? "center" }}
-                  />
-                </div>
-                <div className="flex w-[55%] flex-col justify-between border-y border-r border-hairline p-8 md:w-2/3">
-                  <div>
-                    <div className="mb-6 flex items-center gap-3">
-                      <span className="text-[10px] font-bold tracking-[0.2em] text-accent">{cat.n}</span>
-                      <span className="h-px w-4 bg-hairline transition-all duration-500 group-hover:w-10 group-hover:bg-accent" />
-                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
-                        {cat.code}
+                <Link
+                  to={cat.to}
+                  params={cat.params as never}
+                  className="group flex bg-surface transition-all duration-300"
+                >
+                  <div className="aspect-[3/4] w-[45%] shrink-0 overflow-hidden bg-surface-muted md:w-1/3">
+                    <img
+                      src={cat.image}
+                      alt={cat.title}
+                      width={640}
+                      height={832}
+                      loading="lazy"
+                      decoding="async"
+                      className={`h-full w-full transition-transform duration-700 group-hover:scale-105 ${
+                        (cat as { imageFit?: string }).imageFit === "contain" ? "object-contain" : "object-cover"
+                      }`}
+                      style={{ objectPosition: (cat as { imagePosition?: string }).imagePosition ?? "center" }}
+                    />
+                  </div>
+                  <div className="flex w-[55%] flex-col justify-between border-y border-r border-hairline p-8 md:w-2/3">
+                    <div>
+                      <div className="mb-6 flex items-center gap-3">
+                        <span className="text-[10px] font-bold tracking-[0.2em] text-accent">{cat.n}</span>
+                        <span className="h-px w-4 bg-hairline transition-all duration-500 group-hover:w-10 group-hover:bg-accent" />
+                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                          {cat.code}
+                        </span>
+                      </div>
+                      <h3 className="mb-3 font-display text-xl font-medium tracking-tight text-foreground">
+                        {cat.title}
+                      </h3>
+                      <p className="max-w-[28ch] text-sm leading-relaxed text-muted-foreground">
+                        {cat.desc}
+                      </p>
+                    </div>
+                    <div className="pt-6">
+                      <span className="inline-block border-b border-foreground pb-0.5 text-[10px] font-bold uppercase tracking-[0.2em] text-foreground transition-colors group-hover:border-accent group-hover:text-accent">
+                        查看詳情
                       </span>
                     </div>
-                    <h3 className="mb-3 font-display text-xl font-medium tracking-tight text-foreground">
-                      {cat.title}
-                    </h3>
-                    <p className="max-w-[28ch] text-sm leading-relaxed text-muted-foreground">
-                      {cat.desc}
-                    </p>
                   </div>
-                  <div className="pt-6">
-                    <span className="inline-block border-b border-foreground pb-0.5 text-[10px] font-bold uppercase tracking-[0.2em] text-foreground transition-colors group-hover:border-accent group-hover:text-accent">
-                      查看詳情
-                    </span>
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              </Reveal>
             ))}
           </div>
 
