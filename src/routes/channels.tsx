@@ -116,7 +116,7 @@ function ChannelsPage() {
         {/* Background watermark: warning as atmosphere */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-end overflow-hidden">
           <AlertTriangle
-            className="h-[28rem] w-[28rem] translate-x-1/4 translate-y-1/4 text-primary/[0.035] md:h-[40rem] md:w-[40rem] lg:h-[52rem] lg:w-[52rem]"
+            className="hidden h-[28rem] w-[28rem] translate-x-1/4 translate-y-1/4 text-primary/[0.035] md:block md:h-[40rem] md:w-[40rem] lg:h-[52rem] lg:w-[52rem]"
             strokeWidth={0.5}
             aria-hidden="true"
           />
