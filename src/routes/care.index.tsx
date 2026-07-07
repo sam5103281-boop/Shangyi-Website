@@ -156,18 +156,37 @@ function CareHubPage() {
             title="ComWell 如何陪您開始？"
             description="四個安心關卡，確保居家照護安全無虞。"
           />
-          <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((s) => (
-              <li
-                key={s.step}
-                className="flex flex-col gap-3 border border-hairline bg-surface p-8"
-              >
-                <span className="text-[11px] tracking-[0.25em] text-accent">{s.step}</span>
-                <h4 className="font-display text-lg text-foreground">{s.title}</h4>
-                <p className="text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
-              </li>
+          <ol className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline shadow-elevated sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((s, i) => (
+              <Reveal key={s.step} as="li" delay={i * 90} direction="up" distance={16}>
+                <div className="group relative flex h-full flex-col bg-surface p-8 transition-colors duration-500 hover:bg-accent/[0.04] lg:p-10">
+                  <div className="mb-8 flex items-baseline gap-4">
+                    <span className="font-display text-5xl leading-none text-hairline transition-colors duration-500 group-hover:text-accent/30 lg:text-6xl">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="h-px flex-1 bg-hairline transition-colors duration-500 group-hover:bg-accent/40" />
+                    <span className="text-[11px] font-semibold tracking-[0.25em] text-accent">
+                      STEP
+                    </span>
+                  </div>
+                  <h4 className="mb-3 font-display text-xl text-foreground transition-transform duration-300 group-hover:translate-x-1 lg:text-2xl">
+                    {s.title}
+                  </h4>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {s.desc}
+                  </p>
+                  <div className="mt-auto pt-8">
+                    <div className="h-[2px] w-10 origin-left scale-x-0 rounded-full bg-accent transition-transform duration-500 group-hover:scale-x-100" />
+                  </div>
+                </div>
+              </Reveal>
             ))}
           </ol>
+          <div className="mt-12 flex justify-center gap-1.5" aria-hidden="true">
+            <span className="h-[3px] w-8 rounded-full bg-accent/25" />
+            <span className="h-[3px] w-14 rounded-full bg-accent" />
+            <span className="h-[3px] w-8 rounded-full bg-accent/25" />
+          </div>
         </div>
       </section>
 
