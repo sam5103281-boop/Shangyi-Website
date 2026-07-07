@@ -111,28 +111,35 @@ function ChannelsPage() {
       </section>
 
       {/* Important Warning */}
-      <section className="section-pad">
+      <section className="section-pad bg-surface-muted">
         <div className="container-page">
-          <div className="border border-accent/40 bg-accent/5 p-8 md:p-10">
-            <div className="flex items-start gap-4">
-              <AlertTriangle className="mt-1 h-6 w-6 flex-shrink-0 text-accent" />
-              <div className="space-y-4">
-                <p className="font-display text-xl text-foreground md:text-2xl">
+          <div className="relative overflow-hidden border-l-4 border-accent bg-primary p-8 shadow-elevated md:p-12">
+            <div className="absolute right-0 top-0 h-32 w-32 translate-x-8 translate-y-[-50%] rounded-full bg-accent/10 blur-3xl" />
+            <div className="relative flex items-start gap-5 md:gap-6">
+              <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-accent/15">
+                <AlertTriangle className="h-7 w-7 text-accent" />
+              </div>
+              <div className="flex-1 space-y-5">
+                <h2 className="font-display text-2xl leading-tight text-primary-foreground md:text-3xl">
                   重要警示．請務必留意
-                </p>
-                <p className="text-sm leading-relaxed text-foreground/85 md:text-base">
-                  本公司之保健品與貼片類產品，完全不在任何網路平台銷售，
-                  亦未授權任何網站、電商平台、社群頁面或個人帳號進行販售、代購、展示、報價或產品資訊說明。
-                </p>
-                <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-                  目前網路上偶有以本公司產品名義進行販售之情形，其中不乏仿冒、來源不明或刻意誤導之不實銷售資訊，
-                  此類行為與本公司無任何關聯。
-                </p>
-                <p className="text-sm leading-relaxed text-foreground md:text-base">
-                  <span className="font-medium">請特別留意：</span>
-                  透過網路平台購買之產品，可能存在來源不明、保存條件不符、內容物不一致或使用風險，
-                  恐嚴重影響您的使用安全與消費者權益。為保障您的健康與消費權益，請勿於網路上購買或詢價。
-                </p>
+                </h2>
+                <div className="space-y-4 text-sm leading-relaxed text-primary-foreground/85 md:text-base">
+                  <p>
+                    本公司之保健品與貼片類產品，完全不在任何網路平台銷售，
+                    亦未授權任何網站、電商平台、社群頁面或個人帳號進行販售、代購、展示、報價或產品資訊說明。
+                  </p>
+                  <p className="text-primary-foreground/70">
+                    目前網路上偶有以本公司產品名義進行販售之情形，其中不乏仿冒、來源不明或刻意誤導之不實銷售資訊，
+                    此類行為與本公司無任何關聯。
+                  </p>
+                </div>
+                <div className="rounded-lg border border-accent/30 bg-accent/10 p-4 md:p-5">
+                  <p className="text-sm leading-relaxed text-primary-foreground md:text-base">
+                    <span className="font-semibold text-accent">請特別留意：</span>
+                    透過網路平台購買之產品，可能存在來源不明、保存條件不符、內容物不一致或使用風險，
+                    恐嚴重影響您的使用安全與消費者權益。為保障您的健康與消費權益，請勿於網路上購買或詢價。
+                  </p>
+                </div>
               </div>
             </div>
           </div>
