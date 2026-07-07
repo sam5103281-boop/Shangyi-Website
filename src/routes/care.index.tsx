@@ -113,15 +113,22 @@ function CareHubPage() {
             description="居家循環照護不該只是「把機器帶回家」，而是需要具備臨床經驗的專業人員，為每一位使用者把關。"
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {reasons.map((r) => (
-              <div
-                key={r.title}
-                className="flex flex-col gap-3 border border-hairline bg-surface p-8"
-              >
-                <h3 className="font-display text-xl text-foreground">{r.title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{r.desc}</p>
-              </div>
-            ))}
+            {reasons.map((r, index) => {
+              const Icon = [PackageOpen, ClipboardCheck, MapPin][index];
+              return (
+                <div
+                  key={r.title}
+                  className="group relative flex flex-col gap-4 overflow-hidden rounded-lg border border-hairline bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
+                >
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent transition-colors group-hover:bg-accent/15">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="font-display text-xl text-foreground">{r.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{r.desc}</p>
+                  <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-accent/40 via-accent to-accent/40" />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
