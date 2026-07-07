@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Building2, FileText, Heart } from "lucide-react";
+import { submitContactForm } from "@/lib/contact.functions";
 
 type ContactTopic = "b2b" | "spec" | "comwell";
 
