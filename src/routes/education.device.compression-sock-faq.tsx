@@ -140,21 +140,19 @@ function ArticlePage() {
                         </div>
                       )}
                     </div>
-                    <div className="relative flex items-center justify-center overflow-hidden rounded-2xl border border-hairline bg-surface p-3 md:p-6 shadow-sm">
+                    <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-6">
                       <img
                         src={f.images[1].src}
                         alt={f.images[1].alt}
                         loading="lazy"
-                        className="h-auto max-h-[240px] w-full object-contain md:max-h-[360px]"
+                        className="h-[120px] w-auto object-contain md:h-[180px]"
                       />
-                      <div className="absolute right-1.5 top-1.5 md:right-5 md:top-5 grid h-16 w-16 place-items-center rounded-lg border border-hairline bg-surface p-1 shadow-sm sm:h-20 sm:w-20 md:h-40 md:w-40 md:rounded-2xl md:p-2">
-                        <img
-                          src={f.images[0].src}
-                          alt={f.images[0].alt}
-                          loading="lazy"
-                          className="h-full w-full object-contain"
-                        />
-                      </div>
+                      <img
+                        src={f.images[0].src}
+                        alt={f.images[0].alt}
+                        loading="lazy"
+                        className="h-[120px] w-auto object-contain md:h-[180px]"
+                      />
                     </div>
                   </div>
                 ) : (
