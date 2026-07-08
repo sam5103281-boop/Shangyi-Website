@@ -97,24 +97,26 @@ function ClinicalSpecPair({ f }: { f: FaqItem }) {
         )}
       </div>
 
-      {/* 兩張圖片統一以「相同高度」呈現，object-contain 會自然保留原始長寬比，
-          因此短襪永遠看起來比長襪短、比例一致。
-          Mobile: 短襪在上、長襪在下（flex-col-reverse 反轉 DOM 順序）。
-          Tablet (md)：同樣上下堆疊，高度加大以看清細節。
-          Desktop (lg)：左右並排。 */}
-      <div className="flex flex-col-reverse items-center justify-center gap-6 lg:grid lg:h-auto lg:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] lg:items-center lg:gap-8">
-        <img
-          src={longImg.src}
-          alt={longImg.alt}
-          loading="lazy"
-          className="block h-[260px] w-auto max-w-full object-contain md:h-[340px] lg:h-auto lg:max-h-[180px] lg:w-full"
-        />
-        <img
-          src={shortImg.src}
-          alt={shortImg.alt}
-          loading="lazy"
-          className="block h-[260px] w-auto max-w-full object-contain md:h-[340px] lg:h-auto lg:max-h-[180px] lg:w-full"
-        />
+      {/* 每張圖放在等寬等高的容器內、object-contain 置中，
+          不論原始長寬比為何，兩張圖片視覺份量都相同、跨裝置比例一致。 */}
+      <div className="grid grid-cols-1 items-center gap-4 lg:grid-cols-2 lg:gap-6">
+        {/* 短襪在上（mobile/tablet），桌機在左 */}
+        <div className="flex h-[220px] w-full items-center justify-center md:h-[300px] lg:h-[200px]">
+          <img
+            src={shortImg.src}
+            alt={shortImg.alt}
+            loading="lazy"
+            className="max-h-full max-w-full object-contain"
+          />
+        </div>
+        <div className="flex h-[220px] w-full items-center justify-center md:h-[300px] lg:h-[200px]">
+          <img
+            src={longImg.src}
+            alt={longImg.alt}
+            loading="lazy"
+            className="max-h-full max-w-full object-contain"
+          />
+        </div>
       </div>
     </div>
   );
