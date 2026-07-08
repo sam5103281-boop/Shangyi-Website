@@ -97,11 +97,10 @@ function ClinicalSpecPair({ f }: { f: FaqItem }) {
         )}
       </div>
 
-      {/* 每張圖放在等寬等高的容器內、object-contain 置中，
-          不論原始長寬比為何，兩張圖片視覺份量都相同、跨裝置比例一致。 */}
+      {/* 短襪原圖較方正、長襪較細長，因此縮小短襪容器（手機 160px / 平板 200px），
+          長襪容器維持較大（240px / 320px），視覺份量才會相近；桌機兩者等寬等高。 */}
       <div className="grid grid-cols-1 items-center gap-4 lg:grid-cols-2 lg:gap-6">
-        {/* 短襪在上（mobile/tablet），桌機在左 */}
-        <div className="flex h-[220px] w-full items-center justify-center md:h-[300px] lg:h-[200px]">
+        <div className="mx-auto flex h-[160px] w-full max-w-[240px] items-center justify-center md:h-[200px] md:max-w-[280px] lg:h-[200px] lg:max-w-none">
           <img
             src={shortImg.src}
             alt={shortImg.alt}
@@ -109,7 +108,7 @@ function ClinicalSpecPair({ f }: { f: FaqItem }) {
             className="max-h-full max-w-full object-contain"
           />
         </div>
-        <div className="flex h-[220px] w-full items-center justify-center md:h-[300px] lg:h-[200px]">
+        <div className="mx-auto flex h-[240px] w-full items-center justify-center md:h-[320px] lg:h-[200px]">
           <img
             src={longImg.src}
             alt={longImg.alt}
