@@ -118,42 +118,79 @@ function ArticlePage() {
         <div className="container-page space-y-10">
           {faqs.map((f, idx) => {
             const reverse = idx % 2 === 1;
+            const isPair = f.images.length > 1;
             return (
-              <Reveal key={f.title} direction="up" className="border border-hairline bg-background p-8 md:p-10 transition-shadow duration-500 hover:shadow-lg">
+              <Reveal key={f.title} direction="up" className={`border border-hairline bg-background p-8 md:p-10 transition-shadow duration-500 hover:shadow-lg ${isPair ? "rounded-2xl" : ""}`}>
                 <p className="text-xs tracking-[0.22em]" style={{ color: ACCENT }}>{f.eyebrow}</p>
                 <h2 className="mt-3 font-display text-2xl text-[#1f2c3a] md:text-[28px]">{f.title}</h2>
-                <div className={`mt-6 gap-8 ${f.images.length > 1 ? "grid items-center md:grid-cols-[1fr_1.5fr]" : "grid items-center md:grid-cols-[1.1fr_1fr]"} ${f.images.length > 1 ? "" : reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
-                  <div>
-                    <div className="space-y-4 text-[15.5px] leading-relaxed text-[#475569]">
-                      {f.paragraphs.map((p, i) => (
-                        <p key={i}>{p}</p>
-                      ))}
-                    </div>
-                    {f.callout && (
-                      <div
-                        className="mt-6 border-l-[3px] py-2 pl-5 text-[15px] leading-relaxed text-[#1f2c3a]"
-                        style={{ borderColor: ACCENT, background: ACCENT_SOFT }}
-                      >
-                        {f.callout}
+                {isPair ? (
+                  <div className="mt-5 grid gap-8 md:grid-cols-[1fr_1.5fr] md:items-start">
+                    <div>
+                      <div className="space-y-4 text-[15.5px] leading-relaxed text-[#475569]">
+                        {f.paragraphs.map((p, i) => (
+                          <p key={i}>{p}</p>
+                        ))}
                       </div>
-                    )}
-                  </div>
-                  <div className="grid gap-8">
-                    {f.images.map((img) => (
-                      <div
-                        key={img.src}
-                        className={`flex items-center justify-center ${f.images.length > 1 ? "aspect-[2/1] w-full max-w-2xl mx-auto" : ""}`}
-                      >
+                      {f.callout && (
+                        <div
+                          className="mt-6 border-l-[3px] py-2 pl-5 text-[15px] leading-relaxed text-[#1f2c3a]"
+                          style={{ borderColor: ACCENT, background: ACCENT_SOFT }}
+                        >
+                          {f.callout}
+                        </div>
+                      )}
+                    </div>
+                    <div className="relative flex items-center justify-center overflow-hidden rounded-2xl border border-hairline bg-surface p-3 md:p-6 shadow-sm">
+                      <img
+                        src={f.images[1].src}
+                        alt={f.images[1].alt}
+                        loading="lazy"
+                        className="h-auto max-h-[240px] w-full object-contain md:max-h-[360px]"
+                      />
+                      <div className="absolute right-1.5 top-1.5 md:right-5 md:top-5 grid h-16 w-16 place-items-center rounded-lg border border-hairline bg-surface p-1 shadow-sm sm:h-20 sm:w-20 md:h-40 md:w-40 md:rounded-2xl md:p-2">
                         <img
-                          src={img.src}
-                          alt={img.alt}
+                          src={f.images[0].src}
+                          alt={f.images[0].alt}
                           loading="lazy"
-                          className={`block object-contain ${f.images.length > 1 ? "h-full w-full" : "mx-auto h-auto w-full max-h-[520px] md:max-w-[420px]"}`}
+                          className="h-full w-full object-contain"
                         />
                       </div>
-                    ))}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className={`mt-6 gap-8 grid items-center md:grid-cols-[1.1fr_1fr] ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
+                    <div>
+                      <div className="space-y-4 text-[15.5px] leading-relaxed text-[#475569]">
+                        {f.paragraphs.map((p, i) => (
+                          <p key={i}>{p}</p>
+                        ))}
+                      </div>
+                      {f.callout && (
+                        <div
+                          className="mt-6 border-l-[3px] py-2 pl-5 text-[15px] leading-relaxed text-[#1f2c3a]"
+                          style={{ borderColor: ACCENT, background: ACCENT_SOFT }}
+                        >
+                          {f.callout}
+                        </div>
+                      )}
+                    </div>
+                    <div className="grid gap-8">
+                      {f.images.map((img) => (
+                        <div
+                          key={img.src}
+                          className="flex items-center justify-center"
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt}
+                            loading="lazy"
+                            className="mx-auto block h-auto w-full max-h-[520px] object-contain md:max-w-[420px]"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </Reveal>
             );
           })}
