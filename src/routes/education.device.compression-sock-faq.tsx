@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
+import { Group, Panel, Separator, type Layout as PanelLayout } from "react-resizable-panels";
 import { Reveal } from "@/components/Reveal";
 import { useIsMobile } from "@/hooks/use-mobile";
 import cover from "@/assets/compression-socks.png.asset.json";
@@ -276,26 +276,29 @@ function ClinicalSpecPair({
 
   return (
     <div className="mt-5">
-      <PanelGroup
+      <Group
         key={`outer-${layoutKey}`}
-        direction="horizontal"
-        onLayout={(sizes) =>
+        orientation="horizontal"
+        defaultLayout={{ text: layout.text, image: layout.image }}
+        onLayoutChange={(sizes: PanelLayout) =>
           setLayout({
-            text: Number(sizes[0].toFixed(2)),
-            image: Number(sizes[1].toFixed(2)),
+            text: sizes.text ?? layout.text,
+            image: sizes.image ?? layout.image,
           })
         }
       >
         <Panel
-          defaultSize={layout.text}
+          id="text"
           minSize={20}
           className="min-w-0"
         >
           {textBlock}
         </Panel>
-        <PanelResizeHandle className="mx-2 flex w-1 cursor-col-resize items-center justify-center rounded-full bg-accent/20 hover:bg-accent/40 focus:outline-none" />
+        <Separator className="mx-2 flex w-1 cursor-col-resize items-center justify-center rounded-full bg-accent/20 hover:bg-accent/40 focus:outline-none">
+          <span className="h-6 w-0.5 rounded-full bg-accent/60" />
+        </Separator>
         <Panel
-          defaultSize={layout.image}
+          id="image"
           minSize={30}
           className="min-w-0"
         >
@@ -303,18 +306,19 @@ function ClinicalSpecPair({
             className="w-full"
             style={{ height: layout.imageHeight }}
           >
-            <PanelGroup
+            <Group
               key={`inner-${layoutKey}`}
-              direction="horizontal"
-              onLayout={(sizes) =>
+              orientation="horizontal"
+              defaultLayout={{ long: layout.long, short: layout.short }}
+              onLayoutChange={(sizes: PanelLayout) =>
                 setLayout({
-                  long: Number(sizes[0].toFixed(2)),
-                  short: Number(sizes[1].toFixed(2)),
+                  long: sizes.long ?? layout.long,
+                  short: sizes.short ?? layout.short,
                 })
               }
             >
               <Panel
-                defaultSize={layout.long}
+                id="long"
                 minSize={15}
                 className="min-w-0"
               >
@@ -325,9 +329,11 @@ function ClinicalSpecPair({
                   className="h-full w-full object-contain"
                 />
               </Panel>
-              <PanelResizeHandle className="mx-2 flex w-1 cursor-col-resize items-center justify-center rounded-full bg-accent/20 hover:bg-accent/40 focus:outline-none" />
+              <Separator className="mx-2 flex w-1 cursor-col-resize items-center justify-center rounded-full bg-accent/20 hover:bg-accent/40 focus:outline-none">
+                <span className="h-6 w-0.5 rounded-full bg-accent/60" />
+              </Separator>
               <Panel
-                defaultSize={layout.short}
+                id="short"
                 minSize={10}
                 className="min-w-0"
               >
@@ -338,10 +344,10 @@ function ClinicalSpecPair({
                   className="h-full w-full object-contain"
                 />
               </Panel>
-            </PanelGroup>
+            </Group>
           </div>
         </Panel>
-      </PanelGroup>
+      </Group>
       <button
         onClick={() => setLayoutKey((k) => k + 1)}
         className="mt-2 rounded-md bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
