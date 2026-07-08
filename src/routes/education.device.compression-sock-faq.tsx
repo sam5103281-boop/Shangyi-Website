@@ -102,18 +102,18 @@ function ClinicalSpecPair({ f }: { f: FaqItem }) {
           Mobile: 短襪在上、長襪在下（flex-col-reverse 反轉 DOM 順序）。
           Tablet (md)：同樣上下堆疊，高度加大以看清細節。
           Desktop (lg)：左右並排。 */}
-      <div className="flex flex-col-reverse items-center justify-center gap-6 lg:h-[220px] lg:flex-row lg:gap-10">
+      <div className="flex flex-col-reverse items-center justify-center gap-6 lg:grid lg:h-auto lg:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] lg:items-center lg:gap-8">
         <img
           src={longImg.src}
           alt={longImg.alt}
           loading="lazy"
-          className="block h-[260px] w-auto max-w-full object-contain md:h-[340px] lg:h-full"
+          className="block h-[260px] w-auto max-w-full object-contain md:h-[340px] lg:h-auto lg:max-h-[180px] lg:w-full"
         />
         <img
           src={shortImg.src}
           alt={shortImg.alt}
           loading="lazy"
-          className="block h-[260px] w-auto max-w-full object-contain md:h-[340px] lg:h-full"
+          className="block h-[260px] w-auto max-w-full object-contain md:h-[340px] lg:h-auto lg:max-h-[180px] lg:w-full"
         />
       </div>
     </div>
