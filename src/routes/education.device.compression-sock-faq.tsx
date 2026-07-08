@@ -99,7 +99,7 @@ function ClinicalSpecPair({ f }: { f: FaqItem }) {
 
       {/* 短襪原圖較方正、長襪較細長，因此縮小短襪容器（手機 160px / 平板 200px），
           長襪容器維持較大（240px / 320px），視覺份量才會相近；桌機兩者等寬等高。 */}
-      <div className="grid grid-cols-1 items-center gap-3 md:gap-4 lg:grid-cols-2 lg:gap-6">
+      <div className="grid grid-cols-1 items-center gap-2 md:gap-4 lg:grid-cols-2 lg:gap-6">
         <div className="mx-auto flex h-[160px] w-full max-w-[240px] items-center justify-center md:h-[200px] md:max-w-[280px] lg:h-[200px] lg:max-w-none">
           <img
             src={shortImg.src}
