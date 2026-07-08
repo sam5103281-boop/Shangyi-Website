@@ -145,13 +145,13 @@ function ArticlePage() {
                         src={f.images[1].src}
                         alt={f.images[1].alt}
                         loading="lazy"
-                        className="h-auto max-h-[280px] w-full object-contain md:max-h-[360px]"
+                        className="h-auto max-h-[260px] w-full object-contain md:max-h-[360px]"
                       />
                       <img
                         src={f.images[0].src}
                         alt={f.images[0].alt}
                         loading="lazy"
-                        className="absolute right-1 top-1 md:right-3 md:top-3 h-auto max-h-[180px] w-auto object-contain drop-shadow-md md:max-h-[220px]"
+                        className="absolute right-2 top-2 md:right-4 md:top-4 h-auto max-h-[100px] max-w-[40%] object-contain drop-shadow-md md:max-h-[200px] md:max-w-[35%]"
                       />
                     </div>
                   </div>
