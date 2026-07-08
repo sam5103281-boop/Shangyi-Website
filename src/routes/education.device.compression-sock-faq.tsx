@@ -14,7 +14,7 @@ const ACCENT_SOFT = "#e6f2f4";
 
 const STORAGE_EDIT_KEY = "compression-sock-faq-edit";
 const STORAGE_LAYOUT_KEY = "compression-sock-faq-layout";
-const IS_DEV = import.meta.env.DEV;
+
 
 const DEFAULT_LAYOUT = {
   text: 40,
@@ -469,12 +469,12 @@ function ArticlePage() {
         </div>
       </section>
 
-      {IS_DEV && mounted && !showEditor && (
+      {mounted && !showEditor && !isMobile && (
         <button
           onClick={toggle}
-          className="fixed bottom-4 left-4 z-50 rounded-md bg-primary px-3 py-2 text-xs font-medium text-primary-foreground shadow-soft transition-colors hover:bg-primary/90"
+          className="fixed bottom-6 right-6 z-50 rounded-full bg-[#2c8a9e] px-5 py-3 text-sm font-semibold text-white shadow-lg ring-2 ring-white transition-transform hover:scale-105"
         >
-          排版編輯
+          🎨 排版編輯
         </button>
       )}
 
