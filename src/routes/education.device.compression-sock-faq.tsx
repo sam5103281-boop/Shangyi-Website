@@ -97,21 +97,23 @@ function ClinicalSpecPair({ f }: { f: FaqItem }) {
         )}
       </div>
 
-      {/* Mobile: short on top, long on bottom (flex-col-reverse reverses DOM order).
-          Tablet (md): stacked vertically, larger for clarity.
-          Desktop (lg): side-by-side, long ~73% / short ~27%, aligned to a shared 180px row. */}
-      <div className="flex flex-col-reverse items-center gap-6 lg:h-[180px] lg:flex-row lg:justify-center lg:gap-8">
+      {/* 兩張圖片統一以「相同高度」呈現，object-contain 會自然保留原始長寬比，
+          因此短襪永遠看起來比長襪短、比例一致。
+          Mobile: 短襪在上、長襪在下（flex-col-reverse 反轉 DOM 順序）。
+          Tablet (md)：同樣上下堆疊，高度加大以看清細節。
+          Desktop (lg)：左右並排。 */}
+      <div className="flex flex-col-reverse items-center justify-center gap-6 lg:h-[220px] lg:flex-row lg:gap-10">
         <img
           src={longImg.src}
           alt={longImg.alt}
           loading="lazy"
-          className="mx-auto block h-auto w-full max-w-[320px] object-contain md:max-w-[420px] lg:h-full lg:w-auto lg:max-w-none"
+          className="block h-[260px] w-auto max-w-full object-contain md:h-[340px] lg:h-full"
         />
         <img
           src={shortImg.src}
           alt={shortImg.alt}
           loading="lazy"
-          className="mx-auto block h-auto w-full max-w-[320px] object-contain md:max-w-[420px] lg:h-full lg:w-auto lg:max-w-none"
+          className="block h-[260px] w-auto max-w-full object-contain md:h-[340px] lg:h-full"
         />
       </div>
     </div>
