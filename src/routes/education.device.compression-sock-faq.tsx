@@ -1,5 +1,8 @@
+import { useCallback, useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Group, Panel, Separator, type Layout as PanelLayout } from "react-resizable-panels";
 import { Reveal } from "@/components/Reveal";
+import { useIsMobile } from "@/hooks/use-mobile";
 import cover from "@/assets/compression-socks.png.asset.json";
 import pressureImg from "@/assets/sock-pressure-gradient.png.asset.json";
 import circulationImg from "@/assets/human-circulation-system.png.asset.json";
@@ -8,6 +11,20 @@ import sockWhite from "@/assets/sock-white.png.asset.json";
 
 const ACCENT = "#2c8a9e";
 const ACCENT_SOFT = "#e6f2f4";
+
+const STORAGE_EDIT_KEY = "compression-sock-faq-edit";
+const STORAGE_LAYOUT_KEY = "compression-sock-faq-layout";
+const IS_DEV = import.meta.env.DEV;
+
+const DEFAULT_LAYOUT = {
+  text: 40,
+  image: 60,
+  long: 73,
+  short: 27,
+  imageHeight: 180,
+};
+
+type Layout = typeof DEFAULT_LAYOUT;
 
 export const Route = createFileRoute("/education/device/compression-sock-faq")({
   head: () => ({
@@ -32,13 +49,15 @@ export const Route = createFileRoute("/education/device/compression-sock-faq")({
 
 type FaqImage = { src: string; alt: string };
 
-const faqs: Array<{
+type FaqItem = {
   eyebrow: string;
   title: string;
   paragraphs: string[];
   callout?: string;
   images: FaqImage[];
-}> = [
+};
+
+const faqs: FaqItem[] = [
   {
     eyebrow: "PRESSURE PROFILE // 01",
     title: "壓力襪單位是丹尼數？還是毫米汞柱呢？",
@@ -73,7 +92,283 @@ const faqs: Array<{
   },
 ];
 
+function useLayoutEditor() {
+  const [ready, setReady] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [layout, setLayoutState] = useState<Layout>(DEFAULT_LAYOUT);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const url = new URL(window.location.href);
+    const editFromUrl = url.searchParams.get("edit") === "layout";
+    const editFromStorage = window.localStorage.getItem(STORAGE_EDIT_KEY) === "true";
+    const savedLayout = window.localStorage.getItem(STORAGE_LAYOUT_KEY);
+
+    setIsEditing(editFromUrl || editFromStorage);
+    if (savedLayout) {
+      try {
+        setLayoutState({ ...DEFAULT_LAYOUT, ...JSON.parse(savedLayout) });
+      } catch {
+        // ignore malformed storage
+      }
+    }
+    setReady(true);
+  }, []);
+
+  const setLayout = useCallback((next: Partial<Layout> | ((prev: Layout) => Partial<Layout>)) => {
+    setLayoutState((prev) => {
+      const patch = typeof next === "function" ? next(prev) : next;
+      const updated = { ...prev, ...patch };
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(STORAGE_LAYOUT_KEY, JSON.stringify(updated));
+      }
+      return updated;
+    });
+  }, []);
+
+  const toggle = useCallback(() => {
+    setIsEditing((prev) => {
+      const next = !prev;
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(STORAGE_EDIT_KEY, String(next));
+      }
+      return next;
+    });
+  }, []);
+
+  const reset = useCallback(() => {
+    setLayoutState(DEFAULT_LAYOUT);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(STORAGE_LAYOUT_KEY, JSON.stringify(DEFAULT_LAYOUT));
+    }
+  }, []);
+
+  return { ready, isEditing, toggle, layout, setLayout, reset };
+}
+
+function LayoutEditorToolbar({
+  layout,
+  setLayout,
+  reset,
+  onClose,
+}: {
+  layout: Layout;
+  setLayout: (patch: Partial<Layout> | ((prev: Layout) => Partial<Layout>)) => void;
+  reset: () => void;
+  onClose: () => void;
+}) {
+  const copyValues = useCallback(() => {
+    const text = [
+      `text: ${Math.round(layout.text)}%`,
+      `image: ${Math.round(layout.image)}%`,
+      `long: ${Math.round(layout.long)}%`,
+      `short: ${Math.round(layout.short)}%`,
+      `height: ${layout.imageHeight}px`,
+    ].join(" / ");
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+    }
+  }, [layout]);
+
+  return (
+    <div className="fixed bottom-4 right-4 z-50 w-64 rounded-xl border border-hairline bg-surface p-4 shadow-elevated">
+      <p className="text-xs font-medium tracking-wide text-muted-foreground">排版編輯</p>
+      <div className="mt-2 space-y-1 text-sm text-foreground">
+        <p>文字 {Math.round(layout.text)}% / 圖片 {Math.round(layout.image)}%</p>
+        <p>長襪 {Math.round(layout.long)}% / 短襪 {Math.round(layout.short)}%</p>
+      </div>
+      <div className="mt-3 flex items-center gap-2">
+        <label className="text-xs text-muted-foreground">高度</label>
+        <input
+          type="range"
+          min={120}
+          max={360}
+          step={10}
+          value={layout.imageHeight}
+          onChange={(e) => setLayout({ imageHeight: Number(e.target.value) })}
+          className="h-1.5 flex-1 cursor-pointer appearance-none rounded bg-muted"
+        />
+        <span className="text-xs tabular-nums text-muted-foreground">{layout.imageHeight}px</span>
+      </div>
+      <div className="mt-3 flex gap-2">
+        <button
+          onClick={reset}
+          className="rounded-md bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+        >
+          重置
+        </button>
+        <button
+          onClick={copyValues}
+          className="rounded-md bg-primary px-2 py-1 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+        >
+          複製數值
+        </button>
+        <button
+          onClick={onClose}
+          className="rounded-md border border-hairline bg-background px-2 py-1 text-xs font-medium text-foreground transition-colors hover:bg-surface-muted"
+        >
+          關閉
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function ClinicalSpecPair({
+  f,
+  isEditing,
+  layout,
+  setLayout,
+}: {
+  f: FaqItem;
+  isEditing: boolean;
+  layout: Layout;
+  setLayout: (patch: Partial<Layout> | ((prev: Layout) => Partial<Layout>)) => void;
+}) {
+  const [layoutKey, setLayoutKey] = useState(0);
+
+  const textBlock = (
+    <div>
+      <div className="space-y-4 text-[15.5px] leading-relaxed text-[#475569]">
+        {f.paragraphs.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </div>
+      {f.callout && (
+        <div
+          className="mt-6 border-l-[3px] py-2 pl-5 text-[15px] leading-relaxed text-[#1f2c3a]"
+          style={{ borderColor: ACCENT, background: ACCENT_SOFT }}
+        >
+          {f.callout}
+        </div>
+      )}
+    </div>
+  );
+
+  const longImg = f.images[1];
+  const shortImg = f.images[0];
+
+  const normalImageBlock = (
+    <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-6">
+      <img
+        src={longImg.src}
+        alt={longImg.alt}
+        loading="lazy"
+        className="h-[120px] w-auto object-contain md:h-[180px]"
+      />
+      <img
+        src={shortImg.src}
+        alt={shortImg.alt}
+        loading="lazy"
+        className="h-[120px] w-auto object-contain md:h-[180px]"
+      />
+    </div>
+  );
+
+  if (!isEditing) {
+    return (
+      <div className="mt-5 grid gap-8 md:grid-cols-[1fr_1.5fr] md:items-start">
+        {textBlock}
+        {normalImageBlock}
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-5">
+      <Group
+        key={`outer-${layoutKey}`}
+        orientation="horizontal"
+        defaultLayout={{ text: layout.text, image: layout.image }}
+        onLayoutChange={(sizes: PanelLayout) =>
+          setLayout({
+            text: sizes.text ?? layout.text,
+            image: sizes.image ?? layout.image,
+          })
+        }
+      >
+        <Panel
+          id="text"
+          minSize={20}
+          className="min-w-0"
+        >
+          {textBlock}
+        </Panel>
+        <Separator className="mx-2 flex w-1 cursor-col-resize items-center justify-center rounded-full bg-accent/20 hover:bg-accent/40 focus:outline-none">
+          <span className="h-6 w-0.5 rounded-full bg-accent/60" />
+        </Separator>
+        <Panel
+          id="image"
+          minSize={30}
+          className="min-w-0"
+        >
+          <div
+            className="w-full"
+            style={{ height: layout.imageHeight }}
+          >
+            <Group
+              key={`inner-${layoutKey}`}
+              orientation="horizontal"
+              defaultLayout={{ long: layout.long, short: layout.short }}
+              onLayoutChange={(sizes: PanelLayout) =>
+                setLayout({
+                  long: sizes.long ?? layout.long,
+                  short: sizes.short ?? layout.short,
+                })
+              }
+            >
+              <Panel
+                id="long"
+                minSize={15}
+                className="min-w-0"
+              >
+                <img
+                  src={longImg.src}
+                  alt={longImg.alt}
+                  loading="lazy"
+                  className="h-full w-full object-contain"
+                />
+              </Panel>
+              <Separator className="mx-2 flex w-1 cursor-col-resize items-center justify-center rounded-full bg-accent/20 hover:bg-accent/40 focus:outline-none">
+                <span className="h-6 w-0.5 rounded-full bg-accent/60" />
+              </Separator>
+              <Panel
+                id="short"
+                minSize={10}
+                className="min-w-0"
+              >
+                <img
+                  src={shortImg.src}
+                  alt={shortImg.alt}
+                  loading="lazy"
+                  className="h-full w-full object-contain"
+                />
+              </Panel>
+            </Group>
+          </div>
+        </Panel>
+      </Group>
+      <button
+        onClick={() => setLayoutKey((k) => k + 1)}
+        className="mt-2 rounded-md bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+      >
+        重置拖曳位置
+      </button>
+    </div>
+  );
+}
+
 function ArticlePage() {
+  const { ready, isEditing, toggle, layout, setLayout, reset } = useLayoutEditor();
+  const isMobile = useIsMobile();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const showEditor = ready && mounted && isEditing && !isMobile;
+
   return (
     <article>
       <section className="border-b border-hairline">
@@ -124,37 +419,12 @@ function ArticlePage() {
                 <p className="text-xs tracking-[0.22em]" style={{ color: ACCENT }}>{f.eyebrow}</p>
                 <h2 className="mt-3 font-display text-2xl text-[#1f2c3a] md:text-[28px]">{f.title}</h2>
                 {isPair ? (
-                  <div className="mt-5 grid gap-8 md:grid-cols-[1fr_1.5fr] md:items-start">
-                    <div>
-                      <div className="space-y-4 text-[15.5px] leading-relaxed text-[#475569]">
-                        {f.paragraphs.map((p, i) => (
-                          <p key={i}>{p}</p>
-                        ))}
-                      </div>
-                      {f.callout && (
-                        <div
-                          className="mt-6 border-l-[3px] py-2 pl-5 text-[15px] leading-relaxed text-[#1f2c3a]"
-                          style={{ borderColor: ACCENT, background: ACCENT_SOFT }}
-                        >
-                          {f.callout}
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-6">
-                      <img
-                        src={f.images[1].src}
-                        alt={f.images[1].alt}
-                        loading="lazy"
-                        className="h-[120px] w-auto object-contain md:h-[180px]"
-                      />
-                      <img
-                        src={f.images[0].src}
-                        alt={f.images[0].alt}
-                        loading="lazy"
-                        className="h-[120px] w-auto object-contain md:h-[180px]"
-                      />
-                    </div>
-                  </div>
+                  <ClinicalSpecPair
+                    f={f}
+                    isEditing={showEditor}
+                    layout={layout}
+                    setLayout={setLayout}
+                  />
                 ) : (
                   <div className={`mt-6 gap-8 grid items-center md:grid-cols-[1.1fr_1fr] ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
                     <div>
@@ -193,12 +463,29 @@ function ArticlePage() {
             );
           })}
 
-
           <Reveal direction="up" className="border-l-[3px] pl-5 text-sm leading-relaxed text-[#475569]" style={{ borderColor: ACCENT }}>
             本文為一般衛教資訊，不能取代醫師之診斷與治療。若有腿部症狀，請尋求專業醫療人員協助。
           </Reveal>
         </div>
       </section>
+
+      {IS_DEV && mounted && !showEditor && (
+        <button
+          onClick={toggle}
+          className="fixed bottom-4 left-4 z-50 rounded-md bg-primary px-3 py-2 text-xs font-medium text-primary-foreground shadow-soft transition-colors hover:bg-primary/90"
+        >
+          排版編輯
+        </button>
+      )}
+
+      {showEditor && (
+        <LayoutEditorToolbar
+          layout={layout}
+          setLayout={setLayout}
+          reset={reset}
+          onClose={toggle}
+        />
+      )}
     </article>
   );
 }
