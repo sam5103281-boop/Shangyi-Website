@@ -147,7 +147,7 @@ function ArticlePage() {
                         loading="lazy"
                         className="h-auto max-h-[240px] w-full object-contain md:max-h-[360px]"
                       />
-                      <div className="absolute right-2 top-2 md:right-4 md:top-4 grid h-28 w-28 place-items-center rounded-xl border border-hairline bg-white/95 p-1.5 shadow-sm md:h-44 md:w-44 md:rounded-2xl md:p-2">
+                      <div className="absolute right-2 top-2 md:right-4 md:top-4 grid h-28 w-28 place-items-center rounded-xl border border-hairline bg-surface p-1.5 shadow-sm md:h-44 md:w-44 md:rounded-2xl md:p-2">
                         <img
                           src={f.images[0].src}
                           alt={f.images[0].alt}
