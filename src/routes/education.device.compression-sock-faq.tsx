@@ -1,8 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Group, Panel, Separator, type Layout as PanelLayout } from "react-resizable-panels";
 import { Reveal } from "@/components/Reveal";
-import { useIsMobile } from "@/hooks/use-mobile";
 import cover from "@/assets/compression-socks.png.asset.json";
 import pressureImg from "@/assets/sock-pressure-gradient.png.asset.json";
 import circulationImg from "@/assets/human-circulation-system.png.asset.json";
@@ -11,20 +8,6 @@ import sockWhite from "@/assets/sock-white.png.asset.json";
 
 const ACCENT = "#2c8a9e";
 const ACCENT_SOFT = "#e6f2f4";
-
-const STORAGE_EDIT_KEY = "compression-sock-faq-edit";
-const STORAGE_LAYOUT_KEY = "compression-sock-faq-layout";
-
-
-const DEFAULT_LAYOUT = {
-  text: 40,
-  image: 60,
-  long: 73,
-  short: 27,
-  imageHeight: 180,
-};
-
-type Layout = typeof DEFAULT_LAYOUT;
 
 export const Route = createFileRoute("/education/device/compression-sock-faq")({
   head: () => ({
@@ -86,289 +69,56 @@ const faqs: FaqItem[] = [
       "與一般棉彈性襪不同，醫用輔助襪採用漸進式壓力設計，並通過醫療法規檢驗，需依醫師或專業人員建議選擇壓力等級與尺寸。",
     ],
     images: [
-      { src: sockBlack.url, alt: "黑色醫用輔助襪" },
-      { src: sockWhite.url, alt: "白色醫用輔助襪" },
+      { src: sockBlack.url, alt: "黑色醫用輔助襪（短襪）" },
+      { src: sockWhite.url, alt: "白色醫用輔助襪（長襪）" },
     ],
   },
 ];
 
-function useLayoutEditor() {
-  const [ready, setReady] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
-  const [layout, setLayoutState] = useState<Layout>(DEFAULT_LAYOUT);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const url = new URL(window.location.href);
-    const editFromUrl = url.searchParams.get("edit") === "layout";
-    const editFromStorage = window.localStorage.getItem(STORAGE_EDIT_KEY) === "true";
-    const savedLayout = window.localStorage.getItem(STORAGE_LAYOUT_KEY);
-
-    setIsEditing(editFromUrl || editFromStorage);
-    if (savedLayout) {
-      try {
-        setLayoutState({ ...DEFAULT_LAYOUT, ...JSON.parse(savedLayout) });
-      } catch {
-        // ignore malformed storage
-      }
-    }
-    setReady(true);
-  }, []);
-
-  const setLayout = useCallback((next: Partial<Layout> | ((prev: Layout) => Partial<Layout>)) => {
-    setLayoutState((prev) => {
-      const patch = typeof next === "function" ? next(prev) : next;
-      const updated = { ...prev, ...patch };
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem(STORAGE_LAYOUT_KEY, JSON.stringify(updated));
-      }
-      return updated;
-    });
-  }, []);
-
-  const toggle = useCallback(() => {
-    setIsEditing((prev) => {
-      const next = !prev;
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem(STORAGE_EDIT_KEY, String(next));
-      }
-      return next;
-    });
-  }, []);
-
-  const reset = useCallback(() => {
-    setLayoutState(DEFAULT_LAYOUT);
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem(STORAGE_LAYOUT_KEY, JSON.stringify(DEFAULT_LAYOUT));
-    }
-  }, []);
-
-  return { ready, isEditing, toggle, layout, setLayout, reset };
-}
-
-function LayoutEditorToolbar({
-  layout,
-  setLayout,
-  reset,
-  onClose,
-}: {
-  layout: Layout;
-  setLayout: (patch: Partial<Layout> | ((prev: Layout) => Partial<Layout>)) => void;
-  reset: () => void;
-  onClose: () => void;
-}) {
-  const copyValues = useCallback(() => {
-    const text = [
-      `text: ${Math.round(layout.text)}%`,
-      `image: ${Math.round(layout.image)}%`,
-      `long: ${Math.round(layout.long)}%`,
-      `short: ${Math.round(layout.short)}%`,
-      `height: ${layout.imageHeight}px`,
-    ].join(" / ");
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText(text);
-    }
-  }, [layout]);
-
-  return (
-    <div className="fixed bottom-4 right-4 z-50 w-64 rounded-xl border border-hairline bg-surface p-4 shadow-elevated">
-      <p className="text-xs font-medium tracking-wide text-muted-foreground">排版編輯</p>
-      <div className="mt-2 space-y-1 text-sm text-foreground">
-        <p>文字 {Math.round(layout.text)}% / 圖片 {Math.round(layout.image)}%</p>
-        <p>長襪 {Math.round(layout.long)}% / 短襪 {Math.round(layout.short)}%</p>
-      </div>
-      <div className="mt-3 flex items-center gap-2">
-        <label className="text-xs text-muted-foreground">高度</label>
-        <input
-          type="range"
-          min={120}
-          max={360}
-          step={10}
-          value={layout.imageHeight}
-          onChange={(e) => setLayout({ imageHeight: Number(e.target.value) })}
-          className="h-1.5 flex-1 cursor-pointer appearance-none rounded bg-muted"
-        />
-        <span className="text-xs tabular-nums text-muted-foreground">{layout.imageHeight}px</span>
-      </div>
-      <div className="mt-3 flex gap-2">
-        <button
-          onClick={reset}
-          className="rounded-md bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
-        >
-          重置
-        </button>
-        <button
-          onClick={copyValues}
-          className="rounded-md bg-primary px-2 py-1 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-        >
-          複製數值
-        </button>
-        <button
-          onClick={onClose}
-          className="rounded-md border border-hairline bg-background px-2 py-1 text-xs font-medium text-foreground transition-colors hover:bg-surface-muted"
-        >
-          關閉
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function ClinicalSpecPair({
-  f,
-  isEditing,
-  layout,
-  setLayout,
-}: {
-  f: FaqItem;
-  isEditing: boolean;
-  layout: Layout;
-  setLayout: (patch: Partial<Layout> | ((prev: Layout) => Partial<Layout>)) => void;
-}) {
-  const [layoutKey, setLayoutKey] = useState(0);
-
-  const textBlock = (
-    <div>
-      <div className="space-y-4 text-[15.5px] leading-relaxed text-[#475569]">
-        {f.paragraphs.map((p, i) => (
-          <p key={i}>{p}</p>
-        ))}
-      </div>
-      {f.callout && (
-        <div
-          className="mt-6 border-l-[3px] py-2 pl-5 text-[15px] leading-relaxed text-[#1f2c3a]"
-          style={{ borderColor: ACCENT, background: ACCENT_SOFT }}
-        >
-          {f.callout}
-        </div>
-      )}
-    </div>
-  );
-
-  const longImg = f.images[1];
+function ClinicalSpecPair({ f }: { f: FaqItem }) {
   const shortImg = f.images[0];
-
-  const normalImageBlock = (
-    <div className="flex flex-col items-center justify-center gap-4 md:flex-row md:gap-6">
-      <img
-        src={longImg.src}
-        alt={longImg.alt}
-        loading="lazy"
-        className="h-[120px] w-auto object-contain md:h-[180px]"
-      />
-      <img
-        src={shortImg.src}
-        alt={shortImg.alt}
-        loading="lazy"
-        className="h-[120px] w-auto object-contain md:h-[180px]"
-      />
-    </div>
-  );
-
-  if (!isEditing) {
-    return (
-      <div className="mt-5 grid gap-8 md:grid-cols-[1fr_1.5fr] md:items-start">
-        {textBlock}
-        {normalImageBlock}
-      </div>
-    );
-  }
+  const longImg = f.images[1];
 
   return (
-    <div className="mt-5">
-      <Group
-        key={`outer-${layoutKey}`}
-        orientation="horizontal"
-        defaultLayout={{ text: layout.text, image: layout.image }}
-        onLayoutChange={(sizes: PanelLayout) =>
-          setLayout({
-            text: sizes.text ?? layout.text,
-            image: sizes.image ?? layout.image,
-          })
-        }
-      >
-        <Panel
-          id="text"
-          minSize={20}
-          className="min-w-0"
-        >
-          {textBlock}
-        </Panel>
-        <Separator className="mx-2 flex w-1 cursor-col-resize items-center justify-center rounded-full bg-accent/20 hover:bg-accent/40 focus:outline-none">
-          <span className="h-6 w-0.5 rounded-full bg-accent/60" />
-        </Separator>
-        <Panel
-          id="image"
-          minSize={30}
-          className="min-w-0"
-        >
+    <div className="mt-5 grid gap-8 lg:grid-cols-[40fr_60fr] lg:items-center">
+      <div>
+        <div className="space-y-4 text-[15.5px] leading-relaxed text-[#475569]">
+          {f.paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+        {f.callout && (
           <div
-            className="w-full"
-            style={{ height: layout.imageHeight }}
+            className="mt-6 border-l-[3px] py-2 pl-5 text-[15px] leading-relaxed text-[#1f2c3a]"
+            style={{ borderColor: ACCENT, background: ACCENT_SOFT }}
           >
-            <Group
-              key={`inner-${layoutKey}`}
-              orientation="horizontal"
-              defaultLayout={{ long: layout.long, short: layout.short }}
-              onLayoutChange={(sizes: PanelLayout) =>
-                setLayout({
-                  long: sizes.long ?? layout.long,
-                  short: sizes.short ?? layout.short,
-                })
-              }
-            >
-              <Panel
-                id="long"
-                minSize={15}
-                className="min-w-0"
-              >
-                <img
-                  src={longImg.src}
-                  alt={longImg.alt}
-                  loading="lazy"
-                  className="h-full w-full object-contain"
-                />
-              </Panel>
-              <Separator className="mx-2 flex w-1 cursor-col-resize items-center justify-center rounded-full bg-accent/20 hover:bg-accent/40 focus:outline-none">
-                <span className="h-6 w-0.5 rounded-full bg-accent/60" />
-              </Separator>
-              <Panel
-                id="short"
-                minSize={10}
-                className="min-w-0"
-              >
-                <img
-                  src={shortImg.src}
-                  alt={shortImg.alt}
-                  loading="lazy"
-                  className="h-full w-full object-contain"
-                />
-              </Panel>
-            </Group>
+            {f.callout}
           </div>
-        </Panel>
-      </Group>
-      <button
-        onClick={() => setLayoutKey((k) => k + 1)}
-        className="mt-2 rounded-md bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
-      >
-        重置拖曳位置
-      </button>
+        )}
+      </div>
+
+      {/* Mobile: short on top, long on bottom (flex-col-reverse reverses DOM order).
+          Tablet (md): stacked vertically, larger for clarity.
+          Desktop (lg): side-by-side, long ~73% / short ~27%, aligned to a shared 180px row. */}
+      <div className="flex flex-col-reverse items-center gap-6 lg:h-[180px] lg:flex-row lg:justify-center lg:gap-8">
+        <img
+          src={longImg.src}
+          alt={longImg.alt}
+          loading="lazy"
+          className="mx-auto block h-auto w-full max-w-[320px] object-contain md:max-w-[420px] lg:h-full lg:w-auto lg:max-w-none"
+        />
+        <img
+          src={shortImg.src}
+          alt={shortImg.alt}
+          loading="lazy"
+          className="mx-auto block h-auto w-full max-w-[320px] object-contain md:max-w-[420px] lg:h-full lg:w-auto lg:max-w-none"
+        />
+      </div>
     </div>
   );
 }
 
 function ArticlePage() {
-  const { ready, isEditing, toggle, layout, setLayout, reset } = useLayoutEditor();
-  const isMobile = useIsMobile();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const showEditor = ready && mounted && isEditing && !isMobile;
-
   return (
     <article>
       <section className="border-b border-hairline">
@@ -419,12 +169,7 @@ function ArticlePage() {
                 <p className="text-xs tracking-[0.22em]" style={{ color: ACCENT }}>{f.eyebrow}</p>
                 <h2 className="mt-3 font-display text-2xl text-[#1f2c3a] md:text-[28px]">{f.title}</h2>
                 {isPair ? (
-                  <ClinicalSpecPair
-                    f={f}
-                    isEditing={showEditor}
-                    layout={layout}
-                    setLayout={setLayout}
-                  />
+                  <ClinicalSpecPair f={f} />
                 ) : (
                   <div className={`mt-6 gap-8 grid items-center md:grid-cols-[1.1fr_1fr] ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
                     <div>
@@ -468,24 +213,6 @@ function ArticlePage() {
           </Reveal>
         </div>
       </section>
-
-      {mounted && !showEditor && !isMobile && (
-        <button
-          onClick={toggle}
-          className="fixed bottom-6 right-6 z-50 rounded-full bg-[#2c8a9e] px-5 py-3 text-sm font-semibold text-white shadow-lg ring-2 ring-white transition-transform hover:scale-105"
-        >
-          🎨 排版編輯
-        </button>
-      )}
-
-      {showEditor && (
-        <LayoutEditorToolbar
-          layout={layout}
-          setLayout={setLayout}
-          reset={reset}
-          onClose={toggle}
-        />
-      )}
     </article>
   );
 }
