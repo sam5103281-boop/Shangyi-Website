@@ -43,7 +43,8 @@ def load_pointer(rel: str) -> dict:
 
 def fetch_source(pointer: dict) -> Image.Image:
     url = CDN_BASE + pointer["url"]
-    with urllib.request.urlopen(url) as r:
+    req = urllib.request.Request(url, headers={"User-Agent": "lovable-reencode/1.0"})
+    with urllib.request.urlopen(req) as r:
         data = r.read()
     img = Image.open(io.BytesIO(data))
     # Preserve alpha where present; flatten palette-mode etc.
