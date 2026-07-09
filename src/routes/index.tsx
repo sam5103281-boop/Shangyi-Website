@@ -99,7 +99,7 @@ const partners: { name: string; tag: string }[] = [
   { name: "嘉義基督教醫院", tag: "Regional" },
   { name: "屏東基督教醫院", tag: "Regional" },
   { name: "台東馬偕醫院", tag: "Regional" },
-  { name: "杏一․維康醫療用品通路", tag: "Retail Network" },
+  { name: "杏一 維康醫療用品通路", tag: "Retail Network" },
 ];
 
 function HomePage() {
