@@ -10,7 +10,7 @@ const nav = [
   { to: "/about", label: "關於上怡" },
   { to: "/products", label: "產品中心" },
   { to: "/education", label: "醫療保健專欄" },
-  { to: "/care", label: "下肢循環照護" },
+  { to: "/care", label: "居家循環照護" },
   { to: "/channels", label: "專業通路" },
   { to: "/contact", label: "聯絡我們" },
 ] as const;

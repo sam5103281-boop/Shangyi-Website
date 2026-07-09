@@ -12,16 +12,16 @@ import careFaq from "@/assets/care-faq-hero.png.asset.json";
 export const Route = createFileRoute("/care/faq")({
   head: () => ({
     meta: [
-      { title: "衛教 Q&A｜下肢循環照護｜上怡生技" },
+      { title: "衛教 Q&A｜居家循環照護｜上怡生技" },
       {
         name: "description",
         content:
-          "下肢循環衛教 Q&A：認識血栓、下肢腫脹成因、IPC 間歇性氣壓循環原理、適應症、漸進式壓力與常見疑問。",
+          "居家循環衛教 Q&A：認識血栓、下肢腫脹成因、IPC 間歇性氣壓循環原理、適應症、漸進式壓力與常見疑問。",
       },
-      { property: "og:title", content: "衛教 Q&A｜下肢循環照護" },
+      { property: "og:title", content: "衛教 Q&A｜居家循環照護" },
       {
         property: "og:description",
-        content: "從照護觀念、安心指引到常見問題，建立對 IPC 與下肢循環的正確認知。",
+        content: "從照護觀念、安心指引到常見問題，建立對 IPC 與居家循環照護的正確認知。",
       },
     ],
   }),
@@ -56,7 +56,7 @@ function FaqPage() {
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
               從基礎照護觀念、IPC 安心指引，到醫療現場最常被問到的問題，
-              一次幫您建立完整的下肢循環照護認知。內容僅供衛教參考，實際使用請依專業醫療人員建議。
+              一次幫您建立完整的居家循環照護認知。內容僅供衛教參考，實際使用請依專業醫療人員建議。
             </p>
             <div className="mt-8 flex flex-wrap gap-2">
               {anchors.map((a) => (

@@ -301,7 +301,7 @@ export const medicalCategories: MedicalCategory[] = [
   },
   {
     slug: "devices",
-    label: "醫療器材｜下肢循環照護",
+    label: "醫療器材",
     en: "Lower-Limb Circulation Care",
     code: "P · 04",
     heroEyebrow: "Medical Devices",

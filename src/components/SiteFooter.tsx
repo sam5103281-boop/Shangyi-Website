@@ -39,7 +39,7 @@ export function SiteFooter() {
               <li><Link to="/about" className="hover:text-foreground whitespace-nowrap">關於上怡</Link></li>
               <li><Link to="/products" className="hover:text-foreground whitespace-nowrap">產品中心</Link></li>
               <li><Link to="/education" className="hover:text-foreground whitespace-nowrap">醫療保健專欄</Link></li>
-              <li><Link to="/care" className="hover:text-foreground whitespace-nowrap">下肢循環照護</Link></li>
+              <li><Link to="/care" className="hover:text-foreground whitespace-nowrap">居家循環照護</Link></li>
               <li><Link to="/channels" className="hover:text-foreground whitespace-nowrap">專業通路</Link></li>
               <li><Link to="/contact" className="hover:text-foreground whitespace-nowrap">聯絡我們</Link></li>
             </ul>

@@ -25,15 +25,15 @@ const entries: Entry[] = [
   { group: "主要頁面", title: "關於上怡", to: "/about", keywords: "about company" },
   { group: "主要頁面", title: "產品中心", to: "/products", keywords: "products" },
   { group: "主要頁面", title: "醫療保健專欄", to: "/education", keywords: "education column" },
-  { group: "主要頁面", title: "下肢循環照護", to: "/care", keywords: "care circulation" },
+  { group: "主要頁面", title: "居家循環照護", to: "/care", keywords: "care circulation" },
   { group: "主要頁面", title: "專業通路", to: "/channels", keywords: "channels" },
   { group: "主要頁面", title: "聯絡我們", to: "/contact", keywords: "contact" },
 
-  // 下肢循環照護
-  { group: "下肢循環照護", title: "總覽", to: "/care", keywords: "overview" },
-  { group: "下肢循環照護", title: "專業照護", to: "/care/professional", keywords: "professional" },
-  { group: "下肢循環照護", title: "衛教 Q&A", to: "/care/faq", keywords: "faq education" },
-  { group: "下肢循環照護", title: "轉介流程", to: "/care/referral", keywords: "referral" },
+  // 居家循環照護
+  { group: "居家循環照護", title: "總覽", to: "/care", keywords: "overview" },
+  { group: "居家循環照護", title: "專業照護", to: "/care/professional", keywords: "professional" },
+  { group: "居家循環照護", title: "衛教 Q&A", to: "/care/faq", keywords: "faq education" },
+  { group: "居家循環照護", title: "轉介流程", to: "/care/referral", keywords: "referral" },
 
   // 衛教專欄章節
   { group: "衛教專欄", title: "產後照護", to: "/education", hash: "postpartum", keywords: "postpartum" },
