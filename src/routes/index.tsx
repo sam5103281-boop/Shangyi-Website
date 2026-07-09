@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, ShieldCheck, FlaskConical, Stethoscope, Eye } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import heroVideo from "@/assets/homepage-hero.mp4.asset.json";
-import comwellHome from "@/assets/comwell-雙機器-特寫.jpg.asset.json";
+import comwellHome from "@/assets/comwell-雙機器-特寫-2.jpg.asset.json";
 import productsFlatlay from "@/assets/products-flatlay.jpg";
 import catSupplements from "@/assets/categories/cat-supplements-v2.jpg.asset.json";
 import catPatches from "@/assets/patch-demo.png.asset.json";
