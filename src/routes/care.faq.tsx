@@ -12,7 +12,7 @@ import careFaq from "@/assets/care-faq-hero.png.asset.json";
 export const Route = createFileRoute("/care/faq")({
   head: () => ({
     meta: [
-      { title: "衛教 Q&A｜居家循環照護｜上怡生技" },
+      { title: "衛教 Q&A｜居家循環照護｜上怡生醫" },
       {
         name: "description",
         content:

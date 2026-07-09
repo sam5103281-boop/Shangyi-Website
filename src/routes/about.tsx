@@ -27,7 +27,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "上怡生技作為臨床醫療與居家照護的橋樑，遵循 ISO 13485 品質管理與在地法規，提供合規且可追溯的醫療器材與機能產品。",
+          "上怡生醫作為臨床醫療與居家照護的橋樑，遵循 ISO 13485 品質管理與在地法規，提供合規且可追溯的醫療器材與機能產品。",
       },
       { property: "og:title", content: "關於上怡｜實力與承諾" },
       { property: "og:description", content: "鏈結臨床醫療與居家照護的生醫企業。" },
@@ -38,7 +38,7 @@ export const Route = createFileRoute("/about")({
 
 const licenses = [
   {
-    type: "上怡生技醫藥有限公司",
+    type: "上怡生醫醫藥有限公司",
     no: "南市醫器販 字第 MD6205034486 號",
     img: shangyiPharmaImg.url,
     pdf: shangyiPharmaPdf.url,
@@ -168,14 +168,14 @@ function AboutPage() {
               我們選擇成為最值得信賴的<span className="text-accent">照護橋樑</span>
             </h1>
             <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-              上怡生技自創立以來，專注於醫療器材代理與機能性產品的引進。我們以「合規品質」作為遴選與營運的核心準則──
+              上怡生醫自創立以來，專注於醫療器材代理與機能性產品的引進。我們以「合規品質」作為遴選與營運的核心準則──
               每一項產品皆完成原廠資料審閱、在地法規驗證與通路適配評估，才會進入醫療院所與專業通路。
             </p>
           </div>
           <div className="lg:col-span-6">
             <img
               src={heroCare.url}
-              alt="上怡生技｜專業照護與居家溫度"
+              alt="上怡生醫｜專業照護與居家溫度"
               width={1248}
               height={936}
               loading="lazy"
@@ -354,7 +354,7 @@ function AboutPage() {
                         key={idx}
                         className="whitespace-nowrap px-3 py-2 text-[11px] font-medium tracking-[0.25em] text-foreground/70"
                       >
-                        SHANGYI · 上怡生技醫藥
+                        SHANGYI · 上怡生醫醫藥
                       </span>
                     ))}
                   </div>

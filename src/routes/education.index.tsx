@@ -7,13 +7,13 @@ import postpartumCover from "@/assets/parenthood-pregnancy.jpg.asset.json";
 export const Route = createFileRoute("/education/")({
   head: () => ({
     meta: [
-      { title: "醫療保健專欄｜上怡生技" },
+      { title: "醫療保健專欄｜上怡生醫" },
       {
         name: "description",
         content:
-          "上怡生技醫療保健專欄：依主題區分產後照護、下肢循環與靜脈、糖尿病併發、醫療輔具使用等衛教內容。",
+          "上怡生醫醫療保健專欄：依主題區分產後照護、下肢循環與靜脈、糖尿病併發、醫療輔具使用等衛教內容。",
       },
-      { property: "og:title", content: "醫療保健專欄｜上怡生技" },
+      { property: "og:title", content: "醫療保健專欄｜上怡生醫" },
       {
         property: "og:description",
         content: "依主題瀏覽下肢循環、靜脈栓塞、糖尿病併發與醫療輔具衛教文章。",
@@ -221,7 +221,7 @@ function EducationPage() {
           ))}
 
           <p className="text-xs leading-relaxed text-muted-foreground">
-            ※ 本專欄連結至上怡生技官方衛教文章，內容僅供參考，不取代專業醫療診斷與建議。
+            ※ 本專欄連結至上怡生醫官方衛教文章，內容僅供參考，不取代專業醫療診斷與建議。
           </p>
         </div>
       </section>

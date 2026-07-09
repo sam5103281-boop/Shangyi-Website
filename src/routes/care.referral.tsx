@@ -13,7 +13,7 @@ import careReferral from "@/assets/care-referral-consult.png.asset.json";
 export const Route = createFileRoute("/care/referral")({
   head: () => ({
     meta: [
-      { title: "轉介流程｜居家循環照護｜上怡生技 ComWell" },
+      { title: "轉介流程｜居家循環照護｜上怡生醫 ComWell" },
       {
         name: "description",
         content:

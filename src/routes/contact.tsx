@@ -13,13 +13,13 @@ export const Route = createFileRoute("/contact")({
   },
   head: () => ({
     meta: [
-      { title: "聯絡我們｜上怡生技" },
+      { title: "聯絡我們｜上怡生醫" },
       {
         name: "description",
         content:
           "醫療機構合作、產品規格索取、康威爾 Comwell 居家照護諮詢；請依需求選擇對應的服務類別。",
       },
-      { property: "og:title", content: "聯絡我們｜上怡生技" },
+      { property: "og:title", content: "聯絡我們｜上怡生醫" },
       { property: "og:description", content: "B2B / B2C 精準分流的專業諮詢窗口。" },
     ],
   }),
@@ -145,7 +145,7 @@ function ContactPage() {
 
               <label className="flex items-start gap-3 text-xs text-muted-foreground">
                 <input type="checkbox" required className="mt-0.5 accent-[var(--color-accent)]" />
-                我已了解所提供之個人資料將僅用於本次諮詢回覆，並同意上怡生技之隱私權保護政策。
+                我已了解所提供之個人資料將僅用於本次諮詢回覆，並同意上怡生醫之隱私權保護政策。
               </label>
 
               {error && (
@@ -175,7 +175,7 @@ function ContactPage() {
                 SHANG YI BIOPHARMA
               </p>
               <dl className="mt-6 space-y-5 text-sm">
-                <Row k="公司名稱" v="上怡生技醫藥有限公司" />
+                <Row k="公司名稱" v="上怡生醫醫藥有限公司" />
                 <Row k="公司地址" v="臺南市南區新昌里國華街一段 98 號" />
                 <Row k="電話" v="06-222-0070" />
                 <Row k="傳真" v="06-222-0050" />
@@ -187,7 +187,7 @@ function ContactPage() {
               <div className="hairline-divider my-8" />
 
               <p className="text-xs leading-relaxed text-muted-foreground">
-                ※ 本表單僅作為上怡生技之合作、產品與居家照護諮詢用途。
+                ※ 本表單僅作為上怡生醫之合作、產品與居家照護諮詢用途。
                 所有醫療器材使用前，請先洽詢專業醫療人員之建議。
               </p>
             </div>

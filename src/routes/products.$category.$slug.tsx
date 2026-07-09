@@ -14,8 +14,8 @@ export const Route = createFileRoute("/products/$category/$slug")({
     const p = loaderData?.product;
     const c = loaderData?.category;
     const title = p
-      ? `${p.name} ${p.en}｜${c?.label}｜上怡生技`
-      : "產品｜上怡生技";
+      ? `${p.name} ${p.en}｜${c?.label}｜上怡生醫`
+      : "產品｜上怡生醫";
     const desc = p?.tagline ?? c?.heroDesc ?? "上怡醫療相關產品。";
     return {
       meta: [

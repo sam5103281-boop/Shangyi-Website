@@ -78,14 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "上怡生技醫藥有限公司 SHANG YI BIOPHARMA｜合規品質．鏈結臨床與居家照護" },
+      { title: "上怡生醫醫藥有限公司 SHANG YI BIOPHARMA｜合規品質．鏈結臨床與居家照護" },
       {
         name: "description",
         content:
-          "上怡生技醫藥有限公司以符合國際法規之品質管理為核心，代理醫療器材、特殊機能保健品、德國舒護貼與眼部清淨綿，鏈結醫療院所與居家照護專業通路。",
+          "上怡生醫醫藥有限公司以符合國際法規之品質管理為核心，代理醫療器材、特殊機能保健品、德國舒護貼與眼部清淨綿，鏈結醫療院所與居家照護專業通路。",
       },
       { name: "author", content: "SHANG YI BIOPHARMA" },
-      { property: "og:title", content: "上怡生技醫藥有限公司 SHANG YI BIOPHARMA" },
+      { property: "og:title", content: "上怡生醫醫藥有限公司 SHANG YI BIOPHARMA" },
       {
         property: "og:description",
         content: "以合規品質為核心，鏈結臨床與居家照護的生醫專家。",

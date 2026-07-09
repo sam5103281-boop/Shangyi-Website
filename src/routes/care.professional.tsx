@@ -8,7 +8,7 @@ import careProfessional from "@/assets/care-professional-nurse-v3.jpg.asset.json
 export const Route = createFileRoute("/care/professional")({
   head: () => ({
     meta: [
-      { title: "專業照護｜居家循環照護｜上怡生技 ComWell" },
+      { title: "專業照護｜居家循環照護｜上怡生醫 ComWell" },
       {
         name: "description",
         content:

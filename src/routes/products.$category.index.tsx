@@ -11,8 +11,8 @@ export const Route = createFileRoute("/products/$category/")({
   head: ({ loaderData }) => {
     const c = loaderData?.category;
     const title = c
-      ? `${c.label}｜上怡生技 SHANG YI BIOPHARMA`
-      : "產品｜上怡生技";
+      ? `${c.label}｜上怡生醫 SHANG YI BIOPHARMA`
+      : "產品｜上怡生醫";
     const desc = c?.heroDesc ?? "上怡醫療相關產品線。";
     return {
       meta: [

@@ -12,13 +12,13 @@ export const Route = createFileRoute("/products/supplements/")({
   validateSearch: zodValidator(searchSchema),
   head: () => ({
     meta: [
-      { title: "特殊機能保健品｜上怡生技 SHANG YI BIOPHARMA" },
+      { title: "特殊機能保健品｜上怡生醫 SHANG YI BIOPHARMA" },
       {
         name: "description",
         content:
-          "上怡生技特殊機能保健品 16 項，依成份分類檢索：葉黃素、魚油 Omega-3、維生素 B12／C／D3／K2、Q10、益生菌、鈣、鎂、硒、蔓越莓等，皆通過第三方檢驗。",
+          "上怡生醫特殊機能保健品 16 項，依成份分類檢索：葉黃素、魚油 Omega-3、維生素 B12／C／D3／K2、Q10、益生菌、鈣、鎂、硒、蔓越莓等，皆通過第三方檢驗。",
       },
-      { property: "og:title", content: "特殊機能保健品｜上怡生技" },
+      { property: "og:title", content: "特殊機能保健品｜上怡生醫" },
       { property: "og:description", content: "依成份分類，快速找到對的保健配方。" },
     ],
   }),
