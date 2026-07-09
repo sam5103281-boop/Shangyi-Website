@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { CareSubNav } from "@/components/CareSubNav";
 import { SectionHeading } from "@/components/SectionHeading";
-import careProfessional from "@/assets/care-professional-nurse-v3.jpg.asset.json";
+import careProfessional from "@/assets/comwell-雙機器-特寫-2.jpg.asset.json";
 
 export const Route = createFileRoute("/care/professional")({
   head: () => ({
@@ -92,8 +92,8 @@ function ProfessionalCarePage() {
             <img
               src={careProfessional.url}
               alt="ComWell 居家循環照護設備"
-              width={1600}
-              height={900}
+              width={852}
+              height={639}
               className="absolute inset-0 h-full w-full object-cover"
               fetchPriority="high"
               decoding="async"
