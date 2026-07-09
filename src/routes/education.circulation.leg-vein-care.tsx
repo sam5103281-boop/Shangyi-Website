@@ -18,7 +18,7 @@ const ALERT_INK = "#c0392b";
 export const Route = createFileRoute("/education/circulation/leg-vein-care")({
   head: () => ({
     meta: [
-      { title: "腿部靜脈保養與照護指引｜醫療保健專欄｜上怡生技" },
+      { title: "腿部靜脈保養與照護指引｜醫療保健專欄｜上怡生醫" },
       {
         name: "description",
         content:

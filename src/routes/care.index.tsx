@@ -8,13 +8,13 @@ import careProfessional from "@/assets/comwell-home-scene-v3.jpg.asset.json";
 export const Route = createFileRoute("/care/")({
   head: () => ({
     meta: [
-      { title: "居家循環照護｜上怡生技 ComWell" },
+      { title: "居家循環照護｜上怡生醫 ComWell" },
       {
         name: "description",
         content:
           "ComWell 居家循環照護：護理師到府評估、IPC 設備導入與在地團隊持續陪伴，讓醫師放心轉介、病人安心使用。",
       },
-      { property: "og:title", content: "居家循環照護｜上怡生技 ComWell" },
+      { property: "og:title", content: "居家循環照護｜上怡生醫 ComWell" },
       {
         property: "og:description",
         content: "標準化流程＋在地團隊支援，建立讓醫師放心轉介的居家循環照護模式。",

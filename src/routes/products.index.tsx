@@ -5,13 +5,13 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 export const Route = createFileRoute("/products/")({
   head: () => ({
     meta: [
-      { title: "產品中心｜上怡生技 ShangYi Biotech" },
+      { title: "產品中心｜上怡生醫 ShangYi Biotech" },
       {
         name: "description",
         content:
-          "上怡生技四大產品線：特殊機能保健品、德國舒護貼、眼部清淨綿、康威爾 Comwell 醫療器材。提供完整規格與專業諮詢。",
+          "上怡生醫四大產品線：特殊機能保健品、德國舒護貼、眼部清淨綿、康威爾 Comwell 醫療器材。提供完整規格與專業諮詢。",
       },
-      { property: "og:title", content: "產品中心｜上怡生技" },
+      { property: "og:title", content: "產品中心｜上怡生醫" },
       { property: "og:description", content: "規格導向的醫療等級產品線。" },
     ],
   }),
@@ -123,7 +123,7 @@ function ProductsPage() {
               規格導向的醫療等級產品線
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
-              上怡生技不提供消費端購物車。所有產品均經由專業團隊評估後，以合規文件與技術規格
+              上怡生醫不提供消費端購物車。所有產品均經由專業團隊評估後，以合規文件與技術規格
               供醫療院所、專業通路及合格照護者參考。
             </p>
           </div>

@@ -11,7 +11,7 @@ const ACCENT = "rgb(229, 136, 179)";
 export const Route = createFileRoute("/education/postpartum/pe-prevention")({
   head: () => ({
     meta: [
-      { title: "產後肺栓塞風險與靜脈血栓預防｜醫療保健專欄｜上怡生技" },
+      { title: "產後肺栓塞風險與靜脈血栓預防｜醫療保健專欄｜上怡生醫" },
       {
         name: "description",
         content:

@@ -6,13 +6,13 @@ import qualityLab from "@/assets/medical-handshake.png.asset.json";
 export const Route = createFileRoute("/channels")({
   head: () => ({
     meta: [
-      { title: "合作通路｜上怡生技" },
+      { title: "合作通路｜上怡生醫" },
       {
         name: "description",
         content:
           "上怡產品僅透過公私立醫院、專科診所、杏一與維康等醫療相關通路供應；醫療設備限授權醫療院所使用，未於任何網路平台販售。",
       },
-      { property: "og:title", content: "合作通路｜上怡生技" },
+      { property: "og:title", content: "合作通路｜上怡生醫" },
       {
         property: "og:description",
         content: "醫療相關通路據點與醫療設備授權合作說明。",

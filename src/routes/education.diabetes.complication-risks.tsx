@@ -8,7 +8,7 @@ const ACCENT_SOFT = "#fef2ed";
 export const Route = createFileRoute("/education/diabetes/complication-risks")({
   head: () => ({
     meta: [
-      { title: "不可輕忽糖尿病帶來的併發症風險｜醫療保健專欄｜上怡生技" },
+      { title: "不可輕忽糖尿病帶來的併發症風險｜醫療保健專欄｜上怡生醫" },
       {
         name: "description",
         content:

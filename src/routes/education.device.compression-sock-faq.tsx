@@ -12,7 +12,7 @@ const ACCENT_SOFT = "#e6f2f4";
 export const Route = createFileRoute("/education/device/compression-sock-faq")({
   head: () => ({
     meta: [
-      { title: "醫用輔助襪常見問題｜醫療保健專欄｜上怡生技" },
+      { title: "醫用輔助襪常見問題｜醫療保健專欄｜上怡生醫" },
       {
         name: "description",
         content:

@@ -11,8 +11,8 @@ export const Route = createFileRoute("/products/supplements/$slug")({
   head: ({ loaderData }) => {
     const p = loaderData?.product;
     const title = p
-      ? `${p.name} ${p.en}｜特殊機能保健品｜上怡生技`
-      : "產品｜上怡生技";
+      ? `${p.name} ${p.en}｜特殊機能保健品｜上怡生醫`
+      : "產品｜上怡生醫";
     const desc = p
       ? `${p.name} (${p.en})．${p.origin}製造進口。主要成份：${p.ingredients
           .map((id) => getIngredient(id)?.label)
