@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, ShieldCheck, FlaskConical, Stethoscope, Eye } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import heroVideo from "@/assets/homepage-hero.mp4.asset.json";
-import comwellHome from "@/assets/comwell-home-leg-v3.jpg.asset.json";
+import comwellHome from "@/assets/comwell-雙機器-特寫.jpg.asset.json";
 import productsFlatlay from "@/assets/products-flatlay.jpg";
 import catSupplements from "@/assets/categories/cat-supplements-v2.jpg.asset.json";
 import catPatches from "@/assets/patch-demo.png.asset.json";
@@ -291,11 +291,11 @@ function HomePage() {
               <img
                 src={comwellHome.url}
                 alt="康威爾 Comwell 居家循環照護情境"
-                width={1280}
-                height={960}
+                width={852}
+                height={639}
                 loading="lazy"
                 decoding="async"
-                className="aspect-[4/3] w-full origin-[82%_100%] object-cover object-[88%_100%] scale-[1.46] transition-transform duration-[1400ms] ease-out hover:scale-[1.52] sm:origin-[80%_100%] sm:object-[86%_100%] sm:scale-[1.42] sm:hover:scale-[1.48] md:origin-[78%_100%] md:object-[84%_100%] md:scale-[1.36] md:hover:scale-[1.42] lg:origin-[76%_100%] lg:object-[82%_100%] lg:scale-[1.32] lg:hover:scale-[1.38] xl:origin-[74%_100%] xl:object-[80%_100%] xl:scale-[1.28] xl:hover:scale-[1.34]"
+                className="aspect-[4/3] w-full object-cover object-center transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
               />
             </div>
           </Reveal>
