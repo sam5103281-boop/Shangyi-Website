@@ -84,18 +84,22 @@ const categories = [
 ];
 
 const partners: { name: string; tag: string }[] = [
-  { name: "臺大醫院體系", tag: "Medical Center" },
-  { name: "榮民總醫院", tag: "Medical Center" },
-  { name: "長庚醫療財團", tag: "Medical Center" },
-  { name: "馬偕紀念醫院", tag: "Medical Center" },
+  { name: "台大醫院", tag: "Medical Center" },
   { name: "新光醫院", tag: "Medical Center" },
-  { name: "國泰綜合醫院", tag: "Medical Center" },
-  { name: "亞東紀念醫院", tag: "Medical Center" },
-  { name: "中國醫藥大學附醫", tag: "Medical Center" },
-  { name: "童綜合醫院", tag: "Regional" },
-  { name: "義大醫院", tag: "Regional" },
-  { name: "高雄醫學大學附醫", tag: "Medical Center" },
-  { name: "全台連鎖藥局通路", tag: "Retail Network" },
+  { name: "長庚醫療體系", tag: "Medical Center" },
+  { name: "慈濟醫療體系", tag: "Medical Center" },
+  { name: "中國附醫", tag: "Medical Center" },
+  { name: "中山附醫", tag: "Medical Center" },
+  { name: "秀傳醫療體系", tag: "Medical Center" },
+  { name: "成大醫院", tag: "Medical Center" },
+  { name: "奇美醫院", tag: "Medical Center" },
+  { name: "高醫附醫", tag: "Medical Center" },
+  { name: "義大醫院", tag: "Medical Center" },
+  { name: "榮民醫療體系", tag: "Medical Center" },
+  { name: "嘉義基督教醫院", tag: "Regional" },
+  { name: "屏東基督教醫院", tag: "Regional" },
+  { name: "台東馬偕醫院", tag: "Regional" },
+  { name: "杏一․維康醫療用品通路", tag: "Retail Network" },
 ];
 
 function HomePage() {

@@ -8,13 +8,13 @@ import careProfessional from "@/assets/care-professional-nurse-v3.jpg.asset.json
 export const Route = createFileRoute("/care/professional")({
   head: () => ({
     meta: [
-      { title: "專業照護｜下肢循環照護｜上怡生技 ComWell" },
+      { title: "專業照護｜居家循環照護｜上怡生技 ComWell" },
       {
         name: "description",
         content:
-          "ComWell 居家下肢循環照護專業模式：護理師評估把關、四步驟導入流程與在地團隊長期陪伴，讓醫師放心轉介。",
+          "ComWell 居家循環照護專業模式：護理師評估把關、四步驟導入流程與在地團隊長期陪伴，讓醫師放心轉介。",
       },
-      { property: "og:title", content: "專業照護｜下肢循環照護" },
+      { property: "og:title", content: "專業照護｜居家循環照護" },
       {
         property: "og:description",
         content: "標準化流程＋臨床護理師把關，建立讓醫師放心轉介的居家循環照護模式。",

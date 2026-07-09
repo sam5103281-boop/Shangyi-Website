@@ -13,13 +13,13 @@ import careReferral from "@/assets/care-referral-consult.png.asset.json";
 export const Route = createFileRoute("/care/referral")({
   head: () => ({
     meta: [
-      { title: "轉介流程｜下肢循環照護｜上怡生技 ComWell" },
+      { title: "轉介流程｜居家循環照護｜上怡生技 ComWell" },
       {
         name: "description",
         content:
-          "ComWell 居家下肢循環照護轉介流程：前置聯繫、實地評估、設定衛教、追蹤回饋與在地設備支援，五步驟確保臨床延續。",
+          "ComWell 居家循環照護轉介流程：前置聯繫、實地評估、設定衛教、追蹤回饋與在地設備支援，五步驟確保臨床延續。",
       },
-      { property: "og:title", content: "轉介流程｜下肢循環照護" },
+      { property: "og:title", content: "轉介流程｜居家循環照護" },
       {
         property: "og:description",
         content: "五步驟轉介流程＋ComWell 護理團隊在地支援，讓臨床照護安全延伸至居家。",
