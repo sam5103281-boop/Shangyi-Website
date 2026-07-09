@@ -437,27 +437,37 @@ function ArticlePage() {
               DVT 預防方式
             </h2>
           </Reveal>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
+          <div className="mx-auto mt-14 grid max-w-6xl gap-px overflow-hidden rounded-2xl border bg-surface md:grid-cols-3" style={{ borderColor: `${TEAL}30`, background: `${TEAL}20` }}>
             {prevention.map((p, i) => (
               <Reveal
                 key={p.t}
                 direction="up"
-                delay={i * 60}
-                className="group overflow-hidden rounded-2xl border border-hairline bg-surface transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-soft"
+                delay={i * 80}
+                className="group relative flex flex-col bg-surface p-8 transition-colors duration-500 hover:bg-[color:var(--hover)] md:p-10"
+                style={{ ["--hover" as never]: `${TEAL}08` }}
               >
-                <div className="aspect-[4/3] w-full overflow-hidden bg-[#eaf6f5]">
-                  <img
-                    src={p.img.url}
-                    alt={p.t}
-                    loading="lazy"
-                    decoding="async"
-                    className={`h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05] ${(p as { imgClass?: string }).imgClass ?? ""}`}
+                <div className="flex items-center justify-between">
+                  <span
+                    className="font-display text-[13px] tabular-nums tracking-[0.32em]"
+                    style={{ color: TEAL_INK }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="h-px w-8 transition-all duration-500 group-hover:w-16"
+                    style={{ background: TEAL_INK }}
                   />
                 </div>
-                <div className="p-7">
-                  <h3 className="font-display text-xl text-foreground">{p.t}</h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{p.d}</p>
-                </div>
+                <h3 className="mt-8 font-display text-[22px] leading-snug text-foreground md:text-2xl">
+                  {p.t}
+                </h3>
+                <p className="mt-4 text-[15px] leading-[1.85] text-muted-foreground">{p.d}</p>
+                <span
+                  aria-hidden
+                  className="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100"
+                  style={{ background: TEAL_INK }}
+                />
               </Reveal>
             ))}
           </div>
