@@ -92,8 +92,8 @@ function ProfessionalCarePage() {
             <img
               src={careProfessional.url}
               alt="ComWell 居家循環照護設備"
-              width={1600}
-              height={900}
+              width={852}
+              height={639}
               className="absolute inset-0 h-full w-full object-cover"
               fetchPriority="high"
               decoding="async"
