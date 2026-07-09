@@ -444,29 +444,28 @@ function ArticlePage() {
                 direction="up"
                 delay={i * 80}
                 className="group relative flex flex-col bg-surface p-8 transition-colors duration-500 hover:bg-[color:var(--hover)] md:p-10"
-                style={{ ["--hover" as never]: `${TEAL}08` }}
+                style={{ ["--hover" as never]: TEAL_INK }}
               >
                 <div className="flex items-center justify-between">
                   <span
-                    className="font-display text-[13px] tabular-nums tracking-[0.32em]"
-                    style={{ color: TEAL_INK }}
+                    className="font-display text-[13px] tabular-nums tracking-[0.32em] text-[#2f7a78] transition-colors group-hover:text-white"
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span
                     aria-hidden
-                    className="h-px w-8 transition-all duration-500 group-hover:w-16"
-                    style={{ background: TEAL_INK }}
+                    className="h-px w-8 bg-[#2f7a78] transition-all duration-500 group-hover:w-16 group-hover:bg-white"
                   />
                 </div>
-                <h3 className="mt-8 font-display text-[22px] leading-snug text-foreground md:text-2xl">
+                <h3 className="mt-8 font-display text-[22px] leading-snug text-foreground transition-colors group-hover:text-white md:text-2xl">
                   {p.t}
                 </h3>
-                <p className="mt-4 text-[15px] leading-[1.85] text-muted-foreground">{p.d}</p>
+                <p className="mt-4 text-[15px] leading-[1.85] text-muted-foreground transition-colors group-hover:text-white/90">
+                  {p.d}
+                </p>
                 <span
                   aria-hidden
-                  className="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100"
-                  style={{ background: TEAL_INK }}
+                  className="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 bg-white transition-transform duration-500 ease-out group-hover:scale-x-100"
                 />
               </Reveal>
             ))}
