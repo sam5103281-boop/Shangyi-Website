@@ -1,0 +1,62 @@
+{
+  "$comment": "Per-product WebP output quality rules. Used by scripts/reencode-product-webp.py to re-encode product images to /assets/products/<slug>-{800,1600}.webp at controlled quality — avoids over-compression while keeping bytes reasonable. Adjust `quality800` / `quality1600` (0–100) or `method` (0=fast … 6=slowest/best) per product. `source` is the pointer file (relative to repo root) whose original binary will be pulled from CDN as the re-encoding source; pick the highest-resolution / cleanest available.",
+  "products": {
+    "beaid": {
+      "source": "src/assets/products/beaid-product-v2.png.asset.json",
+      "quality800": 90,
+      "quality1600": 88,
+      "method": 6,
+      "notes": "Clean product render on white — high quality, gradients matter."
+    },
+    "bebright": {
+      "source": "src/assets/products/bebright-product-v2.png.asset.json",
+      "quality800": 90,
+      "quality1600": 88,
+      "method": 6,
+      "notes": "Clean product render on white."
+    },
+    "belight": {
+      "source": "src/assets/products/belight-product-v3.png.asset.json",
+      "quality800": 90,
+      "quality1600": 88,
+      "method": 6,
+      "notes": "Clean product render on white."
+    },
+    "bezen": {
+      "source": "src/assets/products/bezen-product-v4.png.asset.json",
+      "quality800": 90,
+      "quality1600": 88,
+      "method": 6,
+      "notes": "Clean product render on white."
+    },
+    "comwell": {
+      "source": "src/assets/products/comwell-official.jpg.asset.json",
+      "quality800": 88,
+      "quality1600": 86,
+      "method": 6,
+      "notes": "Photographic — slightly lower quality is fine, JPG source already lossy."
+    },
+    "ted": {
+      "source": "src/assets/products/ted-1600.webp.asset.json",
+      "quality800": 90,
+      "quality1600": 90,
+      "method": 6,
+      "notes": "No PNG source available — best we can do is re-encode from existing 1600 WebP. Upload a higher-resolution PNG to improve further."
+    },
+    "visiony": {
+      "source": "src/assets/products/visiony-1600.webp.asset.json",
+      "quality800": 92,
+      "quality1600": 92,
+      "method": 6,
+      "notes": "Source is 1000×1000. Re-encode from existing WebP for now; upload a larger PNG to reach true 1600px."
+    },
+    "scd": {
+      "source": "src/assets/products/scd-700.png.asset.json",
+      "quality800": 92,
+      "quality1600": 92,
+      "method": 6,
+      "upscaleTo": 1600,
+      "notes": "PNG source is only 700px. Upscaled Lanczos to 1600 for the -1600 variant; consider re-shooting/regenerating for sharper output."
+    }
+  }
+}
