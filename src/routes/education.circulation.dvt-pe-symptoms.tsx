@@ -68,7 +68,7 @@ const prevention = [
   },
   {
     img: prevStockings,
-    t: "穿著梯度壓力襪",
+    t: "穿著梯度壓力襪 (GCS)",
     d: "由腳踝向上遞減的壓力設計，協助靜脈回流，減少下肢血流鬱滯。",
   },
   {
