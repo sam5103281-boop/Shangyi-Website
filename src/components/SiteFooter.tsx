@@ -82,7 +82,7 @@ export function SiteFooter() {
           <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-6">
             <p>© {new Date().getFullYear()} 上怡生技醫藥有限公司 SHANG YI BIOPHARMA　保留所有權利</p>
             <p className="tracking-wider">
-              醫療器材販賣業許可執照
+              <br />
             </p>
           </div>
           <div className="flex items-center gap-3">
