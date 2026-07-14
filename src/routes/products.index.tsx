@@ -49,15 +49,6 @@ const products: ProductCard[] = [
   },
   {
     code: "P · 03",
-    title: "眼部清淨綿",
-    en: "Ophthalmic Cleansing Pads",
-    desc: "為眼部日常護理與術前術後清潔設計，無添加香料、酒精，採獨立包裝確保使用衛生與安全性。",
-    points: ["日本進口", "無添加配方", "獨立無菌包裝"],
-    to: "/products/$category/$slug",
-    params: { category: "eye-pads", slug: "visiony" },
-  },
-  {
-    code: "P · 04",
     title: "醫療器材",
     en: "Lower-Limb Circulation Care",
     desc: "醫療等級之下肢循環照護產品線，涵蓋間歇性氣動加壓系統與醫療級壓力襪，針對長期臥床、術後恢復、行動不便與日常循環支援設計，操作介面已為居家照護者進行最佳化。",
@@ -65,6 +56,15 @@ const products: ProductCard[] = [
     to: "/products/$category",
     params: { category: "devices" },
     feature: true,
+  },
+  {
+    code: "P · 04",
+    title: "眼部清淨綿",
+    en: "Ophthalmic Cleansing Pads",
+    desc: "為眼部日常護理與術前術後清潔設計，無添加香料、酒精，採獨立包裝確保使用衛生與安全性。",
+    points: ["日本進口", "無添加配方", "獨立無菌包裝"],
+    to: "/products/$category/$slug",
+    params: { category: "eye-pads", slug: "visiony" },
   },
 ];
 

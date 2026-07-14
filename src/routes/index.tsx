@@ -4,7 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import heroVideo from "@/assets/homepage-hero.mp4.asset.json";
 import comwellHome from "@/assets/comwell-雙機器-特寫-2.jpg.asset.json";
 import productsFlatlay from "@/assets/products-flatlay.jpg";
-import catSupplements from "@/assets/categories/cat-supplements-v2.jpg.asset.json";
+import catSupplements from "@/assets/categories/cat-supplements-v3.jpg.asset.json";
 import catPatches from "@/assets/patch-demo.png.asset.json";
 import catEye from "@/assets/categories/cat-eye-v2.png.asset.json";
 import catDevices from "@/assets/categories/cat-devices-v5.jpg.asset.json";
@@ -45,7 +45,7 @@ const categories = [
     desc: "成分透明、第三方檢驗，針對臨床營養補充需求設計。",
     icon: FlaskConical,
     image: catSupplements.url,
-    imagePosition: "70% 60%",
+    imagePosition: "center",
     to: "/products/supplements" as const,
     params: undefined,
   },
@@ -61,17 +61,6 @@ const categories = [
   },
   {
     n: "03",
-    code: "OPHTH.",
-    title: "眼部清淨綿",
-    desc: "100%精製水，無添加配方，提供日常與術前術後眼睛周圍護理之安全選項。",
-    icon: Eye,
-    image: catEye.url,
-    imagePosition: "75% center",
-    to: "/products/$category/$slug" as const,
-    params: { category: "eye-pads", slug: "visiony" },
-  },
-  {
-    n: "04",
     code: "DEVICE",
     title: "醫療器材",
     desc: "涵蓋間歇加壓系統、醫療級壓力襪等多元循環照護產品。",
@@ -80,6 +69,17 @@ const categories = [
     imagePosition: "22% 65%",
     to: "/products/$category" as const,
     params: { category: "devices" },
+  },
+  {
+    n: "04",
+    code: "OPHTH.",
+    title: "眼部清淨綿",
+    desc: "100%精製水，無添加配方，提供日常與術前術後眼睛周圍護理之安全選項。",
+    icon: Eye,
+    image: catEye.url,
+    imagePosition: "75% center",
+    to: "/products/$category/$slug" as const,
+    params: { category: "eye-pads", slug: "visiony" },
   },
 ];
 
@@ -147,12 +147,12 @@ function HomePage() {
                 loop
                 muted
                 playsInline
-                className="h-full w-full object-cover object-[center_40%] transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
+                className="h-full w-full object-cover object-[center_70%] transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
               />
-              <div className="absolute -bottom-px left-0 right-0 hidden border border-hairline bg-background/90 px-4 py-3 backdrop-blur md:block md:bottom-6 md:left-6 md:right-6">
-                <p className="text-[11px] uppercase tracking-[0.22em] text-accent">Quality First</p>
-                <p className="mt-2 text-sm leading-relaxed text-foreground">
-                  以臨床高標準嚴選每項產品，全面守護每一位使用者的健康與安全。
+              <div className="absolute right-6 top-6 hidden max-w-[220px] border border-hairline bg-background/90 px-3 py-2 backdrop-blur md:block">
+                <p className="text-[10px] uppercase tracking-[0.22em] text-accent">Quality First</p>
+                <p className="mt-1 text-xs leading-snug text-foreground">
+                  臨床高標準嚴選，守護健康安全。
                 </p>
               </div>
             </div>
