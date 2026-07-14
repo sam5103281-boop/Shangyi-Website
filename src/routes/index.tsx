@@ -139,17 +139,17 @@ function HomePage() {
             </div>
           </Reveal>
 
-          <Reveal as="div" direction="left" delay={120} className="relative flex items-center justify-center lg:col-span-6">
-            <div className="relative aspect-[9/16] h-[clamp(420px,62vh,720px)] overflow-hidden bg-surface-muted">
+          <Reveal as="div" direction="left" delay={120} className="relative lg:col-span-6">
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface-muted">
               <video
                 src={heroVideo.url}
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
+                className="h-full w-full object-cover object-top transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
               />
-              <div className="absolute -bottom-px left-0 right-0 hidden border border-hairline bg-background/90 px-4 py-3 backdrop-blur md:block md:bottom-6 md:left-4 md:right-4">
+              <div className="absolute -bottom-px left-0 right-0 hidden border border-hairline bg-background/90 px-4 py-3 backdrop-blur md:block md:bottom-6 md:left-6 md:right-6">
                 <p className="text-[11px] uppercase tracking-[0.22em] text-accent">Quality First</p>
                 <p className="mt-2 text-sm leading-relaxed text-foreground">
                   以臨床高標準嚴選每項產品，全面守護每一位使用者的健康與安全。
