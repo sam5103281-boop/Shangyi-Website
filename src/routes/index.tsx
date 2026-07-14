@@ -258,7 +258,9 @@ function HomePage() {
 
 
           <div className="mt-14 grid grid-cols-1 auto-rows-fr gap-x-10 gap-y-12 md:grid-cols-2">
-            {categories.map((cat, i) => (
+            {categories.map((cat, i) => {
+              const isEditingSup = showEditor && cat.code === "SUP.";
+              return (
               <Reveal
                 key={cat.n}
                 as="div"
