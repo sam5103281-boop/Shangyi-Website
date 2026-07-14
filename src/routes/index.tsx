@@ -103,6 +103,25 @@ const partners: { name: string; tag: string }[] = [
   { name: "杏一 維康醫療用品通路", tag: "Retail Network" },
 ];
 
+const DEFAULT_POSITION = categories[0].imagePosition ?? "center";
+
+function parsePosition(pos: string | undefined) {
+  const parts = (pos ?? "50% 50%")
+    .replace(/%/g, "")
+    .split(" ")
+    .map((v) => {
+      const n = Number.parseFloat(v);
+      return Number.isFinite(n) ? n : 50;
+    });
+  const x = parts[0] ?? 50;
+  const y = parts[1] ?? parts[0] ?? 50;
+  return { x, y };
+}
+
+function formatPosition(x: number, y: number) {
+  return `${Math.round(x)}% ${Math.round(y)}%`;
+}
+
 function HomePage() {
   return (
     <>
