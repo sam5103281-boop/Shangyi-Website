@@ -283,9 +283,20 @@ function HomePage() {
                       loading="lazy"
                       decoding="async"
                       className={`h-full w-full transition-transform duration-700 group-hover:scale-105 ${
-                        (cat as { imageFit?: string }).imageFit === "contain" ? "object-contain" : "object-cover"
+                        isEditingSup
+                          ? previewContain
+                            ? "object-contain"
+                            : "object-cover"
+                          : (cat as { imageFit?: string }).imageFit === "contain"
+                            ? "object-contain"
+                            : "object-cover"
                       }`}
-                      style={{ objectPosition: (cat as { imagePosition?: string }).imagePosition ?? "center" }}
+                      style={{
+                        objectPosition: isEditingSup
+                          ? formatPosition(pos.x, pos.y)
+                          : (cat as { imagePosition?: string }).imagePosition ?? "center",
+                        objectFit: isEditingSup && previewContain ? "contain" : undefined,
+                      }}
                     />
                   </div>
                   <div className="flex w-[55%] flex-col justify-between border-y border-r border-hairline p-8 md:w-2/3">
@@ -312,7 +323,8 @@ function HomePage() {
                   </div>
                 </Link>
               </Reveal>
-            ))}
+            );
+          })}
           </div>
 
         </div>
