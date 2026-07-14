@@ -422,7 +422,7 @@ function HomePage() {
           decoding="async"
         />
       </section>
-      {isDev && !showEditor && (
+      {!showEditor && (
         <button
           type="button"
           onClick={() => setShowEditor(true)}
