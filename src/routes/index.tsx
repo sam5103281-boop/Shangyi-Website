@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, ShieldCheck, FlaskConical, Stethoscope, Eye, SlidersHorizontal, X } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, FlaskConical, Stethoscope, Eye } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import heroVideo from "@/assets/homepage-hero.mp4.asset.json";
 import comwellHome from "@/assets/comwell-雙機器-特寫-2.jpg.asset.json";
@@ -46,7 +45,8 @@ const categories = [
     desc: "成分透明、第三方檢驗，針對臨床營養補充需求設計。",
     icon: FlaskConical,
     image: catSupplements.url,
-    imagePosition: "60% 85%",
+    imageFit: "contain",
+    imagePosition: "36% 28%",
     to: "/products/supplements" as const,
     params: undefined,
   },
@@ -103,37 +103,7 @@ const partners: { name: string; tag: string }[] = [
   { name: "杏一 維康醫療用品通路", tag: "Retail Network" },
 ];
 
-const DEFAULT_POSITION = categories[0].imagePosition ?? "center";
-
-function parsePosition(pos: string | undefined) {
-  const parts = (pos ?? "50% 50%")
-    .replace(/%/g, "")
-    .split(" ")
-    .map((v) => {
-      const n = Number.parseFloat(v);
-      return Number.isFinite(n) ? n : 50;
-    });
-  const x = parts[0] ?? 50;
-  const y = parts[1] ?? parts[0] ?? 50;
-  return { x, y };
-}
-
-function formatPosition(x: number, y: number) {
-  return `${Math.round(x)}% ${Math.round(y)}%`;
-}
-
 function HomePage() {
-  const defaultPos = useMemo(() => parsePosition(DEFAULT_POSITION), []);
-  const [showEditor, setShowEditor] = useState(true);
-  const [pos, setPos] = useState(defaultPos);
-  const [previewContain, setPreviewContain] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const sp = new URLSearchParams(window.location.search);
-    if (sp.get("edit") === "supplements") setShowEditor(true);
-  }, []);
-
   return (
     <>
       {/* Hero */}
@@ -256,9 +226,7 @@ function HomePage() {
 
 
           <div className="mt-14 grid grid-cols-1 auto-rows-fr gap-x-10 gap-y-12 md:grid-cols-2">
-            {categories.map((cat, i) => {
-              const isEditingSup = showEditor && cat.code === "SUP.";
-              return (
+            {categories.map((cat, i) => (
               <Reveal
                 key={cat.n}
                 as="div"
@@ -281,19 +249,12 @@ function HomePage() {
                       loading="lazy"
                       decoding="async"
                       className={`h-full w-full transition-transform duration-700 group-hover:scale-105 ${
-                        isEditingSup
-                          ? previewContain
-                            ? "object-contain"
-                            : "object-cover"
-                          : (cat as { imageFit?: string }).imageFit === "contain"
-                            ? "object-contain"
-                            : "object-cover"
+                        (cat as { imageFit?: string }).imageFit === "contain"
+                          ? "object-contain"
+                          : "object-cover"
                       }`}
                       style={{
-                        objectPosition: isEditingSup
-                          ? formatPosition(pos.x, pos.y)
-                          : (cat as { imagePosition?: string }).imagePosition ?? "center",
-                        objectFit: isEditingSup && previewContain ? "contain" : undefined,
+                        objectPosition: (cat as { imagePosition?: string }).imagePosition ?? "center",
                       }}
                     />
                   </div>
@@ -321,8 +282,7 @@ function HomePage() {
                   </div>
                 </Link>
               </Reveal>
-            );
-          })}
+            ))}
           </div>
 
         </div>
@@ -422,88 +382,6 @@ function HomePage() {
           decoding="async"
         />
       </section>
-      {!showEditor && (
-        <button
-          type="button"
-          onClick={() => setShowEditor(true)}
-          className="fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-lg transition-colors hover:bg-primary/90"
-        >
-          <SlidersHorizontal className="h-4 w-4" />
-          調整藥盒構圖
-        </button>
-      )}
-      {showEditor && (
-        <div className="fixed bottom-6 right-6 z-50 w-72 rounded-2xl border border-border bg-surface p-5 shadow-2xl">
-          <div className="mb-4 flex items-center justify-between">
-            <span className="text-sm font-semibold text-foreground">藥盒構圖微調</span>
-            <button
-              type="button"
-              onClick={() => setShowEditor(false)}
-              className="rounded-md p-1 text-muted-foreground transition-colors hover:bg-surface-muted hover:text-foreground"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          </div>
-          <div className="space-y-4">
-            <div>
-              <div className="mb-1 flex justify-between text-xs text-muted-foreground">
-                <span>左右</span>
-                <span>{Math.round(pos.x)}%</span>
-              </div>
-              <input
-                type="range"
-                min={0}
-                max={100}
-                value={pos.x}
-                onChange={(e) => setPos((p) => ({ ...p, x: Number(e.target.value) }))}
-                className="w-full"
-                style={{ accentColor: "var(--accent)" }}
-              />
-            </div>
-            <div>
-              <div className="mb-1 flex justify-between text-xs text-muted-foreground">
-                <span>上下</span>
-                <span>{Math.round(pos.y)}%</span>
-              </div>
-              <input
-                type="range"
-                min={0}
-                max={100}
-                value={pos.y}
-                onChange={(e) => setPos((p) => ({ ...p, y: Number(e.target.value) }))}
-                className="w-full"
-                style={{ accentColor: "var(--accent)" }}
-              />
-            </div>
-            <label className="flex cursor-pointer items-center gap-2 text-xs text-muted-foreground">
-              <input
-                type="checkbox"
-                checked={previewContain}
-                onChange={(e) => setPreviewContain(e.target.checked)}
-                className="h-4 w-4"
-                style={{ accentColor: "var(--accent)" }}
-              />
-              完整顯示圖片（不裁切）
-            </label>
-            <div className="rounded-md bg-surface-muted p-2 text-center font-mono text-xs text-foreground">
-              {formatPosition(pos.x, pos.y)}
-            </div>
-            <button
-              type="button"
-              onClick={async () => {
-                try {
-                  await navigator.clipboard.writeText(formatPosition(pos.x, pos.y));
-                } catch {
-                  // ignore
-                }
-              }}
-              className="w-full rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              複製數值
-            </button>
-          </div>
-        </div>
-      )}
     </>
   );
 }
