@@ -45,7 +45,7 @@ const categories = [
     desc: "成分透明、第三方檢驗，針對臨床營養補充需求設計。",
     icon: FlaskConical,
     image: catSupplements.url,
-    imagePosition: "70% center",
+    imagePosition: "center",
     to: "/products/supplements" as const,
     params: undefined,
   },
@@ -149,9 +149,9 @@ function HomePage() {
                 playsInline
                 className="h-full w-full object-cover object-[center_70%] transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
               />
-              <div className="absolute right-6 bottom-6 hidden max-w-[260px] border border-hairline bg-background/90 px-4 py-3 backdrop-blur md:block">
-                <p className="text-[11px] uppercase tracking-[0.22em] text-accent">Quality First</p>
-                <p className="mt-1.5 text-sm leading-snug text-foreground">
+              <div className="absolute right-6 top-6 hidden max-w-[220px] border border-hairline bg-background/90 px-3 py-2 backdrop-blur md:block">
+                <p className="text-[10px] uppercase tracking-[0.22em] text-accent">Quality First</p>
+                <p className="mt-1 text-xs leading-snug text-foreground">
                   臨床高標準嚴選，守護健康安全。
                 </p>
               </div>
@@ -224,7 +224,7 @@ function HomePage() {
           </div>
 
 
-          <div className="mt-14 grid auto-rows-fr grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
+          <div className="mt-14 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2">
             {categories.map((cat, i) => (
               <Reveal
                 key={cat.n}
@@ -232,14 +232,13 @@ function HomePage() {
                 direction="up"
                 delay={i * 100}
                 distance={16}
-                className="h-full"
               >
                 <Link
                   to={cat.to}
                   params={cat.params as never}
-                  className="group flex h-full bg-surface transition-all duration-300"
+                  className="group flex bg-surface transition-all duration-300"
                 >
-                  <div className="aspect-[3/4] w-[45%] shrink-0 self-start overflow-hidden bg-surface-muted md:w-1/3">
+                  <div className="aspect-[3/4] w-[45%] shrink-0 overflow-hidden bg-surface-muted md:w-1/3">
                     <img
                       src={cat.image}
                       alt={cat.title}
