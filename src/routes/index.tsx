@@ -1,5 +1,6 @@
+import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, ShieldCheck, FlaskConical, Stethoscope, Eye } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, FlaskConical, Stethoscope, Eye, SlidersHorizontal, X } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import heroVideo from "@/assets/homepage-hero.mp4.asset.json";
 import comwellHome from "@/assets/comwell-雙機器-特寫-2.jpg.asset.json";
