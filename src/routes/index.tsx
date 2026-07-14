@@ -4,7 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import heroVideo from "@/assets/homepage-hero.mp4.asset.json";
 import comwellHome from "@/assets/comwell-雙機器-特寫-2.jpg.asset.json";
 import productsFlatlay from "@/assets/products-flatlay.jpg";
-import catSupplements from "@/assets/categories/cat-supplements-v3.jpg.asset.json";
+import catSupplements from "@/assets/categories/cat-supplements-v4.png.asset.json";
 import catPatches from "@/assets/patch-demo.png.asset.json";
 import catEye from "@/assets/categories/cat-eye-v2.png.asset.json";
 import catDevices from "@/assets/categories/cat-devices-v5.jpg.asset.json";
@@ -45,7 +45,7 @@ const categories = [
     desc: "成分透明、第三方檢驗，針對臨床營養補充需求設計。",
     icon: FlaskConical,
     image: catSupplements.url,
-    imagePosition: "25% center",
+    imagePosition: "center",
     to: "/products/supplements" as const,
     params: undefined,
   },
@@ -149,10 +149,10 @@ function HomePage() {
                 playsInline
                 className="h-full w-full object-cover object-[center_70%] transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
               />
-              <div className="absolute bottom-6 right-6 hidden max-w-[260px] border border-hairline bg-background/90 px-4 py-3 backdrop-blur md:block">
-                <p className="text-[11px] uppercase tracking-[0.22em] text-accent">Quality First</p>
-                <p className="mt-1 text-sm leading-snug text-foreground">
-                  臨床高標準嚴選，守護健康安全。
+              <div className="absolute bottom-6 right-6 hidden border border-hairline bg-background/90 px-4 py-2 backdrop-blur md:block">
+                <p className="whitespace-nowrap text-sm leading-snug text-foreground">
+                  <span className="mr-2 text-[11px] uppercase tracking-[0.22em] text-accent">Quality First</span>
+                  <span>臨床高標準嚴選，守護健康安全。</span>
                 </p>
               </div>
             </div>
