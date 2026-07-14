@@ -157,14 +157,14 @@ export const medicalCategories: MedicalCategory[] = [
       {
         slug: "bebright",
         code: "BE · 03",
-        name: "BeBright 女性貼",
-        en: "BeBright",
-        tagline: "【德國進口】．BeBright 女性貼醫療用黏性貼片。",
+        name: "beBright 女性貼",
+        en: "beBright",
+        tagline: "【德國進口】．beBright 女性貼醫療用黏性貼片。",
         imageUrl: "/__l5e/assets-v1/bc2ee4a2-14ff-4bcd-acee-60295a05b7ca/bebright-product-v2.webp",
         imageSrcSet: "/__l5e/assets-v1/bc2ee4a2-14ff-4bcd-acee-60295a05b7ca/bebright-product-v2.webp 1200w",
         imageFit: "contain",
         intro:
-          "本產品為德國進口之 InnForce BeBright 女性貼醫療用黏性貼片。採用醫療等級黏著防水膠，具有輕薄舒適、防水效果佳、低敏性之產品特性。外觀採用浪漫柔美的「玫瑰粉紅底色搭配同心光芒漣漪圈」設計，展現溫柔、絢麗與自信的獨特氣質，專為現代女性日常穿搭保養、注重精緻細節與美學美感之族群精緻打造。",
+          "本產品為德國進口之 InnForce beBright 女性貼醫療用黏性貼片。採用醫療等級黏著防水膠，具有輕薄舒適、防水效果佳、低敏性之產品特性。外觀採用浪漫柔美的「玫瑰粉紅底色搭配同心光芒漣漪圈」設計，展現溫柔、絢麗與自信的獨特氣質，專為現代女性日常穿搭保養、注重精緻細節與美學美感之族群精緻打造。",
         highlights: [
           "光芒漣漪美學設計：採用溫柔優雅的玫瑰粉紅底色，搭配如同水面漣漪、層層擴散的同心光芒線條，精緻且極具美感。",
           "細緻穿搭隱形服貼：柔和淺色系外觀適合各式日常貼身衣物穿搭，貼附舒適，細緻隱形不突兀。",
@@ -197,14 +197,14 @@ export const medicalCategories: MedicalCategory[] = [
       {
         slug: "belight",
         code: "BE · 04",
-        name: "BeLight 兒童貼",
-        en: "BeLight",
-        tagline: "【德國進口】．BeLight 兒童貼醫療用黏性貼片。",
+        name: "beLight 兒童貼",
+        en: "beLight",
+        tagline: "【德國進口】．beLight 兒童貼醫療用黏性貼片。",
         imageUrl: "/__l5e/assets-v1/313cd21d-c359-4150-b215-4b1521b761b6/belight-product-v3.webp",
         imageSrcSet: "/__l5e/assets-v1/313cd21d-c359-4150-b215-4b1521b761b6/belight-product-v3.webp 1200w",
         imageFit: "contain",
         intro:
-          "本產品為德國進口之 InnForce BeLight 兒童貼醫療用黏性貼片。採用醫療等級黏著防水膠，具有輕薄舒適、防水效果佳、低敏性之產品特性。外觀設計別出心裁地採用「粉紫薰衣草底色搭配活潑氣泡圓圈」，呈現如同泡泡般輕盈跳躍、歡樂和諧的童趣意象，能有效降低施貼時的緊張感，專為學童、青少年以及喜愛活潑趣味風格之族群量身定做。",
+          "本產品為德國進口之 InnForce beLight 兒童貼醫療用黏性貼片。採用醫療等級黏著防水膠，具有輕薄舒適、防水效果佳、低敏性之產品特性。外觀設計別出心裁地採用「粉紫薰衣草底色搭配活潑氣泡圓圈」，呈現如同泡泡般輕盈跳躍、歡樂和諧的童趣意象，能有效降低施貼時的緊張感，專為學童、青少年以及喜愛活潑趣味風格之族群量身定做。",
         highlights: [
           "輕盈活潑氣泡設計：採用療癒和諧的粉紫薰衣草底色，搭配由大小圓點巧妙排列而成的氣泡圓圈，視覺效果溫和且富有朝氣。",
           "極致舒適低敏服貼：醫療等級底層具備絕佳的低敏性與輕薄度，溫和服貼細嫩肌膚，不易引發抗拒感。",
