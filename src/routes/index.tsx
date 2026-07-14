@@ -123,6 +123,19 @@ function formatPosition(x: number, y: number) {
 }
 
 function HomePage() {
+  const defaultPos = useMemo(() => parsePosition(DEFAULT_POSITION), []);
+  const [showEditor, setShowEditor] = useState(false);
+  const [pos, setPos] = useState(defaultPos);
+  const [previewContain, setPreviewContain] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const sp = new URLSearchParams(window.location.search);
+    if (sp.get("edit") === "supplements") setShowEditor(true);
+  }, []);
+
+  const isDev = import.meta.env.DEV;
+
   return (
     <>
       {/* Hero */}
