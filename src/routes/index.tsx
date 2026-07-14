@@ -147,12 +147,12 @@ function HomePage() {
                 loop
                 muted
                 playsInline
-                className="h-full w-full object-cover object-[center_40%] transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
+                className="h-full w-full object-cover object-[center_70%] transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
               />
-              <div className="absolute -bottom-px left-0 right-0 hidden border border-hairline bg-background/90 px-4 py-3 backdrop-blur md:block md:bottom-6 md:left-6 md:right-6">
-                <p className="text-[11px] uppercase tracking-[0.22em] text-accent">Quality First</p>
-                <p className="mt-2 text-sm leading-relaxed text-foreground">
-                  以臨床高標準嚴選每項產品，全面守護每一位使用者的健康與安全。
+              <div className="absolute right-6 top-6 hidden max-w-[220px] border border-hairline bg-background/90 px-3 py-2 backdrop-blur md:block">
+                <p className="text-[10px] uppercase tracking-[0.22em] text-accent">Quality First</p>
+                <p className="mt-1 text-xs leading-snug text-foreground">
+                  臨床高標準嚴選，守護健康安全。
                 </p>
               </div>
             </div>
