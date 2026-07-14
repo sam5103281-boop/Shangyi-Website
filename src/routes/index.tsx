@@ -96,7 +96,7 @@ const partners: { name: string; tag: string }[] = [
   { name: "奇美醫院", tag: "Medical Center" },
   { name: "義大醫院", tag: "Medical Center" },
   { name: "榮民醫療體系", tag: "Medical Center" },
-  { name: "高醫附醫", tag: "Medical Center" },
+  { name: "高醫體系", tag: "Medical Center" },
   { name: "嘉義基督教醫院", tag: "Regional" },
   { name: "屏東基督教醫院", tag: "Regional" },
   { name: "杏一 維康醫療用品通路", tag: "Retail Network" },
