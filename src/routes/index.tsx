@@ -147,7 +147,7 @@ function HomePage() {
                 loop
                 muted
                 playsInline
-                className="h-full w-full object-cover object-[center_30%] transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
+                className="h-full w-full object-cover object-[center_40%] transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
               />
               <div className="absolute -bottom-px left-0 right-0 hidden border border-hairline bg-background/90 px-4 py-3 backdrop-blur md:block md:bottom-6 md:left-6 md:right-6">
                 <p className="text-[11px] uppercase tracking-[0.22em] text-accent">Quality First</p>
