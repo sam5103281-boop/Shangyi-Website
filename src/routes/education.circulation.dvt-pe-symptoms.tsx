@@ -625,17 +625,7 @@ function ArticlePage() {
       </section>
 
       {/* Closing */}
-      <section className="relative overflow-hidden border-t border-hairline bg-white">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-40 bottom-0 h-[420px] w-[420px] animate-[blushPulse_9s_ease-in-out_infinite] rounded-full opacity-50 blur-3xl"
-          style={{ background: `radial-gradient(circle, ${TEAL} 0%, transparent 70%)` }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-32 top-10 h-[320px] w-[320px] animate-[blushPulse_11s_ease-in-out_infinite_1.5s] rounded-full opacity-40 blur-3xl"
-          style={{ background: `radial-gradient(circle, ${TEAL} 0%, transparent 70%)` }}
-        />
+      <section className="border-t border-hairline bg-white">
         <Reveal direction="up" className="container-page relative py-20 text-center md:py-24">
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-muted-foreground">
             血栓的發生往往悄無聲息，
