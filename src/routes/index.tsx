@@ -124,7 +124,7 @@ function formatPosition(x: number, y: number) {
 
 function HomePage() {
   const defaultPos = useMemo(() => parsePosition(DEFAULT_POSITION), []);
-  const [showEditor, setShowEditor] = useState(false);
+  const [showEditor, setShowEditor] = useState(true);
   const [pos, setPos] = useState(defaultPos);
   const [previewContain, setPreviewContain] = useState(false);
 
@@ -133,8 +133,6 @@ function HomePage() {
     const sp = new URLSearchParams(window.location.search);
     if (sp.get("edit") === "supplements") setShowEditor(true);
   }, []);
-
-  const isDev = import.meta.env.DEV;
 
   return (
     <>
