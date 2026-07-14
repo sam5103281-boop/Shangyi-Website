@@ -139,8 +139,8 @@ function HomePage() {
             </div>
           </Reveal>
 
-          <Reveal as="div" direction="left" delay={120} className="relative lg:col-span-6">
-            <div className="relative aspect-[4/5] overflow-hidden bg-surface-muted">
+          <Reveal as="div" direction="left" delay={120} className="relative flex items-center justify-center lg:col-span-6">
+            <div className="relative aspect-[9/16] max-h-[720px] w-full overflow-hidden bg-surface-muted">
               <video
                 src={heroVideo.url}
                 autoPlay
@@ -149,7 +149,6 @@ function HomePage() {
                 playsInline
                 className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out hover:scale-[1.03]"
               />
-
             </div>
             <div className="absolute -bottom-px left-0 right-0 hidden border border-hairline bg-background/90 px-6 py-4 backdrop-blur md:block md:left-auto md:right-6 md:bottom-6 md:w-72">
               <p className="text-[11px] uppercase tracking-[0.22em] text-accent">Quality First</p>
