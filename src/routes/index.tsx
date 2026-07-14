@@ -4,7 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import heroVideo from "@/assets/homepage-hero.mp4.asset.json";
 import comwellHome from "@/assets/comwell-雙機器-特寫-2.jpg.asset.json";
 import productsFlatlay from "@/assets/products-flatlay.jpg";
-import catSupplements from "@/assets/categories/cat-supplements-v2.jpg.asset.json";
+import catSupplements from "@/assets/categories/cat-supplements-v3.jpg.asset.json";
 import catPatches from "@/assets/patch-demo.png.asset.json";
 import catEye from "@/assets/categories/cat-eye-v2.png.asset.json";
 import catDevices from "@/assets/categories/cat-devices-v5.jpg.asset.json";
@@ -45,7 +45,7 @@ const categories = [
     desc: "成分透明、第三方檢驗，針對臨床營養補充需求設計。",
     icon: FlaskConical,
     image: catSupplements.url,
-    imagePosition: "70% 60%",
+    imagePosition: "center",
     to: "/products/supplements" as const,
     params: undefined,
   },
@@ -61,17 +61,6 @@ const categories = [
   },
   {
     n: "03",
-    code: "OPHTH.",
-    title: "眼部清淨綿",
-    desc: "100%精製水，無添加配方，提供日常與術前術後眼睛周圍護理之安全選項。",
-    icon: Eye,
-    image: catEye.url,
-    imagePosition: "75% center",
-    to: "/products/$category/$slug" as const,
-    params: { category: "eye-pads", slug: "visiony" },
-  },
-  {
-    n: "04",
     code: "DEVICE",
     title: "醫療器材",
     desc: "涵蓋間歇加壓系統、醫療級壓力襪等多元循環照護產品。",
@@ -80,6 +69,17 @@ const categories = [
     imagePosition: "22% 65%",
     to: "/products/$category" as const,
     params: { category: "devices" },
+  },
+  {
+    n: "04",
+    code: "OPHTH.",
+    title: "眼部清淨綿",
+    desc: "100%精製水，無添加配方，提供日常與術前術後眼睛周圍護理之安全選項。",
+    icon: Eye,
+    image: catEye.url,
+    imagePosition: "75% center",
+    to: "/products/$category/$slug" as const,
+    params: { category: "eye-pads", slug: "visiony" },
   },
 ];
 
