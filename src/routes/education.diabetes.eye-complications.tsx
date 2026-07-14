@@ -261,6 +261,20 @@ function ArticlePage() {
           </Reveal>
         </div>
       </section>
+
+      {/* Back to column */}
+      <section className="border-t border-hairline bg-white">
+        <div className="container-page py-16 text-center md:py-20">
+          <Link
+            to="/education"
+            hash="diabetes"
+            className="group inline-flex items-center gap-2 rounded-full border border-hairline bg-surface px-6 py-3 text-sm tracking-wider text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent hover:shadow-soft"
+          >
+            <span className="inline-block transition-transform duration-300 group-hover:-translate-x-1">←</span>
+            返回醫療保健專欄
+          </Link>
+        </div>
+      </section>
     </article>
   );
 }
