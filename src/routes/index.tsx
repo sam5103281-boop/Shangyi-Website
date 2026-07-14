@@ -424,6 +424,88 @@ function HomePage() {
           decoding="async"
         />
       </section>
+      {isDev && !showEditor && (
+        <button
+          type="button"
+          onClick={() => setShowEditor(true)}
+          className="fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-lg transition-colors hover:bg-primary/90"
+        >
+          <SlidersHorizontal className="h-4 w-4" />
+          調整藥盒構圖
+        </button>
+      )}
+      {showEditor && (
+        <div className="fixed bottom-6 right-6 z-50 w-72 rounded-2xl border border-border bg-surface p-5 shadow-2xl">
+          <div className="mb-4 flex items-center justify-between">
+            <span className="text-sm font-semibold text-foreground">藥盒構圖微調</span>
+            <button
+              type="button"
+              onClick={() => setShowEditor(false)}
+              className="rounded-md p-1 text-muted-foreground transition-colors hover:bg-surface-muted hover:text-foreground"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+          <div className="space-y-4">
+            <div>
+              <div className="mb-1 flex justify-between text-xs text-muted-foreground">
+                <span>左右</span>
+                <span>{Math.round(pos.x)}%</span>
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={100}
+                value={pos.x}
+                onChange={(e) => setPos((p) => ({ ...p, x: Number(e.target.value) }))}
+                className="w-full"
+                style={{ accentColor: "var(--accent)" }}
+              />
+            </div>
+            <div>
+              <div className="mb-1 flex justify-between text-xs text-muted-foreground">
+                <span>上下</span>
+                <span>{Math.round(pos.y)}%</span>
+              </div>
+              <input
+                type="range"
+                min={0}
+                max={100}
+                value={pos.y}
+                onChange={(e) => setPos((p) => ({ ...p, y: Number(e.target.value) }))}
+                className="w-full"
+                style={{ accentColor: "var(--accent)" }}
+              />
+            </div>
+            <label className="flex cursor-pointer items-center gap-2 text-xs text-muted-foreground">
+              <input
+                type="checkbox"
+                checked={previewContain}
+                onChange={(e) => setPreviewContain(e.target.checked)}
+                className="h-4 w-4"
+                style={{ accentColor: "var(--accent)" }}
+              />
+              完整顯示圖片（不裁切）
+            </label>
+            <div className="rounded-md bg-surface-muted p-2 text-center font-mono text-xs text-foreground">
+              {formatPosition(pos.x, pos.y)}
+            </div>
+            <button
+              type="button"
+              onClick={async () => {
+                try {
+                  await navigator.clipboard.writeText(formatPosition(pos.x, pos.y));
+                } catch {
+                  // ignore
+                }
+              }}
+              className="w-full rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              複製數值
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }
