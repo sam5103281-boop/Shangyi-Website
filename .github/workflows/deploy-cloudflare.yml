@@ -70,18 +70,24 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           WRANGLER_SEND_METRICS: "false"
-        run: bunx --bun wrangler@4.110.0 deploy --config dist/server/wrangler.json
-
-
-      - name: Show deployed Worker URL
         run: |
+          bunx --bun wrangler@4.110.0 deploy \
+            --config dist/server/wrangler.json \
+            --name shangyi-web \
+            --env ""
+
+      # Do not treat a successful command as a successful website deployment:
+      # this must be able to read the named Worker back from Cloudflare.
+      - name: Verify deployed Worker exists
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          WRANGLER_SEND_METRICS: "false"
+        run: |
+          bunx --bun wrangler@4.110.0 deployments list \
+            --config dist/server/wrangler.json \
+            --name shangyi-web
           echo "=============================================="
-          echo "Worker name (from wrangler.json):"
-          grep -E '"name"' dist/server/wrangler.json | head -1
-          echo ""
-          echo "Expected URL pattern:"
-          echo "  https://<worker-name>.<your-subdomain>.workers.dev"
-          echo ""
-          echo "Find your subdomain at:"
-          echo "  Cloudflare Dashboard → Workers & Pages → right sidebar 'Subdomain'"
+          echo "Verified Worker: shangyi-web"
+          echo "Live URL: https://shangyi-web.sam5103281.workers.dev"
           echo "=============================================="
