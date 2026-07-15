@@ -73,8 +73,7 @@ jobs:
         run: |
           bunx --bun wrangler@4.110.0 deploy \
             --config dist/server/wrangler.json \
-            --name shangyi-web \
-            --env ""
+            --name shangyi-web
 
       # Do not treat a successful command as a successful website deployment:
       # this must be able to read the named Worker back from Cloudflare.
