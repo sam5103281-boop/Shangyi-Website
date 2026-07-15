@@ -52,9 +52,13 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           WRANGLER_SEND_METRICS: "false"
-        # Nitro generates .wrangler/deploy/config.json for this exact root-level
-        # command. Do not patch or remove either generated Wrangler config.
-        run: npx --yes wrangler@4.110.0 deploy
+        run: |
+          set -o pipefail
+          npx --yes wrangler@4.110.0 deploy --config wrangler.jsonc 2>&1 | tee /tmp/wrangler-deploy.log
+          grep -Eq "(Uploaded|Deployed|Current Version ID)" /tmp/wrangler-deploy.log || {
+            echo "ERROR: Wrangler did not upload shangyi-web."
+            exit 1
+          }
 
       - name: Verify Worker in the expected Cloudflare account
         env:
