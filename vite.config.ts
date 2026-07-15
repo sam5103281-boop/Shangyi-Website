@@ -24,9 +24,9 @@ export default defineConfig({
     },
     cloudflare: {
       nodeCompat: true,
-      deployConfig: true,
+      // GitHub Actions deploys with the committed root wrangler.jsonc.
+      // Disable Nitro's generated redirect because it can mark the build as dry-run.
+      deployConfig: false,
     },
-
-
   },
 });

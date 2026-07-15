@@ -21,6 +21,11 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
@@ -42,61 +47,26 @@ jobs:
           test -n "$CLOUDFLARE_API_TOKEN" || (echo "CLOUDFLARE_API_TOKEN is missing"; exit 1)
           test -n "$CLOUDFLARE_ACCOUNT_ID" || (echo "CLOUDFLARE_ACCOUNT_ID is missing"; exit 1)
 
-      - name: Wrangler whoami (check which account this token belongs to)
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: bunx --bun wrangler@4.110.0 whoami
-
-      # Nitro's tanstack-start preset writes dist/server/wrangler.json meant to
-      # be deployed from that directory. We only override the Worker name and
-      # ensure workers.dev is on; everything else stays as Nitro generated it.
-      - name: Patch Nitro wrangler.json (name + workers.dev)
-        run: |
-          python3 - <<'PY'
-          import json, pathlib
-          p = pathlib.Path("dist/server/wrangler.json")
-          cfg = json.loads(p.read_text())
-          cfg["name"] = "shangyi-web"
-          cfg["workers_dev"] = True
-          cfg.pop("dry_run", None)
-          p.write_text(json.dumps(cfg, indent=2))
-          print(p.read_text())
-          PY
-
-      - name: Remove conflicting Nitro deploy redirect
-        run: |
-          # Nitro writes .wrangler/deploy/config.json at repo root that points to
-          # dist/server/wrangler.json. When we run wrangler from dist/server it sees
-          # both and errors ("do not share the same base path"). Remove the redirect.
-          rm -f .wrangler/deploy/config.json
-          rm -rf .wrangler/deploy || true
-
       - name: Deploy to Cloudflare Workers
-        working-directory: dist/server
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           WRANGLER_SEND_METRICS: "false"
         run: |
-          bunx --bun wrangler@4.110.0 deploy 2>&1 | tee /tmp/wrangler-deploy.log
-
+          set -o pipefail
+          npx --yes wrangler@4.110.0 deploy --config wrangler.jsonc 2>&1 | tee /tmp/wrangler-deploy.log
           grep -Eq "(Uploaded|Deployed|Current Version ID)" /tmp/wrangler-deploy.log || {
-            echo "ERROR: Wrangler exited without uploading a Worker."
+            echo "ERROR: Wrangler did not upload shangyi-web."
             exit 1
           }
 
-
-      # Query the account API directly. A Wrangler exit code alone is not
-      # sufficient proof that the Worker exists in the expected account.
       - name: Verify Worker in the expected Cloudflare account
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           WRANGLER_SEND_METRICS: "false"
         run: |
-          (cd dist/server && bunx --bun wrangler@4.110.0 deployments list) || true
-
-
+          npx --yes wrangler@4.110.0 deployments list --name shangyi-web
           HTTP_STATUS=$(curl --silent --show-error \
             --output /tmp/cloudflare-workers.json \
             --write-out "%{http_code}" \
