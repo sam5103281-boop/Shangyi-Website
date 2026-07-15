@@ -86,9 +86,8 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           WRANGLER_SEND_METRICS: "false"
         run: |
-          bunx --bun wrangler@4.110.0 deployments list \
-            --config wrangler.deploy.json \
-            --name shangyi-web
+          (cd dist/server && bunx --bun wrangler@4.110.0 deployments list) || true
+
 
           HTTP_STATUS=$(curl --silent --show-error \
             --output /tmp/cloudflare-workers.json \
