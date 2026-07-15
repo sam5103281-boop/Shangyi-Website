@@ -135,8 +135,13 @@ def main() -> int:
 
             # Download from Lovable CDN
             r = requests.get(source_url, timeout=60)
+            if r.status_code == 404:
+                print(f"  ? {filename}: 404 on source (stale/foreign asset), skip")
+                skipped += 1
+                continue
             r.raise_for_status()
             body = r.content
+
 
             ext = Path(filename).suffix.lower()
             content_type = MIME_TYPES.get(ext, "application/octet-stream")
