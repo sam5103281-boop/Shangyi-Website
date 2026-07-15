@@ -26,5 +26,7 @@ export default defineConfig({
       nodeCompat: true,
       deployConfig: true,
     },
+
+
   },
 });
