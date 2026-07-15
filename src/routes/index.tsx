@@ -3,7 +3,8 @@ import { ArrowUpRight, ShieldCheck, FlaskConical, Stethoscope, Eye } from "lucid
 import { Reveal } from "@/components/Reveal";
 import heroVideo from "@/assets/homepage-hero.mp4.asset.json";
 import comwellHome from "@/assets/comwell-雙機器-特寫-2.jpg.asset.json";
-import productsFlatlay from "@/assets/products-flatlay.jpg";
+import productsFlatlayAsset from "@/assets/products-flatlay.jpg.asset.json";
+const productsFlatlay = productsFlatlayAsset.url;
 import catSupplements from "@/assets/categories/cat-supplements-v5.png.asset.json";
 import catPatches from "@/assets/patch-demo.png.asset.json";
 import catEye from "@/assets/categories/cat-eye-v2.png.asset.json";
