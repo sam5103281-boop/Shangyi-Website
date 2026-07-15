@@ -75,9 +75,9 @@ jobs:
             --config dist/server/wrangler.json \
             --name shangyi-web
 
-      # Do not treat a successful command as a successful website deployment:
-      # this must be able to read the named Worker back from Cloudflare.
-      - name: Verify deployed Worker exists
+      # Query the account API directly. A Wrangler exit code alone is not
+      # sufficient proof that the Worker exists in the expected account.
+      - name: Verify Worker in the expected Cloudflare account
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -86,7 +86,31 @@ jobs:
           bunx --bun wrangler@4.110.0 deployments list \
             --config dist/server/wrangler.json \
             --name shangyi-web
+
+          HTTP_STATUS=$(curl --silent --show-error \
+            --output /tmp/cloudflare-workers.json \
+            --write-out "%{http_code}" \
+            --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts")
+
+          python3 - "$HTTP_STATUS" <<'PY'
+          import json, pathlib, sys
+
+          status = sys.argv[1]
+          payload = json.loads(pathlib.Path("/tmp/cloudflare-workers.json").read_text())
+          if status != "200" or not payload.get("success"):
+              print("Cloudflare API verification failed:", status)
+              print(payload.get("errors", []))
+              raise SystemExit(1)
+
+          names = sorted(item.get("id", "") for item in payload.get("result", []))
+          print("Workers visible in the configured account:", names or "(none)")
+          if "shangyi-web" not in names:
+              print("ERROR: shangyi-web was not created in CLOUDFLARE_ACCOUNT_ID.")
+              raise SystemExit(1)
+          PY
+
           echo "=============================================="
-          echo "Verified Worker: shangyi-web"
+          echo "API verified Worker: shangyi-web"
           echo "Live URL: https://shangyi-web.sam5103281.workers.dev"
           echo "=============================================="
