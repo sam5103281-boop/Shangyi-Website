@@ -46,7 +46,7 @@ const categories = [
     icon: FlaskConical,
     image: catSupplements.url,
     imageFit: "cover",
-    imagePosition: "85% center",
+    imagePosition: "70% center",
     to: "/products/supplements" as const,
     params: undefined,
   },
