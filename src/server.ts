@@ -8,15 +8,24 @@ type ServerEntry = {
 };
 
 const R2_ASSET_BASE_URL = "https://pub-91066afc3bf34ac3bf044deb264ab5a8.r2.dev";
+const LOVABLE_ASSET_FALLBACK_ORIGIN =
+  "https://project--fda6ed3d-97bd-4551-8932-5dc45bd526af-dev.lovable.app";
 const LOVABLE_ASSET_PREFIX = "/__l5e/assets-v1/";
 
-function redirectLovableAssetToR2(request: Request): Response | undefined {
+async function serveAsset(request: Request): Promise<Response | undefined> {
   const url = new URL(request.url);
   if (!url.pathname.startsWith(LOVABLE_ASSET_PREFIX)) return undefined;
 
   const assetPath = url.pathname.replace("/__l5e/", "");
-  const target = `${R2_ASSET_BASE_URL}/${assetPath}${url.search}`;
-  return Response.redirect(target, 302);
+  const r2Target = `${R2_ASSET_BASE_URL}/${assetPath}${url.search}`;
+  const r2Response = await fetch(r2Target, { method: "HEAD" });
+
+  if (r2Response.ok) return Response.redirect(r2Target, 302);
+
+  // Some legacy asset pointers belong to an earlier workspace and cannot be
+  // copied to R2. Keep those images available through Lovable's asset CDN.
+  const fallbackTarget = `${LOVABLE_ASSET_FALLBACK_ORIGIN}${url.pathname}${url.search}`;
+  return Response.redirect(fallbackTarget, 302);
 }
 
 let serverEntryPromise: Promise<ServerEntry> | undefined;
@@ -52,8 +61,8 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
-      const assetRedirect = redirectLovableAssetToR2(request);
-      if (assetRedirect) return assetRedirect;
+      const assetResponse = await serveAsset(request);
+      if (assetResponse) return assetResponse;
 
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
