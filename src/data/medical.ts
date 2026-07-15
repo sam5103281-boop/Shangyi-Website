@@ -2,12 +2,18 @@
 // 上怡 shangyi-care CDN (Cloudflare R2-style store-assets bucket) which is
 // publicly hot-linkable and matches the official product photography.
 
-import indVenousFlow from "@/assets/indications/venous-flow.png";
-import indDvtPrevent from "@/assets/indications/dvt-prevent.png";
-import indVenousStasis from "@/assets/indications/venous-stasis.png";
-import indLegUlcer from "@/assets/indications/leg-ulcer.png";
-import indCvi from "@/assets/indications/cvi.png";
-import indEdema from "@/assets/indications/edema.png";
+import indVenousFlowAsset from "@/assets/indications/venous-flow.png.asset.json";
+import indDvtPreventAsset from "@/assets/indications/dvt-prevent.png.asset.json";
+import indVenousStasisAsset from "@/assets/indications/venous-stasis.png.asset.json";
+import indLegUlcerAsset from "@/assets/indications/leg-ulcer.png.asset.json";
+import indCviAsset from "@/assets/indications/cvi.png.asset.json";
+import indEdemaAsset from "@/assets/indications/edema.png.asset.json";
+const indVenousFlow = indVenousFlowAsset.url;
+const indDvtPrevent = indDvtPreventAsset.url;
+const indVenousStasis = indVenousStasisAsset.url;
+const indLegUlcer = indLegUlcerAsset.url;
+const indCvi = indCviAsset.url;
+const indEdema = indEdemaAsset.url;
 const patchStep1 = "/patch-step-1-fit.svg";
 const patchStep2 = "/patch-step-2.svg";
 const patchStep3 = "/patch-step-3.svg";
