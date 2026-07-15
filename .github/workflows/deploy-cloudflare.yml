@@ -47,6 +47,22 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: bunx --bun wrangler@4.110.0 whoami
 
+      # Override the auto-generated Worker name (Nitro picks a random
+      # "adjective-noun-noun" when package.json name is invalid for Workers).
+      # Also force workers_dev=true so the *.workers.dev preview URL works.
+      - name: Pin Worker name and enable workers.dev
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          p = pathlib.Path("dist/server/wrangler.json")
+          cfg = json.loads(p.read_text())
+          cfg["name"] = "shangyi-web"
+          cfg["workers_dev"] = True
+          p.write_text(json.dumps(cfg, indent=2))
+          print("Worker name:", cfg["name"])
+          print("workers_dev:", cfg["workers_dev"])
+          PY
+
       # Run Wrangler directly so deployment failures retain Cloudflare's full
       # diagnostic output instead of being reduced to an opaque npx exit code.
       - name: Deploy to Cloudflare Workers
@@ -55,6 +71,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           WRANGLER_SEND_METRICS: "false"
         run: bunx --bun wrangler@4.110.0 deploy --config dist/server/wrangler.json
+
 
       - name: Show deployed Worker URL
         run: |
