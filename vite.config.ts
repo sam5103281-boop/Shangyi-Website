@@ -25,8 +25,10 @@ export default defineConfig({
     cloudflare: {
       nodeCompat: true,
       deployConfig: true,
+      wrangler: {
+        name: "shangyi-web",
+        workers_dev: true,
+      },
     },
-
-
   },
 });
