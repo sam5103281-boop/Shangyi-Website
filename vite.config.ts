@@ -25,6 +25,13 @@ export default defineConfig({
     cloudflare: {
       nodeCompat: true,
       deployConfig: true,
+      // Explicit Worker name — avoids Nitro auto-generating a random
+      // "adjective-noun-noun" name when package.json name contains
+      // characters (like "_") that aren't valid in Worker names.
+      wrangler: {
+        name: "shangyi-web",
+      },
     },
+
   },
 });
