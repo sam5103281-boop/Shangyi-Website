@@ -27,6 +27,13 @@ jobs:
       - name: Build website
         run: bun run build
 
+      - name: Verify build output
+        run: |
+          echo "== dist =="
+          ls -la dist || (echo "dist/ missing — build failed"; exit 1)
+          echo "== dist/server =="
+          ls -la dist/server || (echo "dist/server missing — build did not produce Nitro output"; exit 1)
+
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
