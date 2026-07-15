@@ -50,3 +50,15 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           WRANGLER_SEND_METRICS: "false"
         run: bunx --bun wrangler@4.110.0 deploy --config dist/server/wrangler.json
+      - name: Show deployed Worker URL
+        run: |
+          echo "=============================================="
+          echo "Worker name (from wrangler.json):"
+          grep -E '"name"' dist/server/wrangler.json | head -1
+          echo ""
+          echo "Expected URL pattern:"
+          echo "  https://<worker-name>.<your-subdomain>.workers.dev"
+          echo ""
+          echo "Find your subdomain at:"
+          echo "  Cloudflare Dashboard → Workers & Pages → right sidebar 'Subdomain'"
+          echo "=============================================="
