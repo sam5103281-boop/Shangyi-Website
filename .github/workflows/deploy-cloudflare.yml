@@ -63,6 +63,14 @@ jobs:
           print(p.read_text())
           PY
 
+      - name: Remove conflicting Nitro deploy redirect
+        run: |
+          # Nitro writes .wrangler/deploy/config.json at repo root that points to
+          # dist/server/wrangler.json. When we run wrangler from dist/server it sees
+          # both and errors ("do not share the same base path"). Remove the redirect.
+          rm -f .wrangler/deploy/config.json
+          rm -rf .wrangler/deploy || true
+
       - name: Deploy to Cloudflare Workers
         working-directory: dist/server
         env:
