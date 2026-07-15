@@ -47,51 +47,36 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: bunx --bun wrangler@4.110.0 whoami
 
-      # Build a clean deployment config instead of letting Wrangler consume
-      # Nitro's generated redirect config from .wrangler/deploy/config.json.
-      - name: Create explicit Worker deployment config
+      # Nitro's tanstack-start preset writes dist/server/wrangler.json meant to
+      # be deployed from that directory. We only override the Worker name and
+      # ensure workers.dev is on; everything else stays as Nitro generated it.
+      - name: Patch Nitro wrangler.json (name + workers.dev)
         run: |
           python3 - <<'PY'
           import json, pathlib
-          source = pathlib.Path("dist/server/wrangler.json")
-          cfg = json.loads(source.read_text())
+          p = pathlib.Path("dist/server/wrangler.json")
+          cfg = json.loads(p.read_text())
           cfg["name"] = "shangyi-web"
           cfg["workers_dev"] = True
           cfg.pop("dry_run", None)
-          cfg.pop("pages_build_output_dir", None)
-
-          # Resolve all paths relative to the repository root because this
-          # config is intentionally written there, outside Nitro's redirect.
-          cfg["main"] = "dist/server/" + pathlib.Path(cfg.get("main", "index.mjs")).name
-          assets = cfg.get("assets")
-          if isinstance(assets, dict):
-              assets["directory"] = "dist/client"
-
-          target = pathlib.Path("wrangler.deploy.json")
-          target.write_text(json.dumps(cfg, indent=2))
-          print("Deployment config:")
-          print(target.read_text())
+          p.write_text(json.dumps(cfg, indent=2))
+          print(p.read_text())
           PY
 
-          test -f dist/server/index.mjs || (echo "Worker entry missing"; exit 1)
-          test -d dist/client || (echo "Client assets missing"; exit 1)
-
-      # Run Wrangler directly so deployment failures retain Cloudflare's full
-      # diagnostic output instead of being reduced to an opaque npx exit code.
       - name: Deploy to Cloudflare Workers
+        working-directory: dist/server
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           WRANGLER_SEND_METRICS: "false"
         run: |
-          bunx --bun wrangler@4.110.0 deploy \
-            --config wrangler.deploy.json \
-            --name shangyi-web 2>&1 | tee /tmp/wrangler-deploy.log
+          bunx --bun wrangler@4.110.0 deploy 2>&1 | tee /tmp/wrangler-deploy.log
 
           grep -Eq "(Uploaded|Deployed|Current Version ID)" /tmp/wrangler-deploy.log || {
             echo "ERROR: Wrangler exited without uploading a Worker."
             exit 1
           }
+
 
       # Query the account API directly. A Wrangler exit code alone is not
       # sufficient proof that the Worker exists in the expected account.
