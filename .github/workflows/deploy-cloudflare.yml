@@ -40,4 +40,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: dist/server
-          command: deploy
+          wranglerVersion: "4.20.0"
+          command: deploy --config wrangler.json
