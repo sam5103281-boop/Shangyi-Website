@@ -34,18 +34,15 @@ export const submitContactForm = createServerFn({ method: "POST" })
 
     // Use a SECURITY DEFINER function so anonymous users can submit contact
     // requests without being granted direct write access to the table.
-    const { error } = await (supabase.rpc as (name: string, params: Record<string, unknown>) => Promise<{ error: { message: string } | null }>)(
-      "submit_contact",
-      {
-        p_topic: data.topic,
-        p_name: data.name,
-        p_org: data.org ?? null,
-        p_title: data.title ?? null,
-        p_phone: data.phone,
-        p_email: data.email,
-        p_message: data.message,
-      },
-    );
+    const { error } = await supabase.rpc("submit_contact", {
+      p_topic: data.topic,
+      p_name: data.name,
+      p_org: (data.org ?? null) as unknown as string,
+      p_title: (data.title ?? null) as unknown as string,
+      p_phone: data.phone,
+      p_email: data.email,
+      p_message: data.message,
+    });
 
     if (error) {
       console.error("Contact submission error:", error);
