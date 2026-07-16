@@ -87,8 +87,20 @@ export const submitContactForm = createServerFn({ method: "POST" })
 
       const db = supabase as unknown as {
         from: (t: string) => { insert: (v: unknown) => Promise<{ error: unknown }> };
-        rpc: (fn: string, args: unknown) => Promise<{ error: { message: string } | null }>;
+        rpc: (fn: string, args?: unknown) => Promise<{ data: unknown; error: { message: string } | null }>;
       };
+
+      // Fetch (or create) a persistent unsubscribe token for the fixed recipient.
+      const { data: tokenData, error: tokenError } = await db.rpc(
+        "get_or_create_unsubscribe_token",
+        { p_email: NOTIFICATION_RECIPIENT },
+      );
+      if (tokenError || typeof tokenData !== "string" || !tokenData) {
+        throw new Error(
+          tokenError?.message ?? "Failed to prepare unsubscribe token",
+        );
+      }
+      const unsubscribeToken = tokenData;
 
       await db.from("email_send_log").insert({
         message_id: messageId,
@@ -111,10 +123,11 @@ export const submitContactForm = createServerFn({ method: "POST" })
           purpose: "transactional",
           label: "contact-notification",
           idempotency_key: idempotencyKey,
-          unsubscribe_token: "",
+          unsubscribe_token: unsubscribeToken,
           queued_at: new Date().toISOString(),
         },
       });
+
 
       if (enqueueError) {
         console.error("Failed to enqueue contact notification email:", enqueueError);
