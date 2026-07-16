@@ -16,11 +16,6 @@ const contactSchema = z.object({
   message: z.string().trim().min(1, "請輸入諮詢內容").max(2000, "諮詢內容過長"),
 });
 
-const SITE_NAME = "shangyi-care";
-const SENDER_DOMAIN = "notify.shangyi-care.com";
-const FROM_DOMAIN = "shangyi-care.com";
-const NOTIFICATION_RECIPIENT = "shangyi@shangyi-care.com";
-
 function createServerSupabaseClient() {
   return createClient<Database>(
     process.env.SUPABASE_URL!,
