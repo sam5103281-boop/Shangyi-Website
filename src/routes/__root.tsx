@@ -140,16 +140,17 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
 
-  // SPA 路由切換時發送 GA4 page_view
+  // SPA 路由切換時發送 GA4 標準 page_view
   useEffect(() => {
     const unsub = router.subscribe("onResolved", () => {
       if (typeof window === "undefined") return;
       const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
       if (typeof gtag !== "function") return;
-      gtag("event", "page_view", {
+      gtag("config", "G-7JQLXHB3NP", {
         page_path: window.location.pathname + window.location.search,
         page_location: window.location.href,
         page_title: document.title,
+        send_page_view: true,
       });
     });
     return () => unsub();
