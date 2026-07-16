@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { getIngredient, getSupplementBenefits, getSupplementBySlug, getSupplementImageScale, supplements } from "@/data/supplements";
-import veganLeafAsset from "@/assets/vegan-leaf.jpg.asset.json";
+import veganLeafAsset from "@/assets/vegan-leaf.svg.asset.json";
 
 export const Route = createFileRoute("/products/supplements/$slug")({
   loader: ({ params }) => {
