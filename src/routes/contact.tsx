@@ -38,10 +38,15 @@ function ContactPage() {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [agreed, setAgreed] = useState(false);
   const sendContact = useServerFn(submitContactForm);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!agreed) {
+      setError("請先勾選同意隱私權保護政策");
+      return;
+    }
     setError(null);
     setIsSubmitting(true);
 
@@ -62,12 +67,16 @@ function ContactPage() {
       });
       setSent(true);
       form.reset();
+      setAgreed(false);
+      // Allow another submission after a short confirmation window.
+      setTimeout(() => setSent(false), 5000);
     } catch (err) {
       setError(err instanceof Error ? err.message : "提交失敗，請稍後再試");
     } finally {
       setIsSubmitting(false);
     }
   }
+
 
   return (
     <>
