@@ -67,9 +67,11 @@ export function MedicalProductDetail({ category, product }: Props) {
             <h1 className="mt-4 font-display text-2xl leading-tight text-foreground md:text-3xl">
               {product.name}
             </h1>
-            <p className="mt-2 font-display text-xl text-muted-foreground">
-              {product.en}
-            </p>
+            {!product.name.toLowerCase().includes(product.en.toLowerCase()) && (
+              <p className="mt-2 font-display text-xl text-muted-foreground">
+                {product.en}
+              </p>
+            )}
 
             {product.tagline && (
               <p className="mt-6 text-base leading-relaxed text-foreground/80">
