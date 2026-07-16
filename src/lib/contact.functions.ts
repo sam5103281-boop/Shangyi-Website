@@ -1,5 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
+import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
+import type { Database } from "@/integrations/supabase/types";
 
 const contactSchema = z.object({
   topic: z.enum(["b2b", "spec", "comwell"]),
@@ -11,20 +13,39 @@ const contactSchema = z.object({
   message: z.string().trim().min(1, "請輸入諮詢內容").max(2000, "諮詢內容過長"),
 });
 
+function createServerSupabaseClient() {
+  return createClient<Database>(
+    process.env.SUPABASE_URL!,
+    process.env.SUPABASE_PUBLISHABLE_KEY!,
+    {
+      auth: {
+        storage: undefined,
+        persistSession: false,
+        autoRefreshToken: false,
+      },
+    },
+  );
+}
+
 export const submitContactForm = createServerFn({ method: "POST" })
   .inputValidator((data) => contactSchema.parse(data))
   .handler(async ({ data }) => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const supabase = createServerSupabaseClient();
 
-    const { error } = await supabaseAdmin.from("contact_submissions").insert({
-      topic: data.topic,
-      name: data.name,
-      org: data.org || null,
-      title: data.title || null,
-      phone: data.phone,
-      email: data.email,
-      message: data.message,
-    });
+    // Use a SECURITY DEFINER function so anonymous users can submit contact
+    // requests without being granted direct write access to the table.
+    const { error } = await (supabase.rpc as (name: string, params: Record<string, unknown>) => Promise<{ error: { message: string } | null }>)(
+      "submit_contact",
+      {
+        p_topic: data.topic,
+        p_name: data.name,
+        p_org: data.org ?? null,
+        p_title: data.title ?? null,
+        p_phone: data.phone,
+        p_email: data.email,
+        p_message: data.message,
+      },
+    );
 
     if (error) {
       console.error("Contact submission error:", error);
