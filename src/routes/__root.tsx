@@ -142,10 +142,11 @@ function RootComponent() {
   const currentHref = useRouterState({ select: (state) => state.location.href });
 
   // 首次載入與每次 SPA 路由切換都發送完整網址，包含產品分類與產品詳情頁。
+  // 延遲一個 tick 讓 TanStack Router 先套用該分頁的 head()，GA4 才會收到正確的 page_title。
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const sendPageView = window.requestAnimationFrame(() => {
+    const timer = window.setTimeout(() => {
       const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
       if (typeof gtag !== "function") return;
 
@@ -154,9 +155,9 @@ function RootComponent() {
         page_location: window.location.href,
         page_title: document.title,
       });
-    });
+    }, 80);
 
-    return () => window.cancelAnimationFrame(sendPageView);
+    return () => window.clearTimeout(timer);
   }, [currentHref]);
 
 
