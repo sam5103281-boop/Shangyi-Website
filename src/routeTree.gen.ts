@@ -32,6 +32,7 @@ import { Route as EducationDiabetesComplicationRisksRouteImport } from './routes
 import { Route as EducationDeviceCompressionSockFaqRouteImport } from './routes/education.device.compression-sock-faq'
 import { Route as EducationCirculationLegVeinCareRouteImport } from './routes/education.circulation.leg-vein-care'
 import { Route as EducationCirculationDvtPeSymptomsRouteImport } from './routes/education.circulation.dvt-pe-symptoms'
+import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
@@ -155,6 +156,12 @@ const EducationCirculationDvtPeSymptomsRoute =
     path: '/education/circulation/dvt-pe-symptoms',
     getParentRoute: () => rootRouteImport,
   } as any)
+const LovableEmailQueueProcessRoute =
+  LovableEmailQueueProcessRouteImport.update({
+    id: '/lovable/email/queue/process',
+    path: '/lovable/email/queue/process',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -180,6 +187,7 @@ export interface FileRoutesByFullPath {
   '/products/supplements/$slug': typeof ProductsSupplementsSlugRoute
   '/products/$category/': typeof ProductsCategoryIndexRoute
   '/products/supplements/': typeof ProductsSupplementsIndexRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -202,6 +210,7 @@ export interface FileRoutesByTo {
   '/products/supplements/$slug': typeof ProductsSupplementsSlugRoute
   '/products/$category': typeof ProductsCategoryIndexRoute
   '/products/supplements': typeof ProductsSupplementsIndexRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -228,6 +237,7 @@ export interface FileRoutesById {
   '/products/supplements/$slug': typeof ProductsSupplementsSlugRoute
   '/products/$category/': typeof ProductsCategoryIndexRoute
   '/products/supplements/': typeof ProductsSupplementsIndexRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -255,6 +265,7 @@ export interface FileRouteTypes {
     | '/products/supplements/$slug'
     | '/products/$category/'
     | '/products/supplements/'
+    | '/lovable/email/queue/process'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -277,6 +288,7 @@ export interface FileRouteTypes {
     | '/products/supplements/$slug'
     | '/products/$category'
     | '/products/supplements'
+    | '/lovable/email/queue/process'
   id:
     | '__root__'
     | '/'
@@ -302,6 +314,7 @@ export interface FileRouteTypes {
     | '/products/supplements/$slug'
     | '/products/$category/'
     | '/products/supplements/'
+    | '/lovable/email/queue/process'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -321,6 +334,7 @@ export interface RootRouteChildren {
   EducationDiabetesComplicationRisksRoute: typeof EducationDiabetesComplicationRisksRoute
   EducationDiabetesEyeComplicationsRoute: typeof EducationDiabetesEyeComplicationsRoute
   EducationPostpartumPePreventionRoute: typeof EducationPostpartumPePreventionRoute
+  LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -486,6 +500,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EducationCirculationDvtPeSymptomsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lovable/email/queue/process': {
+      id: '/lovable/email/queue/process'
+      path: '/lovable/email/queue/process'
+      fullPath: '/lovable/email/queue/process'
+      preLoaderRoute: typeof LovableEmailQueueProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -552,6 +573,7 @@ const rootRouteChildren: RootRouteChildren = {
   EducationDiabetesEyeComplicationsRoute:
     EducationDiabetesEyeComplicationsRoute,
   EducationPostpartumPePreventionRoute: EducationPostpartumPePreventionRoute,
+  LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
