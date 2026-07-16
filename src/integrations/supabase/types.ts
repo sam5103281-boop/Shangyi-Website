@@ -58,7 +58,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      submit_contact: {
+        Args: {
+          p_email: string
+          p_message: string
+          p_name: string
+          p_org: string
+          p_phone: string
+          p_title: string
+          p_topic: string
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
