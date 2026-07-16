@@ -128,6 +128,22 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  // SPA 路由切換時，通知 Cloudflare Zaraz → GA4 發送 page_view
+  useEffect(() => {
+    const unsub = router.subscribe("onResolved", () => {
+      if (typeof window === "undefined") return;
+      const zaraz = (window as unknown as { zaraz?: { track: (name: string, data?: Record<string, unknown>) => void } }).zaraz;
+      if (!zaraz || typeof zaraz.track !== "function") return;
+      zaraz.track("page_view", {
+        page_path: window.location.pathname + window.location.search,
+        page_location: window.location.href,
+        page_title: document.title,
+      });
+    });
+    return () => unsub();
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
