@@ -85,14 +85,19 @@ export const submitContactForm = createServerFn({ method: "POST" })
       const messageId = crypto.randomUUID();
       const idempotencyKey = `contact-${messageId}`;
 
-      await supabase.from("email_send_log").insert({
+      const db = supabase as unknown as {
+        from: (t: string) => { insert: (v: unknown) => Promise<{ error: unknown }> };
+        rpc: (fn: string, args: unknown) => Promise<{ error: { message: string } | null }>;
+      };
+
+      await db.from("email_send_log").insert({
         message_id: messageId,
         template_name: "contact-notification",
         recipient_email: NOTIFICATION_RECIPIENT,
         status: "pending",
       });
 
-      const { error: enqueueError } = await supabase.rpc("enqueue_email", {
+      const { error: enqueueError } = await db.rpc("enqueue_email", {
         queue_name: "transactional_emails",
         payload: {
           message_id: messageId,
@@ -113,7 +118,7 @@ export const submitContactForm = createServerFn({ method: "POST" })
 
       if (enqueueError) {
         console.error("Failed to enqueue contact notification email:", enqueueError);
-        await supabase.from("email_send_log").insert({
+        await db.from("email_send_log").insert({
           message_id: messageId,
           template_name: "contact-notification",
           recipient_email: NOTIFICATION_RECIPIENT,
@@ -121,6 +126,7 @@ export const submitContactForm = createServerFn({ method: "POST" })
           error_message: "Failed to enqueue email",
         });
       }
+
     } catch (emailErr) {
       console.error("Contact notification email error:", emailErr);
     }
