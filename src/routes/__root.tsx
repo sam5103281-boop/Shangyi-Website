@@ -139,7 +139,6 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const router = useRouter();
   const currentHref = useRouterState({ select: (state) => state.location.href });
 
   // 首次載入與每次 SPA 路由切換都發送完整網址，包含產品分類與產品詳情頁。
