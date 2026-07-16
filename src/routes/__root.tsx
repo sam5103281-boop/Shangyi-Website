@@ -140,13 +140,13 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
 
-  // SPA 路由切換時，通知 Cloudflare Zaraz → GA4 發送 page_view
+  // SPA 路由切換時發送 GA4 page_view
   useEffect(() => {
     const unsub = router.subscribe("onResolved", () => {
       if (typeof window === "undefined") return;
-      const zaraz = (window as unknown as { zaraz?: { track: (name: string, data?: Record<string, unknown>) => void } }).zaraz;
-      if (!zaraz || typeof zaraz.track !== "function") return;
-      zaraz.track("page_view", {
+      const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+      if (typeof gtag !== "function") return;
+      gtag("event", "page_view", {
         page_path: window.location.pathname + window.location.search,
         page_location: window.location.href,
         page_title: document.title,
@@ -154,6 +154,7 @@ function RootComponent() {
     });
     return () => unsub();
   }, [router]);
+
 
   return (
     <QueryClientProvider client={queryClient}>
