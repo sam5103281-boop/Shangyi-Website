@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -139,22 +140,25 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
+  const currentHref = useRouterState({ select: (state) => state.location.href });
 
-  // SPA 路由切換時發送 GA4 標準 page_view
+  // 首次載入與每次 SPA 路由切換都發送完整網址，包含產品分類與產品詳情頁。
   useEffect(() => {
-    const unsub = router.subscribe("onResolved", () => {
-      if (typeof window === "undefined") return;
+    if (typeof window === "undefined") return;
+
+    const sendPageView = window.requestAnimationFrame(() => {
       const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
       if (typeof gtag !== "function") return;
-      gtag("config", "G-7JQLXHB3NP", {
+
+      gtag("event", "page_view", {
         page_path: window.location.pathname + window.location.search,
         page_location: window.location.href,
         page_title: document.title,
-        send_page_view: true,
       });
     });
-    return () => unsub();
-  }, [router]);
+
+    return () => window.cancelAnimationFrame(sendPageView);
+  }, [currentHref]);
 
 
   return (
