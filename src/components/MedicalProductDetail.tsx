@@ -156,22 +156,15 @@ export function MedicalProductDetail({ category, product }: Props) {
                       <li key={i} className="flex gap-4 bg-surface p-5">
                         <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-accent/30 bg-accent/5 text-accent">
                           {step.image ? (
-                            <span
+                            <img
+                              src={step.image}
+                              alt=""
                               aria-hidden
-                              className="block h-full w-full scale-[0.98] bg-current"
-                              style={{
-                                WebkitMaskImage: `url(${step.image})`,
-                                maskImage: `url(${step.image})`,
-                                WebkitMaskRepeat: "no-repeat",
-                                maskRepeat: "no-repeat",
-                                WebkitMaskPosition: "center",
-                                maskPosition: "center",
-                                WebkitMaskSize: "cover",
-                                maskSize: "cover",
-                              }}
+                              loading="lazy"
+                              className="h-full w-full object-cover"
                             />
                           ) : (
-                            <Icon className="h-12 w-12 scale-[1.02]" />
+                            <Icon className="h-6 w-6" />
                           )}
                         </div>
                         <div className="flex-1">

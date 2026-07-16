@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { getIngredient, getSupplementBenefits, getSupplementBySlug, getSupplementImageScale, supplements } from "@/data/supplements";
+import veganLeafAsset from "@/assets/vegan-leaf.jpg.asset.json";
 
 export const Route = createFileRoute("/products/supplements/$slug")({
   loader: ({ params }) => {
@@ -117,19 +118,12 @@ function ProductDetail() {
                   title="全素可食"
                   aria-label="全素可食"
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-3.5 w-3.5"
+                  <img
+                    src={veganLeafAsset.url}
+                    alt=""
                     aria-hidden="true"
-                  >
-                    <path d="M11 20A7 7 0 0 1 4 13V8a2 2 0 0 1 2-2h5a7 7 0 0 1 7 7v5a2 2 0 0 1-2 2h-5Z" />
-                    <path d="M2 21c0-3 1.85-5.36 5.08-6" />
-                  </svg>
+                    className="h-4 w-4 object-contain"
+                  />
                   全素可食
                 </span>
               )}
