@@ -172,11 +172,16 @@ function ContactPage() {
 
               <button
                 type="submit"
-                disabled={sent || isSubmitting}
-                className="group inline-flex items-center justify-center gap-2 self-start bg-primary px-6 py-3 text-sm font-medium tracking-wider text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-60"
+                disabled={sent || isSubmitting || !agreed}
+                aria-disabled={!agreed}
+                className={`group inline-flex items-center justify-center gap-2 self-start px-6 py-3 text-sm font-medium tracking-wider transition-colors ${
+                  !agreed
+                    ? "bg-surface-muted text-muted-foreground cursor-not-allowed border border-hairline"
+                    : "bg-primary text-primary-foreground hover:bg-primary/90"
+                } disabled:opacity-60`}
               >
                 {sent ? "已送出，感謝您的聯繫" : isSubmitting ? "送出中..." : "送出諮詢"}
-                {!sent && !isSubmitting && (
+                {!sent && !isSubmitting && agreed && (
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 )}
               </button>
