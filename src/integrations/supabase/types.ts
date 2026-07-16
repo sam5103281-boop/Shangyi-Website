@@ -178,6 +178,10 @@ export type Database = {
         Args: { payload: Json; queue_name: string }
         Returns: number
       }
+      get_or_create_unsubscribe_token: {
+        Args: { p_email: string }
+        Returns: string
+      }
       move_to_dlq: {
         Args: {
           dlq_name: string
