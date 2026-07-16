@@ -9,4 +9,8 @@
     "binding": "ASSETS",
     "directory": "./dist/client",
   },
+  "vars": {
+    "SUPABASE_URL": "https://zpyttcmvwetjnpbugxaz.supabase.co",
+    "SUPABASE_PUBLISHABLE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpweXR0Y212d2V0am5wYnVneGF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMzOTIwOTUsImV4cCI6MjA5ODk2ODA5NX0.LrweogMWRRAtTLoMvveLQ9nAwiEpKpw5bdUUEAwe_3E"
+  }
 }
