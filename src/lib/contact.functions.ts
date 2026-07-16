@@ -40,24 +40,6 @@ export const submitContactForm = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const supabase = createServerSupabaseClient();
 
-    // 1. Store the contact submission via SECURITY DEFINER RPC.
-    const { error } = await supabase.rpc("submit_contact", {
-      p_topic: data.topic,
-      p_name: data.name,
-      p_org: (data.org ?? null) as unknown as string,
-      p_title: (data.title ?? null) as unknown as string,
-      p_phone: data.phone,
-      p_email: data.email,
-      p_message: data.message,
-    });
-
-    if (error) {
-      console.error("Contact submission error:", error);
-      throw new Error("提交失敗，請稍後再試");
-    }
-
-    // 2. Render notification email and enqueue for delivery. Never let email
-    //    failures block the form submission — the row is already persisted.
     try {
       const submittedAt = new Date().toLocaleString("zh-TW", {
         timeZone: "Asia/Taipei",
@@ -82,66 +64,27 @@ export const submitContactForm = createServerFn({ method: "POST" })
           ? contactNotification.subject(templateData)
           : contactNotification.subject;
 
-      const messageId = crypto.randomUUID();
-      const idempotencyKey = `contact-${messageId}`;
-
       const db = supabase as unknown as {
-        from: (t: string) => { insert: (v: unknown) => Promise<{ error: unknown }> };
         rpc: (fn: string, args?: unknown) => Promise<{ data: unknown; error: { message: string } | null }>;
       };
 
-      // Fetch (or create) a persistent unsubscribe token for the fixed recipient.
-      const { data: tokenData, error: tokenError } = await db.rpc(
-        "get_or_create_unsubscribe_token",
-        { p_email: NOTIFICATION_RECIPIENT },
-      );
-      if (tokenError || typeof tokenData !== "string" || !tokenData) {
-        throw new Error(
-          tokenError?.message ?? "Failed to prepare unsubscribe token",
-        );
-      }
-      const unsubscribeToken = tokenData;
-
-      await db.from("email_send_log").insert({
-        message_id: messageId,
-        template_name: "contact-notification",
-        recipient_email: NOTIFICATION_RECIPIENT,
-        status: "pending",
+      const { error: submitError } = await db.rpc("submit_contact_and_notify", {
+        p_topic: data.topic,
+        p_name: data.name,
+        p_org: data.org ?? "",
+        p_title: data.title ?? "",
+        p_phone: data.phone,
+        p_email: data.email,
+        p_message: data.message,
+        p_subject: subject,
+        p_html: html,
+        p_text: text,
       });
 
-      const { error: enqueueError } = await db.rpc("enqueue_email", {
-        queue_name: "transactional_emails",
-        payload: {
-          message_id: messageId,
-          to: NOTIFICATION_RECIPIENT,
-          from: `${SITE_NAME} <noreply@${FROM_DOMAIN}>`,
-          reply_to: data.email,
-          sender_domain: SENDER_DOMAIN,
-          subject,
-          html,
-          text,
-          purpose: "transactional",
-          label: "contact-notification",
-          idempotency_key: idempotencyKey,
-          unsubscribe_token: unsubscribeToken,
-          queued_at: new Date().toISOString(),
-        },
-      });
-
-
-      if (enqueueError) {
-        console.error("Failed to enqueue contact notification email:", enqueueError);
-        await db.from("email_send_log").insert({
-          message_id: messageId,
-          template_name: "contact-notification",
-          recipient_email: NOTIFICATION_RECIPIENT,
-          status: "failed",
-          error_message: "Failed to enqueue email",
-        });
-      }
-
+      if (submitError) throw new Error(submitError.message);
     } catch (emailErr) {
       console.error("Contact notification email error:", emailErr);
+      throw new Error("提交失敗，請稍後再試");
     }
 
     return { success: true };
