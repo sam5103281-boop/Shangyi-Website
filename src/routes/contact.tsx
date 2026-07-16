@@ -153,9 +153,16 @@ function ContactPage() {
               </label>
 
               <label className="flex items-start gap-3 text-xs text-muted-foreground">
-                <input type="checkbox" required className="mt-0.5 accent-[var(--color-accent)]" />
+                <input
+                  type="checkbox"
+                  required
+                  checked={agreed}
+                  onChange={(e) => setAgreed(e.target.checked)}
+                  className="mt-0.5 accent-[var(--color-accent)]"
+                />
                 我已了解所提供之個人資料將僅用於本次諮詢回覆，並同意上怡生醫之隱私權保護政策。
               </label>
+
 
               {error && (
                 <p className="text-sm text-destructive" role="alert">
