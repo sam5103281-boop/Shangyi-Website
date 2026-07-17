@@ -161,7 +161,7 @@ export function MedicalProductDetail({ category, product }: Props) {
                             step.image.endsWith('.svg') ? (
                               <div
                                 aria-hidden
-                                className="h-8 w-8 bg-accent"
+                                className="h-full w-full bg-accent"
                                 style={{
                                   WebkitMaskImage: `url(${step.image})`,
                                   maskImage: `url(${step.image})`,
