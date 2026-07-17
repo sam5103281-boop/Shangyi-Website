@@ -156,15 +156,32 @@ export function MedicalProductDetail({ category, product }: Props) {
                     const Icon = usageIconMap[step.icon];
                     return (
                       <li key={i} className="flex gap-4 bg-surface p-5">
-                        <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-accent/30 bg-accent/5 text-foreground">
+                        <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-accent/30 bg-accent/5 text-accent">
                           {step.image ? (
-                            <img
-                              src={step.image}
-                              alt=""
-                              aria-hidden
-                              loading="lazy"
-                              className="h-full w-full object-cover"
-                            />
+                            step.image.endsWith('.svg') ? (
+                              <div
+                                aria-hidden
+                                className="h-8 w-8 bg-accent"
+                                style={{
+                                  WebkitMaskImage: `url(${step.image})`,
+                                  maskImage: `url(${step.image})`,
+                                  WebkitMaskRepeat: 'no-repeat',
+                                  maskRepeat: 'no-repeat',
+                                  WebkitMaskPosition: 'center',
+                                  maskPosition: 'center',
+                                  WebkitMaskSize: 'contain',
+                                  maskSize: 'contain',
+                                }}
+                              />
+                            ) : (
+                              <img
+                                src={step.image}
+                                alt=""
+                                aria-hidden
+                                loading="lazy"
+                                className="h-full w-full object-cover"
+                              />
+                            )
                           ) : (
                             <Icon className="h-6 w-6" />
                           )}
