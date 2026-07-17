@@ -169,8 +169,8 @@ export function MedicalProductDetail({ category, product }: Props) {
                                   maskRepeat: 'no-repeat',
                                   WebkitMaskPosition: 'center',
                                   maskPosition: 'center',
-                                  WebkitMaskSize: 'contain',
-                                  maskSize: 'contain',
+                                  WebkitMaskSize: 'cover',
+                                  maskSize: 'cover',
                                 }}
                               />
                             ) : (
