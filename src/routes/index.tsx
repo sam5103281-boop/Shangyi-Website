@@ -197,7 +197,7 @@ function HomePage() {
                     <span className="mt-2 font-display text-base font-medium leading-snug text-primary">
                       {c.code}
                     </span>
-                    <span className="mt-2 text-[21px] leading-relaxed text-[#2e2e36]">
+                    <span className="mt-2 text-[16px] leading-relaxed text-[#2e2e36]">
                       {c.label}
                     </span>
                   </Reveal>
