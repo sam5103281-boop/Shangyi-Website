@@ -86,6 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "上怡生醫醫藥有限公司以符合國際法規之品質管理為核心，代理醫療器材、特殊機能保健品、德國舒護貼與眼部清淨綿，鏈結醫療院所與居家照護專業通路。",
       },
       { name: "author", content: "SHANG YI BIOPHARMA" },
+      { name: "google-site-verification", content: "JbxdCIPCjyx13peqOPyHSA27IAU9j0zVYagINYB71SQ" },
       { property: "og:title", content: "上怡生醫醫藥有限公司 SHANG YI BIOPHARMA" },
       {
         property: "og:description",
