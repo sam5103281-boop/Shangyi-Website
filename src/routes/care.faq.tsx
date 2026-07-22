@@ -84,6 +84,10 @@ export const Route = createFileRoute("/care/faq")({
       },
     ],
   }),
+  component: FaqPage,
+});
+
+
 
 
 const anchors = [
