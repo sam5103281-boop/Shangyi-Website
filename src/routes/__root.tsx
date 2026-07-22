@@ -115,9 +115,36 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         children: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-7JQLXHB3NP', { send_page_view: false });`,
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://shangyi-care.com/#organization",
+              name: "上怡生醫醫藥有限公司",
+              alternateName: "SHANG YI BIOPHARMA",
+              url: "https://shangyi-care.com/",
+              logo: "https://shangyi-care.com/favicon.png",
+              description:
+                "以合規品質為核心，代理醫療器材、特殊機能保健品、德國舒護貼與眼部清淨綿，鏈結醫療院所與居家照護專業通路。",
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://shangyi-care.com/#website",
+              url: "https://shangyi-care.com/",
+              name: "上怡生醫醫藥有限公司 SHANG YI BIOPHARMA",
+              publisher: { "@id": "https://shangyi-care.com/#organization" },
+              inLanguage: "zh-Hant",
+            },
+          ],
+        }),
+      },
     ],
 
   }),
+
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
