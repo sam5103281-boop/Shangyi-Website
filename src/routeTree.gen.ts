@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ChannelsRouteImport } from './routes/channels'
@@ -17,7 +18,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as EducationIndexRouteImport } from './routes/education.index'
 import { Route as CareIndexRouteImport } from './routes/care.index'
-import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml'
 import { Route as ProductsSupplementsRouteImport } from './routes/products.supplements'
 import { Route as ProductsCategoryRouteImport } from './routes/products.$category'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
@@ -39,6 +39,11 @@ import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lova
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
@@ -77,11 +82,6 @@ const EducationIndexRoute = EducationIndexRouteImport.update({
 const CareIndexRoute = CareIndexRouteImport.update({
   id: '/care/',
   path: '/care/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapXmlRoute = SitemapXmlRouteImport.update({
-  id: '/sitemap/xml',
-  path: '/sitemap/xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductsSupplementsRoute = ProductsSupplementsRouteImport.update({
@@ -201,13 +201,13 @@ export interface FileRoutesByFullPath {
   '/channels': typeof ChannelsRoute
   '/contact': typeof ContactRoute
   '/products': typeof ProductsRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/care/faq': typeof CareFaqRoute
   '/care/professional': typeof CareProfessionalRoute
   '/care/referral': typeof CareReferralRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/products/$category': typeof ProductsCategoryRouteWithChildren
   '/products/supplements': typeof ProductsSupplementsRouteWithChildren
-  '/sitemap/xml': typeof SitemapXmlRoute
   '/care/': typeof CareIndexRoute
   '/education/': typeof EducationIndexRoute
   '/products/': typeof ProductsIndexRoute
@@ -231,11 +231,11 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/channels': typeof ChannelsRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/care/faq': typeof CareFaqRoute
   '/care/professional': typeof CareProfessionalRoute
   '/care/referral': typeof CareReferralRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
-  '/sitemap/xml': typeof SitemapXmlRoute
   '/care': typeof CareIndexRoute
   '/education': typeof EducationIndexRoute
   '/products': typeof ProductsIndexRoute
@@ -261,13 +261,13 @@ export interface FileRoutesById {
   '/channels': typeof ChannelsRoute
   '/contact': typeof ContactRoute
   '/products': typeof ProductsRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/care/faq': typeof CareFaqRoute
   '/care/professional': typeof CareProfessionalRoute
   '/care/referral': typeof CareReferralRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/products/$category': typeof ProductsCategoryRouteWithChildren
   '/products/supplements': typeof ProductsSupplementsRouteWithChildren
-  '/sitemap/xml': typeof SitemapXmlRoute
   '/care/': typeof CareIndexRoute
   '/education/': typeof EducationIndexRoute
   '/products/': typeof ProductsIndexRoute
@@ -294,13 +294,13 @@ export interface FileRouteTypes {
     | '/channels'
     | '/contact'
     | '/products'
+    | '/sitemap.xml'
     | '/care/faq'
     | '/care/professional'
     | '/care/referral'
     | '/email/unsubscribe'
     | '/products/$category'
     | '/products/supplements'
-    | '/sitemap/xml'
     | '/care/'
     | '/education/'
     | '/products/'
@@ -324,11 +324,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/channels'
     | '/contact'
+    | '/sitemap.xml'
     | '/care/faq'
     | '/care/professional'
     | '/care/referral'
     | '/email/unsubscribe'
-    | '/sitemap/xml'
     | '/care'
     | '/education'
     | '/products'
@@ -353,13 +353,13 @@ export interface FileRouteTypes {
     | '/channels'
     | '/contact'
     | '/products'
+    | '/sitemap.xml'
     | '/care/faq'
     | '/care/professional'
     | '/care/referral'
     | '/email/unsubscribe'
     | '/products/$category'
     | '/products/supplements'
-    | '/sitemap/xml'
     | '/care/'
     | '/education/'
     | '/products/'
@@ -385,11 +385,11 @@ export interface RootRouteChildren {
   ChannelsRoute: typeof ChannelsRoute
   ContactRoute: typeof ContactRoute
   ProductsRoute: typeof ProductsRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CareFaqRoute: typeof CareFaqRoute
   CareProfessionalRoute: typeof CareProfessionalRoute
   CareReferralRoute: typeof CareReferralRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
-  SitemapXmlRoute: typeof SitemapXmlRoute
   CareIndexRoute: typeof CareIndexRoute
   EducationIndexRoute: typeof EducationIndexRoute
   EducationCirculationDvtPeSymptomsRoute: typeof EducationCirculationDvtPeSymptomsRoute
@@ -406,6 +406,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products': {
       id: '/products'
       path: '/products'
@@ -460,13 +467,6 @@ declare module '@tanstack/react-router' {
       path: '/care'
       fullPath: '/care/'
       preLoaderRoute: typeof CareIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap/xml': {
-      id: '/sitemap/xml'
-      path: '/sitemap/xml'
-      fullPath: '/sitemap/xml'
-      preLoaderRoute: typeof SitemapXmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/products/supplements': {
@@ -660,11 +660,11 @@ const rootRouteChildren: RootRouteChildren = {
   ChannelsRoute: ChannelsRoute,
   ContactRoute: ContactRoute,
   ProductsRoute: ProductsRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   CareFaqRoute: CareFaqRoute,
   CareProfessionalRoute: CareProfessionalRoute,
   CareReferralRoute: CareReferralRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
-  SitemapXmlRoute: SitemapXmlRoute,
   CareIndexRoute: CareIndexRoute,
   EducationIndexRoute: EducationIndexRoute,
   EducationCirculationDvtPeSymptomsRoute:
@@ -685,3 +685,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
