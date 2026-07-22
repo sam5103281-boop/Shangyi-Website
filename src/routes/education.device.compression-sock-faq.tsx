@@ -26,7 +26,31 @@ export const Route = createFileRoute("/education/device/compression-sock-faq")({
       { property: "og:image", content: cover.url },
       { name: "twitter:image", content: cover.url },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "醫用輔助襪常見問題",
+          description:
+            "醫用輔助襪的壓力單位、漸進式壓力分佈原理、與一般彈性襪的差異，以及為什麼下肢循環會被稱為人體第二個心臟。",
+          image: cover.url,
+          datePublished: "2025-01-15",
+          dateModified: "2025-01-15",
+          inLanguage: "zh-Hant",
+          author: { "@type": "Organization", name: "上怡生醫醫藥有限公司" },
+          publisher: {
+            "@type": "Organization",
+            name: "上怡生醫醫藥有限公司",
+            logo: { "@type": "ImageObject", url: "https://shangyi-care.com/favicon.png" },
+          },
+          mainEntityOfPage: "https://shangyi-care.com/education/device/compression-sock-faq",
+        }),
+      },
+    ],
   }),
+
   component: ArticlePage,
 });
 

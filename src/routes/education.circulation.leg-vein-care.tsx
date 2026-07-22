@@ -33,7 +33,31 @@ export const Route = createFileRoute("/education/circulation/leg-vein-care")({
       { property: "og:image", content: cover.url },
       { name: "twitter:image", content: cover.url },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "腿部靜脈保養與照護指引",
+          description:
+            "從日常活動與姿勢、穿著、飲食與生活管理，到專業輔助建議與就醫時機，整理腿部靜脈保養完整指引。",
+          image: cover.url,
+          datePublished: "2025-01-15",
+          dateModified: "2025-01-15",
+          inLanguage: "zh-Hant",
+          author: { "@type": "Organization", name: "上怡生醫醫藥有限公司" },
+          publisher: {
+            "@type": "Organization",
+            name: "上怡生醫醫藥有限公司",
+            logo: { "@type": "ImageObject", url: "https://shangyi-care.com/favicon.png" },
+          },
+          mainEntityOfPage: "https://shangyi-care.com/education/circulation/leg-vein-care",
+        }),
+      },
+    ],
   }),
+
   component: ArticlePage,
 });
 

@@ -22,7 +22,31 @@ export const Route = createFileRoute("/education/diabetes/complication-risks")({
       { property: "og:image", content: cover.url },
       { name: "twitter:image", content: cover.url },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "不可輕忽糖尿病帶來的併發症風險",
+          description:
+            "長期血糖控制不良會傷害人體周邊微血管系統，引發視力、腎臟、神經、腦血管與心血管等多系統病變。",
+          image: cover.url,
+          datePublished: "2025-01-15",
+          dateModified: "2025-01-15",
+          inLanguage: "zh-Hant",
+          author: { "@type": "Organization", name: "上怡生醫醫藥有限公司" },
+          publisher: {
+            "@type": "Organization",
+            name: "上怡生醫醫藥有限公司",
+            logo: { "@type": "ImageObject", url: "https://shangyi-care.com/favicon.png" },
+          },
+          mainEntityOfPage: "https://shangyi-care.com/education/diabetes/complication-risks",
+        }),
+      },
+    ],
   }),
+
   component: ArticlePage,
 });
 

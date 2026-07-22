@@ -26,7 +26,31 @@ export const Route = createFileRoute("/education/diabetes/eye-complications")({
       { property: "og:image", content: cover.url },
       { name: "twitter:image", content: cover.url },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "糖尿病恐併發眼睛病變",
+          description:
+            "糖尿病是一種血管病變，容易併發視網膜病變。本文說明成因、常見眼底病灶與日常照護重點。",
+          image: cover.url,
+          datePublished: "2025-01-15",
+          dateModified: "2025-01-15",
+          inLanguage: "zh-Hant",
+          author: { "@type": "Organization", name: "上怡生醫醫藥有限公司" },
+          publisher: {
+            "@type": "Organization",
+            name: "上怡生醫醫藥有限公司",
+            logo: { "@type": "ImageObject", url: "https://shangyi-care.com/favicon.png" },
+          },
+          mainEntityOfPage: "https://shangyi-care.com/education/diabetes/eye-complications",
+        }),
+      },
+    ],
   }),
+
   component: ArticlePage,
 });
 
