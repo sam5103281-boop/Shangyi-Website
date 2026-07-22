@@ -17,6 +17,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as EducationIndexRouteImport } from './routes/education.index'
 import { Route as CareIndexRouteImport } from './routes/care.index'
+import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml'
 import { Route as ProductsSupplementsRouteImport } from './routes/products.supplements'
 import { Route as ProductsCategoryRouteImport } from './routes/products.$category'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
@@ -76,6 +77,11 @@ const EducationIndexRoute = EducationIndexRouteImport.update({
 const CareIndexRoute = CareIndexRouteImport.update({
   id: '/care/',
   path: '/care/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapXmlRoute = SitemapXmlRouteImport.update({
+  id: '/sitemap/xml',
+  path: '/sitemap/xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductsSupplementsRoute = ProductsSupplementsRouteImport.update({
@@ -201,6 +207,7 @@ export interface FileRoutesByFullPath {
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/products/$category': typeof ProductsCategoryRouteWithChildren
   '/products/supplements': typeof ProductsSupplementsRouteWithChildren
+  '/sitemap/xml': typeof SitemapXmlRoute
   '/care/': typeof CareIndexRoute
   '/education/': typeof EducationIndexRoute
   '/products/': typeof ProductsIndexRoute
@@ -228,6 +235,7 @@ export interface FileRoutesByTo {
   '/care/professional': typeof CareProfessionalRoute
   '/care/referral': typeof CareReferralRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
+  '/sitemap/xml': typeof SitemapXmlRoute
   '/care': typeof CareIndexRoute
   '/education': typeof EducationIndexRoute
   '/products': typeof ProductsIndexRoute
@@ -259,6 +267,7 @@ export interface FileRoutesById {
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/products/$category': typeof ProductsCategoryRouteWithChildren
   '/products/supplements': typeof ProductsSupplementsRouteWithChildren
+  '/sitemap/xml': typeof SitemapXmlRoute
   '/care/': typeof CareIndexRoute
   '/education/': typeof EducationIndexRoute
   '/products/': typeof ProductsIndexRoute
@@ -291,6 +300,7 @@ export interface FileRouteTypes {
     | '/email/unsubscribe'
     | '/products/$category'
     | '/products/supplements'
+    | '/sitemap/xml'
     | '/care/'
     | '/education/'
     | '/products/'
@@ -318,6 +328,7 @@ export interface FileRouteTypes {
     | '/care/professional'
     | '/care/referral'
     | '/email/unsubscribe'
+    | '/sitemap/xml'
     | '/care'
     | '/education'
     | '/products'
@@ -348,6 +359,7 @@ export interface FileRouteTypes {
     | '/email/unsubscribe'
     | '/products/$category'
     | '/products/supplements'
+    | '/sitemap/xml'
     | '/care/'
     | '/education/'
     | '/products/'
@@ -377,6 +389,7 @@ export interface RootRouteChildren {
   CareProfessionalRoute: typeof CareProfessionalRoute
   CareReferralRoute: typeof CareReferralRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
+  SitemapXmlRoute: typeof SitemapXmlRoute
   CareIndexRoute: typeof CareIndexRoute
   EducationIndexRoute: typeof EducationIndexRoute
   EducationCirculationDvtPeSymptomsRoute: typeof EducationCirculationDvtPeSymptomsRoute
@@ -447,6 +460,13 @@ declare module '@tanstack/react-router' {
       path: '/care'
       fullPath: '/care/'
       preLoaderRoute: typeof CareIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap/xml': {
+      id: '/sitemap/xml'
+      path: '/sitemap/xml'
+      fullPath: '/sitemap/xml'
+      preLoaderRoute: typeof SitemapXmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/products/supplements': {
@@ -644,6 +664,7 @@ const rootRouteChildren: RootRouteChildren = {
   CareProfessionalRoute: CareProfessionalRoute,
   CareReferralRoute: CareReferralRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
+  SitemapXmlRoute: SitemapXmlRoute,
   CareIndexRoute: CareIndexRoute,
   EducationIndexRoute: EducationIndexRoute,
   EducationCirculationDvtPeSymptomsRoute:
