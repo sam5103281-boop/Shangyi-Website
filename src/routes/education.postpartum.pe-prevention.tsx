@@ -25,7 +25,31 @@ export const Route = createFileRoute("/education/postpartum/pe-prevention")({
       { property: "og:image", content: postpartumCover.url },
       { name: "twitter:image", content: postpartumCover.url },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "產後肺栓塞風險與靜脈血栓預防",
+          description:
+            "產後肺栓塞為孕產期最嚴重的併發症之一。本文說明高風險成因、早期活動、醫療級壓力襪與 IPC 等實證預防方式。",
+          image: postpartumCover.url,
+          datePublished: "2025-01-15",
+          dateModified: "2025-01-15",
+          inLanguage: "zh-Hant",
+          author: { "@type": "Organization", name: "上怡生醫醫藥有限公司" },
+          publisher: {
+            "@type": "Organization",
+            name: "上怡生醫醫藥有限公司",
+            logo: { "@type": "ImageObject", url: "https://shangyi-care.com/favicon.png" },
+          },
+          mainEntityOfPage: "https://shangyi-care.com/education/postpartum/pe-prevention",
+        }),
+      },
+    ],
   }),
+
   component: ArticlePage,
 });
 
