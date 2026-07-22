@@ -33,7 +33,31 @@ export const Route = createFileRoute("/education/circulation/dvt-pe-symptoms")({
       { property: "og:image", content: dvtInfographic.url },
       { name: "twitter:image", content: dvtInfographic.url },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "認識深層靜脈栓塞與肺栓塞症狀",
+          description:
+            "認識深層靜脈栓塞（DVT）與肺栓塞（PE）的成因、症狀、好發族群與預防方式，協助高風險族群提早辨識與就醫。",
+          image: dvtInfographic.url,
+          datePublished: "2025-01-15",
+          dateModified: "2025-01-15",
+          inLanguage: "zh-Hant",
+          author: { "@type": "Organization", name: "上怡生醫醫藥有限公司" },
+          publisher: {
+            "@type": "Organization",
+            name: "上怡生醫醫藥有限公司",
+            logo: { "@type": "ImageObject", url: "https://shangyi-care.com/favicon.png" },
+          },
+          mainEntityOfPage: "https://shangyi-care.com/education/circulation/dvt-pe-symptoms",
+        }),
+      },
+    ],
   }),
+
   component: ArticlePage,
 });
 
