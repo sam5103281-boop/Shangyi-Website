@@ -24,9 +24,67 @@ export const Route = createFileRoute("/care/faq")({
         content: "從照護觀念、安心指引到常見問題，建立對 IPC 與居家循環照護的正確認知。",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "醫師常提到的 IPC 是什麼？跟按摩一樣嗎？",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "IPC 是「間歇性氣壓循環治療」（Intermittent Pneumatic Compression），是一種協助下肢血液回流的非侵入式醫療循環輔助方式，與一般以放鬆或舒壓為目的的按摩機並不相同。IPC 利用氣壓套包覆雙腿，透過有順序、規律的充氣與放氣，將腿部血液與淋巴液由下往上推回身體循環，是臨床上經過驗證，專門用來改善下肢循環、消除水腫、預防血液滯留的正規治療方式。",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "醫療級 IPC vs. 一般按摩椅／美腿機，差別在哪？",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "最大的差別在於：一個是揉肌肉，一個是推血管。一般按摩器材作用在肌肉骨骼系統、以震動揉捏為主；醫療級 IPC 作用於血管淋巴系統，透過序列式充氣與梯度加壓，實現單向推進的血液回流，適用於肢體水腫、靜脈曲張與預防血栓。",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "什麼狀況，會適合使用這類設備？",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "適用族群包括慢性靜脈功能不全（CVI）、體位性與功能性水腫、淋巴系統回流受損（如淋巴水腫、術後腫脹），以及長期臥床、行動不便或中風患者需預防深層靜脈血栓（DVT）者。",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "為什麼一定要漸進式壓力？對我有什麼好處？",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "人體下肢血液回流必須對抗地心引力。專業設備採用下緊上鬆的梯度設計：腳踝壓力最大、小腿壓力遞減、大腿壓力最小。有壓力梯度，才能創造單向引流，讓血液與淋巴液穩定往心臟移動。",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "機器的壓力會不會很大？會不會不舒服？",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "高規格的醫療級 IPC 具備自動偵測機制，會偵測下肢回流狀況、等待血液充盈後才再次加壓，過程溫和而分段，不會造成不適。",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "我只有一邊腳腫，為什麼醫師建議雙腳一起做？",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "下肢的血液與淋巴循環是整體系統。即使症狀只在一側，臨床多半建議雙下肢同步處理，以避免水分轉移至不適當部位，並提升整體回流效率與治療穩定度。",
+              },
+            },
+          ],
+        }),
+      },
+    ],
   }),
-  component: FaqPage,
-});
+
 
 const anchors = [
   { id: "concept", label: "照護觀念", en: "Care Concept" },
