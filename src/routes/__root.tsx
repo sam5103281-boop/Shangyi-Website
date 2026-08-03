@@ -168,25 +168,41 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const currentHref = useRouterState({ select: (state) => state.location.href });
+  const isLoading = useRouterState({ select: (state) => state.status !== "idle" });
+  const lastSentRef = useRef<string | null>(null);
 
   // 首次載入與每次 SPA 路由切換都發送完整網址，包含產品分類與產品詳情頁。
-  // 延遲一個 tick 讓 TanStack Router 先套用該分頁的 head()，GA4 才會收到正確的 page_title。
+  // 等路由載入完成（loader 結束、head() 套用）後再送，避免詳情頁被記成上層頁面標題。
   useEffect(() => {
     if (typeof window === "undefined") return;
+    if (isLoading) return;
+    if (lastSentRef.current === currentHref) return;
 
-    const timer = window.setTimeout(() => {
+    let tries = 0;
+    let timer = 0;
+
+    const send = () => {
       const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
-      if (typeof gtag !== "function") return;
+      if (typeof gtag !== "function") {
+        if (tries++ < 20) {
+          timer = window.setTimeout(send, 150);
+        }
+        return;
+      }
 
+      lastSentRef.current = currentHref;
       gtag("event", "page_view", {
         page_path: window.location.pathname + window.location.search,
         page_location: window.location.href,
         page_title: document.title,
       });
-    }, 80);
+    };
+
+    timer = window.setTimeout(send, 120);
 
     return () => window.clearTimeout(timer);
-  }, [currentHref]);
+  }, [currentHref, isLoading]);
+
 
 
   return (
