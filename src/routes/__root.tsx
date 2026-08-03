@@ -94,6 +94,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: "https://shangyi-care.com/" },
+      { rel: "canonical", href: "https://shangyi-care.com/" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
