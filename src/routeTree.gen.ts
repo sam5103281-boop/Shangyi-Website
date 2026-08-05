@@ -9,54 +9,39 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ProductsRouteImport } from './routes/products'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as ChannelsRouteImport } from './routes/channels'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProductsIndexRouteImport } from './routes/products.index'
-import { Route as EducationIndexRouteImport } from './routes/education.index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ChannelsRouteImport } from './routes/channels'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ProductsRouteImport } from './routes/products'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CareIndexRouteImport } from './routes/care.index'
-import { Route as ProductsSupplementsRouteImport } from './routes/products.supplements'
-import { Route as ProductsCategoryRouteImport } from './routes/products.$category'
-import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
-import { Route as CareReferralRouteImport } from './routes/care.referral'
-import { Route as CareProfessionalRouteImport } from './routes/care.professional'
 import { Route as CareFaqRouteImport } from './routes/care.faq'
-import { Route as ProductsSupplementsIndexRouteImport } from './routes/products.supplements.index'
-import { Route as ProductsCategoryIndexRouteImport } from './routes/products.$category.index'
-import { Route as ProductsSupplementsSlugRouteImport } from './routes/products.supplements.$slug'
-import { Route as ProductsCategorySlugRouteImport } from './routes/products.$category.$slug'
-import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
-import { Route as EducationPostpartumPePreventionRouteImport } from './routes/education.postpartum.pe-prevention'
-import { Route as EducationDiabetesEyeComplicationsRouteImport } from './routes/education.diabetes.eye-complications'
-import { Route as EducationDiabetesComplicationRisksRouteImport } from './routes/education.diabetes.complication-risks'
-import { Route as EducationDeviceCompressionSockFaqRouteImport } from './routes/education.device.compression-sock-faq'
-import { Route as EducationCirculationLegVeinCareRouteImport } from './routes/education.circulation.leg-vein-care'
+import { Route as CareProfessionalRouteImport } from './routes/care.professional'
+import { Route as CareReferralRouteImport } from './routes/care.referral'
+import { Route as EducationIndexRouteImport } from './routes/education.index'
+import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
+import { Route as ProductsIndexRouteImport } from './routes/products.index'
+import { Route as ProductsCategoryRouteImport } from './routes/products.$category'
+import { Route as ProductsSupplementsRouteImport } from './routes/products.supplements'
 import { Route as EducationCirculationDvtPeSymptomsRouteImport } from './routes/education.circulation.dvt-pe-symptoms'
-import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
-import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
+import { Route as EducationCirculationLegVeinCareRouteImport } from './routes/education.circulation.leg-vein-care'
+import { Route as EducationDeviceCompressionSockFaqRouteImport } from './routes/education.device.compression-sock-faq'
+import { Route as EducationDiabetesComplicationRisksRouteImport } from './routes/education.diabetes.complication-risks'
+import { Route as EducationDiabetesEyeComplicationsRouteImport } from './routes/education.diabetes.eye-complications'
+import { Route as EducationPostpartumPePreventionRouteImport } from './routes/education.postpartum.pe-prevention'
+import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
+import { Route as ProductsCategoryIndexRouteImport } from './routes/products.$category.index'
+import { Route as ProductsCategorySlugRouteImport } from './routes/products.$category.$slug'
+import { Route as ProductsSupplementsIndexRouteImport } from './routes/products.supplements.index'
+import { Route as ProductsSupplementsSlugRouteImport } from './routes/products.supplements.$slug'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
+import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
+import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProductsRoute = ProductsRouteImport.update({
-  id: '/products',
-  path: '/products',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChannelsRoute = ChannelsRouteImport.update({
-  id: '/channels',
-  path: '/channels',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -64,19 +49,24 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ChannelsRoute = ChannelsRouteImport.update({
+  id: '/channels',
+  path: '/channels',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProductsIndexRoute = ProductsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ProductsRoute,
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const EducationIndexRoute = EducationIndexRouteImport.update({
-  id: '/education/',
-  path: '/education/',
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CareIndexRoute = CareIndexRouteImport.update({
@@ -84,24 +74,9 @@ const CareIndexRoute = CareIndexRouteImport.update({
   path: '/care/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProductsSupplementsRoute = ProductsSupplementsRouteImport.update({
-  id: '/supplements',
-  path: '/supplements',
-  getParentRoute: () => ProductsRoute,
-} as any)
-const ProductsCategoryRoute = ProductsCategoryRouteImport.update({
-  id: '/$category',
-  path: '/$category',
-  getParentRoute: () => ProductsRoute,
-} as any)
-const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
-  id: '/email/unsubscribe',
-  path: '/email/unsubscribe',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CareReferralRoute = CareReferralRouteImport.update({
-  id: '/care/referral',
-  path: '/care/referral',
+const CareFaqRoute = CareFaqRouteImport.update({
+  id: '/care/faq',
+  path: '/care/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CareProfessionalRoute = CareProfessionalRouteImport.update({
@@ -109,59 +84,40 @@ const CareProfessionalRoute = CareProfessionalRouteImport.update({
   path: '/care/professional',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CareFaqRoute = CareFaqRouteImport.update({
-  id: '/care/faq',
-  path: '/care/faq',
+const CareReferralRoute = CareReferralRouteImport.update({
+  id: '/care/referral',
+  path: '/care/referral',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProductsSupplementsIndexRoute =
-  ProductsSupplementsIndexRouteImport.update({
-    id: '/',
-    path: '/',
-    getParentRoute: () => ProductsSupplementsRoute,
-  } as any)
-const ProductsCategoryIndexRoute = ProductsCategoryIndexRouteImport.update({
+const EducationIndexRoute = EducationIndexRouteImport.update({
+  id: '/education/',
+  path: '/education/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
+  id: '/email/unsubscribe',
+  path: '/email/unsubscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsIndexRoute = ProductsIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => ProductsCategoryRoute,
+  getParentRoute: () => ProductsRoute,
 } as any)
-const ProductsSupplementsSlugRoute = ProductsSupplementsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ProductsSupplementsRoute,
+const ProductsCategoryRoute = ProductsCategoryRouteImport.update({
+  id: '/$category',
+  path: '/$category',
+  getParentRoute: () => ProductsRoute,
 } as any)
-const ProductsCategorySlugRoute = ProductsCategorySlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ProductsCategoryRoute,
+const ProductsSupplementsRoute = ProductsSupplementsRouteImport.update({
+  id: '/supplements',
+  path: '/supplements',
+  getParentRoute: () => ProductsRoute,
 } as any)
-const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
-  id: '/lovable/email/suppression',
-  path: '/lovable/email/suppression',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EducationPostpartumPePreventionRoute =
-  EducationPostpartumPePreventionRouteImport.update({
-    id: '/education/postpartum/pe-prevention',
-    path: '/education/postpartum/pe-prevention',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const EducationDiabetesEyeComplicationsRoute =
-  EducationDiabetesEyeComplicationsRouteImport.update({
-    id: '/education/diabetes/eye-complications',
-    path: '/education/diabetes/eye-complications',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const EducationDiabetesComplicationRisksRoute =
-  EducationDiabetesComplicationRisksRouteImport.update({
-    id: '/education/diabetes/complication-risks',
-    path: '/education/diabetes/complication-risks',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const EducationDeviceCompressionSockFaqRoute =
-  EducationDeviceCompressionSockFaqRouteImport.update({
-    id: '/education/device/compression-sock-faq',
-    path: '/education/device/compression-sock-faq',
+const EducationCirculationDvtPeSymptomsRoute =
+  EducationCirculationDvtPeSymptomsRouteImport.update({
+    id: '/education/circulation/dvt-pe-symptoms',
+    path: '/education/circulation/dvt-pe-symptoms',
     getParentRoute: () => rootRouteImport,
   } as any)
 const EducationCirculationLegVeinCareRoute =
@@ -170,16 +126,60 @@ const EducationCirculationLegVeinCareRoute =
     path: '/education/circulation/leg-vein-care',
     getParentRoute: () => rootRouteImport,
   } as any)
-const EducationCirculationDvtPeSymptomsRoute =
-  EducationCirculationDvtPeSymptomsRouteImport.update({
-    id: '/education/circulation/dvt-pe-symptoms',
-    path: '/education/circulation/dvt-pe-symptoms',
+const EducationDeviceCompressionSockFaqRoute =
+  EducationDeviceCompressionSockFaqRouteImport.update({
+    id: '/education/device/compression-sock-faq',
+    path: '/education/device/compression-sock-faq',
     getParentRoute: () => rootRouteImport,
   } as any)
-const LovableEmailTransactionalSendRoute =
-  LovableEmailTransactionalSendRouteImport.update({
-    id: '/lovable/email/transactional/send',
-    path: '/lovable/email/transactional/send',
+const EducationDiabetesComplicationRisksRoute =
+  EducationDiabetesComplicationRisksRouteImport.update({
+    id: '/education/diabetes/complication-risks',
+    path: '/education/diabetes/complication-risks',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EducationDiabetesEyeComplicationsRoute =
+  EducationDiabetesEyeComplicationsRouteImport.update({
+    id: '/education/diabetes/eye-complications',
+    path: '/education/diabetes/eye-complications',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EducationPostpartumPePreventionRoute =
+  EducationPostpartumPePreventionRouteImport.update({
+    id: '/education/postpartum/pe-prevention',
+    path: '/education/postpartum/pe-prevention',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
+  id: '/lovable/email/suppression',
+  path: '/lovable/email/suppression',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsCategoryIndexRoute = ProductsCategoryIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProductsCategoryRoute,
+} as any)
+const ProductsCategorySlugRoute = ProductsCategorySlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProductsCategoryRoute,
+} as any)
+const ProductsSupplementsIndexRoute =
+  ProductsSupplementsIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProductsSupplementsRoute,
+  } as any)
+const ProductsSupplementsSlugRoute = ProductsSupplementsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProductsSupplementsRoute,
+} as any)
+const LovableEmailQueueProcessRoute =
+  LovableEmailQueueProcessRouteImport.update({
+    id: '/lovable/email/queue/process',
+    path: '/lovable/email/queue/process',
     getParentRoute: () => rootRouteImport,
   } as any)
 const LovableEmailTransactionalPreviewRoute =
@@ -188,10 +188,10 @@ const LovableEmailTransactionalPreviewRoute =
     path: '/lovable/email/transactional/preview',
     getParentRoute: () => rootRouteImport,
   } as any)
-const LovableEmailQueueProcessRoute =
-  LovableEmailQueueProcessRouteImport.update({
-    id: '/lovable/email/queue/process',
-    path: '/lovable/email/queue/process',
+const LovableEmailTransactionalSendRoute =
+  LovableEmailTransactionalSendRouteImport.update({
+    id: '/lovable/email/transactional/send',
+    path: '/lovable/email/transactional/send',
     getParentRoute: () => rootRouteImport,
   } as any)
 
@@ -406,32 +406,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/products': {
-      id: '/products'
-      path: '/products'
-      fullPath: '/products'
-      preLoaderRoute: typeof ProductsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/channels': {
-      id: '/channels'
-      path: '/channels'
-      fullPath: '/channels'
-      preLoaderRoute: typeof ChannelsRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -441,25 +420,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/channels': {
+      id: '/channels'
+      path: '/channels'
+      fullPath: '/channels'
+      preLoaderRoute: typeof ChannelsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/products/': {
-      id: '/products/'
-      path: '/'
-      fullPath: '/products/'
-      preLoaderRoute: typeof ProductsIndexRouteImport
-      parentRoute: typeof ProductsRoute
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/education/': {
-      id: '/education/'
-      path: '/education'
-      fullPath: '/education/'
-      preLoaderRoute: typeof EducationIndexRouteImport
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/care/': {
@@ -469,32 +455,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/products/supplements': {
-      id: '/products/supplements'
-      path: '/supplements'
-      fullPath: '/products/supplements'
-      preLoaderRoute: typeof ProductsSupplementsRouteImport
-      parentRoute: typeof ProductsRoute
-    }
-    '/products/$category': {
-      id: '/products/$category'
-      path: '/$category'
-      fullPath: '/products/$category'
-      preLoaderRoute: typeof ProductsCategoryRouteImport
-      parentRoute: typeof ProductsRoute
-    }
-    '/email/unsubscribe': {
-      id: '/email/unsubscribe'
-      path: '/email/unsubscribe'
-      fullPath: '/email/unsubscribe'
-      preLoaderRoute: typeof EmailUnsubscribeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/care/referral': {
-      id: '/care/referral'
-      path: '/care/referral'
-      fullPath: '/care/referral'
-      preLoaderRoute: typeof CareReferralRouteImport
+    '/care/faq': {
+      id: '/care/faq'
+      path: '/care/faq'
+      fullPath: '/care/faq'
+      preLoaderRoute: typeof CareFaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/care/professional': {
@@ -504,74 +469,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareProfessionalRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/care/faq': {
-      id: '/care/faq'
-      path: '/care/faq'
-      fullPath: '/care/faq'
-      preLoaderRoute: typeof CareFaqRouteImport
+    '/care/referral': {
+      id: '/care/referral'
+      path: '/care/referral'
+      fullPath: '/care/referral'
+      preLoaderRoute: typeof CareReferralRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/products/supplements/': {
-      id: '/products/supplements/'
+    '/education/': {
+      id: '/education/'
+      path: '/education'
+      fullPath: '/education/'
+      preLoaderRoute: typeof EducationIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/email/unsubscribe': {
+      id: '/email/unsubscribe'
+      path: '/email/unsubscribe'
+      fullPath: '/email/unsubscribe'
+      preLoaderRoute: typeof EmailUnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/': {
+      id: '/products/'
       path: '/'
-      fullPath: '/products/supplements/'
-      preLoaderRoute: typeof ProductsSupplementsIndexRouteImport
-      parentRoute: typeof ProductsSupplementsRoute
+      fullPath: '/products/'
+      preLoaderRoute: typeof ProductsIndexRouteImport
+      parentRoute: typeof ProductsRoute
     }
-    '/products/$category/': {
-      id: '/products/$category/'
-      path: '/'
-      fullPath: '/products/$category/'
-      preLoaderRoute: typeof ProductsCategoryIndexRouteImport
-      parentRoute: typeof ProductsCategoryRoute
+    '/products/$category': {
+      id: '/products/$category'
+      path: '/$category'
+      fullPath: '/products/$category'
+      preLoaderRoute: typeof ProductsCategoryRouteImport
+      parentRoute: typeof ProductsRoute
     }
-    '/products/supplements/$slug': {
-      id: '/products/supplements/$slug'
-      path: '/$slug'
-      fullPath: '/products/supplements/$slug'
-      preLoaderRoute: typeof ProductsSupplementsSlugRouteImport
-      parentRoute: typeof ProductsSupplementsRoute
+    '/products/supplements': {
+      id: '/products/supplements'
+      path: '/supplements'
+      fullPath: '/products/supplements'
+      preLoaderRoute: typeof ProductsSupplementsRouteImport
+      parentRoute: typeof ProductsRoute
     }
-    '/products/$category/$slug': {
-      id: '/products/$category/$slug'
-      path: '/$slug'
-      fullPath: '/products/$category/$slug'
-      preLoaderRoute: typeof ProductsCategorySlugRouteImport
-      parentRoute: typeof ProductsCategoryRoute
-    }
-    '/lovable/email/suppression': {
-      id: '/lovable/email/suppression'
-      path: '/lovable/email/suppression'
-      fullPath: '/lovable/email/suppression'
-      preLoaderRoute: typeof LovableEmailSuppressionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/education/postpartum/pe-prevention': {
-      id: '/education/postpartum/pe-prevention'
-      path: '/education/postpartum/pe-prevention'
-      fullPath: '/education/postpartum/pe-prevention'
-      preLoaderRoute: typeof EducationPostpartumPePreventionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/education/diabetes/eye-complications': {
-      id: '/education/diabetes/eye-complications'
-      path: '/education/diabetes/eye-complications'
-      fullPath: '/education/diabetes/eye-complications'
-      preLoaderRoute: typeof EducationDiabetesEyeComplicationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/education/diabetes/complication-risks': {
-      id: '/education/diabetes/complication-risks'
-      path: '/education/diabetes/complication-risks'
-      fullPath: '/education/diabetes/complication-risks'
-      preLoaderRoute: typeof EducationDiabetesComplicationRisksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/education/device/compression-sock-faq': {
-      id: '/education/device/compression-sock-faq'
-      path: '/education/device/compression-sock-faq'
-      fullPath: '/education/device/compression-sock-faq'
-      preLoaderRoute: typeof EducationDeviceCompressionSockFaqRouteImport
+    '/education/circulation/dvt-pe-symptoms': {
+      id: '/education/circulation/dvt-pe-symptoms'
+      path: '/education/circulation/dvt-pe-symptoms'
+      fullPath: '/education/circulation/dvt-pe-symptoms'
+      preLoaderRoute: typeof EducationCirculationDvtPeSymptomsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/education/circulation/leg-vein-care': {
@@ -581,18 +525,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EducationCirculationLegVeinCareRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/education/circulation/dvt-pe-symptoms': {
-      id: '/education/circulation/dvt-pe-symptoms'
-      path: '/education/circulation/dvt-pe-symptoms'
-      fullPath: '/education/circulation/dvt-pe-symptoms'
-      preLoaderRoute: typeof EducationCirculationDvtPeSymptomsRouteImport
+    '/education/device/compression-sock-faq': {
+      id: '/education/device/compression-sock-faq'
+      path: '/education/device/compression-sock-faq'
+      fullPath: '/education/device/compression-sock-faq'
+      preLoaderRoute: typeof EducationDeviceCompressionSockFaqRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lovable/email/transactional/send': {
-      id: '/lovable/email/transactional/send'
-      path: '/lovable/email/transactional/send'
-      fullPath: '/lovable/email/transactional/send'
-      preLoaderRoute: typeof LovableEmailTransactionalSendRouteImport
+    '/education/diabetes/complication-risks': {
+      id: '/education/diabetes/complication-risks'
+      path: '/education/diabetes/complication-risks'
+      fullPath: '/education/diabetes/complication-risks'
+      preLoaderRoute: typeof EducationDiabetesComplicationRisksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/education/diabetes/eye-complications': {
+      id: '/education/diabetes/eye-complications'
+      path: '/education/diabetes/eye-complications'
+      fullPath: '/education/diabetes/eye-complications'
+      preLoaderRoute: typeof EducationDiabetesEyeComplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/education/postpartum/pe-prevention': {
+      id: '/education/postpartum/pe-prevention'
+      path: '/education/postpartum/pe-prevention'
+      fullPath: '/education/postpartum/pe-prevention'
+      preLoaderRoute: typeof EducationPostpartumPePreventionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lovable/email/suppression': {
+      id: '/lovable/email/suppression'
+      path: '/lovable/email/suppression'
+      fullPath: '/lovable/email/suppression'
+      preLoaderRoute: typeof LovableEmailSuppressionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/$category/': {
+      id: '/products/$category/'
+      path: '/'
+      fullPath: '/products/$category/'
+      preLoaderRoute: typeof ProductsCategoryIndexRouteImport
+      parentRoute: typeof ProductsCategoryRoute
+    }
+    '/products/$category/$slug': {
+      id: '/products/$category/$slug'
+      path: '/$slug'
+      fullPath: '/products/$category/$slug'
+      preLoaderRoute: typeof ProductsCategorySlugRouteImport
+      parentRoute: typeof ProductsCategoryRoute
+    }
+    '/products/supplements/': {
+      id: '/products/supplements/'
+      path: '/'
+      fullPath: '/products/supplements/'
+      preLoaderRoute: typeof ProductsSupplementsIndexRouteImport
+      parentRoute: typeof ProductsSupplementsRoute
+    }
+    '/products/supplements/$slug': {
+      id: '/products/supplements/$slug'
+      path: '/$slug'
+      fullPath: '/products/supplements/$slug'
+      preLoaderRoute: typeof ProductsSupplementsSlugRouteImport
+      parentRoute: typeof ProductsSupplementsRoute
+    }
+    '/lovable/email/queue/process': {
+      id: '/lovable/email/queue/process'
+      path: '/lovable/email/queue/process'
+      fullPath: '/lovable/email/queue/process'
+      preLoaderRoute: typeof LovableEmailQueueProcessRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lovable/email/transactional/preview': {
@@ -602,11 +602,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lovable/email/queue/process': {
-      id: '/lovable/email/queue/process'
-      path: '/lovable/email/queue/process'
-      fullPath: '/lovable/email/queue/process'
-      preLoaderRoute: typeof LovableEmailQueueProcessRouteImport
+    '/lovable/email/transactional/send': {
+      id: '/lovable/email/transactional/send'
+      path: '/lovable/email/transactional/send'
+      fullPath: '/lovable/email/transactional/send'
+      preLoaderRoute: typeof LovableEmailTransactionalSendRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -685,3 +685,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
