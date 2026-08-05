@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { medicalCategories } from "@/data/medical";
+import { supplements } from "@/data/supplements";
 
 const BASE_URL = "https://shangyi-care.com";
 
@@ -18,7 +20,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/about", changefreq: "monthly", priority: "0.8" },
           { path: "/products", changefreq: "weekly", priority: "0.9" },
-          { path: "/supplements", changefreq: "weekly", priority: "0.9" },
+          { path: "/products/supplements", changefreq: "weekly", priority: "0.9" },
           { path: "/contact", changefreq: "monthly", priority: "0.7" },
           { path: "/channels", changefreq: "monthly", priority: "0.7" },
           { path: "/education", changefreq: "weekly", priority: "0.8" },
@@ -33,6 +35,30 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/care/professional", changefreq: "monthly", priority: "0.7" },
           { path: "/care/faq", changefreq: "monthly", priority: "0.7" },
         ];
+
+        for (const category of medicalCategories) {
+          entries.push({
+            path: `/products/${category.slug}`,
+            changefreq: "monthly",
+            priority: "0.8",
+          });
+          for (const product of category.products) {
+            entries.push({
+              path: `/products/${category.slug}/${product.slug}`,
+              changefreq: "monthly",
+              priority: "0.7",
+            });
+          }
+        }
+
+        for (const s of supplements) {
+          entries.push({
+            path: `/products/supplements/${s.slug}`,
+            changefreq: "monthly",
+            priority: "0.7",
+          });
+        }
+
 
         const urls = entries.map((e) =>
           [
