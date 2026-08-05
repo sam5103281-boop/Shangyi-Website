@@ -1,10 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
-import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
-import * as React from "react";
-import { render } from "@react-email/render";
-import type { Database } from "@/integrations/supabase/types";
-import { template as contactNotification } from "@/lib/email-templates/contact-notification";
 
 const contactSchema = z.object({
   topic: z.enum(["b2b", "spec", "comwell"]),
@@ -16,69 +11,32 @@ const contactSchema = z.object({
   message: z.string().trim().min(1, "請輸入諮詢內容").max(2000, "諮詢內容過長"),
 });
 
-function createServerSupabaseClient() {
-  return createClient<Database>(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_PUBLISHABLE_KEY!,
-    {
-      auth: {
-        storage: undefined,
-        persistSession: false,
-        autoRefreshToken: false,
-      },
-    },
-  );
-}
-
 export const submitContactForm = createServerFn({ method: "POST" })
   .inputValidator((data) => contactSchema.parse(data))
   .handler(async ({ data }) => {
-    const supabase = createServerSupabaseClient();
+    // The RPC is service-role only and composes the notification email itself
+    // from these raw fields, so no caller-supplied email content is possible.
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-    try {
-      const submittedAt = new Date().toLocaleString("zh-TW", {
-        timeZone: "Asia/Taipei",
-        hour12: false,
-      });
-      const templateData = {
-        topic: data.topic,
-        name: data.name,
-        org: data.org ?? "",
-        title: data.title ?? "",
-        phone: data.phone,
-        email: data.email,
-        message: data.message,
-        submittedAt,
-      };
+    const db = supabaseAdmin as unknown as {
+      rpc: (
+        fn: string,
+        args?: unknown,
+      ) => Promise<{ data: unknown; error: { message: string } | null }>;
+    };
 
-      const element = React.createElement(contactNotification.component, templateData);
-      const html = await render(element);
-      const text = await render(element, { plainText: true });
-      const subject =
-        typeof contactNotification.subject === "function"
-          ? contactNotification.subject(templateData)
-          : contactNotification.subject;
+    const { error } = await db.rpc("submit_contact_and_notify", {
+      p_topic: data.topic,
+      p_name: data.name,
+      p_org: data.org ?? "",
+      p_title: data.title ?? "",
+      p_phone: data.phone,
+      p_email: data.email,
+      p_message: data.message,
+    });
 
-      const db = supabase as unknown as {
-        rpc: (fn: string, args?: unknown) => Promise<{ data: unknown; error: { message: string } | null }>;
-      };
-
-      const { error: submitError } = await db.rpc("submit_contact_and_notify", {
-        p_topic: data.topic,
-        p_name: data.name,
-        p_org: data.org ?? "",
-        p_title: data.title ?? "",
-        p_phone: data.phone,
-        p_email: data.email,
-        p_message: data.message,
-        p_subject: subject,
-        p_html: html,
-        p_text: text,
-      });
-
-      if (submitError) throw new Error(submitError.message);
-    } catch (emailErr) {
-      console.error("Contact notification email error:", emailErr);
+    if (error) {
+      console.error("Contact submission error:", error.message);
       throw new Error("提交失敗，請稍後再試");
     }
 
