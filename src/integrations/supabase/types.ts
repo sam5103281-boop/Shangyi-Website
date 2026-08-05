@@ -199,28 +199,13 @@ export type Database = {
           read_ct: number
         }[]
       }
-      submit_contact: {
-        Args: {
-          p_email: string
-          p_message: string
-          p_name: string
-          p_org: string
-          p_phone: string
-          p_title: string
-          p_topic: string
-        }
-        Returns: undefined
-      }
       submit_contact_and_notify: {
         Args: {
           p_email: string
-          p_html: string
           p_message: string
           p_name: string
           p_org: string
           p_phone: string
-          p_subject: string
-          p_text: string
           p_title: string
           p_topic: string
         }
