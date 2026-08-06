@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shangyi-care.com/sitemap.xml
+Sitemap: https://www.shangyi-care.com/sitemap.xml

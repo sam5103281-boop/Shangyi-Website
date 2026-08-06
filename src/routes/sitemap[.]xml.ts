@@ -3,7 +3,7 @@ import type {} from "@tanstack/react-start";
 import { medicalCategories } from "@/data/medical";
 import { supplements } from "@/data/supplements";
 
-const BASE_URL = "https://shangyi-care.com";
+const BASE_URL = "https://www.shangyi-care.com";
 
 interface SitemapEntry {
   path: string;
