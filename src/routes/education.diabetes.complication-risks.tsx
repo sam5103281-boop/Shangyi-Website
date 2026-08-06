@@ -39,9 +39,9 @@ export const Route = createFileRoute("/education/diabetes/complication-risks")({
           publisher: {
             "@type": "Organization",
             name: "上怡生醫醫藥有限公司",
-            logo: { "@type": "ImageObject", url: "https://shangyi-care.com/favicon.png" },
+            logo: { "@type": "ImageObject", url: "https://www.shangyi-care.com/favicon.png" },
           },
-          mainEntityOfPage: "https://shangyi-care.com/education/diabetes/complication-risks",
+          mainEntityOfPage: "https://www.shangyi-care.com/education/diabetes/complication-risks",
         }),
       },
     ],

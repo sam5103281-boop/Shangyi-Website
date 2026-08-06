@@ -50,9 +50,9 @@ export const Route = createFileRoute("/education/circulation/dvt-pe-symptoms")({
           publisher: {
             "@type": "Organization",
             name: "上怡生醫醫藥有限公司",
-            logo: { "@type": "ImageObject", url: "https://shangyi-care.com/favicon.png" },
+            logo: { "@type": "ImageObject", url: "https://www.shangyi-care.com/favicon.png" },
           },
-          mainEntityOfPage: "https://shangyi-care.com/education/circulation/dvt-pe-symptoms",
+          mainEntityOfPage: "https://www.shangyi-care.com/education/circulation/dvt-pe-symptoms",
         }),
       },
     ],
