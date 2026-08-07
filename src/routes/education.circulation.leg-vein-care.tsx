@@ -46,10 +46,10 @@ export const Route = createFileRoute("/education/circulation/leg-vein-care")({
           datePublished: "2025-01-15",
           dateModified: "2025-01-15",
           inLanguage: "zh-Hant",
-          author: { "@type": "Organization", name: "上怡生醫醫藥有限公司" },
+          author: { "@type": "Organization", name: "上怡生技醫藥有限公司" },
           publisher: {
             "@type": "Organization",
-            name: "上怡生醫醫藥有限公司",
+            name: "上怡生技醫藥有限公司",
             logo: { "@type": "ImageObject", url: "https://www.shangyi-care.com/favicon.png" },
           },
           mainEntityOfPage: "https://www.shangyi-care.com/education/circulation/leg-vein-care",

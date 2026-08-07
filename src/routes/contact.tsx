@@ -196,7 +196,7 @@ function ContactPage() {
                 SHANG YI BIOPHARMA
               </p>
               <dl className="mt-6 space-y-5 text-sm">
-                <Row k="公司名稱" v="上怡生醫醫藥有限公司" />
+                <Row k="公司名稱" v="上怡生技醫藥有限公司" />
                 <Row k="公司地址" v="臺南市南區新昌里國華街一段 98 號" />
                 <Row k="電話" v="06-222-0070" />
                 <Row k="傳真" v="06-222-0050" />
