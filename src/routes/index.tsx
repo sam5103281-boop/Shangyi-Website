@@ -13,13 +13,13 @@ import catDevices from "@/assets/categories/cat-devices-v5.jpg.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "上怡生醫醫藥有限公司 SHANG YI BIOPHARMA｜合規品質．鏈結臨床與居家照護" },
+      { title: "上怡生技醫藥有限公司 SHANG YI BIOPHARMA｜合規品質．鏈結臨床與居家照護" },
       {
         name: "description",
         content:
-          "上怡生醫醫藥有限公司是專注於醫療器材代理與特殊機能保健品的生醫企業，產品符合國際電氣安全與電磁相容測試規範，深受全台指標醫療機構與專業通路信賴。",
+          "上怡生技醫藥有限公司是專注於醫療器材代理與特殊機能保健品的生醫企業，產品符合國際電氣安全與電磁相容測試規範，深受全台指標醫療機構與專業通路信賴。",
       },
-      { property: "og:title", content: "上怡生醫醫藥有限公司 SHANG YI BIOPHARMA" },
+      { property: "og:title", content: "上怡生技醫藥有限公司 SHANG YI BIOPHARMA" },
       {
         property: "og:description",
         content: "以合規品質為核心，鏈結臨床與居家照護的生醫專家。",
@@ -120,7 +120,7 @@ function HomePage() {
               鏈結<span className="text-accent">臨床醫療與居家延伸照護</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              上怡生醫醫藥有限公司遴選符合國際法規之醫療器材與特殊機能產品，攜手指標醫療院所與專業通路，
+              上怡生技醫藥有限公司遴選符合國際法規之醫療器材與特殊機能產品，攜手指標醫療院所與專業通路，
               為臨床端與居家端提供可信賴的延伸照護解決方案。
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">

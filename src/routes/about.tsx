@@ -38,7 +38,7 @@ export const Route = createFileRoute("/about")({
 
 const licenses = [
   {
-    type: "上怡生醫醫藥有限公司",
+    type: "上怡生技醫藥有限公司",
     no: "南市醫器販 字第 MD6205034486 號",
     img: shangyiPharmaImg.url,
     pdf: shangyiPharmaPdf.url,

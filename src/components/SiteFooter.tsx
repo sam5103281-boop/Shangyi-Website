@@ -7,7 +7,7 @@ export function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <div className="flex flex-col leading-tight">
-              <span className="text-base font-semibold text-foreground">上怡生醫醫藥有限公司</span>
+              <span className="text-base font-semibold text-foreground">上怡生技醫藥有限公司</span>
               <span className="mt-1 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
                 SHANG YI BIOPHARMA
               </span>
@@ -80,7 +80,7 @@ export function SiteFooter() {
 
         <div className="mt-6 flex flex-col justify-between gap-4 text-xs text-muted-foreground md:flex-row md:items-center">
           <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-6">
-            <p>© {new Date().getFullYear()} 上怡生醫醫藥有限公司 SHANG YI BIOPHARMA　保留所有權利</p>
+            <p>© {new Date().getFullYear()} 上怡生技醫藥有限公司 SHANG YI BIOPHARMA　保留所有權利</p>
             <p className="tracking-wider">
               <br />
             </p>
