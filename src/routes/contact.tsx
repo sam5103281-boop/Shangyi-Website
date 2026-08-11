@@ -13,6 +13,7 @@ export const Route = createFileRoute("/contact")({
   },
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/contact" },
       { title: "聯絡我們｜上怡生醫" },
       {
         name: "description",
@@ -22,6 +23,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "聯絡我們｜上怡生醫" },
       { property: "og:description", content: "B2B / B2C 精準分流的專業諮詢窗口。" },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/contact" }],
   }),
   component: ContactPage,
 });

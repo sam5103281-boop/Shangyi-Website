@@ -19,6 +19,7 @@ const ALERT_INK = "#c0392b";
 export const Route = createFileRoute("/education/circulation/dvt-pe-symptoms")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/education/circulation/dvt-pe-symptoms" },
       { title: "認識深層靜脈栓塞與肺栓塞症狀｜醫療保健專欄｜上怡生醫" },
       {
         name: "description",
@@ -33,6 +34,7 @@ export const Route = createFileRoute("/education/circulation/dvt-pe-symptoms")({
       { property: "og:image", content: dvtInfographic.url },
       { name: "twitter:image", content: dvtInfographic.url },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/education/circulation/dvt-pe-symptoms" }],
     scripts: [
       {
         type: "application/ld+json",

@@ -12,6 +12,7 @@ import careFaq from "@/assets/care-faq-hero.png.asset.json";
 export const Route = createFileRoute("/care/faq")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/care/faq" },
       { title: "衛教 Q&A｜居家循環照護｜上怡生醫" },
       {
         name: "description",
@@ -24,6 +25,7 @@ export const Route = createFileRoute("/care/faq")({
         content: "從照護觀念、安心指引到常見問題，建立對 IPC 與居家循環照護的正確認知。",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/care/faq" }],
     scripts: [
       {
         type: "application/ld+json",

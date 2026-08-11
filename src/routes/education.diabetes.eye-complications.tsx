@@ -12,6 +12,7 @@ const RETINA_ACCENT = "#55d99f";
 export const Route = createFileRoute("/education/diabetes/eye-complications")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/education/diabetes/eye-complications" },
       { title: "糖尿病恐併發眼睛病變｜醫療保健專欄｜上怡生醫" },
       {
         name: "description",
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/education/diabetes/eye-complications")({
       { property: "og:image", content: cover.url },
       { name: "twitter:image", content: cover.url },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/education/diabetes/eye-complications" }],
     scripts: [
       {
         type: "application/ld+json",

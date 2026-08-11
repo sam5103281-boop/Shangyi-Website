@@ -13,6 +13,7 @@ import careReferral from "@/assets/care-referral-consult.png.asset.json";
 export const Route = createFileRoute("/care/referral")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/care/referral" },
       { title: "轉介流程｜居家循環照護｜上怡生醫 ComWell" },
       {
         name: "description",
@@ -25,6 +26,7 @@ export const Route = createFileRoute("/care/referral")({
         content: "五步驟轉介流程＋ComWell 護理團隊在地支援，讓臨床照護安全延伸至居家。",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/care/referral" }],
   }),
   component: ReferralPage,
 });

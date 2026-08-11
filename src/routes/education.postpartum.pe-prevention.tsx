@@ -11,6 +11,7 @@ const ACCENT = "rgb(229, 136, 179)";
 export const Route = createFileRoute("/education/postpartum/pe-prevention")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/education/postpartum/pe-prevention" },
       { title: "產後肺栓塞風險與靜脈血栓預防｜醫療保健專欄｜上怡生醫" },
       {
         name: "description",
@@ -25,6 +26,7 @@ export const Route = createFileRoute("/education/postpartum/pe-prevention")({
       { property: "og:image", content: postpartumCover.url },
       { name: "twitter:image", content: postpartumCover.url },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/education/postpartum/pe-prevention" }],
     scripts: [
       {
         type: "application/ld+json",

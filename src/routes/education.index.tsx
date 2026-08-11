@@ -7,6 +7,7 @@ import postpartumCover from "@/assets/parenthood-pregnancy.jpg.asset.json";
 export const Route = createFileRoute("/education/")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/education" },
       { title: "醫療保健專欄｜上怡生醫" },
       {
         name: "description",
@@ -19,6 +20,7 @@ export const Route = createFileRoute("/education/")({
         content: "依主題瀏覽下肢循環、靜脈栓塞、糖尿病併發與醫療輔具衛教文章。",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/education" }],
   }),
   component: EducationPage,
 });

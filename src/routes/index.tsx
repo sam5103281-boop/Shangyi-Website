@@ -13,6 +13,7 @@ import catDevices from "@/assets/categories/cat-devices-v5.jpg.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/" },
       { title: "上怡生技醫藥有限公司 SHANG YI BIOPHARMA｜合規品質．鏈結臨床與居家照護" },
       {
         name: "description",
@@ -25,6 +26,7 @@ export const Route = createFileRoute("/")({
         content: "以合規品質為核心，鏈結臨床與居家照護的生醫專家。",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/" }],
   }),
   component: HomePage,
 });

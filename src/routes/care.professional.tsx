@@ -8,6 +8,7 @@ import careProfessional from "@/assets/comwell-雙機器-特寫-2.jpg.asset.json
 export const Route = createFileRoute("/care/professional")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/care/professional" },
       { title: "專業照護｜居家循環照護｜上怡生醫 ComWell" },
       {
         name: "description",
@@ -20,6 +21,7 @@ export const Route = createFileRoute("/care/professional")({
         content: "標準化流程＋臨床護理師把關，建立讓醫師放心轉介的居家循環照護模式。",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/care/professional" }],
   }),
   component: ProfessionalCarePage,
 });
