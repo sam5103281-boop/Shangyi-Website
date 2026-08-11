@@ -9,7 +9,7 @@ export const Route = createFileRoute("/products/supplements/$slug")({
     if (!product) throw notFound();
     return { product };
   },
-  head: ({ loaderData }) => {
+  head: ({ params, loaderData }) => {
     const p = loaderData?.product;
     const title = p
       ? `${p.name} ${p.en}｜特殊機能保健品｜上怡生醫`
@@ -20,15 +20,36 @@ export const Route = createFileRoute("/products/supplements/$slug")({
           .filter(Boolean)
           .join("、")}。`
       : "上怡特殊機能保健品。";
+    const url = `https://www.shangyi-care.com/products/supplements/${params.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
+        { property: "og:type", content: "product" },
+        { property: "og:url", content: url },
       ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: p
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Product",
+                name: `${p.name} ${p.en}`,
+                description: desc,
+                category: "特殊機能保健品",
+                url,
+                brand: { "@type": "Brand", name: "上怡生技醫藥有限公司" },
+              }),
+            },
+          ]
+        : [],
     };
   },
+
   errorComponent: ({ error }) => (
     <div className="container-page section-pad">
       <p role="alert">產品載入失敗：{error.message}</p>

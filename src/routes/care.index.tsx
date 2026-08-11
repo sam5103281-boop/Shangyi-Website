@@ -172,9 +172,9 @@ function CareHubPage() {
                       STEP
                     </span>
                   </div>
-                  <h4 className="mb-3 font-display text-xl text-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent-foreground lg:text-2xl">
+                  <h3 className="mb-3 font-display text-xl text-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent-foreground lg:text-2xl">
                     {s.title}
-                  </h4>
+                  </h3>
                   <p className="text-sm leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-accent-foreground/90">
                     {s.desc}
                   </p>
