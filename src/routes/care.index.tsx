@@ -8,6 +8,7 @@ import careProfessional from "@/assets/comwell-home-scene-v3.jpg.asset.json";
 export const Route = createFileRoute("/care/")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/care" },
       { title: "居家循環照護｜上怡生醫 ComWell" },
       {
         name: "description",
@@ -20,6 +21,7 @@ export const Route = createFileRoute("/care/")({
         content: "標準化流程＋在地團隊支援，建立讓醫師放心轉介的居家循環照護模式。",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/care" }],
   }),
   component: CareHubPage,
 });
@@ -170,9 +172,9 @@ function CareHubPage() {
                       STEP
                     </span>
                   </div>
-                  <h4 className="mb-3 font-display text-xl text-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent-foreground lg:text-2xl">
+                  <h3 className="mb-3 font-display text-xl text-foreground transition-all duration-300 group-hover:translate-x-1 group-hover:text-accent-foreground lg:text-2xl">
                     {s.title}
-                  </h4>
+                  </h3>
                   <p className="text-sm leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-accent-foreground/90">
                     {s.desc}
                   </p>

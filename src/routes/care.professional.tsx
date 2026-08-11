@@ -8,6 +8,7 @@ import careProfessional from "@/assets/comwell-雙機器-特寫-2.jpg.asset.json
 export const Route = createFileRoute("/care/professional")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/care/professional" },
       { title: "專業照護｜居家循環照護｜上怡生醫 ComWell" },
       {
         name: "description",
@@ -20,6 +21,7 @@ export const Route = createFileRoute("/care/professional")({
         content: "標準化流程＋臨床護理師把關，建立讓醫師放心轉介的居家循環照護模式。",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/care/professional" }],
   }),
   component: ProfessionalCarePage,
 });
@@ -143,7 +145,7 @@ function ProfessionalCarePage() {
                     <span className="text-[11px] font-medium tracking-[0.25em] text-accent">
                       {s.step}
                     </span>
-                    <h4 className="font-display text-lg text-foreground">{s.title}</h4>
+                    <h3 className="font-display text-lg text-foreground">{s.title}</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
                     <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-accent/80 via-[#28bfb0] to-[#2dd4bf]" />
                     <span className="absolute right-3 top-3 font-display text-2xl font-medium text-foreground/[0.04]">
@@ -169,7 +171,7 @@ function ProfessionalCarePage() {
                     <span className="text-[11px] font-medium tracking-[0.25em] text-accent">
                       {s.step}
                     </span>
-                    <h4 className="font-display text-lg text-foreground">{s.title}</h4>
+                    <h3 className="font-display text-lg text-foreground">{s.title}</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
                     <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-accent/80 via-[#28bfb0] to-[#2dd4bf]" />
                     <span className="absolute right-3 top-3 font-display text-2xl font-medium text-foreground/[0.04]">

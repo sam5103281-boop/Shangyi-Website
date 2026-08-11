@@ -23,6 +23,7 @@ import muxinDistPdf from "@/assets/licenses/muxin-distributor.pdf.asset.json";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/about" },
       { title: "關於上怡｜實力與承諾" },
       {
         name: "description",
@@ -32,6 +33,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "關於上怡｜實力與承諾" },
       { property: "og:description", content: "鏈結臨床醫療與居家照護的生醫企業。" },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/about" }],
   }),
   component: AboutPage,
 });

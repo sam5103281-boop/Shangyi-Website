@@ -18,6 +18,7 @@ const ALERT_INK = "#c0392b";
 export const Route = createFileRoute("/education/circulation/leg-vein-care")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/education/circulation/leg-vein-care" },
       { title: "腿部靜脈保養與照護指引｜醫療保健專欄｜上怡生醫" },
       {
         name: "description",
@@ -33,6 +34,7 @@ export const Route = createFileRoute("/education/circulation/leg-vein-care")({
       { property: "og:image", content: cover.url },
       { name: "twitter:image", content: cover.url },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/education/circulation/leg-vein-care" }],
     scripts: [
       {
         type: "application/ld+json",

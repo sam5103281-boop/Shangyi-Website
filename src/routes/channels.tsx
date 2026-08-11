@@ -6,6 +6,7 @@ import qualityLab from "@/assets/medical-handshake.png.asset.json";
 export const Route = createFileRoute("/channels")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/channels" },
       { title: "合作通路｜上怡生醫" },
       {
         name: "description",
@@ -18,6 +19,7 @@ export const Route = createFileRoute("/channels")({
         content: "醫療相關通路據點與醫療設備授權合作說明。",
       },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/channels" }],
   }),
   component: ChannelsPage,
 });

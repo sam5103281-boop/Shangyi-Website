@@ -93,12 +93,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "以合規品質為核心，鏈結臨床與居家照護的生醫專家。",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://www.shangyi-care.com/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "canonical", href: "https://www.shangyi-care.com/" },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "shortcut icon", type: "image/png", href: "/favicon.png" },
       { rel: "apple-touch-icon", href: "/favicon.png" },

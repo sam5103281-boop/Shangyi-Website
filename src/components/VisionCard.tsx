@@ -65,7 +65,7 @@ export function VisionCard({ eyebrow, title, desc, delay = 0 }: VisionCardProps)
         <span className="text-[11px] tracking-[0.28em] text-accent uppercase">{eyebrow}</span>
       </div>
 
-      <h3
+      <h2
         className="mt-4 font-display text-2xl text-foreground"
         style={{
           opacity: shown ? 1 : 0,
@@ -74,7 +74,7 @@ export function VisionCard({ eyebrow, title, desc, delay = 0 }: VisionCardProps)
         }}
       >
         {title}
-      </h3>
+      </h2>
       <p
         className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base"
         style={{

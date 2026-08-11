@@ -12,6 +12,7 @@ const ACCENT_SOFT = "#e6f2f4";
 export const Route = createFileRoute("/education/device/compression-sock-faq")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/education/device/compression-sock-faq" },
       { title: "醫用輔助襪常見問題｜醫療保健專欄｜上怡生醫" },
       {
         name: "description",
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/education/device/compression-sock-faq")({
       { property: "og:image", content: cover.url },
       { name: "twitter:image", content: cover.url },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/education/device/compression-sock-faq" }],
     scripts: [
       {
         type: "application/ld+json",

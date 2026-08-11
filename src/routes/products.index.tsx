@@ -5,6 +5,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 export const Route = createFileRoute("/products/")({
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/products" },
       { title: "產品中心｜上怡生醫 ShangYi Biotech" },
       {
         name: "description",
@@ -14,6 +15,7 @@ export const Route = createFileRoute("/products/")({
       { property: "og:title", content: "產品中心｜上怡生醫" },
       { property: "og:description", content: "規格導向的醫療等級產品線。" },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/products" }],
   }),
   component: ProductsPage,
 });

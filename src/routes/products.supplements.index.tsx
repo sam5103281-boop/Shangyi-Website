@@ -12,6 +12,7 @@ export const Route = createFileRoute("/products/supplements/")({
   validateSearch: zodValidator(searchSchema),
   head: () => ({
     meta: [
+      { property: "og:url", content: "https://www.shangyi-care.com/products/supplements" },
       { title: "特殊機能保健品｜上怡生醫 SHANG YI BIOPHARMA" },
       {
         name: "description",
@@ -21,6 +22,7 @@ export const Route = createFileRoute("/products/supplements/")({
       { property: "og:title", content: "特殊機能保健品｜上怡生醫" },
       { property: "og:description", content: "依成份分類，快速找到對的保健配方。" },
     ],
+    links: [{ rel: "canonical", href: "https://www.shangyi-care.com/products/supplements" }],
   }),
   component: SupplementsPage,
 });

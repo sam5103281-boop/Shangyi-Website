@@ -10,23 +10,45 @@ export const Route = createFileRoute("/products/$category/$slug")({
     if (!product) throw notFound();
     return { category, product };
   },
-  head: ({ loaderData }) => {
+  head: ({ params, loaderData }) => {
     const p = loaderData?.product;
     const c = loaderData?.category;
     const title = p
       ? `${p.name} ${p.en}｜${c?.label}｜上怡生醫`
       : "產品｜上怡生醫";
     const desc = p?.tagline ?? c?.heroDesc ?? "上怡醫療相關產品。";
+    const url = `https://www.shangyi-care.com/products/${params.category}/${params.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
+        { property: "og:type", content: "product" },
+        { property: "og:url", content: url },
         ...(p?.imageUrl ? [{ property: "og:image", content: p.imageUrl }] : []),
       ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: p
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Product",
+                name: `${p.name} ${p.en}`,
+                description: desc,
+                ...(p.imageUrl ? { image: p.imageUrl } : {}),
+                category: c?.label,
+                url,
+                brand: { "@type": "Brand", name: "上怡生技醫藥有限公司" },
+              }),
+            },
+          ]
+        : [],
     };
   },
+
   notFoundComponent: () => (
     <div className="container-page section-pad text-center">
       <p className="font-display text-2xl">找不到此產品</p>
