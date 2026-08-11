@@ -24,7 +24,38 @@ export const Route = createFileRoute("/contact")({
       { property: "og:description", content: "B2B / B2C 精準分流的專業諮詢窗口。" },
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/contact" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MedicalBusiness",
+          name: "上怡生技醫藥有限公司",
+          alternateName: "SHANG YI BIOPHARMA",
+          url: "https://www.shangyi-care.com/contact",
+          telephone: "+886-6-222-0070",
+          faxNumber: "+886-6-222-0050",
+          email: "shangyi@shangyi-care.com",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "國華街一段98號",
+            addressLocality: "南區",
+            addressRegion: "臺南市",
+            addressCountry: "TW",
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              opens: "09:00",
+              closes: "18:00",
+            },
+          ],
+        }),
+      },
+    ],
   }),
+
   component: ContactPage,
 });
 
