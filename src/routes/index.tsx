@@ -14,17 +14,19 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { property: "og:url", content: "https://www.shangyi-care.com/" },
-      { title: "上怡生技醫藥有限公司 SHANG YI BIOPHARMA｜合規品質．鏈結臨床與居家照護" },
+      { title: "上怡生醫官方網站｜醫療器材與特殊機能保健品總覽" },
       {
         name: "description",
         content:
           "上怡生技醫藥有限公司是專注於醫療器材代理與特殊機能保健品的生醫企業，產品符合國際電氣安全與電磁相容測試規範，深受全台指標醫療機構與專業通路信賴。",
       },
-      { property: "og:title", content: "上怡生技醫藥有限公司 SHANG YI BIOPHARMA" },
+      { property: "og:title", content: "上怡生醫官方網站｜醫療器材與特殊機能保健品總覽" },
       {
         property: "og:description",
-        content: "以合規品質為核心，鏈結臨床與居家照護的生醫專家。",
+        content:
+          "一站瀏覽上怡生醫的間歇性氣動加壓器、壓力襪、德國舒護貼、眼部清淨綿與特殊機能保健品，並了解醫療通路合作與居家循環照護服務。",
       },
+
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/" }],
   }),
