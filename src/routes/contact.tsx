@@ -18,10 +18,15 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "醫療機構合作、產品規格索取、康威爾 Comwell 居家照護諮詢；請依需求選擇對應的服務類別。",
+          "上怡生醫聯絡窗口：提供醫療機構與經銷通路 B2B 合作洽詢、產品規格與型錄索取，以及康威爾 Comwell 間歇性氣動加壓器等居家照護產品的使用諮詢與售後服務。",
       },
       { property: "og:title", content: "聯絡我們｜上怡生醫" },
-      { property: "og:description", content: "B2B / B2C 精準分流的專業諮詢窗口。" },
+      {
+        property: "og:description",
+        content:
+          "醫療機構合作、經銷通路洽詢、產品規格索取與居家照護使用諮詢，B2B / B2C 精準分流的專業服務窗口。",
+      },
+
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/contact" }],
     scripts: [
