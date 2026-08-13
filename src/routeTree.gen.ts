@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ChannelsRouteImport } from './routes/channels'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ProductsRouteImport } from './routes/products'
+import { Route as SiteIndexRouteImport } from './routes/site-index'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CareIndexRouteImport } from './routes/care.index'
 import { Route as CareFaqRouteImport } from './routes/care.faq'
@@ -62,6 +63,11 @@ const ContactRoute = ContactRouteImport.update({
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
   path: '/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteIndexRoute = SiteIndexRouteImport.update({
+  id: '/site-index',
+  path: '/site-index',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -201,6 +207,7 @@ export interface FileRoutesByFullPath {
   '/channels': typeof ChannelsRoute
   '/contact': typeof ContactRoute
   '/products': typeof ProductsRouteWithChildren
+  '/site-index': typeof SiteIndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/care/faq': typeof CareFaqRoute
   '/care/professional': typeof CareProfessionalRoute
@@ -231,6 +238,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/channels': typeof ChannelsRoute
   '/contact': typeof ContactRoute
+  '/site-index': typeof SiteIndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/care/faq': typeof CareFaqRoute
   '/care/professional': typeof CareProfessionalRoute
@@ -261,6 +269,7 @@ export interface FileRoutesById {
   '/channels': typeof ChannelsRoute
   '/contact': typeof ContactRoute
   '/products': typeof ProductsRouteWithChildren
+  '/site-index': typeof SiteIndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/care/faq': typeof CareFaqRoute
   '/care/professional': typeof CareProfessionalRoute
@@ -294,6 +303,7 @@ export interface FileRouteTypes {
     | '/channels'
     | '/contact'
     | '/products'
+    | '/site-index'
     | '/sitemap.xml'
     | '/care/faq'
     | '/care/professional'
@@ -324,6 +334,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/channels'
     | '/contact'
+    | '/site-index'
     | '/sitemap.xml'
     | '/care/faq'
     | '/care/professional'
@@ -353,6 +364,7 @@ export interface FileRouteTypes {
     | '/channels'
     | '/contact'
     | '/products'
+    | '/site-index'
     | '/sitemap.xml'
     | '/care/faq'
     | '/care/professional'
@@ -385,6 +397,7 @@ export interface RootRouteChildren {
   ChannelsRoute: typeof ChannelsRoute
   ContactRoute: typeof ContactRoute
   ProductsRoute: typeof ProductsRouteWithChildren
+  SiteIndexRoute: typeof SiteIndexRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CareFaqRoute: typeof CareFaqRoute
   CareProfessionalRoute: typeof CareProfessionalRoute
@@ -439,6 +452,13 @@ declare module '@tanstack/react-router' {
       path: '/products'
       fullPath: '/products'
       preLoaderRoute: typeof ProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-index': {
+      id: '/site-index'
+      path: '/site-index'
+      fullPath: '/site-index'
+      preLoaderRoute: typeof SiteIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -660,6 +680,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChannelsRoute: ChannelsRoute,
   ContactRoute: ContactRoute,
   ProductsRoute: ProductsRouteWithChildren,
+  SiteIndexRoute: SiteIndexRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   CareFaqRoute: CareFaqRoute,
   CareProfessionalRoute: CareProfessionalRoute,
@@ -685,3 +706,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
