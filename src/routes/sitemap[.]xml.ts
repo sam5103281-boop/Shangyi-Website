@@ -62,7 +62,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         }
 
 
-        const urls = entries.map((e) =>
+        const urls = entries.map((e) => ({ ...e, lastmod: e.lastmod ?? today })).map((e) =>
           [
             `  <url>`,
             `    <loc>${BASE_URL}${e.path}</loc>`,
