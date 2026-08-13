@@ -42,6 +42,7 @@ export function SiteFooter() {
               <li><Link to="/care" className="hover:text-foreground whitespace-nowrap">居家循環照護</Link></li>
               <li><Link to="/channels" className="hover:text-foreground whitespace-nowrap">專業通路</Link></li>
               <li><Link to="/contact" className="hover:text-foreground whitespace-nowrap">聯絡我們</Link></li>
+              <li><Link to="/site-index" className="hover:text-foreground whitespace-nowrap">網站地圖</Link></li>
             </ul>
           </div>
 
