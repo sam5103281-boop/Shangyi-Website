@@ -7,7 +7,7 @@ type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
 };
 
-const R2_ASSET_BASE_URL = "https://cdn.shangyi-care.com";
+const R2_ASSET_BASE_URL = "https://pub-91066afc3bf34ac3bf044deb264ab5a8.r2.dev";
 const LOVABLE_ASSET_FALLBACK_ORIGIN =
   "https://project--fda6ed3d-97bd-4551-8932-5dc45bd526af-dev.lovable.app";
 const LOVABLE_ASSET_PREFIX = "/__l5e/assets-v1/";
