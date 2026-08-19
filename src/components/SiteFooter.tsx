@@ -79,6 +79,26 @@ export function SiteFooter() {
 
         <div className="hairline-divider mt-14" />
 
+        <div className="mt-10 rounded-xl border border-hairline bg-white/60 px-6 py-6 md:flex md:items-center md:justify-between md:gap-8">
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground">
+              學術資源
+            </h4>
+            <p className="mt-2 text-sm font-medium text-foreground">研究文獻與延伸閱讀</p>
+            <p className="mt-1 max-w-xl text-sm leading-relaxed text-muted-foreground">
+              提供相關臨床研究、期刊文獻與外部學術資料連結。
+            </p>
+          </div>
+          <a
+            href="https://www.muxin-care.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center border border-primary px-5 py-2.5 text-xs tracking-wider text-primary transition-colors hover:bg-primary hover:text-primary-foreground md:mt-0 md:shrink-0"
+          >
+            前往學術資源網站
+          </a>
+        </div>
+
         <div className="mt-6 flex flex-col justify-between gap-4 text-xs text-muted-foreground md:flex-row md:items-center">
           <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-6">
             <p>© {new Date().getFullYear()} 上怡生技醫藥有限公司 SHANG YI BIOPHARMA　保留所有權利</p>
