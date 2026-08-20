@@ -270,6 +270,7 @@ function ContactPage() {
                       </span>
                       <h4 className="mt-1 font-display text-lg text-foreground">學術資源</h4>
                       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        研究文獻與延伸閱讀<br />
                         提供相關臨床研究、期刊文獻與外部學術資料連結。
                       </p>
                     </div>
