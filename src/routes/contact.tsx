@@ -224,6 +224,11 @@ function ContactPage() {
                 )}
               </button>
             </form>
+
+            <p className="mt-8 text-xs leading-relaxed text-muted-foreground">
+              ※ 本表單僅作為上怡生醫之合作、產品與居家照護諮詢用途。
+              所有醫療器材使用前，請先洽詢專業醫療人員之建議。
+            </p>
           </div>
 
           {/* Info */}
@@ -271,15 +276,6 @@ function ContactPage() {
                   </div>
                 </div>
               </div>
-
-
-              <div className="hairline-divider my-8" />
-
-
-              <p className="text-xs leading-relaxed text-muted-foreground">
-                ※ 本表單僅作為上怡生醫之合作、產品與居家照護諮詢用途。
-                所有醫療器材使用前，請先洽詢專業醫療人員之建議。
-              </p>
             </div>
           </aside>
         </div>
