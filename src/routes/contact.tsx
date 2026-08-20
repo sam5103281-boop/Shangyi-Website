@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState, type FormEvent } from "react";
-import { ArrowUpRight, Building2, FileText, Heart } from "lucide-react";
+import { ArrowUpRight, BookOpen, Building2, FileText, Heart } from "lucide-react";
 import { submitContactForm } from "@/lib/contact.functions";
 
 type ContactTopic = "b2b" | "spec" | "comwell";
@@ -244,39 +244,30 @@ function ContactPage() {
               </dl>
 
               <div className="mt-10 border-t border-hairline pt-8">
-                <div className="overflow-hidden rounded-2xl border border-hairline bg-surface p-5 sm:p-6">
-                  <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:gap-6">
-                    <div className="flex items-center gap-3 sm:block sm:shrink-0">
-                      <div className="rounded-xl bg-primary/10 p-2.5 text-primary sm:p-3">
-                        <svg viewBox="0 0 24 24" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                        </svg>
-                      </div>
-                      <h4 className="font-display text-lg text-foreground sm:hidden">學術資源</h4>
+                <div className="relative overflow-hidden rounded-2xl border border-hairline bg-surface p-5 sm:p-6">
+                  <a
+                    href="https://www.muxin-care.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="前往學術資源"
+                    className="absolute right-4 top-4 inline-flex items-center justify-center rounded-lg bg-primary p-2.5 text-primary-foreground transition-colors hover:bg-primary/90 sm:right-5 sm:top-5"
+                  >
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+
+                  <div className="flex items-start gap-4 pr-12 sm:gap-5 sm:pr-14">
+                    <div className="shrink-0 rounded-xl bg-primary/10 p-2.5 text-primary sm:p-3">
+                      <BookOpen className="h-5 w-5 sm:h-6 sm:w-6" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <span className="hidden text-[11px] font-semibold uppercase tracking-[0.2em] text-primary sm:inline-block">
+                      <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
                         Academic Resources
                       </span>
-                      <h4 className="hidden font-display text-lg text-foreground sm:mt-1 sm:block">學術資源</h4>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground sm:mt-2">
+                      <h4 className="mt-1 font-display text-lg text-foreground">學術資源</h4>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                         提供相關臨床研究、期刊文獻與外部學術資料連結。
                       </p>
                     </div>
-                    <a
-                      href="https://www.muxin-care.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1.5 self-stretch rounded-lg bg-primary px-5 py-2.5 text-sm font-medium tracking-wide text-primary-foreground transition-colors hover:bg-primary/90 sm:self-start"
-                    >
-                      前往學術資源
-                      <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <path d="M15 3h6v6" />
-                        <path d="M10 14 21 3" />
-                      </svg>
-                    </a>
                   </div>
                 </div>
               </div>
