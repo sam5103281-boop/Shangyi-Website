@@ -233,32 +233,16 @@ function ContactPage() {
 
           {/* Info */}
           <aside className="space-y-6 lg:col-span-5">
-            <div className="border border-hairline bg-surface-muted p-8">
-              <h3 className="font-display text-xl text-foreground">公司聯絡資訊</h3>
-              <p className="mt-2 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
-                SHANG YI BIOPHARMA
-              </p>
-              <dl className="mt-6 space-y-5 text-sm">
-                <Row k="公司名稱" v="上怡生技醫藥有限公司" />
-                <Row k="公司地址" v="臺南市南區新昌里國華街一段 98 號" />
-                <Row k="電話" v="06-222-0070" />
-                <Row k="傳真" v="06-222-0050" />
-                <Row k="免付費" v="0800-222-215" />
-                <Row k="Email" v="shangyi@shangyi-care.com" />
-                <Row k="服務時間" v="週一至週五 09:00 – 18:00" />
-              </dl>
-            </div>
-
-            <div className="relative overflow-hidden rounded-2xl border border-hairline bg-gradient-to-br from-surface to-muted/30 p-6 shadow-sm sm:p-7">
+            <div className="relative overflow-hidden rounded-2xl border border-hairline bg-gradient-to-br from-surface to-muted/30 p-6 shadow-sm transition-shadow hover:shadow-md sm:p-7">
               <div className="absolute inset-x-0 top-0 h-1 bg-primary" />
               <a
                 href="https://www.muxin-care.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="前往學術資源"
-                className="absolute right-4 top-4 inline-flex items-center justify-center rounded-full bg-primary p-2.5 text-primary-foreground transition-colors hover:bg-primary/90 sm:right-5 sm:top-5"
+                className="absolute right-4 top-4 inline-flex items-center justify-center rounded-full bg-primary p-2.5 text-primary-foreground transition-all duration-300 ease-out hover:bg-primary/90 hover:shadow-lg hover:-translate-y-1 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 sm:right-5 sm:top-5"
               >
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
 
               <div className="flex items-start gap-4 pr-12 sm:gap-5 sm:pr-14">
@@ -278,6 +262,22 @@ function ContactPage() {
                   </p>
                 </div>
               </div>
+            </div>
+
+            <div className="border border-hairline bg-surface-muted p-8">
+              <h3 className="font-display text-xl text-foreground">公司聯絡資訊</h3>
+              <p className="mt-2 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
+                SHANG YI BIOPHARMA
+              </p>
+              <dl className="mt-6 space-y-5 text-sm">
+                <Row k="公司名稱" v="上怡生技醫藥有限公司" />
+                <Row k="公司地址" v="臺南市南區新昌里國華街一段 98 號" />
+                <Row k="電話" v="06-222-0070" />
+                <Row k="傳真" v="06-222-0050" />
+                <Row k="免付費" v="0800-222-215" />
+                <Row k="Email" v="shangyi@shangyi-care.com" />
+                <Row k="服務時間" v="週一至週五 09:00 – 18:00" />
+              </dl>
             </div>
           </aside>
         </div>
