@@ -232,7 +232,7 @@ function ContactPage() {
           </div>
 
           {/* Info */}
-          <aside className="lg:col-span-5">
+          <aside className="space-y-6 lg:col-span-5">
             <div className="border border-hairline bg-surface-muted p-8">
               <h3 className="font-display text-xl text-foreground">公司聯絡資訊</h3>
               <p className="mt-2 text-[11px] uppercase tracking-[0.25em] text-muted-foreground">
@@ -247,37 +247,35 @@ function ContactPage() {
                 <Row k="Email" v="shangyi@shangyi-care.com" />
                 <Row k="服務時間" v="週一至週五 09:00 – 18:00" />
               </dl>
+            </div>
 
-              <div className="mt-12 sm:mt-14">
-                <div className="relative overflow-hidden rounded-2xl border border-hairline bg-gradient-to-br from-surface to-muted/30 p-6 shadow-sm sm:p-7">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-primary" />
-                  <a
-                    href="https://www.muxin-care.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="前往學術資源"
-                    className="absolute right-4 top-4 inline-flex items-center justify-center rounded-full bg-primary p-2.5 text-primary-foreground transition-colors hover:bg-primary/90 sm:right-5 sm:top-5"
-                  >
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
+            <div className="relative overflow-hidden rounded-2xl border border-hairline bg-gradient-to-br from-surface to-muted/30 p-6 shadow-sm sm:p-7">
+              <div className="absolute inset-x-0 top-0 h-1 bg-primary" />
+              <a
+                href="https://www.muxin-care.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="前往學術資源"
+                className="absolute right-4 top-4 inline-flex items-center justify-center rounded-full bg-primary p-2.5 text-primary-foreground transition-colors hover:bg-primary/90 sm:right-5 sm:top-5"
+              >
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
 
-                  <div className="flex items-start gap-4 pr-12 sm:gap-5 sm:pr-14">
-                    <div className="shrink-0 rounded-xl bg-primary/10 p-3 text-primary">
-                      <BookOpen className="h-6 w-6" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
-                        Academic Resources
-                      </span>
-                      <h4 className="mt-1 font-display text-lg text-foreground">學術資源</h4>
-                      <p className="mt-3 text-sm font-medium leading-relaxed tracking-wide text-foreground">
-                        研究文獻與延伸閱讀
-                      </p>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                        提供相關臨床研究、期刊文獻與外部學術資料連結。
-                      </p>
-                    </div>
-                  </div>
+              <div className="flex items-start gap-4 pr-12 sm:gap-5 sm:pr-14">
+                <div className="shrink-0 rounded-xl bg-primary/10 p-3 text-primary">
+                  <BookOpen className="h-6 w-6" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+                    Academic Resources
+                  </span>
+                  <h4 className="mt-1 font-display text-lg text-foreground">學術資源</h4>
+                  <p className="mt-3 text-sm font-medium leading-relaxed tracking-wide text-foreground">
+                    研究文獻與延伸閱讀
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                    提供相關臨床研究、期刊文獻與外部學術資料連結。
+                  </p>
                 </div>
               </div>
             </div>
