@@ -37,12 +37,40 @@ export const Route = createFileRoute("/products/supplements/$slug")({
               type: "application/ld+json",
               children: JSON.stringify({
                 "@context": "https://schema.org",
-                "@type": "Product",
-                name: `${p.name} ${p.en}`,
-                description: desc,
-                category: "特殊機能保健品",
+                "@type": "WebPage",
+                "@id": `${url}#webpage`,
                 url,
-                brand: { "@type": "Brand", name: "上怡生技醫藥有限公司" },
+                name: title,
+                description: desc,
+                isPartOf: { "@id": "https://www.shangyi-care.com/#website" },
+                publisher: { "@id": "https://www.shangyi-care.com/#organization" },
+              }),
+            },
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "產品中心",
+                    item: "https://www.shangyi-care.com/products",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "特殊機能保健品",
+                    item: "https://www.shangyi-care.com/products/supplements",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: `${p.name} ${p.en}`,
+                    item: url,
+                  },
+                ],
               }),
             },
           ]

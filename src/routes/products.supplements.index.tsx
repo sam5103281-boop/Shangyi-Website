@@ -23,6 +23,29 @@ export const Route = createFileRoute("/products/supplements/")({
       { property: "og:description", content: "依成份分類，快速找到對的保健配方。" },
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/products/supplements" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "產品中心",
+              item: "https://www.shangyi-care.com/products",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "特殊機能保健品",
+              item: "https://www.shangyi-care.com/products/supplements",
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: SupplementsPage,
 });

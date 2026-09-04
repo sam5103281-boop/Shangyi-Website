@@ -24,6 +24,31 @@ export const Route = createFileRoute("/products/$category/")({
         { property: "og:url", content: url },
       ],
       links: [{ rel: "canonical", href: url }],
+      scripts: c
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "產品中心",
+                    item: "https://www.shangyi-care.com/products",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: c.label,
+                    item: url,
+                  },
+                ],
+              }),
+            },
+          ]
+        : [],
     };
   },
 
