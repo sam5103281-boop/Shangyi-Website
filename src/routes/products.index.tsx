@@ -6,14 +6,14 @@ export const Route = createFileRoute("/products/")({
   head: () => ({
     meta: [
       { property: "og:url", content: "https://www.shangyi-care.com/products" },
-      { title: "產品中心｜上怡生醫 ShangYi Biotech" },
+      { title: "醫療照護與機能保健產品｜IPC・醫療用貼片・機能保健食品｜上怡生醫" },
       {
         name: "description",
         content:
-          "上怡生醫四大產品線：特殊機能保健品、德國舒護貼、眼部清淨綿、康威爾 Comwell 醫療器材。提供完整規格與專業諮詢。",
+          "瀏覽上怡生醫產品資訊，涵蓋 IPC 間歇性氣動加壓循環照護、醫療用黏性貼片與機能保健食品，提供產品特色、規格、使用資訊及專業諮詢。",
       },
-      { property: "og:title", content: "產品中心｜上怡生醫" },
-      { property: "og:description", content: "規格導向的醫療等級產品線。" },
+      { property: "og:title", content: "醫療照護與機能保健產品｜IPC・醫療用貼片・機能保健食品｜上怡生醫" },
+      { property: "og:description", content: "瀏覽上怡生醫產品資訊，涵蓋 IPC 間歇性氣動加壓循環照護、醫療用黏性貼片與機能保健食品，提供產品特色、規格、使用資訊及專業諮詢。" },
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/products" }],
   }),
