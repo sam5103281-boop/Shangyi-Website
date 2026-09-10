@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import cover from "@/assets/diabetic-glucose-check.jpg.asset.json";
+import { absoluteUrl } from "@/lib/seo";
 
 const ACCENT = "#eb572a";
 const ACCENT_SOFT = "#fef2ed";
@@ -20,8 +21,8 @@ export const Route = createFileRoute("/education/diabetes/complication-risks")({
         property: "og:description",
         content: "糖尿病長期血糖控制不良，將引發視力、腎、神經、下肢、腦與心血管等六大病變。",
       },
-      { property: "og:image", content: cover.url },
-      { name: "twitter:image", content: cover.url },
+      { property: "og:image", content: absoluteUrl(cover.url) },
+      { name: "twitter:image", content: absoluteUrl(cover.url) },
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/education/diabetes/complication-risks" }],
     scripts: [

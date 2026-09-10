@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { getIngredient, getSupplementBenefits, getSupplementBySlug, getSupplementImageScale, supplements } from "@/data/supplements";
 import veganLeafAsset from "@/assets/vegan-leaf.svg.asset.json";
+import { socialImageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/products/supplements/$slug")({
   loader: ({ params }) => {
@@ -29,6 +30,7 @@ export const Route = createFileRoute("/products/supplements/$slug")({
         { property: "og:description", content: desc },
         { property: "og:type", content: "product" },
         { property: "og:url", content: url },
+        ...socialImageMeta(p?.imageUrl),
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: p

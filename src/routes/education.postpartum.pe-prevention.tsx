@@ -5,6 +5,7 @@ import postpartumCover from "@/assets/postpartum-care.png.asset.json";
 import earlyAmbulationImg from "@/assets/early-ambulation.jpg.asset.json";
 import compressionStockingsImg from "@/assets/compression-stockings-v2.jpg.asset.json";
 import hydrationImg from "@/assets/hydration-woman.jpg.asset.json";
+import { absoluteUrl } from "@/lib/seo";
 
 const ACCENT = "rgb(229, 136, 179)";
 
@@ -23,8 +24,8 @@ export const Route = createFileRoute("/education/postpartum/pe-prevention")({
         property: "og:description",
         content: "從血栓形成機制到實證預防方法，建立產後媽媽的靜脈血栓自我照護觀念。",
       },
-      { property: "og:image", content: postpartumCover.url },
-      { name: "twitter:image", content: postpartumCover.url },
+      { property: "og:image", content: absoluteUrl(postpartumCover.url) },
+      { name: "twitter:image", content: absoluteUrl(postpartumCover.url) },
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/education/postpartum/pe-prevention" }],
     scripts: [

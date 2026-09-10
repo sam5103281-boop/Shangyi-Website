@@ -19,6 +19,7 @@ import muxinPatchImg from "@/assets/licenses/muxin-patch.jpg.asset.json";
 import muxinPatchPdf from "@/assets/licenses/muxin-patch.pdf.asset.json";
 import muxinDistImg from "@/assets/licenses/muxin-distributor.jpg.asset.json";
 import muxinDistPdf from "@/assets/licenses/muxin-distributor.pdf.asset.json";
+import { socialImageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -31,7 +32,12 @@ export const Route = createFileRoute("/about")({
           "上怡生醫作為臨床醫療與居家照護的橋樑，遵循 ISO 13485 品質管理與在地法規，提供合規且可追溯的醫療器材與機能產品。",
       },
       { property: "og:title", content: "關於上怡｜實力與承諾" },
-      { property: "og:description", content: "鏈結臨床醫療與居家照護的生醫企業。" },
+      {
+        property: "og:description",
+        content:
+          "上怡生技醫藥有限公司鏈結臨床醫療與居家照護，代理醫療器材與特殊機能保健品，通過 TFDA、SGS、Intertek 等查驗與國際法規審驗，並取得醫療器材販賣業許可。",
+      },
+      ...socialImageMeta(heroCare.url),
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/about" }],
   }),

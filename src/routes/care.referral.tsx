@@ -9,6 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import careReferral from "@/assets/care-referral-consult.png.asset.json";
+import { socialImageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/care/referral")({
   head: () => ({
@@ -25,6 +26,7 @@ export const Route = createFileRoute("/care/referral")({
         property: "og:description",
         content: "五步驟轉介流程＋ComWell 護理團隊在地支援，讓臨床照護安全延伸至居家。",
       },
+      ...socialImageMeta(careReferral.url),
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/care/referral" }],
   }),

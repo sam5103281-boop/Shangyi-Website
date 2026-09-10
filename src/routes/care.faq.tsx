@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import careFaq from "@/assets/care-faq-hero.png.asset.json";
+import { socialImageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/care/faq")({
   head: () => ({
@@ -24,6 +25,7 @@ export const Route = createFileRoute("/care/faq")({
         property: "og:description",
         content: "從照護觀念、安心指引到常見問題，建立對 IPC 與居家循環照護的正確認知。",
       },
+      ...socialImageMeta(careFaq.url),
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/care/faq" }],
     scripts: [

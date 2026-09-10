@@ -10,6 +10,7 @@ import symLegInflammation from "@/assets/dvt/sym-leg-inflammation.png.asset.json
 import prevAnticoag from "@/assets/dvt/prev-anticoag.jpg.asset.json";
 import prevStockings from "@/assets/dvt/prev-stockings.png.asset.json";
 import prevIpc from "@/assets/dvt/prev-ipc.jpg.asset.json";
+import { absoluteUrl } from "@/lib/seo";
 
 const TEAL = "#7fc4c2";
 const TEAL_SOFT = "#eaf6f5";
@@ -31,8 +32,8 @@ export const Route = createFileRoute("/education/circulation/dvt-pe-symptoms")({
         property: "og:description",
         content: "DVT 與 PE 的警訊、好發族群、預防方式與分級照護建議。",
       },
-      { property: "og:image", content: dvtInfographic.url },
-      { name: "twitter:image", content: dvtInfographic.url },
+      { property: "og:image", content: absoluteUrl(dvtInfographic.url) },
+      { name: "twitter:image", content: absoluteUrl(dvtInfographic.url) },
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/education/circulation/dvt-pe-symptoms" }],
     scripts: [

@@ -1,6 +1,10 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getMedicalCategory } from "@/data/medical";
 import { MedicalCategoryList } from "@/components/MedicalCategoryList";
+import { socialImageMeta } from "@/lib/seo";
+import catDevices from "@/assets/categories/cat-devices-v5.jpg.asset.json";
+import catPatches from "@/assets/patch-demo.png.asset.json";
+import catEye from "@/assets/categories/cat-eye-v2.png.asset.json";
 
 export const Route = createFileRoute("/products/$category/")({
   loader: ({ params }) => {
@@ -15,6 +19,11 @@ export const Route = createFileRoute("/products/$category/")({
       : "產品｜上怡生醫";
     const desc = c?.heroDesc ?? "上怡醫療相關產品線。";
     const url = `https://www.shangyi-care.com/products/${params.category}`;
+    const categoryImages: Record<string, string> = {
+      devices: catDevices.url,
+      patches: catPatches.url,
+      "eye-pads": catEye.url,
+    };
     return {
       meta: [
         { title },
@@ -22,6 +31,7 @@ export const Route = createFileRoute("/products/$category/")({
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
         { property: "og:url", content: url },
+        ...socialImageMeta(categoryImages[params.category]),
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: c
