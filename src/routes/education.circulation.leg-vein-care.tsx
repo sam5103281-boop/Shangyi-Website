@@ -9,6 +9,7 @@ import warningRedness from "@/assets/leg-vein-warning-redness-v3.png.asset.json"
 import warningVaricose from "@/assets/leg-vein-warning-varicose-v2.png.asset.json";
 import warningSwelling from "@/assets/leg-vein-warning-swelling-v2.jpg.asset.json";
 import warningUlcer from "@/assets/warning-ulcer-v2.png.asset.json";
+import { absoluteUrl } from "@/lib/seo";
 
 const TEAL = "#7fc4c2";
 const TEAL_SOFT = "#eaf6f5";
@@ -31,8 +32,8 @@ export const Route = createFileRoute("/education/circulation/leg-vein-care")({
         content:
           "活動、姿勢、穿著、飲食與專業輔助，建立完整腿部靜脈日常保養與就醫指引。",
       },
-      { property: "og:image", content: cover.url },
-      { name: "twitter:image", content: cover.url },
+      { property: "og:image", content: absoluteUrl(cover.url) },
+      { name: "twitter:image", content: absoluteUrl(cover.url) },
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/education/circulation/leg-vein-care" }],
     scripts: [

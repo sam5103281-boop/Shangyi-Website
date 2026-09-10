@@ -4,6 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import cover from "@/assets/elderly-eye-closeup.jpg.asset.json";
 import normalRetina from "@/assets/normal-retina-anatomy.jpg.asset.json";
 import diabeticRetina from "@/assets/diabetic-retina-diagram-v2.jpg.asset.json";
+import { absoluteUrl } from "@/lib/seo";
 
 const ACCENT = "#eb572a";
 const ACCENT_SOFT = "#fef2ed";
@@ -24,8 +25,8 @@ export const Route = createFileRoute("/education/diabetes/eye-complications")({
         property: "og:description",
         content: "認識糖尿病視網膜病變的成因、警訊與日常照護重點，及早發現及早治療。",
       },
-      { property: "og:image", content: cover.url },
-      { name: "twitter:image", content: cover.url },
+      { property: "og:image", content: absoluteUrl(cover.url) },
+      { name: "twitter:image", content: absoluteUrl(cover.url) },
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/education/diabetes/eye-complications" }],
     scripts: [

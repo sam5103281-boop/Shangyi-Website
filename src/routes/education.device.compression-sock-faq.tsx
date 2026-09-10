@@ -5,6 +5,7 @@ import pressureImg from "@/assets/sock-pressure-gradient.png.asset.json";
 import circulationImg from "@/assets/human-circulation-system.png.asset.json";
 import sockBlack from "@/assets/sock-black.png.asset.json";
 import sockWhite from "@/assets/sock-white.png.asset.json";
+import { absoluteUrl } from "@/lib/seo";
 
 const ACCENT = "#2c8a9e";
 const ACCENT_SOFT = "#e6f2f4";
@@ -24,8 +25,8 @@ export const Route = createFileRoute("/education/device/compression-sock-faq")({
         property: "og:description",
         content: "從壓力單位、循環原理到產品差異，整理醫用輔助襪挑選與使用的關鍵觀念。",
       },
-      { property: "og:image", content: cover.url },
-      { name: "twitter:image", content: cover.url },
+      { property: "og:image", content: absoluteUrl(cover.url) },
+      { name: "twitter:image", content: absoluteUrl(cover.url) },
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/education/device/compression-sock-faq" }],
     scripts: [
