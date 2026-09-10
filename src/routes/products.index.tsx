@@ -39,7 +39,7 @@ const products: ProductCard[] = [
     code: "P · 01",
     title: "特殊機能保健品",
     en: "Functional Clinical Supplements",
-    desc: "依臨床營養需求設計之機能補充配方，所有原料均通過第三方檢驗，提供清晰的成分標示與適應症說明。",
+    desc: "依臨床營養需求設計之機能補充配方，所有原料均通過第三方檢驗，提供清晰的營養成分、食用方式與產品資訊。",
     points: ["第三方檢驗報告", "GMP 認證製程", "清晰成分標示"],
     to: "/products/supplements",
   },
