@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
 import postpartumCover from "@/assets/parenthood-pregnancy.jpg.asset.json";
+import { socialImageMeta } from "@/lib/seo";
+import educationCover from "@/assets/circulation-veins.png.asset.json";
 
 
 export const Route = createFileRoute("/education/")({
@@ -19,6 +21,7 @@ export const Route = createFileRoute("/education/")({
         property: "og:description",
         content: "依主題瀏覽下肢循環、靜脈栓塞、糖尿病併發與醫療輔具衛教文章。",
       },
+      ...socialImageMeta(educationCover.url),
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/education" }],
   }),

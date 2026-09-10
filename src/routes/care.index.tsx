@@ -4,6 +4,7 @@ import { CareSubNav } from "@/components/CareSubNav";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import careProfessional from "@/assets/comwell-home-scene-v3.jpg.asset.json";
+import { socialImageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/care/")({
   head: () => ({
@@ -20,6 +21,7 @@ export const Route = createFileRoute("/care/")({
         property: "og:description",
         content: "標準化流程＋在地團隊支援，建立讓醫師放心轉介的居家循環照護模式。",
       },
+      ...socialImageMeta(careProfessional.url),
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/care" }],
   }),

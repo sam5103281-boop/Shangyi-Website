@@ -4,6 +4,8 @@ import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { CareSubNav } from "@/components/CareSubNav";
 import { SectionHeading } from "@/components/SectionHeading";
 import careProfessional from "@/assets/comwell-雙機器-特寫-2.jpg.asset.json";
+import { socialImageMeta } from "@/lib/seo";
+import careNurse from "@/assets/care-professional-nurse-v3.jpg.asset.json";
 
 export const Route = createFileRoute("/care/professional")({
   head: () => ({
@@ -20,6 +22,7 @@ export const Route = createFileRoute("/care/professional")({
         property: "og:description",
         content: "標準化流程＋臨床護理師把關，建立讓醫師放心轉介的居家循環照護模式。",
       },
+      ...socialImageMeta(careNurse.url),
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/care/professional" }],
   }),

@@ -24,7 +24,7 @@ export function SiteHeader() {
         <Link to="/" className="flex items-center shrink-0" onClick={() => setOpen(false)}>
           <img
             src={logoAsset.url}
-            alt="上怡生醫 ShangYi Biotech"
+            alt="上怡生醫 SHANG YI BIOPHARMA"
             className="h-12 w-auto lg:h-[72px]"
           />
         </Link>

@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { socialImageMeta } from "@/lib/seo";
+import productsFlatlay from "@/assets/products-flatlay.jpg.asset.json";
 
 
 
@@ -14,6 +16,7 @@ export const Route = createFileRoute("/products/")({
       },
       { property: "og:title", content: "醫療照護與機能保健產品｜IPC・醫療用貼片・機能保健食品｜上怡生醫" },
       { property: "og:description", content: "瀏覽上怡生醫產品資訊，涵蓋 IPC 間歇性氣動加壓循環照護、醫療用黏性貼片與機能保健食品，提供產品特色、規格、使用資訊及專業諮詢。" },
+      ...socialImageMeta(productsFlatlay.url),
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/products" }],
   }),

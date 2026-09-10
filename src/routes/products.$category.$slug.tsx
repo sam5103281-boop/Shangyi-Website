@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { getMedicalCategory, getMedicalProduct } from "@/data/medical";
 import { MedicalProductDetail } from "@/components/MedicalProductDetail";
+import { socialImageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/products/$category/$slug")({
   loader: ({ params }) => {
@@ -26,7 +27,7 @@ export const Route = createFileRoute("/products/$category/$slug")({
         { property: "og:description", content: desc },
         { property: "og:type", content: "product" },
         { property: "og:url", content: url },
-        ...(p?.imageUrl ? [{ property: "og:image", content: p.imageUrl }] : []),
+        ...socialImageMeta(p?.imageUrl),
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: p

@@ -16,7 +16,8 @@ export const Route = createFileRoute("/channels")({
       { property: "og:title", content: "合作通路｜上怡生醫" },
       {
         property: "og:description",
-        content: "醫療相關通路據點與醫療設備授權合作說明。",
+        content:
+          "上怡產品僅透過公私立醫院、專科診所、杏一與維康等醫療相關通路供應；醫療設備限授權醫療院所使用，未於任何網路平台販售。",
       },
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/channels" }],

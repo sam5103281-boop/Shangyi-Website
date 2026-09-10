@@ -9,6 +9,7 @@ import catSupplements from "@/assets/categories/cat-supplements-v5.png.asset.jso
 import catPatches from "@/assets/patch-demo.png.asset.json";
 import catEye from "@/assets/categories/cat-eye-v2.png.asset.json";
 import catDevices from "@/assets/categories/cat-devices-v5.jpg.asset.json";
+import { socialImageMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/")({
         content:
           "一站瀏覽上怡生醫的間歇性氣動加壓器、壓力襪、德國舒護貼、眼部清淨綿與特殊機能保健品，並了解醫療通路合作與居家循環照護服務。",
       },
+      ...socialImageMeta(productsFlatlay),
 
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/" }],

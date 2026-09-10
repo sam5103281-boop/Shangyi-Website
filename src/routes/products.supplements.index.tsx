@@ -3,6 +3,8 @@ import { zodValidator, fallback } from "@tanstack/zod-adapter";
 import { z } from "zod";
 import { ArrowUpRight } from "lucide-react";
 import { ingredients, supplements, getIngredient, getSupplementImageScale } from "@/data/supplements";
+import { socialImageMeta } from "@/lib/seo";
+import catSupplements from "@/assets/categories/cat-supplements-v5.png.asset.json";
 
 const searchSchema = z.object({
   ingredient: z.string().optional(),
@@ -20,7 +22,12 @@ export const Route = createFileRoute("/products/supplements/")({
           "上怡生醫特殊機能保健品 16 項，依成份分類檢索：葉黃素、魚油 Omega-3、維生素 B12／C／D3／K2、Q10、益生菌、鈣、鎂、硒、蔓越莓等，皆通過第三方檢驗。",
       },
       { property: "og:title", content: "特殊機能保健品｜上怡生醫" },
-      { property: "og:description", content: "依成份分類，快速找到對的保健配方。" },
+      {
+        property: "og:description",
+        content:
+          "上怡生醫特殊機能保健品 16 項，依成份分類檢索：葉黃素、魚油 Omega-3、維生素 B12／C／D3／K2、Q10、益生菌、鈣、鎂、硒、蔓越莓等，皆通過第三方檢驗。",
+      },
+      ...socialImageMeta(catSupplements.url),
     ],
     links: [{ rel: "canonical", href: "https://www.shangyi-care.com/products/supplements" }],
     scripts: [
