@@ -362,7 +362,7 @@ function AboutPage() {
                         key={idx}
                         className="whitespace-nowrap px-3 py-2 text-[11px] font-medium tracking-[0.25em] text-foreground/70"
                       >
-                        SHANGYI · 上怡生醫醫藥
+                        SHANGYI · 上怡生技醫藥
                       </span>
                     ))}
                   </div>
