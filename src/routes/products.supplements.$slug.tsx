@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { getIngredient, getSupplementBenefits, getSupplementBySlug, getSupplementImageScale, supplements } from "@/data/supplements";
 import veganLeafAsset from "@/assets/vegan-leaf.svg.asset.json";
 import { socialImageMeta } from "@/lib/seo";
+import { trackProductInquiry } from "@/lib/analytics";
 
 export const Route = createFileRoute("/products/supplements/$slug")({
   loader: ({ params }) => {
