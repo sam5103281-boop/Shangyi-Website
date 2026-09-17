@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { getIngredient, getSupplementBenefits, getSupplementBySlug, getSupplementImageScale, supplements } from "@/data/supplements";
 import veganLeafAsset from "@/assets/vegan-leaf.svg.asset.json";
 import { socialImageMeta } from "@/lib/seo";
+import { trackProductInquiry } from "@/lib/analytics";
 
 export const Route = createFileRoute("/products/supplements/$slug")({
   loader: ({ params }) => {
@@ -383,6 +384,7 @@ function ProductDetail() {
               <Link
                 to="/contact"
                 search={{ topic: "spec" }}
+                onClick={() => trackProductInquiry(product.name ?? product.en ?? product.slug)}
                 className="group inline-flex items-center gap-2 border border-primary bg-primary px-5 py-3 text-sm tracking-wider text-primary-foreground hover:bg-primary/90"
               >
                 規格與通路諮詢

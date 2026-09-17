@@ -3,6 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, BookOpen, Building2, FileText, Heart } from "lucide-react";
 import { submitContactForm } from "@/lib/contact.functions";
+import { trackGenerateLead } from "@/lib/analytics";
 
 type ContactTopic = "b2b" | "spec" | "comwell";
 
@@ -103,6 +104,8 @@ function ContactPage() {
           message: String(formData.get("message") ?? ""),
         },
       });
+      // 僅在後端確認成功後才送出 GA4 generate_lead。
+      trackGenerateLead("contact_form");
       setSent(true);
       form.reset();
       setAgreed(false);

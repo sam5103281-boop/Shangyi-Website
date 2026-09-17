@@ -15,6 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "../components/SiteHeader";
 import { SiteFooter } from "../components/SiteFooter";
 import { FontSizeToggle } from "../components/FontSizeToggle";
+import { installContactLinkTracking } from "../lib/analytics";
 
 function NotFoundComponent() {
   return (
@@ -191,6 +192,9 @@ function RootComponent() {
   const currentHref = useRouterState({ select: (state) => state.location.href });
   const isLoading = useRouterState({ select: (state) => state.status !== "idle" });
   const lastSentRef = useRef<string | null>(null);
+
+  // 全站委派監聽 tel: / mailto: 連結，SPA 換頁後仍有效，且只安裝一次。
+  useEffect(() => installContactLinkTracking(), []);
 
   // 首次載入與每次 SPA 路由切換都發送完整網址，包含產品分類與產品詳情頁。
   // 等路由載入完成（loader 結束、head() 套用）後再送，避免詳情頁被記成上層頁面標題。

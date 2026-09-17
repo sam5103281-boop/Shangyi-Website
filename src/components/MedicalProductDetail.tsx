@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight, Hand, Package, Sparkles, Eye } from "lucide-react";
 import type { MedicalCategory, MedicalProduct, UsageStep } from "@/data/medical";
+import { trackProductInquiry } from "@/lib/analytics";
 
 const usageIconMap = { hand: Hand, package: Package, sparkles: Sparkles, eye: Eye } as const;
 
@@ -334,6 +335,7 @@ export function MedicalProductDetail({ category, product }: Props) {
               <Link
                 to="/contact"
                 search={{ topic: "spec" }}
+                onClick={() => trackProductInquiry(product.name ?? product.en)}
                 className="group inline-flex items-center gap-2 border border-primary bg-primary px-5 py-3 text-sm tracking-wider text-primary-foreground hover:bg-primary/90"
               >
                 規格與通路諮詢
