@@ -113,7 +113,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         async: true,
       },
       {
-        children: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-7JQLXHB3NP', { send_page_view: false });`,
+        children: `(function(){
+  try {
+    var p = new URLSearchParams(window.location.search);
+    if (p.get('internal') === '1') {
+      window.localStorage.setItem('shangyi_internal_user', 'true');
+    } else if (p.get('internal') === '0') {
+      window.localStorage.removeItem('shangyi_internal_user');
+    }
+    if (p.has('internal')) {
+      p.delete('internal');
+      var q = p.toString();
+      window.history.replaceState(null, '', window.location.pathname + (q ? '?' + q : '') + window.location.hash);
+    }
+  } catch (e) {}
+})();
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+try {
+  if (window.localStorage.getItem('shangyi_internal_user') === 'true') {
+    gtag('set', { traffic_type: 'internal' });
+  }
+} catch (e) {}
+gtag('js', new Date());gtag('config', 'G-7JQLXHB3NP', { send_page_view: false });`,
       },
       {
         type: "application/ld+json",
