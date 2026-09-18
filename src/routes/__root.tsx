@@ -222,15 +222,25 @@ function RootComponent() {
   const currentHref = useRouterState({ select: (state) => state.location.href });
   const isLoading = useRouterState({ select: (state) => state.status !== "idle" });
   const lastSentRef = useRef<string | null>(null);
+  const initialSkippedRef = useRef(false);
 
-  // 全站委派監聽 tel: / mailto: 連結，SPA 換頁後仍有效，且只安裝一次。
+  // 全站委派監聽 tel: / mailto: / LINE 連結，SPA 換頁後仍有效，且只安裝一次。
   useEffect(() => installContactLinkTracking(), []);
 
-  // 首次載入與每次 SPA 路由切換都發送完整網址，包含產品分類與產品詳情頁。
-  // 等路由載入完成（loader 結束、head() 套用）後再送，避免詳情頁被記成上層頁面標題。
+  // 首次 page_view 已由 head 內嵌腳本於 GA4 初始化後立即送出，
+  // 這裡只負責 SPA 路由切換，並避免首次 mount 重複送出。
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (isLoading) return;
+
+    if (!initialSkippedRef.current) {
+      initialSkippedRef.current = true;
+      if ((window as unknown as { __shangyiInitialPageViewSent?: boolean }).__shangyiInitialPageViewSent) {
+        lastSentRef.current = currentHref;
+        return;
+      }
+    }
+
     if (lastSentRef.current === currentHref) return;
 
     let tries = 0;
