@@ -110,11 +110,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
-        src: "https://www.googletagmanager.com/gtag/js?id=G-7JQLXHB3NP",
-        async: true,
-      },
-      {
         children: `(function(){
+  var GA_ID = 'G-7JQLXHB3NP';
+  var PROD_HOST = 'www.shangyi-care.com';
+
+  // 1) 內部流量旗標：讀取 ?internal=1 / 0（正式站與預覽站都保留此機制）
+  var isInternal = false;
   try {
     var p = new URLSearchParams(window.location.search);
     if (p.get('internal') === '1') {
@@ -122,20 +123,49 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     } else if (p.get('internal') === '0') {
       window.localStorage.removeItem('shangyi_internal_user');
     }
-    if (p.has('internal')) {
-      p.delete('internal');
-      var q = p.toString();
-      window.history.replaceState(null, '', window.location.pathname + (q ? '?' + q : '') + window.location.hash);
-    }
+    isInternal = window.localStorage.getItem('shangyi_internal_user') === 'true';
   } catch (e) {}
-})();
-window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
-try {
-  if (window.localStorage.getItem('shangyi_internal_user') === 'true') {
-    gtag('set', { traffic_type: 'internal' });
+
+  // 2) 只在正式網域載入正式 GA4 Property
+  if (window.location.hostname !== PROD_HOST) { removeInternalParam(); return; }
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+
+  // traffic_type 必須在任何 hit 之前設定
+  if (isInternal) { gtag('set', { traffic_type: 'internal' }); }
+
+  gtag('js', new Date());
+  gtag('config', GA_ID, { send_page_view: false });
+
+  // 3) 立即送出首次 page_view（含原始 referrer 與含 UTM 的網址），確保 attribution
+  gtag('event', 'page_view', {
+    page_location: window.location.href,
+    page_referrer: document.referrer || undefined,
+    page_path: window.location.pathname + window.location.search,
+    page_title: document.title
+  });
+  window.__shangyiInitialPageViewSent = true;
+
+  // 4) 送出後才移除 internal 參數；其餘 query（utm_*、gclid…）完整保留
+  removeInternalParam();
+
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(s);
+
+  function removeInternalParam(){
+    try {
+      var q = new URLSearchParams(window.location.search);
+      if (!q.has('internal')) return;
+      q.delete('internal');
+      var qs = q.toString();
+      window.history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
+    } catch (e) {}
   }
-} catch (e) {}
-gtag('js', new Date());gtag('config', 'G-7JQLXHB3NP', { send_page_view: false });`,
+})();`,
       },
       {
         type: "application/ld+json",
