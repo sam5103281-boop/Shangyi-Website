@@ -110,11 +110,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
-        src: "https://www.googletagmanager.com/gtag/js?id=G-7JQLXHB3NP",
-        async: true,
-      },
-      {
         children: `(function(){
+  var GA_ID = 'G-7JQLXHB3NP';
+  var PROD_HOST = 'www.shangyi-care.com';
+
+  // 1) 內部流量旗標：讀取 ?internal=1 / 0（正式站與預覽站都保留此機制）
+  var isInternal = false;
   try {
     var p = new URLSearchParams(window.location.search);
     if (p.get('internal') === '1') {
@@ -122,20 +123,49 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     } else if (p.get('internal') === '0') {
       window.localStorage.removeItem('shangyi_internal_user');
     }
-    if (p.has('internal')) {
-      p.delete('internal');
-      var q = p.toString();
-      window.history.replaceState(null, '', window.location.pathname + (q ? '?' + q : '') + window.location.hash);
-    }
+    isInternal = window.localStorage.getItem('shangyi_internal_user') === 'true';
   } catch (e) {}
-})();
-window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
-try {
-  if (window.localStorage.getItem('shangyi_internal_user') === 'true') {
-    gtag('set', { traffic_type: 'internal' });
+
+  // 2) 只在正式網域載入正式 GA4 Property
+  if (window.location.hostname !== PROD_HOST) { removeInternalParam(); return; }
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+
+  // traffic_type 必須在任何 hit 之前設定
+  if (isInternal) { gtag('set', { traffic_type: 'internal' }); }
+
+  gtag('js', new Date());
+  gtag('config', GA_ID, { send_page_view: false });
+
+  // 3) 立即送出首次 page_view（含原始 referrer 與含 UTM 的網址），確保 attribution
+  gtag('event', 'page_view', {
+    page_location: window.location.href,
+    page_referrer: document.referrer || undefined,
+    page_path: window.location.pathname + window.location.search,
+    page_title: document.title
+  });
+  window.__shangyiInitialPageViewSent = true;
+
+  // 4) 送出後才移除 internal 參數；其餘 query（utm_*、gclid…）完整保留
+  removeInternalParam();
+
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(s);
+
+  function removeInternalParam(){
+    try {
+      var q = new URLSearchParams(window.location.search);
+      if (!q.has('internal')) return;
+      q.delete('internal');
+      var qs = q.toString();
+      window.history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
+    } catch (e) {}
   }
-} catch (e) {}
-gtag('js', new Date());gtag('config', 'G-7JQLXHB3NP', { send_page_view: false });`,
+})();`,
       },
       {
         type: "application/ld+json",
@@ -192,15 +222,25 @@ function RootComponent() {
   const currentHref = useRouterState({ select: (state) => state.location.href });
   const isLoading = useRouterState({ select: (state) => state.status !== "idle" });
   const lastSentRef = useRef<string | null>(null);
+  const initialSkippedRef = useRef(false);
 
-  // 全站委派監聽 tel: / mailto: 連結，SPA 換頁後仍有效，且只安裝一次。
+  // 全站委派監聽 tel: / mailto: / LINE 連結，SPA 換頁後仍有效，且只安裝一次。
   useEffect(() => installContactLinkTracking(), []);
 
-  // 首次載入與每次 SPA 路由切換都發送完整網址，包含產品分類與產品詳情頁。
-  // 等路由載入完成（loader 結束、head() 套用）後再送，避免詳情頁被記成上層頁面標題。
+  // 首次 page_view 已由 head 內嵌腳本於 GA4 初始化後立即送出，
+  // 這裡只負責 SPA 路由切換，並避免首次 mount 重複送出。
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (isLoading) return;
+
+    if (!initialSkippedRef.current) {
+      initialSkippedRef.current = true;
+      if ((window as unknown as { __shangyiInitialPageViewSent?: boolean }).__shangyiInitialPageViewSent) {
+        lastSentRef.current = currentHref;
+        return;
+      }
+    }
+
     if (lastSentRef.current === currentHref) return;
 
     let tries = 0;
