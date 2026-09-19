@@ -304,11 +304,21 @@ function RootComponent() {
       }
 
       lastSentRef.current = currentHref;
+      const w = window as unknown as {
+        __shangyiLastPageViewHref?: string;
+        __shangyiLastPageViewFromBfcache?: string;
+        __shangyiGaDebug?: boolean;
+      };
+      w.__shangyiLastPageViewHref = window.location.href;
+      w.__shangyiLastPageViewFromBfcache = undefined;
       gtag("event", "page_view", {
         page_path: window.location.pathname + window.location.search,
         page_location: window.location.href,
         page_title: document.title,
       });
+      if (w.__shangyiGaDebug) {
+        console.log("[ga] SPA page_view", { page_location: window.location.href });
+      }
     };
 
     timer = window.setTimeout(send, 120);

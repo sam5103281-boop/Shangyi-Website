@@ -15,9 +15,17 @@ function getGtag(): GtagFn | null {
   return typeof g === "function" ? g : null;
 }
 
+/** ?ga_debug=1 時才輸出（旗標由 __root.tsx 的 GA 初始化腳本設定）。 */
+function gaLog(...args: unknown[]) {
+  if (typeof window === "undefined") return;
+  if (!(window as unknown as { __shangyiGaDebug?: boolean }).__shangyiGaDebug) return;
+  console.log("[ga]", ...args);
+}
+
 export function trackEvent(name: string, params: Record<string, unknown> = {}) {
   const gtag = getGtag();
   if (!gtag) return;
+  gaLog("custom event", name, params);
   gtag("event", name, {
     page_path:
       typeof window !== "undefined"
