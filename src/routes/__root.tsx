@@ -17,6 +17,111 @@ import { SiteFooter } from "../components/SiteFooter";
 import { FontSizeToggle } from "../components/FontSizeToggle";
 import { installContactLinkTracking } from "../lib/analytics";
 
+/**
+ * GA4 初始化：直接輸出在 <head>，於 HTML 解析初期同步執行。
+ * 順序：debug 旗標 → internal 旗標 → dataLayer/gtag → traffic_type
+ *      → gtag('js') → config(send_page_view:false) → 首次 page_view → 清理參數 → 載入 gtag.js
+ */
+const GA_INIT_SCRIPT = `(function(){
+  var GA_ID = 'G-7JQLXHB3NP';
+  var PROD_HOST = 'www.shangyi-care.com';
+  var params;
+  try { params = new URLSearchParams(window.location.search); } catch (e) { params = null; }
+
+  // 0) 診斷模式：?ga_debug=1（僅 console.log，不進 GA4）
+  var debug = false;
+  try { debug = !!params && params.get('ga_debug') === '1'; } catch (e) {}
+  window.__shangyiGaDebug = debug;
+  function log(){ if (!window.__shangyiGaDebug) return; try { console.log.apply(console, ['[ga]'].concat([].slice.call(arguments))); } catch (e) {} }
+
+  // 1) 內部流量旗標：?internal=1 / 0
+  var isInternal = false;
+  try {
+    if (params && params.get('internal') === '1') {
+      window.localStorage.setItem('shangyi_internal_user', 'true');
+    } else if (params && params.get('internal') === '0') {
+      window.localStorage.removeItem('shangyi_internal_user');
+    }
+    isInternal = window.localStorage.getItem('shangyi_internal_user') === 'true';
+  } catch (e) {}
+
+  // 送往 GA4 的網址：移除 internal / ga_debug，完整保留 utm_*、gclid 等其他參數
+  function cleanUrl(){
+    try {
+      var q = new URLSearchParams(window.location.search);
+      q.delete('internal');
+      q.delete('ga_debug');
+      var qs = q.toString();
+      return window.location.origin + window.location.pathname + (qs ? '?' + qs : '') + window.location.hash;
+    } catch (e) { return window.location.href; }
+  }
+  function stripTrackingParams(){
+    try {
+      var q = new URLSearchParams(window.location.search);
+      if (!q.has('internal') && !q.has('ga_debug')) return;
+      q.delete('internal');
+      q.delete('ga_debug');
+      var qs = q.toString();
+      window.history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
+    } catch (e) {}
+  }
+
+  log('init', { time: Date.now(), hostname: window.location.hostname, traffic_type: isInternal ? 'internal' : 'external' });
+
+  // 2) 只在正式網域載入正式 GA4 Property
+  if (window.location.hostname !== PROD_HOST) {
+    log('skip: non-production hostname');
+    stripTrackingParams();
+    return;
+  }
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+
+  if (isInternal) { gtag('set', { traffic_type: 'internal' }); }
+
+  gtag('js', new Date());
+  gtag('config', GA_ID, { send_page_view: false });
+
+  // 3) 首次 page_view：在清除 internal / ga_debug 之前取得網址與 referrer
+  var initialLocation = cleanUrl();
+  var initialReferrer = document.referrer || undefined;
+  gtag('event', 'page_view', {
+    page_location: initialLocation,
+    page_referrer: initialReferrer,
+    page_path: window.location.pathname + window.location.search,
+    page_title: document.title
+  });
+  window.__shangyiInitialPageViewSent = true;
+  window.__shangyiLastPageViewHref = initialLocation;
+  log('initial page_view queued', { time: Date.now(), page_location: initialLocation, page_referrer: initialReferrer });
+
+  // 4) 送出後才清理參數
+  stripTrackingParams();
+
+  // 5) bfcache 還原：僅 persisted 才補送，且以網址去重，避免與一般載入重複
+  window.addEventListener('pageshow', function (event) {
+    log('pageshow', { persisted: event.persisted });
+    if (!event.persisted) return;
+    var href = cleanUrl();
+    if (window.__shangyiLastPageViewHref === href && window.__shangyiLastPageViewFromBfcache === href) return;
+    window.__shangyiLastPageViewHref = href;
+    window.__shangyiLastPageViewFromBfcache = href;
+    gtag('event', 'page_view', {
+      page_location: href,
+      page_path: window.location.pathname + window.location.search,
+      page_title: document.title
+    });
+    log('bfcache page_view sent', { page_location: href });
+  });
+
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  document.head.appendChild(s);
+})();`;
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -110,64 +215,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
-        children: `(function(){
-  var GA_ID = 'G-7JQLXHB3NP';
-  var PROD_HOST = 'www.shangyi-care.com';
-
-  // 1) 內部流量旗標：讀取 ?internal=1 / 0（正式站與預覽站都保留此機制）
-  var isInternal = false;
-  try {
-    var p = new URLSearchParams(window.location.search);
-    if (p.get('internal') === '1') {
-      window.localStorage.setItem('shangyi_internal_user', 'true');
-    } else if (p.get('internal') === '0') {
-      window.localStorage.removeItem('shangyi_internal_user');
-    }
-    isInternal = window.localStorage.getItem('shangyi_internal_user') === 'true';
-  } catch (e) {}
-
-  // 2) 只在正式網域載入正式 GA4 Property
-  if (window.location.hostname !== PROD_HOST) { removeInternalParam(); return; }
-
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  window.gtag = gtag;
-
-  // traffic_type 必須在任何 hit 之前設定
-  if (isInternal) { gtag('set', { traffic_type: 'internal' }); }
-
-  gtag('js', new Date());
-  gtag('config', GA_ID, { send_page_view: false });
-
-  // 3) 立即送出首次 page_view（含原始 referrer 與含 UTM 的網址），確保 attribution
-  gtag('event', 'page_view', {
-    page_location: window.location.href,
-    page_referrer: document.referrer || undefined,
-    page_path: window.location.pathname + window.location.search,
-    page_title: document.title
-  });
-  window.__shangyiInitialPageViewSent = true;
-
-  // 4) 送出後才移除 internal 參數；其餘 query（utm_*、gclid…）完整保留
-  removeInternalParam();
-
-  var s = document.createElement('script');
-  s.async = true;
-  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-  document.head.appendChild(s);
-
-  function removeInternalParam(){
-    try {
-      var q = new URLSearchParams(window.location.search);
-      if (!q.has('internal')) return;
-      q.delete('internal');
-      var qs = q.toString();
-      window.history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
-    } catch (e) {}
-  }
-})();`,
-      },
-      {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
@@ -208,6 +255,7 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="zh-Hant">
       <head>
         <HeadContent />
+        <script dangerouslySetInnerHTML={{ __html: GA_INIT_SCRIPT }} />
       </head>
       <body>
         {children}
@@ -256,11 +304,21 @@ function RootComponent() {
       }
 
       lastSentRef.current = currentHref;
+      const w = window as unknown as {
+        __shangyiLastPageViewHref?: string;
+        __shangyiLastPageViewFromBfcache?: string;
+        __shangyiGaDebug?: boolean;
+      };
+      w.__shangyiLastPageViewHref = window.location.href;
+      w.__shangyiLastPageViewFromBfcache = undefined;
       gtag("event", "page_view", {
         page_path: window.location.pathname + window.location.search,
         page_location: window.location.href,
         page_title: document.title,
       });
+      if (w.__shangyiGaDebug) {
+        console.log("[ga] SPA page_view", { page_location: window.location.href });
+      }
     };
 
     timer = window.setTimeout(send, 120);
