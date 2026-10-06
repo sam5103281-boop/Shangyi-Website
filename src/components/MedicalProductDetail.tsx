@@ -335,7 +335,7 @@ export function MedicalProductDetail({ category, product }: Props) {
               <Link
                 to="/contact"
                 search={{ topic: "spec" }}
-                onClick={() => trackProductInquiry(product.name ?? product.en)}
+                onClick={(e) => trackProductInquiry(product.name ?? product.en, category.label, e.currentTarget)}
                 className="group inline-flex items-center gap-2 border border-primary bg-primary px-5 py-3 text-sm tracking-wider text-primary-foreground hover:bg-primary/90"
               >
                 規格與通路諮詢
