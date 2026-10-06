@@ -83,7 +83,7 @@ export const Route = createFileRoute("/products/supplements/$slug")({
 
   errorComponent: ({ error }) => (
     <div className="container-page section-pad">
-      <p role="alert">產品載入失敗：{error.message}</p>
+      <p role="alert">產品載入失敗：{error instanceof Error ? error.message : String(error)}</p>
     </div>
   ),
   notFoundComponent: () => (
