@@ -69,13 +69,79 @@ function trackEventThen(
   window.setTimeout(finish, NAV_EVENT_TIMEOUT_MS);
 }
 
-export function trackGenerateLead(formName: string) {
-  trackEvent("generate_lead", { form_name: formName });
+const INQUIRY_SOURCE_KEY = "shangyi_inquiry_source";
+const MAX_TEXT = 100;
+
+function cleanText(s: string | null | undefined): string {
+  return (s ?? "").replace(/\s+/g, " ").trim().slice(0, MAX_TEXT);
 }
 
-export function trackProductInquiry(productName: string) {
+function pageContext() {
+  return { page_location: window.location.href, page_title: document.title };
+}
+
+/** tel:/mailto: → protocol + target only (no query). Others: href as-is. */
+function sanitizeLinkUrl(href: string): string {
+  if (/^(tel|mailto):/i.test(href)) return href.split("?")[0].split("#")[0];
+  return href;
+}
+
+type InquirySource = { product_name: string; product_category: string; source_page: string };
+
+function readInquirySource(): InquirySource | null {
+  try {
+    const raw = window.sessionStorage.getItem(INQUIRY_SOURCE_KEY);
+    if (!raw) return null;
+    const v = JSON.parse(raw) as Partial<InquirySource>;
+    if (!v.product_name) return null;
+    return {
+      product_name: String(v.product_name),
+      product_category: String(v.product_category ?? ""),
+      source_page: String(v.source_page ?? ""),
+    };
+  } catch {
+    return null;
+  }
+}
+
+/** Call only after the server confirmed success. Sends no form content. */
+export function trackGenerateLead(formName: string) {
+  if (typeof window === "undefined") return;
+  const source = readInquirySource();
+  trackEvent("generate_lead", { form_name: formName, ...(source ?? {}) });
+  try {
+    window.sessionStorage.removeItem(INQUIRY_SOURCE_KEY);
+  } catch {
+    /* ignore */
+  }
+}
+
+export function trackProductInquiry(
+  productName: string,
+  productCategory: string,
+  link?: HTMLAnchorElement | null,
+) {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.setItem(
+      INQUIRY_SOURCE_KEY,
+      JSON.stringify({
+        product_name: productName,
+        product_category: productCategory,
+        source_page: window.location.pathname,
+      }),
+    );
+  } catch {
+    /* ignore */
+  }
   // In-app (SPA) navigation: no unload, so no callback gating needed.
-  trackEvent("product_inquiry", { product_name: productName });
+  trackEvent("product_inquiry", {
+    product_name: productName,
+    product_category: productCategory,
+    link_url: link ? link.href : undefined,
+    link_text: cleanText(link?.textContent),
+    ...pageContext(),
+  });
 }
 
 function classifyLink(href: string): { event: string; params: Record<string, unknown> } | null {
@@ -103,6 +169,11 @@ export function installContactLinkTracking(): () => void {
     const href = link.getAttribute("href") ?? "";
     const hit = classifyLink(href);
     if (!hit) return;
+    hit.params = {
+      link_url: sanitizeLinkUrl(href),
+      link_text: cleanText(link.textContent || link.getAttribute("aria-label")),
+      ...pageContext(),
+    };
 
     // Modified clicks / new-tab links do not unload this page: fire and forget.
     const opensElsewhere =
