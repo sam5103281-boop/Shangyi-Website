@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Medical category presentation uses `getMedicalProductGroups` to define visual sections without changing product categories or URLs; this keeps brand separation consistent and testable.

@@ -3,12 +3,14 @@ import { ShieldCheck } from "lucide-react";
 import type { MedicalCategory } from "@/data/medical";
 import { MEDICAL_NOTE } from "@/data/medical";
 import { formatDeviceClass, formatCert } from "@/lib/medical-format";
+import { getMedicalProductGroups } from "@/lib/medical-groups";
 
 type Props = {
   category: MedicalCategory;
 };
 
 export function MedicalCategoryList({ category }: Props) {
+  const groups = getMedicalProductGroups(category);
   return (
     <>
       <section className="border-b border-hairline bg-surface-muted">
@@ -52,19 +54,28 @@ export function MedicalCategoryList({ category }: Props) {
 
       <section className="section-pad">
         <div className="container-page">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {category.products.map((p) => (
+          <div className="space-y-14 md:space-y-20">
+            {groups.map((group, index) => (
+              <div key={group.id} className={index > 0 ? "border-t border-hairline pt-12 md:pt-16" : undefined}>
+                {group.title && (
+                  <div className="mb-6 border-l-2 border-accent pl-4 md:mb-8">
+                    <h2 className="font-display text-2xl leading-tight text-foreground md:text-3xl">{group.title}</h2>
+                    {group.brands && <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{group.brands}</p>}
+                  </div>
+                )}
+                <div className={category.slug === "devices" ? "grid gap-6 sm:grid-cols-2" : "grid gap-6 sm:grid-cols-2 lg:grid-cols-3"}>
+            {group.products.map((p) => (
               <Link
                 key={p.slug}
                 to="/products/$category/$slug"
                 params={{ category: category.slug, slug: p.slug }}
-                className="group flex flex-col justify-between border border-hairline bg-surface transition-colors hover:bg-surface-muted"
+                className={`group border border-hairline bg-surface transition-colors hover:bg-surface-muted ${group.standalone ? "flex flex-col sm:col-span-2 md:grid md:grid-cols-2 md:items-center" : "flex flex-col justify-between"}`}
               >
                 <div className="flex aspect-square w-full items-center justify-center overflow-hidden bg-white">
                   <img
                     src={p.imageUrl}
                     srcSet={p.imageSrcSet}
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    sizes={category.slug === "devices" ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"}
                     alt={`${p.name} ${p.en}`}
                     loading="lazy"
                     decoding="async"
@@ -86,9 +97,9 @@ export function MedicalCategoryList({ category }: Props) {
                         </span>
                       )}
                     </div>
-                    <h2 className="mt-6 font-display text-2xl leading-tight text-foreground">
+                    <h3 className="mt-6 font-display text-2xl leading-tight text-foreground">
                       {p.name}
-                    </h2>
+                    </h3>
                     <p className="mt-2 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
                       {p.en}
                     </p>
@@ -124,6 +135,9 @@ export function MedicalCategoryList({ category }: Props) {
                   </div>
                 </div>
               </Link>
+            ))}
+                </div>
+              </div>
             ))}
           </div>
 
