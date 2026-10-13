@@ -1,4 +1,5 @@
-import { describe, expect, test } from "bun:test";
+import { describe, test } from "node:test";
+import assert from "node:assert/strict";
 import { getMedicalCategory } from "@/data/medical";
 import { getMedicalProductGroups } from "./medical-groups";
 
@@ -7,9 +8,9 @@ describe("medical device brand separation", () => {
     const category = getMedicalCategory("devices");
     if (!category) throw new Error("Medical devices category is required");
     const groups = getMedicalProductGroups(category);
-    expect(groups).toHaveLength(2);
-    expect(groups[0]?.products.map((product) => product.slug)).toEqual(["comwell"]);
-    expect(groups[1]?.products.map((product) => product.slug)).toEqual(["ted", "scd"]);
-    expect(groups.flatMap((group) => group.products)).toHaveLength(3);
+    assert.equal(groups.length, 2);
+    assert.deepEqual(groups[0]?.products.map((product) => product.slug), ["comwell"]);
+    assert.deepEqual(groups[1]?.products.map((product) => product.slug), ["ted", "scd"]);
+    assert.equal(groups.flatMap((group) => group.products).length, 3);
   });
 });
