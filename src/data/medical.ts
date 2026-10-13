@@ -64,6 +64,7 @@ export type MedicalCategory = {
   heroEyebrow: string;
   heroTitle: string;
   heroDesc: string;
+  heroSubtitle?: string;
   products: MedicalProduct[];
 };
 
@@ -311,9 +312,10 @@ export const medicalCategories: MedicalCategory[] = [
     en: "Lower-Limb Circulation Care",
     code: "P · 04",
     heroEyebrow: "Medical Devices",
-    heroTitle: "間歇性氣動加壓系統與醫療級壓力襪",
+    heroTitle: "醫療器材｜Medical Devices",
+    heroSubtitle: "連續性／間歇性氣動加壓系統（IPC）與漸進減壓醫用輔助襪",
     heroDesc:
-      "醫療等級下肢循環照護產品線，涵蓋康威爾 ComWell 間歇性氣動加壓系統與醫療級壓力襪，適用於長期臥床、術後恢復、行動不便與日常循環支援",
+      "上怡生醫代理引進國際原廠順序性氣動加壓設備與醫用輔助襪，並結合台灣製造攜帶式充氣加壓系統，提供臨床機構與居家照護多元之生理循環輔助設備選擇。",
     products: [
       {
         slug: "comwell",
