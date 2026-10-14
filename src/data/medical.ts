@@ -398,8 +398,8 @@ export const medicalCategories: MedicalCategory[] = [
         name: "「柯惠」連續加壓系統 Kendall SCD™ 700",
         en: "\"Covidien\" Kendall SCD 700 Sequential Compression System",
         tagline: "【美國進口】．臨床用順序性加壓系統",
-        imageUrl: "/__l5e/assets-v1/a059633e-8d15-4ee4-8a65-68580836c981/scd-700.webp",
-        imageSrcSet: "/__l5e/assets-v1/a059633e-8d15-4ee4-8a65-68580836c981/scd-700.webp 800w, /__l5e/assets-v1/a059633e-8d15-4ee4-8a65-68580836c981/scd-700.webp 1600w",
+        imageUrl: "/__l5e/assets-v1/1fb56f61-7026-4bb6-aa2b-2b9dd339fd39/scd-1600.webp",
+        imageSrcSet: "/__l5e/assets-v1/1fb56f61-7026-4bb6-aa2b-2b9dd339fd39/scd-1600.webp 1600w",
         imageFit: "contain",
         intro:
           "本產品為美國進口之 Kendall SCD™ 700 順序間歇性加壓系統，專為醫療機構與院所環境設計的專業級間歇氣壓循環設備。機體採用高標準全自動壓力監控機制，搭配多段式順序加壓硬體設計，能提供規律、穩定且溫和的充氣與放氣循環。全機面板設計直覺直觀，操作簡單便利，由內而外提供符合醫院規格的硬體防護技術，輕鬆落實專業環境下的機能加壓管理",
