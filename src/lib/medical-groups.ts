@@ -34,10 +34,10 @@ export function getMedicalProductGroups(category: MedicalCategory): MedicalProdu
     {
       id: "international-brands",
       title: "國際原廠授權代理｜氣動加壓與醫用輔助設備",
-      brands: "代理引進國際醫療品牌之順序性氣動加壓系統與物理性漸進減壓輔助襪。",
+      brands: "嚴選國際醫療品牌之順序性氣動加壓系統與物理性漸進減壓輔助襪。",
       products: pick(category, ["scd", "ted"]),
       disclaimer:
-        "本專區設備與耗材由原廠（Covidien llc / Cardinal Health 200, LLC）製造，上怡生技醫藥為正式經銷/代理商。產品商標及智慧財產權均屬原製造廠所有。",
+        "本專區設備與耗材由原廠（Covidien llc / Cardinal Health 200, LLC）製造。產品商標及智慧財產權均屬原製造廠所有。",
       cards: {
         scd: {
           badges: ["【原廠代理】Covidien", "【美國進口】"],
