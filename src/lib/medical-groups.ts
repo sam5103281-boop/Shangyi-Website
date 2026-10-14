@@ -20,7 +20,6 @@ export type MedicalProductGroup = {
 
 export const DEVICES_FOOTER_NOTES = [
   "本站所載醫療器材資訊僅供合法醫療院所、藥局及醫事人員參考，不具網路販售功能。產品詳細規格、作用原理與核准適應症，請依主管機關核定仿單標示或洽詢上怡生醫業務團隊。",
-  "Kendall SCD™ 為 Covidien llc 之註冊商標；T.E.D.™ 為 Cardinal Health 之註冊商標。",
 ];
 
 const pick = (c: MedicalCategory, slugs: string[]) =>
@@ -34,7 +33,7 @@ export function getMedicalProductGroups(category: MedicalCategory): MedicalProdu
   const groups: MedicalProductGroup[] = [
     {
       id: "international-brands",
-      title: "國際原廠授權代理｜氣動加壓與醫用輔助設備 (International Brands)",
+      title: "國際原廠授權代理｜氣動加壓與醫用輔助設備",
       brands: "代理引進國際醫療品牌之順序性氣動加壓系統與物理性漸進減壓輔助襪。",
       products: pick(category, ["scd", "ted"]),
       disclaimer:
@@ -56,7 +55,7 @@ export function getMedicalProductGroups(category: MedicalCategory): MedicalProdu
     },
     {
       id: "comwell",
-      title: "康威爾 ComWell 專區｜攜帶式間歇充氣加壓系統 (Home Care & Portable IPC)",
+      title: "康威爾 ComWell 專區｜攜帶式間歇充氣加壓系統",
       brands: "台灣自主研發製造，具備輕量便攜特點之充氣加壓系統與循環輔助方案。",
       products: pick(category, ["comwell"]),
       standalone: true,
