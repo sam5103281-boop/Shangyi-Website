@@ -66,13 +66,13 @@ export function MedicalCategoryList({ category }: Props) {
                     {group.brands && <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{group.brands}</p>}
                   </div>
                 )}
-                <div className={category.slug === "devices" ? "grid gap-6 sm:grid-cols-2" : "grid gap-6 sm:grid-cols-2 lg:grid-cols-3"}>
+                <div className={category.slug === "devices" ? "grid gap-6" : "grid gap-6 sm:grid-cols-2 lg:grid-cols-3"}>
             {group.products.map((p) => { const o = group.cards?.[p.slug]; return (
               <Link
                 key={p.slug}
                 to="/products/$category/$slug"
                 params={{ category: category.slug, slug: p.slug }}
-                className={`group border border-hairline bg-surface transition-colors hover:bg-surface-muted ${group.standalone ? "flex flex-col sm:col-span-2 md:grid md:grid-cols-2 md:items-center" : "flex flex-col justify-between"}`}
+                className={`group border border-hairline bg-surface transition-colors hover:bg-surface-muted ${(group.standalone || group.row) ? "flex flex-col md:grid md:grid-cols-2 md:items-center" : "flex flex-col justify-between"}`}
               >
                 <div className="flex aspect-square w-full items-center justify-center overflow-hidden bg-white">
                   <img

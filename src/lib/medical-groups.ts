@@ -14,6 +14,7 @@ export type MedicalProductGroup = {
   products: MedicalProduct[];
   standalone?: boolean;
   boxed?: boolean;
+  row?: boolean;
   disclaimer?: string;
   cards?: Record<string, MedicalCardOverride>;
 };
@@ -36,6 +37,7 @@ export function getMedicalProductGroups(category: MedicalCategory): MedicalProdu
       title: "國際原廠授權代理｜氣動加壓與醫用輔助設備",
       brands: "嚴選國際醫療品牌之順序性氣動加壓系統與物理性漸進減壓輔助襪。",
       products: pick(category, ["scd", "ted"]),
+      row: true,
       disclaimer:
         "本專區設備與耗材由原廠（Covidien llc / Cardinal Health 200, LLC）製造。產品商標及智慧財產權均屬原製造廠所有。",
       cards: {
