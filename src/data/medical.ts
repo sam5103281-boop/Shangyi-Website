@@ -315,7 +315,7 @@ export const medicalCategories: MedicalCategory[] = [
     heroTitle: "醫療器材｜Medical Devices",
     heroSubtitle: "連續性／間歇性氣動加壓系統（IPC）與漸進減壓醫用輔助襪",
     heroDesc:
-      "上怡生醫代理引進國際原廠順序性氣動加壓設備與醫用輔助襪，並結合台灣製造攜帶式充氣加壓系統，提供臨床機構與居家照護多元之生理循環輔助設備選擇。",
+      "上怡生醫嚴選國際原廠順序性氣動加壓設備與醫用輔助襪，並結合台灣製造攜帶式充氣加壓系統，提供臨床機構與居家照護多元之生理循環輔助設備選擇。",
     products: [
       {
         slug: "comwell",
