@@ -165,8 +165,9 @@ export function MedicalCategoryList({ category }: Props) {
 
           {category.slug === "devices" ? (
             <div className="mt-12 space-y-2 text-xs leading-relaxed text-muted-foreground">
-              <p>※ {DEVICES_FOOTER_NOTES[0]}</p>
-              <p>{DEVICES_FOOTER_NOTES[1]}</p>
+              {DEVICES_FOOTER_NOTES.map((note) => (
+                <p key={note}>※ {note}</p>
+              ))}
             </div>
           ) : (
             <p className="mt-12 text-xs leading-relaxed text-muted-foreground">
