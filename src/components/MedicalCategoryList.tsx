@@ -3,7 +3,7 @@ import { ShieldCheck } from "lucide-react";
 import type { MedicalCategory } from "@/data/medical";
 import { MEDICAL_NOTE } from "@/data/medical";
 import { formatDeviceClass, formatCert } from "@/lib/medical-format";
-import { getMedicalProductGroups } from "@/lib/medical-groups";
+import { getMedicalProductGroups, DEVICES_FOOTER_NOTES } from "@/lib/medical-groups";
 
 type Props = {
   category: MedicalCategory;
@@ -33,6 +33,9 @@ export function MedicalCategoryList({ category }: Props) {
               <h1 className="mt-4 font-display text-3xl leading-tight text-foreground md:text-5xl">
                 {category.heroTitle}
               </h1>
+              {category.heroSubtitle && (
+                <p className="mt-3 text-base text-foreground/80 md:text-lg">{category.heroSubtitle}</p>
+              )}
               <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
                 {category.heroDesc}
               </p>
@@ -56,7 +59,7 @@ export function MedicalCategoryList({ category }: Props) {
         <div className="container-page">
           <div className="space-y-14 md:space-y-20">
             {groups.map((group, index) => (
-              <div key={group.id} className={index > 0 ? "border-t border-hairline pt-12 md:pt-16" : undefined}>
+              <div key={group.id} className={[index > 0 ? "border-t-2 border-hairline pt-14 md:pt-20" : "", group.boxed ? "bg-surface-muted p-6 md:p-10" : ""].join(" ")}>
                 {group.title && (
                   <div className="mb-6 border-l-2 border-accent pl-4 md:mb-8">
                     <h2 className="font-display text-2xl leading-tight text-foreground md:text-3xl">{group.title}</h2>
@@ -64,7 +67,7 @@ export function MedicalCategoryList({ category }: Props) {
                   </div>
                 )}
                 <div className={category.slug === "devices" ? "grid gap-6 sm:grid-cols-2" : "grid gap-6 sm:grid-cols-2 lg:grid-cols-3"}>
-            {group.products.map((p) => (
+            {group.products.map((p) => { const o = group.cards?.[p.slug]; return (
               <Link
                 key={p.slug}
                 to="/products/$category/$slug"
@@ -84,6 +87,19 @@ export function MedicalCategoryList({ category }: Props) {
                     }`}
                   />
                 </div>
+                {o ? (
+                  <div className="flex flex-1 flex-col p-8">
+                    <ul className="flex flex-wrap gap-1.5">
+                      {o.badges.map((b) => (
+                        <li key={b} className="border border-accent/30 bg-accent/5 px-2 py-0.5 text-[11px] tracking-wider text-accent">{b}</li>
+                      ))}
+                    </ul>
+                    <h3 className="mt-5 font-display text-2xl leading-tight text-foreground">{p.name}</h3>
+                    <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{o.en}</p>
+                    <p className="mt-4 text-sm text-foreground/80">產品定位｜{o.positioning}</p>
+                    <p className="mt-4 border-t border-hairline pt-3 text-[11px] leading-relaxed text-muted-foreground">{o.certLine}</p>
+                  </div>
+                ) : (
                 <div className="flex flex-1 flex-col justify-between p-8">
                   <div>
                     <div className="flex items-center justify-between">
@@ -134,16 +150,29 @@ export function MedicalCategoryList({ category }: Props) {
                     )}
                   </div>
                 </div>
+                )}
               </Link>
-            ))}
+            ); })}
                 </div>
+                {group.disclaimer && (
+                  <blockquote className="mt-6 border-l-2 border-hairline pl-4 text-xs leading-relaxed text-muted-foreground">
+                    {group.disclaimer}
+                  </blockquote>
+                )}
               </div>
             ))}
           </div>
 
-          <p className="mt-12 text-xs leading-relaxed text-muted-foreground">
-            ※ {MEDICAL_NOTE} 詳細產品規格、許可證字號、原廠資料與適應症，請洽上怡業務團隊取得正式文件。
-          </p>
+          {category.slug === "devices" ? (
+            <div className="mt-12 space-y-2 text-xs leading-relaxed text-muted-foreground">
+              <p>※ {DEVICES_FOOTER_NOTES[0]}</p>
+              <p>{DEVICES_FOOTER_NOTES[1]}</p>
+            </div>
+          ) : (
+            <p className="mt-12 text-xs leading-relaxed text-muted-foreground">
+              ※ {MEDICAL_NOTE} 詳細產品規格、許可證字號、原廠資料與適應症，請洽上怡業務團隊取得正式文件。
+            </p>
+          )}
         </div>
       </section>
     </>
