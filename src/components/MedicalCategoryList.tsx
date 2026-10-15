@@ -74,7 +74,7 @@ export function MedicalCategoryList({ category }: Props) {
                 params={{ category: category.slug, slug: p.slug }}
                 className={`group border border-hairline bg-surface transition-colors hover:bg-surface-muted ${(group.standalone || group.row) ? "flex flex-col md:grid md:grid-cols-2 md:items-center" : "flex flex-col justify-between"}`}
               >
-                <div className="flex aspect-square w-full items-center justify-center overflow-hidden bg-white">
+                <div className={`flex aspect-square w-full items-center justify-center overflow-hidden bg-white ${group.row ? "md:aspect-auto md:h-[340px]" : ""}`}>
                   <img
                     src={p.imageUrl}
                     srcSet={p.imageSrcSet}
