@@ -83,7 +83,7 @@ export function MedicalCategoryList({ category }: Props) {
                     loading="lazy"
                     decoding="async"
                     className={`h-full w-full transition-transform duration-500 group-hover:scale-[1.04] ${
-                      p.imageFit === "contain" ? "object-contain p-6" : "object-cover"
+                      p.imageFit === "contain" || group.row ? "object-contain p-6" : "object-cover"
                     }`}
                   />
                 </div>
