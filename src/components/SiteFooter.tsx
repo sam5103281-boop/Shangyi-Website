@@ -62,7 +62,9 @@ export function SiteFooter() {
               </li>
               <li>
                 <span className="block text-foreground">免付費客服</span>
-                0800-222-215
+                <a href="tel:0800222215" className="hover:text-foreground">
+                  0800-222-215
+                </a>
               </li>
               <li>
                 <span className="block text-foreground">Email</span>
