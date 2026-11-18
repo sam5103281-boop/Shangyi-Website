@@ -10,3 +10,5 @@
 <!-- LOVABLE:END -->
 
 - Medical category presentation uses `getMedicalProductGroups` to define visual sections without changing product categories or URLs; this keeps brand separation consistent and testable.
+
+- The contact form server function calls `submit_contact_and_notify` with the publishable key (anon has EXECUTE), never the service-role client — the Cloudflare deployment (www.shangyi-care.com) has no service-role key.

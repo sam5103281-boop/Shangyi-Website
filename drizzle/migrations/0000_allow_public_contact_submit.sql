@@ -1,0 +1,1 @@
+GRANT EXECUTE ON FUNCTION public.submit_contact_and_notify(text, text, text, text, text, text, text) TO anon, authenticated;

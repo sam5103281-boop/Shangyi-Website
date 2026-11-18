@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 
 const contactSchema = z.object({
@@ -14,16 +15,30 @@ const contactSchema = z.object({
 export const submitContactForm = createServerFn({ method: "POST" })
   .inputValidator((data) => contactSchema.parse(data))
   .handler(async ({ data }) => {
-    // The RPC is service-role only and composes the notification email itself
-    // from these raw fields, so no caller-supplied email content is possible.
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    // Uses only the public key so it also works on the Cloudflare deployment
+    // (www.shangyi-care.com), which has no service-role key. The RPC is
+    // SECURITY DEFINER, validates input, writes one row and notifies a fixed
+    // recipient; anon cannot read contact_submissions.
+    const url = process.env["SUPABASE_URL"];
+    const key = process.env["SUPABASE_PUBLISHABLE_KEY"] ?? process.env["SUPABASE_ANON_KEY"];
+    if (!url || !key) {
+      console.error("Contact submission error: missing SUPABASE_URL / publishable key");
+      throw new Error("提交失敗，請稍後再試");
+    }
 
-    const db = supabaseAdmin as unknown as {
-      rpc: (
-        fn: string,
-        args?: unknown,
-      ) => Promise<{ data: unknown; error: { message: string } | null }>;
-    };
+    const db = createClient(url, key, {
+      auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
+      global: {
+        fetch: (input, init) => {
+          const h = new Headers(init?.headers);
+          if (key.startsWith("sb_") && h.get("Authorization") === `Bearer ${key}`) {
+            h.delete("Authorization");
+          }
+          h.set("apikey", key);
+          return fetch(input, { ...init, headers: h });
+        },
+      },
+    });
 
     const { error } = await db.rpc("submit_contact_and_notify", {
       p_topic: data.topic,
